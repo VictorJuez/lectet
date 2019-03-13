@@ -1,0 +1,25 @@
+{
+  "name": "lectet",
+  "version": "1.0.0",
+  "description": "lectet RESTful API with Node.js, Express, and PostgreSQL",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VictorJuez/lectet.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/VictorJuez/lectet/issues"
+  },
+  "homepage": "https://github.com/VictorJuez/lectet#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "pg": "^7.8.2"
+  }
+}
