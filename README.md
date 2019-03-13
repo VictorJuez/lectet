@@ -20,6 +20,6 @@ node index.js
 ```
 
 # Members
-- Víctor Juez
 - Julian
 - Arnab
+- Víctor Juez
