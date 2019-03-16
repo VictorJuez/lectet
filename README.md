@@ -12,6 +12,12 @@ git clone https://github.com/VictorJuez/lectet.git
 cd lectet
 npm install
 ```
+#to run the appliction without restarting everytime
+
+sudo npm i -g nodemon
+
+run the application 
+nodemon index.js
 
 In order to run the application:
 
