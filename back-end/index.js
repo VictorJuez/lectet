@@ -20,7 +20,7 @@ app.use(
 
 // API routes
 app.get('/', (request, response) => {
-    response.json({ info: 'Node.js, Express, and Postgres API!!' })
+    response.json({ info: 'Node.js, Express, and Postgres API!' })
   })
 
 // USERS routes
@@ -32,5 +32,5 @@ app.delete('/users/:id', db.deleteUser)
 
 // console output when app is executed to know it is working.
 app.listen(port, () => {
-    console.log(`App running on port ${port}.`)
+    console.log(`App running on port ${port}..`)
   })
