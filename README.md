@@ -29,3 +29,6 @@ node index.js
 - Julian
 - Arnab
 - Víctor Juez
+
+#we should use Joi for validation 
+nmp i joi
