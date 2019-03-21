@@ -18,7 +18,7 @@ app.use(
   })
 )
 
-app.use(express.static('static-files'));
+app.use(express.static('front-end'));
 
 // API routes
 app.get('/', (request, response) => {
