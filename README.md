@@ -11,15 +11,21 @@ Lectet web application - [[089318] Hypermedia Applications course](https://www11
 git clone https://github.com/VictorJuez/lectet.git
 cd lectet
 npm install
+sudo npm i -g nodemon (to run the appliction without restarting everytime)
 ```
 
 In order to run the application:
 
 ```shell
 node index.js
+    or
+nodemon index.js
 ```
 
 # Members
-- Víctor Juez
 - Julian
 - Arnab
+- Víctor Juez
+
+#we should use Joi for validation 
+nmp i joi
