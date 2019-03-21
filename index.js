@@ -18,9 +18,12 @@ app.use(
   })
 )
 
+app.use(express.static('static-files'));
+
 // API routes
 app.get('/', (request, response) => {
     response.json({ info: 'Node.js, Express, and Postgres API!' })
+    //response.sendFile('front-end/index.html', {root: __dirname })
   })
 
 // USERS routes
