@@ -76,6 +76,19 @@ const deleteUser = (request, response) => {
   })
 }
 
+const loginUser = (request, response) => {
+  const { id, password } = request.body
+
+  console.log(request.body)
+
+  pool.query('SELECT count(*) FROM users WHERE id = $1 and password = $2', [id, password], (error, results) => {
+    if(error) {
+      throw error
+    }
+    response.status(200).json(results.rows) //If emit on the count 1 is that the id and password are correct, if emit 0 the opossite
+  })
+}
+
 // AUTHOR operations
 const getAuthors = (request, response) => {
   pool.query('SELECT * FROM authors ORDER BY id ASC', (error, results) => {
@@ -324,6 +337,7 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  loginUser,
   getAuthors,     // Authors
   getAuthorById,
   createAuthor,
