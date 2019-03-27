@@ -3,7 +3,7 @@ $(document).ready(() => {
 
     $('#single-user-btn').click(() => {
         const idUser = $('#id-user').val();
-        var userURL = 'users/' + idUser;
+        var userURL = 'api/users/' + idUser;
     
         $.ajax({
             url: userURL,
@@ -23,7 +23,7 @@ $(document).ready(() => {
     
     $('#all-users-btn').click(() => {
         console.log("button clicked!");
-        var userURL = 'users/';
+        var userURL = 'api/users/';
     
         $.ajax({
             url: userURL,
