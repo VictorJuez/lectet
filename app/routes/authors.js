@@ -1,5 +1,5 @@
 const app = module.exports = require('express')();
-const db = require('../actions/authors');
+const db = require('../actions').authors;
 
 app.get('/', db.getAuthors)
 app.get('/:id', db.getAuthorById)
