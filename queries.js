@@ -37,11 +37,11 @@ const getUserById = (request, response) => {
   }
     
 const createUser = (request, response) => {
-  const { id, password, address, name, surname_primary, surname_secondary, email } = request.body
+  const { id, password, name, surname_primary, surname_secondary, age, email, address } = request.body
 
   console.log(request.body);
 
-  pool.query('INSERT INTO users (id, password, address, name, surname_primary, surname_secondary, email) VALUES ($1, $2, $3, $4, $5, $6, $7)', [id, password, address, name, surname_primary, surname_secondary, email], (error, results) => {
+  pool.query('INSERT INTO users (id, password, name, surname_primary, surname_secondary, age, email, address) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [id, password, name, surname_primary, surname_secondary, age, email, address], (error, results) => {
     if (error) {
       throw error
     }
@@ -51,11 +51,11 @@ const createUser = (request, response) => {
 
 const updateUser = (request, response) => {
   //const id = parseInt(request.params.id)
-  const { id, password, email, name, surname, address, age } = request.body
+  const { id, password, name, surname_primary, surname_secondary, age, email, address } = request.body
 
   pool.query(
-    'UPDATE users SET password = $2, email = $3, name = $4, surname = $5, address = $6, age = $7 WHERE id = $1',
-    [id, password, email, name, surname, address, age],
+    'UPDATE users SET password = $2, name = $3, surname_primary = $4, surname_secondary = $5, age = $6, email = $7, address = $8 WHERE id = $1',
+    [id, password, name, surname_primary, surname_secondary, age, email, address],
     (error, results) => {
       if (error) {
         throw error
@@ -73,6 +73,19 @@ const deleteUser = (request, response) => {
       throw error
     }
     response.status(200).send(`User deleted with ID: ${id}`)
+  })
+}
+
+const loginUser = (request, response) => {
+  const { id, password } = request.body
+
+  console.log(request.body)
+
+  pool.query('SELECT count(*) FROM users WHERE id = $1 and password = $2', [id, password], (error, results) => {
+    if(error) {
+      throw error
+    }
+    response.status(200).json(results.rows) //If emit on the count 1 is that the id and password are correct, if emit 0 the opossite
   })
 }
 
@@ -99,23 +112,23 @@ const getAuthorById = (request, response) => {
 }
   
 const createAuthor = (request, response) => {
-const { id, name, surname, nationality, biography } = request.body
+const { name, surname_primary, surname_secondary, nationality, biography } = request.body
 
-pool.query('INSERT INTO authors (id, name, surname, nationality, biography) VALUES ($1, $2, $3, $4, $5)', [id, name, surname, nationality, biography], (error, results) => {
+pool.query('INSERT INTO authors (name, surname_primary, surname_secondary, nationality, biography) VALUES ($1, $2, $3, $4, $5)', [name, surname_primary, surname_secondary, nationality, biography], (error, results) => {
   if (error) {
     throw error
   }
-  response.status(201).send(`Author added with id: ${id}`)
+  response.status(201).send(`Author added`)
 })
 }
 
 const updateAuthor = (request, response) => {
 //const id = parseInt(request.params.id)
-const { id, name, surname, nationality, biography } = request.body
+const { id, name, surname_primary, surname_secondary, nationality, biography } = request.body
 
 pool.query(
-  'UPDATE authors SET name = $2, surname = $3, nationality = $4, biography = $5 WHERE id = $1',
-  [id, name, surname, nationality, biography],
+  'UPDATE authors SET name = $2, surname_primary = $3, surname_secondary = $4, nationality = $5, biography = $6 WHERE id = $1',
+  [id, name, surname_primary, surname_secondary, nationality, biography],
   (error, results) => {
     if (error) {
       throw error
@@ -159,9 +172,9 @@ const getBookById = (request, response) => {
 }
   
 const createBook = (request, response) => {
-const { id, editiorial, name1, name2, idAuthor, genre, sinopsis, price, stock, type } = request.body
+const { id, principal_name, secondary_name, id_author, editorial, genre, type, synopsis, price, stock } = request.body
 
-pool.query('INSERT INTO books (id, editiorial, name1, name2, idAuthor, genre, sinopsis, price, stock, type) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [id, editiorial, name1, name2, idAuthor, genre, sinopsis, price, stock, type], (error, results) => {
+pool.query('INSERT INTO books (id, principal_name, secondary_name, id_author, editorial, genre, type, synopsis, price, stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [id, principal_name, secondary_name, id_author, editorial, genre, type, synopsis, price, stock], (error, results) => {
   if (error) {
     throw error
   }
@@ -171,11 +184,11 @@ pool.query('INSERT INTO books (id, editiorial, name1, name2, idAuthor, genre, si
 
 const updateBook = (request, response) => {
 //const id = parseInt(request.params.id)
-const { id, editiorial, name1, name2, idAuthor, genre, sinopsis, price, stock, type } = request.body
+const { id, principal_name, secondary_name, id_author, editorial, genre, type, synopsis, price, stock } = request.body
 
 pool.query(
-  'UPDATE books SET editorial = $2, name1 = $3, name2 = $4, idAuthor = $5, genre = $6, sinopsis = $7, price = $8, stock = $9, type = $10 WHERE id = $1',
-  [id, editiorial, name1, name2, idAuthor, genre, sinopsis, price, stock, type],
+  'UPDATE books SET principal_name = $2, secondary_name = $3, id_author = $4, editorial = $5, genre = $6, type = $7, synopsis = $8, price = $9, stock = $10 WHERE id = $1',
+  [id, principal_name, secondary_name, id_author, editorial, genre, type, synopsis, price, stock],
   (error, results) => {
     if (error) {
       throw error
@@ -220,9 +233,9 @@ const getRatingById = (request, response) => {
 }
   
 const createRating = (request, response) => {
-const { book_id, user_id, comments, rating, date } = request.body
+const { book_id, user_id, rating, comments, date } = request.body
 
-pool.query('INSERT INTO ratings (book_id, user_id, comments, rating, date) VALUES ($1, $2, $3, $4, $5)', [book_id, user_id, comments, rating, date], (error, results) => {
+pool.query('INSERT INTO ratings (book_id, user_id, rating, comments, date) VALUES ($1, $2, $3, $4, $5)', [book_id, user_id, rating, comments, date], (error, results) => {
   if (error) {
     throw error
   }
@@ -232,11 +245,11 @@ pool.query('INSERT INTO ratings (book_id, user_id, comments, rating, date) VALUE
 
 const updateRating = (request, response) => {
 //const id = parseInt(request.params.id)
-const { book_id, user_id, comments, rating, date } = request.body
+const { book_id, user_id, rating, comments, date } = request.body
 
 pool.query(
-  'UPDATE ratings SET comments = $3, rating = $4, date = $5 WHERE book_id = $1 AND user_id = $2',
-  [book_id, user_id, comments, rating, date],
+  'UPDATE ratings SET rating = $3, comments = $4, date = $5 WHERE book_id = $1 AND user_id = $2',
+  [book_id, user_id, rating, comments, date],
   (error, results) => {
     if (error) {
       throw error
@@ -281,23 +294,23 @@ const getSaleById = (request, response) => {
 }
   
 const createSale = (request, response) => {
-const { id, buyer, book_buy, hour, price } = request.body
+const { buyer, book_buy, hour, price } = request.body
 
-pool.query('INSERT INTO sales (id, buyer, book_buy, hour, price) VALUES ($1, $2, $3, $4, $5)', [id, password, email, name, surname], (error, results) => {
+pool.query('INSERT INTO sales (buyer, book_buy, price, hour) VALUES ($1, $2, $3, $4)', [buyer, book_buy, price, hour], (error, results) => {
   if (error) {
     throw error
   }
-  response.status(201).send(`Sale added with id: ${id}`)
+  response.status(201).send(`Sale added`)
 })
 }
 
 const updateSale = (request, response) => {
 //const id = parseInt(request.params.id)
-const { id, buyer, book_buy, hour, price } = request.body
+const { id, buyer, book_buy, price, hour } = request.body
 
 pool.query(
-  'UPDATE sales SET buyer = $2, book_buy = $3, hour = $4, price = $5 WHERE id = $1',
-  [id, buyer, book_buy, hour, price],
+  'UPDATE sales SET buyer = $2, book_buy = $3, price = $4, hour = $5 WHERE id = $1',
+  [id, buyer, book_buy, price, hour],
   (error, results) => {
     if (error) {
       throw error
@@ -324,6 +337,7 @@ module.exports = {
   createUser,
   updateUser,
   deleteUser,
+  loginUser,
   getAuthors,     // Authors
   getAuthorById,
   createAuthor,
