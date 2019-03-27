@@ -1,9 +1,8 @@
-
-
 const app = module.exports = require('express')();
+const db = require('../actions/sales');
 
-app.get('/sales', db.getSales)
-app.get('/sales/:id', db.getSaleById)
-app.post('/sales', db.createSale)
-app.put('/sales/:id', db.updateSale)
-app.delete('/sales/:id', db.deleteSale)
+app.get('/', db.getSales)
+app.get('/:id', db.getSaleById)
+app.post('/', db.createSale)
+app.put('/:id', db.updateSale)
+app.delete('/:id', db.deleteSale)

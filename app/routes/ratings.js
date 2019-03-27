@@ -1,7 +1,8 @@
 const app = module.exports = require('express')();
+const db = require('../actions/ratings');
 
-app.get('/ratings', db.getRatings)
-app.get('/ratings/:id', db.getRatingById)
-app.post('/ratings', db.createRating)
-app.put('/ratings/:id', db.updateRating)
-app.delete('/ratings/:id', db.deleteRating)
+app.get('/', db.getRatings)
+app.get('/:id', db.getRatingById)
+app.post('/', db.createRating)
+app.put('/:id', db.updateRating)
+app.delete('/:id', db.deleteRating)
