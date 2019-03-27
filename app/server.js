@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000 // When app executed on local machine, po
 
 const routes = require('./routes');
 
-app.set('root', `${__dirname}/..`);
+//app.set('root', `${__dirname}/..`);
 
 app.use(bodyParser.json())
 app.use(
@@ -21,7 +21,7 @@ app.use(
   })
 )
 
-app.use(express.static('./static-files')); // Here we define front-end directory
+app.use(express.static('app/static-files')); // Here we define front-end directory
 
 // API routes
 app.use(routes);
