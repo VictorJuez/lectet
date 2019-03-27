@@ -24,7 +24,7 @@ app.use(
 app.use(express.static('app/static-files')); // Here we define front-end directory
 
 // API routes
-app.use(routes);
+app.use('/api',routes);
 
 // console output when app is executed to know it is working.
 app.listen(port, () => {

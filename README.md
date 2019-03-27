@@ -17,9 +17,23 @@ sudo npm i -g nodemon (to run the appliction without restarting everytime)
 In order to run the application:
 
 ```shell
-node index.js
-    or
-nodemon index.js
+npm start
+```
+
+# Project Structure
+
+Followed the [Fractal - NodeJS app structure](
+https://codeburst.io/fractal-a-nodejs-app-structure-for-infinite-scale-d74dda57ee11)
+
+```shell
+    lectet
+    ├── app                     # Main app code (Back-end)
+    │   ├── actions             # Business logic, DB calls
+    │   ├── routes              # Routes to project entities
+    │   ├── static-files        # Main point for the Front-end
+    │   └── server.js           # Server starting point
+    ├── docs                    # Documentation purpose
+    └── config.js               # Configuration related to DB, authentication, etc
 ```
 
 # Members
