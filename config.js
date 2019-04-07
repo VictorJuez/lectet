@@ -1,5 +1,5 @@
 const Pool = require('pg').Pool
-const pool = module.exports =  new Pool({
+const pool = new Pool({
   user: 'pfguwsqduqkxxv',
   host: 'ec2-54-247-85-251.eu-west-1.compute.amazonaws.com',
   database: 'degpai9eklcvs5',
@@ -7,3 +7,8 @@ const pool = module.exports =  new Pool({
   port: 5432,
   ssl: true,
 })
+
+module.exports = {
+  pool,
+  JWT_SECRET: 'lectetauthentication'
+}

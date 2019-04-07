@@ -10,7 +10,6 @@ app.put('/:id', db.updateUser)
 app.delete('/:id', db.deleteUser)
 app.post('/login', db.loginUser)
 
-app.post('/singIn', validateBody(schemas.authSchema), db.singIn)
-app.post('/singUp', db.singUp)
+//app.post('/singIn', validateBody(schemas.authSchema), db.singIn)
 app.post('/secret', db.secret)
 
