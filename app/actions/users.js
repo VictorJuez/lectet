@@ -74,11 +74,28 @@ const loginUser = (request, response) => {
   })
 }
 
+//Auth
+
+const singUp = (request, response) => {
+  console.log("singUp function called");
+}
+
+const singIn = (request, response) => {
+  console.log("singIn function called");
+}
+
+const secret = (request, response) => {
+  console.log("secret function called");
+}
+
 module.exports = {
     getUsers,       // Users
     getUserById,
     createUser,
     updateUser,
     deleteUser,
-    loginUser
+    loginUser,
+    singUp,
+    singIn,
+    secret
 }
