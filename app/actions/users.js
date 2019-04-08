@@ -1,4 +1,25 @@
-const pool = require('../../config')
+const JWT = require('jsonwebtoken');
+const {pool, JWT_SECRET} = require('../../config');
+const bcrypt = require('bcryptjs');
+
+singToken = (userId) => {
+  return JWT.sign({
+    iss: 'lectet',
+    sub: userId,
+    iat: new Date().getTime(),  //current time
+    exp: new Date().setDate(new Date().getDate() + 1) //current time + 1 day ahead
+  }, JWT_SECRET);
+}
+
+function encryptPassword(password){
+  try {
+    const salt = bcrypt.genSaltSync(10);
+    const passwordHash = bcrypt.hashSync(password, salt);
+    return passwordHash;
+  } catch (error) {
+    throw error
+  } 
+}
 
 const getUsers = (request, response) => {
     pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
@@ -22,15 +43,25 @@ const getUserById = (request, response) => {
   }
     
 const createUser = (request, response) => {
-  const { id, password, name, surname_primary, surname_secondary, age, email, address } = request.body
+  var { id, password, name, surname_primary, surname_secondary, age, email, address } = request.body
 
-  console.log(request.body);
+  // Generate a salt bcrypt
+  password = encryptPassword(password);
+  console.log(password);
 
   pool.query('INSERT INTO users (id, password, name, surname_primary, surname_secondary, age, email, address) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [id, password, name, surname_primary, surname_secondary, age, email, address], (error, results) => {
     if (error) {
-      throw error
+      console.log(error);
+      if(error.code == 23502) return response.status(400).send(error.column + " is null");
+      else if (error.code = 23505) return response.status(400).send("id \"" + id + "\" is already in use" );
+      return response.status(400).send(error);
     }
-    response.status(201).send(`User added with id: ${id}`)
+    
+    // Generate token
+    const token = singToken(id);
+
+    // respond with token
+    response.status(200).json({token: token});
   })
 }
 
@@ -51,7 +82,7 @@ const updateUser = (request, response) => {
 }
 
 const deleteUser = (request, response) => {
-  const id = parseInt(request.params.id)
+  const id = request.params.id;
 
   pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
     if (error) {
@@ -62,16 +93,18 @@ const deleteUser = (request, response) => {
 }
 
 const loginUser = (request, response) => {
-  const { id, password } = request.body
+  console.log(request.body.id);
+  console.log(request.body.password);
+  
+  const token = singToken(request.body.id);
+  response.status(200).json({token: token});
+}
 
-  console.log(request.body)
+// Auth
 
-  pool.query('SELECT count(*) FROM users WHERE id = $1 and password = $2', [id, password], (error, results) => {
-    if(error) {
-      throw error
-    }
-    response.status(200).json(results.rows) //If emit on the count 1 is that the id and password are correct, if emit 0 the opossite
-  })
+const secret = (request, response) => {
+  console.log("secret function called");
+  response.status(200).send("Secret function called!");
 }
 
 module.exports = {
@@ -80,5 +113,6 @@ module.exports = {
     createUser,
     updateUser,
     deleteUser,
-    loginUser
+    loginUser,
+    secret
 }
