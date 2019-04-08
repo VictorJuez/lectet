@@ -1,5 +1,6 @@
 const JWT = require('jsonwebtoken');
 const {pool, JWT_SECRET} = require('../../config');
+const bcrypt = require('bcryptjs');
 
 singToken = (userId) => {
   return JWT.sign({
@@ -8,6 +9,16 @@ singToken = (userId) => {
     iat: new Date().getTime(),  //current time
     exp: new Date().setDate(new Date().getDate() + 1) //current time + 1 day ahead
   }, JWT_SECRET);
+}
+
+function encryptPassword(password){
+  try {
+    const salt = bcrypt.genSaltSync(10);
+    const passwordHash = bcrypt.hashSync(password, salt);
+    return passwordHash;
+  } catch (error) {
+    throw error
+  } 
 }
 
 const getUsers = (request, response) => {
@@ -32,7 +43,11 @@ const getUserById = (request, response) => {
   }
     
 const createUser = (request, response) => {
-  const { id, password, name, surname_primary, surname_secondary, age, email, address } = request.body
+  var { id, password, name, surname_primary, surname_secondary, age, email, address } = request.body
+
+  // Generate a salt bcrypt
+  password = encryptPassword(password);
+  console.log(password);
 
   pool.query('INSERT INTO users (id, password, name, surname_primary, surname_secondary, age, email, address) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [id, password, name, surname_primary, surname_secondary, age, email, address], (error, results) => {
     if (error) {
