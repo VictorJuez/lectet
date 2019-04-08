@@ -97,6 +97,7 @@ const loginUser = (request, response) => {
 
 const secret = (request, response) => {
   console.log("secret function called");
+  response.status(200).send("Secret function called!");
 }
 
 module.exports = {
