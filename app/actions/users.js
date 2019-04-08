@@ -93,19 +93,11 @@ const deleteUser = (request, response) => {
 }
 
 const loginUser = (request, response) => {
-  const { id, password } = request.body
-
-  pool.query('SELECT count(*) FROM users WHERE id = $1 and password = $2', [id, password], (error, results) => {
-    if(error) {
-      throw error
-    }
-    var userFound = results.rows[0].count;
-    if(userFound == 1) {
-      return response.status(200).json("login successfully");
-    }
-
-    response.status(403).json("Wrong id or password") //If emit on the count 1 is that the id and password are correct, if emit 0 the opossite
-  })
+  console.log(request.body.id);
+  console.log(request.body.password);
+  
+  const token = singToken(request.body.id);
+  response.status(200).json({token: token});
 }
 
 // Auth
