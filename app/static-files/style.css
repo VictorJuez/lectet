@@ -1,0 +1,43 @@
+hr{
+    border-top: 2.5px solid black; /* Careful with px */
+}
+
+img{
+
+    max-width: 100%;
+    max-height: 100%;
+
+    width: 100%;
+}
+
+.container {
+    height: 50%;
+}
+
+.section {
+    font-size: 2.5rem;
+    padding-bottom: 2%;
+}
+
+.panel-footer {
+    text-align: center;
+}
+
+@media (min-width: 22.5em) {
+    .section {
+        font-size: 2.5rem;
+        padding-bottom: 2%;
+    }
+
+    .panel-body:hover {
+        -webkit-transform: scale(1.15);
+        transform: scale(1.15)
+    }
+}
+
+@media (max-width: 22.5em) {
+    .section {
+        font-size: 1.5rem;
+        padding-bottom: 2%;
+    }
+}
