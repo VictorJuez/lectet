@@ -2,6 +2,8 @@ const JWT = require('jsonwebtoken');
 const {pool, JWT_SECRET} = require('../../config');
 const bcrypt = require('bcryptjs');
 
+const { User } = require('../sequelize');
+
 singToken = (userId) => {
   return JWT.sign({
     iss: 'lectet',
@@ -43,6 +45,10 @@ const getUserById = (request, response) => {
   }
     
 const createUser = (request, response) => {
+  User.create(request.body)
+        .then(user => response.json(user))
+  /*
+
   var { id, password, name, surname_primary, surname_secondary, age, email, address } = request.body
 
   // Generate a salt bcrypt
@@ -62,7 +68,7 @@ const createUser = (request, response) => {
 
     // respond with token
     response.status(200).json({token: token});
-  })
+  })*/
 }
 
 const updateUser = (request, response) => {

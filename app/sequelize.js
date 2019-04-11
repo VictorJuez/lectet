@@ -1,4 +1,10 @@
 const Sequelize = require('sequelize');
+const UserModel = require('./models/users');
+const AuthorModel = require('./models/authors');
+const BookModel = require('./models/books');
+const RatingModel = require('./models/ratings');
+const EventModel = require('./models/events');
+const OrderModel = require('./models/orders');
 
 const sequelize = new Sequelize('degpai9eklcvs5', 'pfguwsqduqkxxv', 'ffbab27c92e5005956bf45d8883ea39428b2c3722f63d5607faeb493bdb88ae9', {
     host: 'ec2-54-247-85-251.eu-west-1.compute.amazonaws.com',
@@ -6,38 +12,45 @@ const sequelize = new Sequelize('degpai9eklcvs5', 'pfguwsqduqkxxv', 'ffbab27c92e
     protocol: 'postgres',
     dialectOptions: {
         ssl: true
-    },
-    define: {
-        // The `timestamps` field specify whether or not the `createdAt` and `updatedAt` fields will be created.
-        // This was true by default, but now is false by default
-        timestamps: false
-      }
+    }
   });
 
-sequelize
+const User = UserModel(sequelize, Sequelize);
+const Author = AuthorModel(sequelize, Sequelize);
+const Book = BookModel(sequelize, Sequelize);
+const Rating = RatingModel(sequelize, Sequelize);
+const Event = EventModel(sequelize, Sequelize);
+const Order = OrderModel(sequelize, Sequelize);
+const AuthorBook = sequelize.define('author_book', {});
+const AuthorEvent = sequelize.define('author_event', {});
+
+Author.belongsToMany(Book, { through: AuthorBook, unique: true });
+Book.belongsToMany(Author, { through: AuthorBook, unique: true });
+Book.belongsToMany(User, {through: Rating, unique: true});
+User.belongsToMany(Book, {through: Rating, unique: true});
+Author.belongsToMany(Event, { through: AuthorEvent, unique: true });
+Event.belongsToMany(Author, { through: AuthorEvent, unique: true});
+Book.belongsToMany(User, { through: Order, unique:false });
+User.belongsToMany(Book, { through: Order, unique:false });
+
+sequelize.sync({ force: true })
+.then(() => {
+  console.log(`Database & tables created!`)
+});
+
+module.exports = {
+  User,
+  Author,
+  Book,
+  Rating
+}
+
+// Test connection with the DB
+  /*sequelize
   .authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
   })
   .catch(err => {
     console.error('Unable to connect to the database:', err);
-  });
-
-const User = sequelize.define('user', {
-// attributes
-id: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    primaryKey: true
-},
-password: {
-    type: Sequelize.STRING
-    // allowNull defaults to true
-}
-}, {
-// options
-});
-
-User.findAll().then(users => {
-    console.log("All users:", JSON.stringify(users, null, 4));
-  });
+  });*/
