@@ -34,41 +34,26 @@ const getUsers = (request, response) => {
     
     
 const getUserById = (request, response) => {
-    const id = request.params.id
-  
-    pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
-      if (error) {
-        throw error
-      }
-      response.status(200).json(results.rows)
-    })
+    User.findAll({})
+          .then(users => response.json(users))
   }
     
 const createUser = (request, response) => {
+
   User.create(request.body)
-        .then(user => response.json(user))
+        .then(user => response.json(user));
+
   /*
-
-  var { id, password, name, surname_primary, surname_secondary, age, email, address } = request.body
-
   // Generate a salt bcrypt
-  password = encryptPassword(password);
+  var password = encryptPassword(password);
   console.log(password);
 
-  pool.query('INSERT INTO users (id, password, name, surname_primary, surname_secondary, age, email, address) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [id, password, name, surname_primary, surname_secondary, age, email, address], (error, results) => {
-    if (error) {
-      console.log(error);
-      if(error.code == 23502) return response.status(400).send(error.column + " is null");
-      else if (error.code = 23505) return response.status(400).send("id \"" + id + "\" is already in use" );
-      return response.status(400).send(error);
-    }
-    
-    // Generate token
-    const token = singToken(id);
+  // Generate token
+  const token = singToken(id);
 
-    // respond with token
-    response.status(200).json({token: token});
-  })*/
+  // respond with token
+  response.status(200).json({token: token});
+  */
 }
 
 const updateUser = (request, response) => {

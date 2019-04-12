@@ -42,7 +42,11 @@ module.exports = {
   User,
   Author,
   Book,
-  Rating
+  Rating,
+  Event,
+  Order,
+  AuthorBook,
+  AuthorEvent
 }
 
 // Test connection with the DB
