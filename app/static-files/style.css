@@ -58,6 +58,26 @@ hr{
     padding-top: -15%; 
 }
 
+.boton a {
+    display: inline-flex;
+    width: 20rem;
+    height: 31rem;
+}
+
+.boton button {
+    display: inline-flex;
+    width: 111rem;
+    height: 31rem !important;
+    max-height: 31rem;
+
+    background-color: transparent;
+}
+
+#item1 {
+    background: url(./images/firma_libro.jpg);
+    background-size: 100%;
+}
+
 @media (min-width: 22.5em) {
     .section {
         font-size: 2.5rem;
