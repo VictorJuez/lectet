@@ -39,21 +39,24 @@ const getUserById = (request, response) => {
   }
     
 const createUser = (request, response) => {
-
-  User.create(request.body)
-        .then(user => response.json(user));
-
-  /*
   // Generate a salt bcrypt
-  var password = encryptPassword(password);
-  console.log(password);
+  var password = encryptPassword(request.body.password);
+  request.body.password = password;
 
   // Generate token
-  const token = singToken(id);
+  const token = singToken(request.body.email);
 
-  // respond with token
-  response.status(200).json({token: token});
-  */
+  User.create(request.body)
+        .then(user => {
+          // respond with token
+          response.status(200).json({token: token});
+        })
+        .catch(function(error){
+          response.status(400).json({
+            code: error.parent.code,
+            detail: error.parent.detail
+          });
+        });
 }
 
 const updateUser = (request, response) => {
