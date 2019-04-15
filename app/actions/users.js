@@ -24,17 +24,13 @@ function encryptPassword(password){
 }
 
 const getUsers = (request, response) => {
-    pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
-        if (error) {
-        throw error
-        }
-        response.status(200).json(results.rows)
-    })
+  User.findAll({})
+      .then(users => response.json(users))
     }
     
     
 const getUserById = (request, response) => {
-    User.findAll({})
+    User.findByPk(request.params.id)
           .then(users => response.json(users))
   }
     
@@ -60,30 +56,31 @@ const createUser = (request, response) => {
 }
 
 const updateUser = (request, response) => {
-  //const id = parseInt(request.params.id)
-  const { id, password, name, surname_primary, surname_secondary, age, email, address } = request.body
-
-  pool.query(
-    'UPDATE users SET password = $2, name = $3, surname_primary = $4, surname_secondary = $5, age = $6, email = $7, address = $8 WHERE id = $1',
-    [id, password, name, surname_primary, surname_secondary, age, email, address],
-    (error, results) => {
-      if (error) {
-        throw error
-      }
-      response.status(200).send(`User modified with ID: ${id}`)
-    }
-  )
+  // TODO: check params received in the request.body before executing the update
+  // Not sending error if one param is wrong
+  User.update(
+    request.body, /* set attributes' value */
+    { where: { id: request.params.id }} /* where criteria */
+  ).then(user => {
+    response.status(200).json({detail: "user modified successfully"});
+  }).catch(function(error){
+    response.status(400).json({
+      code: error.parent.code,
+      detail: error.parent.detail
+    });
+  });
 }
 
 const deleteUser = (request, response) => {
-  const id = request.params.id;
 
-  pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(200).send(`User deleted with ID: ${id}`)
-  })
+  User.destroy(
+    {where: {id: request.params.id}}
+  ).then(() => {
+    response.status(200).json({
+      id: request.params.id,
+      detail: "deleted successfully"
+    })
+  });
 }
 
 const loginUser = (request, response) => {
