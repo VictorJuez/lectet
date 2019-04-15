@@ -3,6 +3,7 @@ const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwT = require('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local').Strategy;
 const { pool, JWT_SECRET } = require('../config');
+const { User } = require('./sequelize');
 
 const bcrypt = require('bcryptjs');
 
@@ -34,22 +35,21 @@ passport.use(new JwtStrategy({
 
 // LOCAL STRATEGY
 passport.use(new LocalStrategy({
-    usernameField: 'id'
-}, async(id, password, done) => {
+    usernameField: 'email'
+}, async(email, password, done) => {
     // Find the user given the email
     try {
-        pool.query('SELECT password FROM users WHERE id = $1', [id], (error, results) => {
-            if(error) {
-            throw error
-            }
-    
-            if(results.rowCount != 0) {
-            var savedPassword = results.rows[0].password;
-            var isValidPassword = bcrypt.compareSync(password, savedPassword);
-            if(isValidPassword) return done(null, id);
-            }
-            done(null, false);
-        });
+        console.log(email, ", ", password);
+        User.findOne(
+            { where: { email: email}} /* where criteria */
+          ).then(user => {
+              var savedPassword = user.password;
+              var isValidPassword = bcrypt.compareSync(password, savedPassword);
+              if(isValidPassword) return done(null, user.id);
+              done(null, false);
+          }).catch(function(error){
+              throw error;
+          });
     } catch (error) {
         done(error, false);
     }
