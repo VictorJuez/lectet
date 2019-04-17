@@ -37,6 +37,7 @@ passport.use(new LocalStrategy({
         User.findOne(
             { where: { email: email}} /* where criteria */
           ).then(user => {
+              if(!user) return done(null, false);  // if no user found (email incorrect)
               var savedPassword = user.password;
               var isValidPassword = bcrypt.compareSync(password, savedPassword);
               if(isValidPassword) return done(null, user.id);
