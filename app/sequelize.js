@@ -35,7 +35,8 @@ User.belongsToMany(Book, { through: Order, unique:false });
 
 sequelize.sync({ force: true })
 .then(() => {
-  console.log(`Database & tables created!`)
+  console.log(`Database & tables created!`);
+  testDb();
 });
 
 module.exports = {
@@ -48,6 +49,24 @@ module.exports = {
   AuthorBook,
   AuthorEvent
 }
+
+async function testDb(){
+/*
+const user = await User.build({
+  email: "victor@gmail.com",
+  password: "lmao"
+  });
+
+await user.save();
+
+const user2 = await User.findOne(
+  { where: { email: "victor@gmail.com"}}
+  );
+
+console.log(user2);
+*/
+}
+
 
 // Test connection with the DB
   /*sequelize
