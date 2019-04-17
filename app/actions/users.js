@@ -84,10 +84,10 @@ const deleteUser = (request, response) => {
 }
 
 const loginUser = (request, response) => {
-  console.log(request.body.id);
+  console.log(request.body.email);
   console.log(request.body.password);
   
-  const token = singToken(request.body.id);
+  const token = singToken(request.body.email);
   response.status(200).json({token: token});
 }
 

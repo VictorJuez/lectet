@@ -14,20 +14,15 @@ passport.use(new JwtStrategy({
 }, async (payload, done) => {
     try {
         // Find the user specified in token
+        const email = payload.sub;
 
-        const id = payload.sub;
-        pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
-            if (error) {
-              throw error;
-            }
-            if (results.rowCount == 1) {
-                // user found
-                console.log("user found!");
-                done(null, id);
-            }
-            else return done(null, false);
+        User.findOne(
+            { where: { email: email}} /* where criteria */
+          ).then(user => {
+              return done(null, user.id);
+          }).catch(function(error){
+              done(null, false);
           });
-        
     } catch (error) {
         done(error, false);
     }
@@ -39,7 +34,6 @@ passport.use(new LocalStrategy({
 }, async(email, password, done) => {
     // Find the user given the email
     try {
-        console.log(email, ", ", password);
         User.findOne(
             { where: { email: email}} /* where criteria */
           ).then(user => {
