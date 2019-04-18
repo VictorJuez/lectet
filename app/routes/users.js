@@ -10,7 +10,7 @@ const passportJWT = passport.authenticate('jwt',{ session: false });
 app.get('/secret', passportJWT, userController.secret)
 app.get('/', userController.getUsers)
 app.get('/:id', userController.getUserById)
-app.post('/', userController.createUser)
+app.post('/', validateBody(schemas.authSchema), userController.createUser)
 app.put('/:id', userController.updateUser)
 app.delete('/:id', userController.deleteUser)
 app.post('/login', passportSignIn, userController.loginUser)

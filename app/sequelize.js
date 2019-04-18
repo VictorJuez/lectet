@@ -33,6 +33,10 @@ Event.belongsToMany(Author, { through: AuthorEvent, unique: true});
 Book.belongsToMany(User, { through: Order, unique:false });
 User.belongsToMany(Book, { through: Order, unique:false });
 
+User.prototype.try = function () { 
+  console.log("custom function!");
+ }
+
 sequelize.sync({ force: true })
 .then(() => {
   console.log(`Database & tables created!`);
@@ -51,15 +55,22 @@ module.exports = {
 }
 
 async function testDb(){
-/*
-const user = await User.build({
+
+var user = await User.build({
   email: "victor@gmail.com",
   password: "lmao"
   });
 
 await user.save();
 
-const user2 = await User.findOne(
+user = await User.build({
+  email: "victor2@gmail.com",
+  password: "lmao"
+  });
+
+await user.save();
+
+/*const user2 = await User.findOne(
   { where: { email: "victor@gmail.com"}}
   );
 

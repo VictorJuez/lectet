@@ -2,10 +2,8 @@ const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwT = require('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local').Strategy;
-const { pool, JWT_SECRET } = require('../config');
+const { JWT_SECRET } = require('../config');
 const { User } = require('./sequelize');
-
-const bcrypt = require('bcryptjs');
 
 // JSON WEB TOKEN STRATEGY
 passport.use(new JwtStrategy({
@@ -14,15 +12,14 @@ passport.use(new JwtStrategy({
 }, async (payload, done) => {
     try {
         // Find the user specified in token
-        const email = payload.sub;
+        const user = await User.findByPk(payload.sub);
+        
+        // If it doesn't exists, handle it
+        if(!user) return done(null, false);
 
-        User.findOne(
-            { where: { email: email}} /* where criteria */
-          ).then(user => {
-              return done(null, user.id);
-          }).catch(function(error){
-              done(null, false);
-          });
+        // Otherwise return the user
+        return done(null, user);
+
     } catch (error) {
         done(error, false);
     }
@@ -32,8 +29,15 @@ passport.use(new JwtStrategy({
 passport.use(new LocalStrategy({
     usernameField: 'email'
 }, async(email, password, done) => {
-    // Find the user given the email
     try {
+        // Find the user given the email
+        const user = await User.findOne({email});
+
+        // If not, handle it
+        if(!user) return(null, false);
+
+        // Check if password is correct
+
         User.findOne(
             { where: { email: email}} /* where criteria */
           ).then(user => {

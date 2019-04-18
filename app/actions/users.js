@@ -4,10 +4,10 @@ const bcrypt = require('bcryptjs');
 
 const { User } = require('../sequelize');
 
-singToken = (userId) => {
+singToken = (user) => {
   return JWT.sign({
     iss: 'lectet',
-    sub: userId,
+    sub: user.id,
     iat: new Date().getTime(),  //current time
     exp: new Date().setDate(new Date().getDate() + 1) //current time + 1 day ahead
   }, JWT_SECRET);
@@ -34,15 +34,45 @@ const getUserById = (request, response) => {
           .then(users => response.json(users))
   }
     
-const createUser = (request, response) => {
+const createUser = async (request, response) => {
+  const { email, password } = request.body;
+  console.log(email);
+  
+  // Check user with the same email
+  const foundUser = await User.findOne({where: {email: email}});
+  if(foundUser) {
+    return response.status(403).json({error: "Email is already in use"});
+  }
+
+  // Create new user
+  const newUser = await User.build({email, password});
+  await newUser.save();
+
+  // Generate token
+  const token = singToken(newUser);
+  
+  response.status(200).json({token: token});
+  //response.status(200).json({user: "created"});
+
+        /*.then(user => {
+          // respond with token
+          response.status(200).json({token: token});
+        })
+        .catch(function(error){
+          response.status(400).json({
+            code: error.parent.code,
+            detail: error.parent.detail
+          });
+        });*/
+
   // Generate a salt bcrypt
-  var password = encryptPassword(request.body.password);
+  /*var password = encryptPassword(request.body.password);
   request.body.password = password;
 
   // Generate token
   const token = singToken(request.body.email);
 
-  User.create(request.body)
+  await User.create(request.body)
         .then(user => {
           // respond with token
           response.status(200).json({token: token});
@@ -53,6 +83,7 @@ const createUser = (request, response) => {
             detail: error.parent.detail
           });
         });
+        */
 }
 
 const updateUser = (request, response) => {
