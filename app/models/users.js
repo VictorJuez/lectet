@@ -1,32 +1,40 @@
 const bcrypt = require('bcryptjs');
 
-
-module.exports = (sequelize, type) => {
-    return sequelize.define('user', {
-        email: {
-          type: type.STRING, 
-          unique: true
-        },
-        password: type.STRING
-    }, {
-      instanceMethods: {
-        sayTitle: function() {
-          console.log("hello");
-        }
+const User = (sequelize, type) => {
+  const UserSequelize = sequelize.define('user', {
+      email: {
+        type: type.STRING, 
+        unique: true
       },
-      hooks: {
-        beforeSave: async (user, options) => {
-          try {
-            // Generate a salt
-            const salt = await bcrypt.genSalt(10);
-            // Generate a password hash
-            const passwordHash = await bcrypt.hash(user.password, salt);
-            // Re-assigned hash password over original password
-            user.password = passwordHash;
-          } catch (error) {
-            throw error;
-          }
+      password: type.STRING
+  }, {
+    hooks: {
+      beforeSave: async (user, options) => {
+        try {
+          // Generate a salt
+          const salt = await bcrypt.genSalt(10);
+          // Generate a password hash
+          const passwordHash = await bcrypt.hash(user.password, salt);
+          // Re-assigned hash password over original password
+          user.password = passwordHash;
+        } catch (error) {
+          throw error;
         }
       }
-    });
+    }
+  });
+
+  // Defining custom methods
+  UserSequelize.prototype.isValidPassword = async function (newPassword) {
+    try {
+      return await bcrypt.compare(newPassword, this.password)
+    } catch (error) {
+      
+    }
+   }
+
+  return UserSequelize;
 }
+
+
+module.exports = User;

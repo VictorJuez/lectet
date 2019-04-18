@@ -1,7 +1,5 @@
 const JWT = require('jsonwebtoken');
-const {pool, JWT_SECRET} = require('../../config');
-const bcrypt = require('bcryptjs');
-
+const {JWT_SECRET} = require('../../config');
 const { User } = require('../sequelize');
 
 singToken = (user) => {
@@ -11,16 +9,6 @@ singToken = (user) => {
     iat: new Date().getTime(),  //current time
     exp: new Date().setDate(new Date().getDate() + 1) //current time + 1 day ahead
   }, JWT_SECRET);
-}
-
-function encryptPassword(password){
-  try {
-    const salt = bcrypt.genSaltSync(10);
-    const passwordHash = bcrypt.hashSync(password, salt);
-    return passwordHash;
-  } catch (error) {
-    throw error
-  } 
 }
 
 const getUsers = (request, response) => {
@@ -54,36 +42,6 @@ const createUser = async (request, response) => {
   response.status(200).json({token: token});
   //response.status(200).json({user: "created"});
 
-        /*.then(user => {
-          // respond with token
-          response.status(200).json({token: token});
-        })
-        .catch(function(error){
-          response.status(400).json({
-            code: error.parent.code,
-            detail: error.parent.detail
-          });
-        });*/
-
-  // Generate a salt bcrypt
-  /*var password = encryptPassword(request.body.password);
-  request.body.password = password;
-
-  // Generate token
-  const token = singToken(request.body.email);
-
-  await User.create(request.body)
-        .then(user => {
-          // respond with token
-          response.status(200).json({token: token});
-        })
-        .catch(function(error){
-          response.status(400).json({
-            code: error.parent.code,
-            detail: error.parent.detail
-          });
-        });
-        */
 }
 
 const updateUser = (request, response) => {
@@ -115,10 +73,7 @@ const deleteUser = (request, response) => {
 }
 
 const loginUser = (request, response) => {
-  console.log(request.body.email);
-  console.log(request.body.password);
-  
-  const token = singToken(request.body.email);
+  const token = singToken(request.user);
   response.status(200).json({token: token});
 }
 

@@ -31,24 +31,18 @@ passport.use(new LocalStrategy({
 }, async(email, password, done) => {
     try {
         // Find the user given the email
-        const user = await User.findOne({email});
-
+        const user = await User.findOne({where: {email: email}});
         // If not, handle it
-        if(!user) return(null, false);
+        if(!user) return done(null, false);
 
         // Check if password is correct
+        const isMatch = await user.isValidPassword(password);
 
-        User.findOne(
-            { where: { email: email}} /* where criteria */
-          ).then(user => {
-              if(!user) return done(null, false);  // if no user found (email incorrect)
-              var savedPassword = user.password;
-              var isValidPassword = bcrypt.compareSync(password, savedPassword);
-              if(isValidPassword) return done(null, user.id);
-              done(null, false);
-          }).catch(function(error){
-              throw error;
-          });
+        // If not, handle it
+        if(!isMatch) return done(null, false);
+
+        // Otherwise
+        done(null, user);
     } catch (error) {
         done(error, false);
     }

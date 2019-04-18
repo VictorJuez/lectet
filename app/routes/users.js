@@ -13,7 +13,7 @@ app.get('/:id', userController.getUserById)
 app.post('/', validateBody(schemas.authSchema), userController.createUser)
 app.put('/:id', userController.updateUser)
 app.delete('/:id', userController.deleteUser)
-app.post('/login', passportSignIn, userController.loginUser)
+app.post('/login', validateBody(schemas.authSchema), passportSignIn, userController.loginUser)
 
 //app.post('/singIn', validateBody(schemas.authSchema), userController.singIn)
 
