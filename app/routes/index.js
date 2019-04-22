@@ -5,7 +5,7 @@ app.get('/', (req, res) => {
 });
 
 //app.use('/auth', require('./auth'));
-app.use('/users', require('./users'));
+app.use('/user', require('./users'));
 app.use('/authors', require('./authors'));
 app.use('/books', require('./books'));
 app.use('/sales', require('./sales'));

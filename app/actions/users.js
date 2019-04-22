@@ -11,17 +11,7 @@ singToken = (user) => {
   }, JWT_SECRET);
 }
 
-const getUsers = (request, response) => {
-  User.findAll({})
-      .then(users => response.json(users))
-    }
-    
-    
-const getUserById = (request, response) => {
-    User.findByPk(request.params.id)
-          .then(users => response.json(users))
-  }
-    
+// user/signUp
 const createUser = async (request, response) => {
   const { email, password } = request.body;
   console.log(email);
@@ -44,12 +34,25 @@ const createUser = async (request, response) => {
 
 }
 
+// user/signIn
+const loginUser = (request, response) => {
+  const token = singToken(request.user);
+  response.status(200).json({token: token});
+}
+
+// user/info    
+const getUser = (request, response) => {
+  response.json({
+    email: request.user.email
+  });
+}
+
 const updateUser = (request, response) => {
   // TODO: check params received in the request.body before executing the update
   // Not sending error if one param is wrong
   User.update(
     request.body, /* set attributes' value */
-    { where: { id: request.params.id }} /* where criteria */
+    { where: { id: request.user.id }} /* where criteria */
   ).then(user => {
     response.status(200).json({detail: "user modified successfully"});
   }).catch(function(error){
@@ -59,6 +62,12 @@ const updateUser = (request, response) => {
     });
   });
 }
+
+// NOT USING NOW
+const getUsers = (request, response) => {
+  User.findAll({})
+      .then(users => response.json(users))
+    }
 
 const deleteUser = (request, response) => {
 
@@ -72,24 +81,9 @@ const deleteUser = (request, response) => {
   });
 }
 
-const loginUser = (request, response) => {
-  const token = singToken(request.user);
-  response.status(200).json({token: token});
-}
-
-// Auth
-
-const secret = (request, response) => {
-  console.log("secret function called");
-  response.status(200).send("Secret function called!");
-}
-
 module.exports = {
-    getUsers,       // Users
-    getUserById,
+    getUser,
     createUser,
     updateUser,
-    deleteUser,
     loginUser,
-    secret
 }

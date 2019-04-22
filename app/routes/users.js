@@ -7,14 +7,10 @@ const { validateBody, schemas } = require('../helpers/routeHelpers');
 const passportSignIn = passport.authenticate('local', { session: false });
 const passportJWT = passport.authenticate('jwt',{ session: false });
 
-app.get('/secret', passportJWT, userController.secret)
-app.get('/', userController.getUsers)
-app.get('/:id', userController.getUserById)
-app.post('/', validateBody(schemas.authSchema), userController.createUser)
-app.put('/:id', userController.updateUser)
-app.delete('/:id', userController.deleteUser)
-app.post('/login', validateBody(schemas.authSchema), passportSignIn, userController.loginUser)
-
-//app.post('/singIn', validateBody(schemas.authSchema), userController.singIn)
+app.get('/info', passportJWT, userController.getUser)
+app.put('/info', passportJWT, userController.updateUser)
+app.post('/signUp', validateBody(schemas.authSchema), userController.createUser)
+app.post('/signIn', validateBody(schemas.authSchema), passportSignIn, userController.loginUser)
+//app.delete('/:id', userController.deleteUser)
 
 module.exports = app;

@@ -26,12 +26,12 @@ const AuthorEvent = sequelize.define('author_event', {});
 
 Author.belongsToMany(Book, { through: AuthorBook, unique: true });
 Book.belongsToMany(Author, { through: AuthorBook, unique: true });
-Book.belongsToMany(User, {through: Rating, unique: true});
-User.belongsToMany(Book, {through: Rating, unique: true});
+Book.belongsToMany(User, {as: 'ratingUser', through: Rating, unique: true});
+User.belongsToMany(Book, {as: 'ratingBook', through: Rating, unique: true});
 Author.belongsToMany(Event, { through: AuthorEvent, unique: true });
 Event.belongsToMany(Author, { through: AuthorEvent, unique: true});
-Book.belongsToMany(User, { through: Order, unique:false });
-User.belongsToMany(Book, { through: Order, unique:false });
+Book.belongsToMany(User, { as: 'buyer', through: Order, unique:false });
+User.belongsToMany(Book, { as: 'orderedBook', through: Order, unique:false });
 
 /*User.prototype.try = function () {
   console.log("custom function!");
@@ -40,7 +40,7 @@ User.belongsToMany(Book, { through: Order, unique:false });
 sequelize.sync({ force: true })
 .then(() => {
   console.log(`Database & tables created!`);
-  testDb();
+  //testDb();
 });
 
 module.exports = {
@@ -55,30 +55,20 @@ module.exports = {
 }
 
 async function testDb(){
+  const book1 = await Book.build({name: 'Chair'});
+  await book1.save();
 
-/*var user = await User.build({
-  email: "victor@gmail.com",
-  password: "lmao"
-  });
+  const author1 = await Author.build({name: 'Pepito'});
+  await author1.save();
 
-await user.save();
+  const author2 = await Author.build({name: 'Lmao'});
+  await author2.save();
 
-user = await User.build({
-  email: "victor2@gmail.com",
-  password: "lmao"
-  });
+  const user1 = await User.build({email: 'jaume@gmail.com', password: 'lmao'});
+  await user1.save();
 
-await user.save();*/
-
-// user.isValidPassword();
-// user.try2();
-
-/*const user2 = await User.findOne(
-  { where: { email: "victor@gmail.com"}}
-  );
-
-console.log(user2);
-*/
+  user1.addOrderedBook(book1, {quantity: '10'});
+  user1.addRatingBook(book1, {rating: '5'});
 }
 
 
