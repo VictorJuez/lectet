@@ -112,6 +112,18 @@ async function testDb(){
   await author2.addBook(book2);
   await author2.addBook(book1);
 
+  // new Date(year, month-1, day, hours+2, minutes, seconds, milliseconds)
+  const event1 = await Event.create({
+    name: 'Summer book event',
+    date: new Date(2019, 4-1, 1, 17+2, 30)
+  })
+  const event2 = await Event.create({
+    name: 'Summer book event',
+    date: new Date(2019, 4-1, 1, 17+2, 30)
+  })
+  await book1.addEvent(event1);
+  await book2.addEvent(event2);
+
   //user1.addOrderedBook(book1, {quantity: '10'});
   //user1.addRatingBook(book1, {rating: '5'});
 }

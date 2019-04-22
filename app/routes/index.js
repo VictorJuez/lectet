@@ -10,6 +10,7 @@ app.use('/authors', require('./authors'));
 app.use('/books', require('./books'));
 app.use('/sales', require('./sales'));
 app.use('/ratings', require('./ratings'));
+app.use('/events', require('./events'));
 
 
 // the catch all route
