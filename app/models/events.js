@@ -1,9 +1,8 @@
 module.exports = (sequelize, type) => {
     return sequelize.define('event', {
         name: {
-          type: type.INTEGER
+          type: type.STRING
         },
-        description: type.STRING,
-        type: type.STRING
+        description: type.STRING
     })
 }
