@@ -4,6 +4,6 @@ module.exports = (sequelize, type) => {
           type: type.STRING
         },
         lastName: type.STRING,
-        address: type.STRING
+        description: type.STRING
     })
 }

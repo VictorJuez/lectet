@@ -1,15 +1,15 @@
 const Sequelize = require('sequelize');
-const { Book, Genre, Theme, Favourite } = require('../sequelize');
+const { Book, Author, Genre, Theme, Favourite } = require('../sequelize');
 
 // BOOKS operations
 const getBooks = async (request, response) => {
-  const books = await Book.findAll();
+  const books = await Book.findAll({include: [Author]});
   response.status(200).json({books});
 }
     
     
 const getBookById = async (request, response) => {
-  const book = await Book.findByPk(request.params.id);
+  const book = await Book.findByPk(request.params.id, {include: [Author]});
   response.status(200).json({book});
 }
 
@@ -27,7 +27,8 @@ const getBooksByGenre = async (request, response) => {
   const books = await Book.findAll({
     where: {
       genreId: request.params.genreId
-    }
+    },
+    include: [Author]
   });
   response.status(200).json({books});
 }
@@ -36,7 +37,8 @@ const getBooksByTheme = async (request, response) => {
   const books = await Book.findAll({
     where: {
       themeId: request.params.themeId
-    }
+    },
+    include: [Author]
   });
   response.status(200).json({books});
 }
@@ -53,7 +55,8 @@ const getFavourites = async (request, response) => {
       id: {
         [Sequelize.Op.in]: favouriteBooks
       }
-    }
+    },
+    include: [Author]
   });
   response.status(200).json({books});
 }

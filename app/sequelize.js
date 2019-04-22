@@ -22,16 +22,15 @@ const Genre = sequelize.define('genre', {description: Sequelize.STRING});
 const Theme = sequelize.define('theme', {description: Sequelize.STRING});
 const Favourite = sequelize.define('favourite', {});
 const BookEvent = sequelize.define('book_event', {});
-
 const Author = AuthorModel(sequelize, Sequelize);
+const AuthorBook = sequelize.define('author_book', {});
+
 const Rating = RatingModel(sequelize, Sequelize);
 const Order = OrderModel(sequelize, Sequelize);
-const AuthorBook = sequelize.define('author_book', {});
 const AuthorEvent = sequelize.define('author_event', {});
 
 
-/*Author.belongsToMany(Book, { through: AuthorBook, unique: true });
-Book.belongsToMany(Author, { through: AuthorBook, unique: true });
+/*
 Book.belongsToMany(User, {as: 'ratingUser', through: Rating, unique: true});
 User.belongsToMany(Book, {as: 'ratingBook', through: Rating, unique: true});
 Author.belongsToMany(Event, { through: AuthorEvent, unique: true });
@@ -43,6 +42,8 @@ Theme.hasMany(Book);
 Book.belongsToMany(Event, { through: BookEvent, unique:true });
 Event.belongsToMany(Book, { through: BookEvent, unique:true });
 Book.hasOne(Favourite);
+Author.belongsToMany(Book, { through: AuthorBook, unique: true });
+Book.belongsToMany(Author, { through: AuthorBook, unique: true });
 
 /*User.prototype.try = function () {
   console.log("custom function!");
@@ -106,6 +107,10 @@ async function testDb(){
 
   const fav2 = await Favourite.build();
   book1.setFavourite(fav2);
+
+  await author1.addBook(book1);
+  await author2.addBook(book2);
+  await author2.addBook(book1);
 
   //user1.addOrderedBook(book1, {quantity: '10'});
   //user1.addRatingBook(book1, {rating: '5'});
