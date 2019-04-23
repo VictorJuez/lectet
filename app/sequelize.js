@@ -24,19 +24,9 @@ const Favourite = sequelize.define('favourite', {});
 const BookEvent = sequelize.define('book_event', {});
 const Author = AuthorModel(sequelize, Sequelize);
 const AuthorBook = sequelize.define('author_book', {});
+const Order = sequelize.define('order', {});
+const OrderBook = sequelize.define('order_book', {quantity: Sequelize.INTEGER, unitPrice: Sequelize.DOUBLE});
 
-const Rating = RatingModel(sequelize, Sequelize);
-const Order = OrderModel(sequelize, Sequelize);
-const AuthorEvent = sequelize.define('author_event', {});
-
-
-/*
-Book.belongsToMany(User, {as: 'ratingUser', through: Rating, unique: true});
-User.belongsToMany(Book, {as: 'ratingBook', through: Rating, unique: true});
-Author.belongsToMany(Event, { through: AuthorEvent, unique: true });
-Event.belongsToMany(Author, { through: AuthorEvent, unique: true});
-Book.belongsToMany(User, { as: 'buyer', through: Order, unique:false });
-User.belongsToMany(Book, { as: 'orderedBook', through: Order, unique:false });*/
 Genre.hasMany(Book);
 Theme.hasMany(Book);
 Book.belongsToMany(Event, { through: BookEvent, unique:true });
@@ -44,6 +34,20 @@ Event.belongsToMany(Book, { through: BookEvent, unique:true });
 Book.hasOne(Favourite);
 Author.belongsToMany(Book, { through: AuthorBook, unique: true });
 Book.belongsToMany(Author, { through: AuthorBook, unique: true });
+Order.belongsTo(User, {foreignKey: { allowNull: false }});
+Order.belongsToMany(Book, { through: OrderBook, unique:true });
+Book.belongsToMany(Order, { through: OrderBook, unique:true });
+
+/*
+const Rating = RatingModel(sequelize, Sequelize);
+const AuthorEvent = sequelize.define('author_event', {});
+
+Book.belongsToMany(User, {as: 'ratingUser', through: Rating, unique: true});
+User.belongsToMany(Book, {as: 'ratingBook', through: Rating, unique: true});
+Author.belongsToMany(Event, { through: AuthorEvent, unique: true });
+Event.belongsToMany(Author, { through: AuthorEvent, unique: true});
+Book.belongsToMany(User, { as: 'buyer', through: Order, unique:false });
+User.belongsToMany(Book, { as: 'orderedBook', through: Order, unique:false });*/
 
 /*User.prototype.try = function () {
   console.log("custom function!");
@@ -62,11 +66,9 @@ module.exports = {
   Theme,
   Favourite,
   Author,
-  Rating,
   Event,
   Order,
-  AuthorBook,
-  AuthorEvent
+  AuthorBook
 }
 
 async function testDb(){
@@ -126,6 +128,12 @@ async function testDb(){
 
   //user1.addOrderedBook(book1, {quantity: '10'});
   //user1.addRatingBook(book1, {rating: '5'});
+  const order = await Order.create({
+    userId: user1.id
+  });
+ 
+  await order.addBook(book1, { through: { quantity: 10 }});
+  await order.addBook(book2);
 }
 
 
