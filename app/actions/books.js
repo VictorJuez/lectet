@@ -1,69 +1,73 @@
-const pool = require('../../config')
+const Sequelize = require('sequelize');
+const { Book, Author, Genre, Theme, Favourite } = require('../sequelize');
 
 // BOOKS operations
-const getBooks = (request, response) => {
-    pool.query('SELECT * FROM books ORDER BY id ASC', (error, results) => {
-        if (error) {
-        throw error
-        }
-        response.status(200).json(results.rows)
-    })
-    }
+const getBooks = async (request, response) => {
+  const books = await Book.findAll({include: [Author]});
+  response.status(200).json({books});
+}
     
     
-  const getBookById = (request, response) => {
-    const id = parseInt(request.params.id)
-  
-    pool.query('SELECT * FROM books WHERE id = $1', [id], (error, results) => {
-      if (error) {
-        throw error
-      }
-      response.status(200).json(results.rows)
-    })
-  }
-    
-  const createBook = (request, response) => {
-  const { id, principal_name, secondary_name, id_author, editorial, genre, type, synopsis, price, stock } = request.body
-  
-  pool.query('INSERT INTO books (id, principal_name, secondary_name, id_author, editorial, genre, type, synopsis, price, stock) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)', [id, principal_name, secondary_name, id_author, editorial, genre, type, synopsis, price, stock], (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(201).send(`Book added with id: ${id}`)
-  })
-  }
-  
-  const updateBook = (request, response) => {
-  //const id = parseInt(request.params.id)
-  const { id, principal_name, secondary_name, id_author, editorial, genre, type, synopsis, price, stock } = request.body
-  
-  pool.query(
-    'UPDATE books SET principal_name = $2, secondary_name = $3, id_author = $4, editorial = $5, genre = $6, type = $7, synopsis = $8, price = $9, stock = $10 WHERE id = $1',
-    [id, principal_name, secondary_name, id_author, editorial, genre, type, synopsis, price, stock],
-    (error, results) => {
-      if (error) {
-        throw error
-      }
-      response.status(200).send(`Book modified with ID: ${id}`)
-    }
-  )
-  }
-  
-  const deleteBook = (request, response) => {
-  const id = parseInt(request.params.id)
-  
-  pool.query('DELETE FROM books WHERE id = $1', [id], (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(200).send(`Book deleted with ID: ${id}`)
-  })
-  }
+const getBookById = async (request, response) => {
+  const book = await Book.findByPk(request.params.id, {include: [Author]});
+  response.status(200).json({book});
+}
 
-  module.exports = {
-    getBooks,       // Books
-    getBookById,
-    createBook,
-    updateBook,
-    deleteBook
-  }
+const getGenres = async (request, response) => {
+  const genres = await Genre.findAll();
+  response.status(200).json({genres});
+}
+
+const getThemes = async (request, response) => {
+  const themes = await Theme.findAll();
+  response.status(200).json({themes});
+}
+
+const getBooksByGenre = async (request, response) => {
+  const books = await Book.findAll({
+    where: {
+      genreId: request.params.genreId
+    },
+    include: [Author]
+  });
+  response.status(200).json({books});
+}
+
+const getBooksByTheme = async (request, response) => {
+  const books = await Book.findAll({
+    where: {
+      themeId: request.params.themeId
+    },
+    include: [Author]
+  });
+  response.status(200).json({books});
+}
+
+const getBestSellers = (request, response) => {
+
+}
+
+const getFavourites = async (request, response) => {
+  const favourites = await Favourite.findAll();
+  const favouriteBooks = favourites.map(favourite => favourite.bookId);
+  const books = await Book.findAll({
+    where: {
+      id: {
+        [Sequelize.Op.in]: favouriteBooks
+      }
+    },
+    include: [Author]
+  });
+  response.status(200).json({books});
+}
+
+module.exports = {
+  getBooks,       // Books
+  getBookById,
+  getGenres,
+  getThemes,
+  getBooksByGenre,
+  getBooksByTheme,
+  getBestSellers,
+  getFavourites
+}

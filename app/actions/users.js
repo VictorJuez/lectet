@@ -1,118 +1,89 @@
 const JWT = require('jsonwebtoken');
-const {pool, JWT_SECRET} = require('../../config');
-const bcrypt = require('bcryptjs');
+const {JWT_SECRET} = require('../../config');
+const { User } = require('../sequelize');
 
-singToken = (userId) => {
+singToken = (user) => {
   return JWT.sign({
     iss: 'lectet',
-    sub: userId,
+    sub: user.id,
     iat: new Date().getTime(),  //current time
     exp: new Date().setDate(new Date().getDate() + 1) //current time + 1 day ahead
   }, JWT_SECRET);
 }
 
-function encryptPassword(password){
-  try {
-    const salt = bcrypt.genSaltSync(10);
-    const passwordHash = bcrypt.hashSync(password, salt);
-    return passwordHash;
-  } catch (error) {
-    throw error
-  } 
-}
-
-const getUsers = (request, response) => {
-    pool.query('SELECT * FROM users ORDER BY id ASC', (error, results) => {
-        if (error) {
-        throw error
-        }
-        response.status(200).json(results.rows)
-    })
-    }
-    
-    
-const getUserById = (request, response) => {
-    const id = request.params.id
+// user/signUp
+const createUser = async (request, response) => {
+  const { email, password } = request.body;
+  console.log(email);
   
-    pool.query('SELECT * FROM users WHERE id = $1', [id], (error, results) => {
-      if (error) {
-        throw error
-      }
-      response.status(200).json(results.rows)
-    })
+  // Check user with the same email
+  const foundUser = await User.findOne({where: {email: email}});
+  if(foundUser) {
+    return response.status(403).json({error: "Email is already in use"});
   }
-    
-const createUser = (request, response) => {
-  var { id, password, name, surname_primary, surname_secondary, age, email, address } = request.body
 
-  // Generate a salt bcrypt
-  password = encryptPassword(password);
-  console.log(password);
+  // Create new user
+  const newUser = await User.build({email, password});
+  await newUser.save();
 
-  pool.query('INSERT INTO users (id, password, name, surname_primary, surname_secondary, age, email, address) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [id, password, name, surname_primary, surname_secondary, age, email, address], (error, results) => {
-    if (error) {
-      console.log(error);
-      if(error.code == 23502) return response.status(400).send(error.column + " is null");
-      else if (error.code = 23505) return response.status(400).send("id \"" + id + "\" is already in use" );
-      return response.status(400).send(error);
-    }
-    
-    // Generate token
-    const token = singToken(id);
-
-    // respond with token
-    response.status(200).json({token: token});
-  })
-}
-
-const updateUser = (request, response) => {
-  //const id = parseInt(request.params.id)
-  const { id, password, name, surname_primary, surname_secondary, age, email, address } = request.body
-
-  pool.query(
-    'UPDATE users SET password = $2, name = $3, surname_primary = $4, surname_secondary = $5, age = $6, email = $7, address = $8 WHERE id = $1',
-    [id, password, name, surname_primary, surname_secondary, age, email, address],
-    (error, results) => {
-      if (error) {
-        throw error
-      }
-      response.status(200).send(`User modified with ID: ${id}`)
-    }
-  )
-}
-
-const deleteUser = (request, response) => {
-  const id = request.params.id;
-
-  pool.query('DELETE FROM users WHERE id = $1', [id], (error, results) => {
-    if (error) {
-      throw error
-    }
-    response.status(200).send(`User deleted with ID: ${id}`)
-  })
-}
-
-const loginUser = (request, response) => {
-  console.log(request.body.id);
-  console.log(request.body.password);
+  // Generate token
+  const token = singToken(newUser);
   
-  const token = singToken(request.body.id);
+  response.status(200).json({token: token});
+  //response.status(200).json({user: "created"});
+
+}
+
+// user/signIn
+const loginUser = (request, response) => {
+  const token = singToken(request.user);
   response.status(200).json({token: token});
 }
 
-// Auth
+// user/info    
+const getUser = (request, response) => {
+  response.json({
+    email: request.user.email
+  });
+}
 
-const secret = (request, response) => {
-  console.log("secret function called");
-  response.status(200).send("Secret function called!");
+const updateUser = (request, response) => {
+  // TODO: check params received in the request.body before executing the update
+  // Not sending error if one param is wrong
+  User.update(
+    request.body, /* set attributes' value */
+    { where: { id: request.user.id }} /* where criteria */
+  ).then(user => {
+    response.status(200).json({detail: "user modified successfully"});
+  }).catch(function(error){
+    response.status(400).json({
+      code: error.parent.code,
+      detail: error.parent.detail
+    });
+  });
+}
+
+// NOT USING NOW
+const getUsers = (request, response) => {
+  User.findAll({})
+      .then(users => response.json(users))
+    }
+
+const deleteUser = (request, response) => {
+
+  User.destroy(
+    {where: {id: request.params.id}}
+  ).then(() => {
+    response.status(200).json({
+      id: request.params.id,
+      detail: "deleted successfully"
+    })
+  });
 }
 
 module.exports = {
-    getUsers,       // Users
-    getUserById,
+    getUser,
     createUser,
     updateUser,
-    deleteUser,
     loginUser,
-    secret
 }
