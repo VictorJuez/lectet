@@ -1,7 +1,7 @@
 const app = require('express')();
 const userController = require('../actions').users;
 const passport = require('passport');
-const passportConf = require('../passport');
+const passportConf = require('../helpers/passport');
 const { validateBody, schemas } = require('../helpers/routeHelpers');
 
 const passportSignIn = passport.authenticate('local', { session: false });

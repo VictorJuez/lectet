@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { Order, Book } = require('../sequelize');
+const { Order, Book } = require('../helpers/sequelize');
 
 const getAllOrders = async (request, response) => {
     const order = await Order.findAll({
@@ -20,7 +20,7 @@ const createOrder = async (request, response) => {
             var singleOrder = requestOrder[key];
             var book = await Book.findByPk(singleOrder.book);
             await order.addBook(book, { through: { 
-                quantity: singleOrder.qty,
+                quantity: singleOrder.quantity,
                 unitPrice: book.price
             }});
         }

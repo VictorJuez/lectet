@@ -30,16 +30,18 @@ https://codeburst.io/fractal-a-nodejs-app-structure-for-infinite-scale-d74dda57e
     ├── app                     # Main app code (Back-end)
     │   ├── actions             # Business logic, DB calls
     │   ├── routes              # Routes to project entities
+    │   ├── helpers             # Helpers and Config files
     │   ├── static-files        # Main point for the Front-end
+    │   ├── swagger.json        # Swagger documentation file
     │   └── server.js           # Server starting point
-    ├── docs                    # Documentation purpose
-    └── config.js               # Configuration related to DB, authentication, etc
+    └── docs                    # Documentation purpose
 ```
+
+# Links to the Application
+- Web Application: https://lectet.herokuapp.com/
+- API Documentation: https://lectet.herokuapp.com/api-docs
 
 # Members
 - Julian
 - Arnab
 - Víctor Juez
-
-#we should use Joi for validation 
-nmp i joi

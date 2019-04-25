@@ -1,4 +1,4 @@
-const { Event, Book, Author } = require('../sequelize');
+const { Event, Book, Author } = require('../helpers/sequelize');
 
 const getAllEvents = async (request, response) => {
     const events = await Event.findAll({

@@ -2,8 +2,8 @@ const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwT = require('passport-jwt').ExtractJwt;
 const LocalStrategy = require('passport-local').Strategy;
-const { JWT_SECRET } = require('../config');
 const { User } = require('./sequelize');
+const JWT_SECRET = 'lectetauthentication';
 
 // JSON WEB TOKEN STRATEGY
 passport.use(new JwtStrategy({

@@ -1,7 +1,7 @@
 const app = module.exports = require('express')();
 const orderController = require('../actions/orders');
 const passport = require('passport');
-const passportConf = require('../passport');
+const passportConf = require('../helpers/passport');
 
 const passportJWT = passport.authenticate('jwt',{ session: false });
 
