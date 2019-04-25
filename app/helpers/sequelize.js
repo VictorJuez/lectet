@@ -1,10 +1,10 @@
 const Sequelize = require('sequelize');
-const UserModel = require('./models/users');
-const AuthorModel = require('./models/authors');
-const BookModel = require('./models/books');
-const RatingModel = require('./models/ratings');
-const EventModel = require('./models/events');
-const OrderModel = require('./models/orders');
+const UserModel = require('../models/users');
+const AuthorModel = require('../models/authors');
+const BookModel = require('../models/books');
+const RatingModel = require('../models/ratings');
+const EventModel = require('../models/events');
+const OrderModel = require('../models/orders');
 
 const sequelize = new Sequelize('degpai9eklcvs5', 'pfguwsqduqkxxv', 'ffbab27c92e5005956bf45d8883ea39428b2c3722f63d5607faeb493bdb88ae9', {
     host: 'ec2-54-247-85-251.eu-west-1.compute.amazonaws.com',

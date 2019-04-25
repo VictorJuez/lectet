@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { Order, Book } = require('../sequelize');
+const { Order, Book } = require('../helpers/sequelize');
 
 const getAllOrders = async (request, response) => {
     const order = await Order.findAll({
