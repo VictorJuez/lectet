@@ -3,7 +3,7 @@
   "info": {
     "version": "1.0.0",
     "title": "Swagger Lectet",
-    "description": "Lectet Web Application"
+    "description": "Lectet API documentation, all the secured requests (with a locker on it) have to passed a token authorization into its header. This token is used to identify the user inside the system. In order to get this token you have to create a new user using the signUp request (its response will give a token) or using the signIn request if the user already exists (its response will also give a token). The token will expire after 1 day for security reasons, so after that time a new login or signup will be required in order to obtain a new token."
   },
   "host": "lectet.herokuapp.com",
   "schemes": [
@@ -104,12 +104,7 @@
               }
             }
           }
-        },
-        "security": [
-          {
-            "JWT": []
-          }
-        ]
+        }
       }
     },
     "/user/info": {
