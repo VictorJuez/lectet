@@ -2,12 +2,35 @@ hr{
     border-top: 2.5px solid black; /* Careful with px */
 }
 
+.panel {
+    margin: 0% !important;
+}
+
+button {
+    width: 100%;
+    height: 100%;
+
+    background: transparent;
+    border: none;
+}
+
 .panel-body img{
     max-width: 50%;
     height: 23rem !important;
     position: relative;
     margin-left: auto;
     margin-right: auto;
+}
+
+.button-book {
+    width: 12rem;
+    height: 23rem !important;
+    max-height: 23rem;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .event img {
@@ -34,6 +57,10 @@ hr{
 .section {
     font-size: 2.5rem;
     padding-bottom: 2%;
+}
+
+.panel-heading {
+    text-align: left
 }
 
 .first-title {
@@ -64,11 +91,12 @@ hr{
     height: 31rem;
 }
 
-.boton button {
+.boton button { /*DO RESPONSIVE TODO*/
     display: inline-flex;
     width: 111rem;
     height: 31rem !important;
     max-height: 31rem;
+    max-width: auto;
 
     background-color: transparent;
 }
