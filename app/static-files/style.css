@@ -1,9 +1,48 @@
-hr{
-    border-top: 2.5px solid black; /* Careful with px */
+hr {
+    border-top: 2.5px solid black;
+    /* Careful with px */
+}
+
+body {
+    background-color: #eeeeee;
+}
+
+.badge-discount {
+    display: inline-block;
+    min-width: 1.875rem;
+    padding: .0625rem .1875rem .125rem;
+    background: #ee3b3b linear-gradient(180deg, transparent 70%, rgba(0, 0, 0, .3)) no-repeat bottom;
+    color: #fff;
+    font-weight: 700;
+    font-size: .6875rem;
+    line-height: 1.1875;
+    text-align: center;
+    -webkit-clip-path: polygon(0 0, 50% 20%, 100% 0, 100% 100%, 0 100%);
+    clip-path: polygon(0 0, 50% 20%, 100% 0, 100% 100%, 0 100%);
+    min-width: 3.3rem;
+    min-height: 2.5rem;
+    position: relative;
+    left: 8%;
+}
+
+.discount {
+    position: absolute !important;
+    top: 50%;
+    -webkit-transform: translate(-50%, -40%);
+    transform: translate(-50%, -40%);
+    font-size: 1rem;
+    font-weight: 700
 }
 
 .panel {
     margin: 0% !important;
+    border: none !important;
+    background-color: transparent !important;
+}
+
+.inner-container {
+    position: relative;
+    width: inherit;
 }
 
 button {
@@ -14,7 +53,11 @@ button {
     border: none;
 }
 
-.panel-body img{
+.button-search {
+    width: 5%;
+}
+
+.panel-body img {
     max-width: 50%;
     height: 23rem !important;
     position: relative;
@@ -43,7 +86,7 @@ button {
     display: table;
 }
 
-.row{
+.row {
     display: table-row;
 }
 
@@ -51,7 +94,7 @@ button {
     display: table-cell;
     box-sizing: border-box;
     height: inherit;
-    
+
 }
 
 .section {
@@ -60,7 +103,8 @@ button {
 }
 
 .panel-heading {
-    text-align: left
+    text-align: left;
+    border-radius: 10px;
 }
 
 .first-title {
@@ -79,10 +123,13 @@ button {
 .panel-footer {
     text-align: center;
     font-weight: bold;
+    -webkit-box-shadow: 0px 4px 6px -3px rgba(51, 38, 51, 1);
+    -moz-box-shadow: 0px 4px 6px -3px rgba(51, 38, 51, 1);
+    box-shadow: 0px 4px 6px -3px rgba(51, 38, 51, 1);
 }
 
 .containerCarousel {
-    padding-top: -15%; 
+    padding-top: -15%;
 }
 
 .boton a {
@@ -91,7 +138,8 @@ button {
     height: 31rem;
 }
 
-.boton button { /*DO RESPONSIVE TODO*/
+.boton button {
+    /*DO RESPONSIVE TODO*/
     display: inline-flex;
     width: 111rem;
     height: 31rem !important;
@@ -99,6 +147,17 @@ button {
     max-width: auto;
 
     background-color: transparent;
+}
+
+.navbar {
+    margin-bottom: 50px;
+    border-radius: 0;
+    background: #393e46;
+    border-color: #393e46;
+}
+
+#nttLogo {
+    height: 4em;
 }
 
 #item1 {
@@ -129,4 +188,122 @@ button {
         font-size: 1.5rem;
         padding-bottom: 2%;
     }
+}
+
+
+
+
+
+
+
+header {
+    width: 100%;
+}
+
+.menu_bar {
+    display: none;
+}
+
+header nav ul {
+    overflow: hidden;
+    list-style: none;
+}
+
+header nav ul li {
+    float: left;
+}
+
+header nav ul li a {
+    color: #fff;
+    padding: 20px;
+    display: block;
+    text-decoration: none;
+}
+
+header nav ul li span {
+    margin-right: 10px;
+}
+
+section {
+    padding: 20px;
+}
+
+@media screen and (max-width:800px) {
+    header nav {
+        width: 80%;
+        height: 100%;
+        left: -100%;
+        margin: 0;
+        position: fixed;
+    }
+
+    header nav ul li {
+        display: block;
+        float: none;
+        border-bottom: 1px solid rgba(255, 255, 255, .3);
+    }
+
+    .menu_bar {
+        display: block;
+        width: 100%;
+        background: #ccc;
+    }
+
+    .menu_bar .bt-menu {
+        display: block;
+        padding: 20px;
+        background: #FCCD03;
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 25px;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .menu_bar span {
+        float: right;
+        font-size: 40px;
+    }
+}
+
+
+
+#Carousel {
+    width: 100%;
+}
+
+.carousel-book {
+    width: 0% !important;
+}
+
+
+/* override position and transform in 3.3.x */
+/*
+#Carousel .carousel-inner .item.left.active {
+    transform: translateX(-33%);
+}
+
+#Carousel .carousel-inner .item.right.active {
+    transform: translateX(33%);
+}
+
+#Carousel .carousel-inner .item.next {
+    transform: translateX(33%)
+}
+
+#Carousel .carousel-inner .item.prev {
+    transform: translateX(-33%)
+}
+
+#Carousel .carousel-inner .item.right,
+.carousel-inner .item.left {
+    transform: translateX(0);
+}*/
+
+
+#Carousel .carousel-control.left,
+.carousel-control.right {
+    background-image: none;
 }
