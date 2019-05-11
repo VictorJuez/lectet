@@ -19,6 +19,13 @@
             border-color: #FCCD03;
         }
 
+        .navbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 6px;
+        }
+
         /* Remove the jumbotron's default bottom margin */
         .jumbotron {
             margin-bottom: 0;
@@ -72,6 +79,15 @@
                     <li><a href="#">Deals</a></li>
                     <li><a href="#">Stores</a></li>
                     <li><a href="#">Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-center">
+                    <li>
+                        <form class="form-inline md-form form-sm active-cyan-2 mt-2">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-primary" type="submit"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </form>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
