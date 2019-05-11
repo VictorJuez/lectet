@@ -1,0 +1,62 @@
+.pedido {
+    width: 50%;
+    margin-left: 6%;
+}
+
+.container {
+    width: auto !important;
+}
+
+img {
+    width: 60%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.extracto {
+    border: 0.5px solid gray;
+    width: 40%;
+    margin-right: 2%;
+    margin-left: 2%;
+}
+
+hr {
+    width: 100%;
+    float: left;
+    border: 0.5px solid gray;
+}
+
+button {
+    width: 100%;
+    height: 100%;
+
+    background: transparent;
+    border: none;
+}
+
+.carousel-book {
+    width: 0% !important;
+}
+
+.best-seller {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
+}
+
+.section {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 2%;
+}
+
+body {
+    font-family: 'EB Garamond', serif;
+}
+
+.img-carrousel {
+    width: 75%;
+    height: auto;
+}
