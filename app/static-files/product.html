@@ -19,36 +19,42 @@
             border-color: #393e46;
         }
 
+        .navbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 6px;
+        }
+
+
         /* Remove the jumbotron's default bottom margin */
         .jumbotron {
             margin-bottom: 0;
         }
 
         /* Add a gray background color and some padding to the footer */
-        footer {
+        .footer {
             background-color: #f2f2f2;
             padding: 25px;
         }
 
+        .padding_all {
+            padding: 5%;
+        }
+
         .fakeimg {
-            height: 400px;
+            height: 100px;
             background: #aaa;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         #nttLogo {
             height: 50px;
         }
-
-        #footer {
-            background-color: #222831;
-            position: relative;
-            margin-top: -150px;
-            /* negative value of footer height */
-            height: 150px;
-            clear: both;
-            padding-top: 20px;
-        }
     </style>
+
 </head>
 
 <body>
@@ -70,6 +76,7 @@
                 </button>
                 <!-- <a class="navbar-brand" href="#">Logo</a> -->
                 <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
+
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
@@ -78,6 +85,15 @@
                     <li><a href="#">Deals</a></li>
                     <li><a href="#">Stores</a></li>
                     <li><a href="#">Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-center">
+                    <li>
+                        <form class="form-inline md-form form-sm active-cyan-2 mt-2">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-primary" type="submit"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </form>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
@@ -131,10 +147,10 @@
                         <div class="col"> -->
                 <div class="row">
                     <div class="col-lg-6 ">
-                        <button type="button" class="btn btn-warning btn-lg btn-block"><span
+                        <button type="button" class="btn btn-warning btn-lg btn-block padding_all"><span
                                 class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button></div>
-                    <div class="col-lg-6 ">
-                        <button type="button" class="btn btn-danger btn-lg btn-block"><span
+                    <div class="col-lg-6">
+                        <button type="button" class="btn btn-danger btn-lg btn-block padding_all"><span
                                 class="glyphicon glyphicon-euro"></span> BUY NOW </button>
                     </div>
                 </div>
@@ -195,6 +211,92 @@
 
         </div>
     </div>
+    <!-- Start related-product Area -->
+    <section class="section_gap_bottom justify-content-center">
+        <div class="container justify-content-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-md-6 col-sm-4 text-center">
+                    <div class="section-title">
+                        <h1>Related books</h1>
+                        <p>These are the related books we found from your interest </p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="" class="fakeimg" alt=""></a>
+                                <div class="text-center">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="" class="fakeimg" alt=""></a>
+                                <div class="text-center">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="" class="fakeimg" alt=""></a>
+                                <div class="text-center">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="" class="fakeimg" alt=""></a>
+                                <div class="text-center">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="" class="fakeimg" alt=""></a>
+                                <div class="text-center">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="" class="fakeimg" alt=""></a>
+                                <div class="text-center">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End related-product Area -->
     <footer class="container-fluid text-center" id="footer">
         <form class="form-inline">Get deals:
             <input type="email" class="form-control" size="50" placeholder="Email Address">

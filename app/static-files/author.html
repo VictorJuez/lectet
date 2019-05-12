@@ -19,6 +19,13 @@
             border-color: #FCCD03;
         }
 
+        .navbar-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 6px;
+        }
+
         /* Remove the jumbotron's default bottom margin */
         .jumbotron {
             margin-bottom: 0;
@@ -31,8 +38,11 @@
         }
 
         .fakeimg {
-            height: 400px;
+            height: 100px;
             background: #aaa;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         #nttLogo {
@@ -72,6 +82,15 @@
                     <li><a href="#">Deals</a></li>
                     <li><a href="#">Stores</a></li>
                     <li><a href="#">Contact</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-center">
+                    <li>
+                        <form class="form-inline md-form form-sm active-cyan-2 mt-2">
+                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-primary" type="submit"><span
+                                    class="glyphicon glyphicon-search"></span></button>
+                        </form>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
@@ -130,6 +149,92 @@
         </div>
     </div>
 
+    <!-- Start related-product Area -->
+    <section class="section_gap_bottom justify-content-center">
+        <div class="container justify-content-center">
+            <div class="row justify-content-center">
+                <div class="col-lg-12 col-md-6 col-sm-4 text-center">
+                    <div class="section-title">
+                        <h1>Books by author</h1>
+                        <p>These are best selling books by this author</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 col-sm-4">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="" class="fakeimg" alt=""></a>
+                                <div class="text-center">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="" class="fakeimg" alt=""></a>
+                                <div class="text-center">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="" class="fakeimg" alt=""></a>
+                                <div class="text-center">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="" class="fakeimg" alt=""></a>
+                                <div class="text-center">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="" class="fakeimg" alt=""></a>
+                                <div class="text-center">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="single-related-product d-flex">
+                                <a href="#"><img src="" class="fakeimg" alt=""></a>
+                                <div class="text-center">
+                                    <a href="#" class="title">Black lace Heels</a>
+                                    <div class="price">
+                                        <h6>$189.00</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End related-product Area -->
     <footer class="container-fluid text-center">
         <form class="form-inline">Get deals:
             <input type="email" class="form-control" size="50" placeholder="Email Address">
