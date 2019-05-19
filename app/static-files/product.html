@@ -162,8 +162,8 @@
             </div>
             <div class="col-sm-8">
                 <h2 id="book_title">Name of the book</h2>
-                <h5>Author: <span class="glyphicon glyphicon-user"></span>
-                    <a class="nav-link" href="#" id="author_name" style="color:#aaa">Name of the author</a></h5>
+                <h5 id="author_name">
+                </h5>
                 <p><button type="button" class="btn btn-success btw-sm">5<span
                             class="glyphicon glyphicon-star"></span></button>
                     <a id=number_of_review class="nav-link" href="#" style="color: #aaa">000 rating & 000 review</a>
@@ -203,7 +203,7 @@
                     sgkskjgkjskjgkjkjsx
                 </h5>
                 <p>Type: <a id="book_type"> Paper back</a></p>
-                <p>Authored by: <a class="nav-link" href="#" id="author_name">Name of the author</a></p>
+                <p id="author_name_bottom"></p>
                 <p>Publication Year: <a class="nav-link" href="#" id="book_year">Year</a></p>
                 <br>
 
@@ -215,82 +215,17 @@
     <section class="section_gap_bottom justify-content-center">
         <div class="container justify-content-center">
             <div class="row justify-content-center">
-                <div class="col-lg-12 col-md-6 col-sm-4 text-center">
+                <div class="col-lg-12 col-sm-12 text-center">
                     <div class="section-title">
                         <h1>Related books</h1>
-                        <p>These are the related books we found from your interest </p>
+                        <p>These are the similar books, you may like</p>
                     </div>
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-12 col-sm-4">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-related-product d-flex">
-                                <a href="#"><img src="" class="fakeimg" alt=""></a>
-                                <div class="text-center">
-                                    <a href="#" class="title">Black lace Heels</a>
-                                    <div class="price">
-                                        <h6>$189.00</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-related-product d-flex">
-                                <a href="#"><img src="" class="fakeimg" alt=""></a>
-                                <div class="text-center">
-                                    <a href="#" class="title">Black lace Heels</a>
-                                    <div class="price">
-                                        <h6>$189.00</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-related-product d-flex">
-                                <a href="#"><img src="" class="fakeimg" alt=""></a>
-                                <div class="text-center">
-                                    <a href="#" class="title">Black lace Heels</a>
-                                    <div class="price">
-                                        <h6>$189.00</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-related-product d-flex">
-                                <a href="#"><img src="" class="fakeimg" alt=""></a>
-                                <div class="text-center">
-                                    <a href="#" class="title">Black lace Heels</a>
-                                    <div class="price">
-                                        <h6>$189.00</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-related-product d-flex">
-                                <a href="#"><img src="" class="fakeimg" alt=""></a>
-                                <div class="text-center">
-                                    <a href="#" class="title">Black lace Heels</a>
-                                    <div class="price">
-                                        <h6>$189.00</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            <div class="single-related-product d-flex">
-                                <a href="#"><img src="" class="fakeimg" alt=""></a>
-                                <div class="text-center">
-                                    <a href="#" class="title">Black lace Heels</a>
-                                    <div class="price">
-                                        <h6>$189.00</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <div class="col-lg-12 col-sm-12">
+                    <div class="row justify-content-center" id="related_book" style="visibility: hidden">
+
                     </div>
                 </div>
             </div>
@@ -303,7 +238,7 @@
             <button type="button" class="btn btn-danger">Sign Up</button>
         </form>
     </footer>
-
+    <script src='./product.js'></script>
 </body>
 
 </html>
