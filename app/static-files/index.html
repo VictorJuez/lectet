@@ -10,47 +10,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   
-  <script>
-    $('.Carousel-0').owlCarousel({
-      loop: true,
-      margin: 10,
-      responsiveClass: true,
-      responsive: {
-        0: {
-          items: 1,
-          nav: true
-        },
-        600: {
-          items: 3,
-          nav: false
-        },
-        1000: {
-          items: 5,
-          nav: true,
-          loop: false
-        }
-      }
-    })
-  </script>
-
-
-  <script>
-    $('.carousel.carousel-multi-item.v-2 .carousel-item').each(function () {
-      var next = $(this).next();
-      if (!next.length) {
-        next = $(this).siblings(':first');
-      }
-      next.children(':first-child').clone().appendTo($(this));
-
-      for (var i = 0; i < 4; i++) {
-        next = next.next();
-        if (!next.length) {
-          next = $(this).siblings(':first');
-        }
-        next.children(':first-child').clone().appendTo($(this));
-      }
-    });
-  </script>
+  
 
   <style>
     /* Remove the navbar's default rounded borders and increase the bottom margin */
@@ -571,132 +531,15 @@
   <br />
   <br />
 
-  <div class="container">
-    <div class="section" id="category_1">CATEGORY 2</div>
-    <div>
-      <div class="carousel slide" id="Carousel-2">
-        <div class="carousel-inner">
-          <div class="item active">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-4">
-                  <button class="button-main" onclick="location.href='product.html'">
-                    <div class="panel panel-primary" id="book0_1">
-                      <div class="panel-heading">
-                        <div class="first-title">Harry Potter</div>
-                        <div class="second-title">y las Reliquias de la Muerte</div>
-                      </div>
-                      <div class="panel-body"><img src="./images/harry_potter_secret_camara.jpg" class="img-responsive"
-                          alt="Image">
-                      </div>
-                      <div class="panel-footer">15.60€</div>
-                    </div>
-                  </button>
-                </div>
-
-                <div class="col-sm-4">
-                  <button class="button-main">
-                    <div class="panel panel-primary" id="book1_1">
-                      <div class="panel-heading">
-                        <div class="first-title">Harry Potter</div>
-                        <div class="second-title">y la cámara secreta</div>
-                      </div>
-                      <div class="panel-body"><img src="./images/harry_potter_dead.jpg" class="img-responsive"
-                          alt="Image"></div>
-                      <div class="panel-footer">15.60€</div>
-                    </div>
-                  </button>
-                </div>
-
-                <div class="col-sm-4">
-                  <button class="button-main">
-                    <div class="panel panel-primary" id="book2_1">
-                      <div class="panel-heading">
-                        <div class="first-title">Harry Potter</div>
-                        <div class="second-title">y el cáliz de fuego</div>
-                      </div>
-                      <div class="panel-body"><img src="./images/harry_potter_fire.jpg" class="img-responsive"
-                          alt="Image"></div>
-                      <div class="panel-footer">15.60€</div>
-                    </div>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="item">
-            <div class="container">
-              <div class="row">
-                <div class="col-sm-4">
-                  <button class="button-main">
-                    <div class="panel panel-primary" id="book4_1">
-                      <div class="panel-heading">
-                        <div class="first-title">Harry Potter</div>
-                        <div class="second-title">y las Reliquias de la Muerte</div>
-                      </div>
-                      <div class="panel-body"><img src="./images/harry_potter_secret_camara.jpg" class="img-responsive"
-                          alt="Image">
-                      </div>
-                      <div class="panel-footer">15.60€</div>
-                    </div>
-                  </button>
-                </div>
-
-                <div class="col-sm-4">
-                  <button class="button-main">
-                    <div class="panel panel-primary" id="book5_1">
-                      <div class="panel-heading">
-                        <div class="first-title">Harry Potter</div>
-                        <div class="second-title">y la cámara secreta</div>
-                      </div>
-                      <div class="panel-body"><img src="./images/harry_potter_dead.jpg" class="img-responsive"
-                          alt="Image"></div>
-                      <div class="panel-footer">15.60€</div>
-                    </div>
-                  </button>
-                </div>
-
-                <div class="col-sm-4">
-                  <button class="button-main">
-                    <div class="panel panel-primary" id="book6_1">
-                      <div class="panel-heading">
-                        <div class="first-title">Harry Potter</div>
-                        <div class="second-title">y el cáliz de fuego</div>
-                      </div>
-                      <div class="panel-body"><img src="./images/harry_potter_fire.jpg" class="img-responsive"
-                          alt="Image"></div>
-                      <div class="panel-footer">15.60€</div>
-                    </div>
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <a class="left carousel-control carousel-book" href="#Carousel-2" data-slide="prev"><i
-            class="glyphicon glyphicon-chevron-left"></i></a>
-        <a class="right carousel-control carousel-book" href="#Carousel-2" data-slide="next"><i
-            class="glyphicon glyphicon-chevron-right"></i></a>
-      </div>
-    </div>
-  </div>
-
-
-
-
-
-
-
-
   <div class="carrousel-main">
     <div class="container">
-        <div class="section" id="category_1">Maybe you are interested in...</div>
+        <div class="section" id="category_1">CATEGORY 2</div>
         <div class="row">
             <div class="col-md-12">
                 <div class="carousel carousel-showmanymoveone slide" id="carousel-tilenav" data-interval="false">
                     <div class="carousel-inner">
                         <div class="item active">
-                            <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
                                 <button class="button-main" onclick="location.href='product.html'">
                                   <div class="panel panel-primary" id="book6_1">
                                     <div class="panel-heading">
@@ -711,7 +554,7 @@
                             </div>
                         </div>
                         <div class="item">
-                            <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
                               <button class="button-main" onclick="location.href='product.html'">
                                 <div class="panel panel-primary" id="book6_1">
                                   <div class="panel-heading">
@@ -726,7 +569,7 @@
                             </div>
                         </div>
                         <div class="item">
-                            <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
                               <button class="button-main" onclick="location.href='product.html'">
                                 <div class="panel panel-primary" id="book6_1">
                                   <div class="panel-heading">
@@ -741,7 +584,7 @@
                             </div>
                         </div>
                         <div class="item">
-                            <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
                               <button class="button-main" onclick="location.href='product.html'">
                                 <div class="panel panel-primary" id="book6_1">
                                   <div class="panel-heading">
@@ -756,7 +599,7 @@
                             </div>
                         </div>
                         <div class="item">
-                            <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
                               <button class="button-main" onclick="location.href='product.html'">
                                 <div class="panel panel-primary" id="book6_1">
                                   <div class="panel-heading">
@@ -771,7 +614,7 @@
                             </div>
                         </div>
                         <div class="item">
-                            <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
                               <button class="button-main" onclick="location.href='product.html'">
                                 <div class="panel panel-primary" id="book6_1">
                                   <div class="panel-heading">
@@ -786,7 +629,7 @@
                             </div>
                         </div>
                         <div class="item">
-                            <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
                               <button class="button-main" onclick="location.href='product.html'">
                                 <div class="panel panel-primary" id="book6_1">
                                   <div class="panel-heading">
@@ -801,7 +644,7 @@
                             </div>
                         </div>
                         <div class="item">
-                            <div class="col-xs-12 col-sm-6 col-md-3">
+                            <div class="col-xs-12 col-sm-6 col-md-4">
                               <button class="button-main" onclick="location.href='product.html'">
                                 <div class="panel panel-primary" id="book6_1">
                                   <div class="panel-heading">
@@ -825,10 +668,6 @@
         </div>
     </div>
 </div>
-
-
-
-
 
 
 
