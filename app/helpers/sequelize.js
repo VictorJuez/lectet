@@ -27,8 +27,8 @@ const AuthorBook = sequelize.define('author_book', {});
 const Order = sequelize.define('order', {});
 const OrderBook = sequelize.define('order_book', {quantity: Sequelize.INTEGER, unitPrice: Sequelize.DOUBLE});
 
-Genre.hasMany(Book);
-Theme.hasMany(Book);
+Book.belongsTo(Genre);
+Book.belongsTo(Theme);
 Book.belongsToMany(Event, { through: BookEvent, unique:true });
 Event.belongsToMany(Book, { through: BookEvent, unique:true });
 Book.hasOne(Favourite);
@@ -88,13 +88,17 @@ async function testDb(){
 
   const user1 = await User.create({email: 'jaume@gmail.com', password: 'lmao'});
 
-  const genre1 = await Genre.create({description: "dark"});
+  const genre6 = await Genre.create({description: "Fantasy"});
+  const genre1 = await Genre.create({description: "Action"});
+  const genre2 = await Genre.create({description: "Mistery"});
+  const genre3 = await Genre.create({description: "Drama"});
+  const genre4 = await Genre.create({description: "Thriller"});
+  const genre5 = await Genre.create({description: "Biography"});
 
-  const genre2 = await Genre.create({description: "cold"});
-
-  const theme1 = await Theme.create({description: "theme1"});
-
-  const theme2 = await Theme.create({description: "theme2"});
+  const theme1 = await Theme.create({description: "Family"});
+  const theme2 = await Theme.create({description: "Teenager"});
+  const theme3 = await Theme.create({description: "Learn"});
+  const theme4 = await Theme.create({description: "Descriptive"});
 
   const book1 = await Book.build({
     name: 'Harry Potter and the Philosopher\'s Stone',
@@ -102,21 +106,81 @@ async function testDb(){
     price: 13
   });
   await book1.save();
+  await book1.setTheme(theme2);
+  await book1.setGenre(genre2);
+  await book1.addAuthor(author2);
 
   const book2 = await Book.build({
+    name: 'Harry Potter and The Chamber of Secrets',
+    description: 'is a fantasy novel written by British author J. K. Rowling. The first novel in the Harry Potter series and Rowling\'s debut novel, it follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday, when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry. Harry makes close friends and a few enemies during his first year at the school, and with the help of his friends, Harry faces an attempted comeback by the dark wizard Lord Voldemort, who killed Harry\'s parents, but failed to kill Harry when he was just 15 months old.',
+    price: 15
+  });
+  await book2.save();
+  await book2.setTheme(theme2);
+  await book2.setGenre(genre2);
+  await book2.addAuthor(author2);
+
+  const book3 = await Book.build({
+    name: 'Harry Potter and The Prisoner of Azkaban',
+    description: 'is a fantasy novel written by British author J. K. Rowling. The first novel in the Harry Potter series and Rowling\'s debut novel, it follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday, when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry. Harry makes close friends and a few enemies during his first year at the school, and with the help of his friends, Harry faces an attempted comeback by the dark wizard Lord Voldemort, who killed Harry\'s parents, but failed to kill Harry when he was just 15 months old.',
+    price: 11
+  });
+  await book3.save();
+  await book3.setTheme(theme2);
+  await book3.setGenre(genre2);
+  await book3.addAuthor(author2);
+
+  const book4 = await Book.build({
+    name: 'Harry Potter and The Goblet of Fire',
+    description: 'is a fantasy novel written by British author J. K. Rowling. The first novel in the Harry Potter series and Rowling\'s debut novel, it follows Harry Potter, a young wizard who discovers his magical heritage on his eleventh birthday, when he receives a letter of acceptance to Hogwarts School of Witchcraft and Wizardry. Harry makes close friends and a few enemies during his first year at the school, and with the help of his friends, Harry faces an attempted comeback by the dark wizard Lord Voldemort, who killed Harry\'s parents, but failed to kill Harry when he was just 15 months old.',
+    price: 14
+  });
+  await book4.save();
+  await book4.setTheme(theme2);
+  await book4.setGenre(genre2);
+  await book4.addAuthor(author2);
+
+  const book5 = await Book.build({
     name: 'The Boy in the Striped Pyjamas',
     description: 'Holocaust novel by Irish novelist John Boyne. Unlike the months of planning Boyne devoted to his other books, he said that he wrote the entire first draft of The Boy in the Striped Pyjamas in two and a half days, barely sleeping until he got to the end.[1] He did, however, commit to nearly 20 years of research, reading and researching about the Holocaust as a teenager before the idea for the novel even came to him. As of March 2010, the novel had sold more than five million copies around the world.[2] In both 2007 and 2008, it was the best selling book of the year in Spain, and it has also reached number one on the New York Times bestseller list,[3] as well as in the UK and Australia.[not verified in body] The book was adapted in 2008 as a film of the same name.',
     price: 8
   });
-  
-  await book2.save().then(book2 => book2.addAuthor(author1));
-  await book1.addAuthor(author2);
-  //await book2.addAuthor(author1);
+  await book5.save().then(book2 => book2.addAuthor(author1));
+  await book5.setTheme(theme4);
+  await book5.setGenre(genre5);
 
-  await theme1.addBook(book1);
-  await genre2.addBook(book1);
-  await theme1.addBook(book2);
-  await genre1.addBook(book2);
+  const author3 = await Author.create({
+    name: 'Anne',
+    lastName: 'Frank',
+    description: 'Was a German-born Jewish diarist'
+  });
+
+  const book6 = await Book.build({
+    name: 'The Diary of Anne Frank',
+    description: ' book of the writings from the Dutch language diary kept by Anne Frank while she was in hiding for two years with her family during the Nazi occupation of the Netherlands',
+    price: 9
+  });
+  await book6.save();
+  await book6.setTheme(theme2);
+  await book6.setGenre(genre2);
+  await book6.addAuthor(author3);
+
+  const author4 = await Author.create({
+    name: 'Henry David',
+    lastName: 'Thoreau',
+    description: 'Was an American essayist, poet, philosopher, abolitionist, naturalist, tax resister, development critic, surveyor, yogi,[3] and historian. A leading transcendentalist,[4] Thoreau is best known for his book Walden'
+  });
+
+  const book7 = await Book.build({
+    name: 'Walden',
+    description: 'The text is a reflection upon simple living in natural surroundings. The work is part personal declaration of independence, social experiment, voyage of spiritual discovery, satire, and—to some degree—a manual for self-reliance.',
+    price: 18
+  });
+  await book7.save();
+  await book7.setTheme(theme3);
+  await book7.setGenre(genre5);
+  await book7.addAuthor(author4);
+  
   const fav = await Favourite.build();
   book2.setFavourite(fav);
 
