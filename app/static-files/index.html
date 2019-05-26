@@ -11,52 +11,12 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
   
   
-
-  <style>
-    /* Remove the navbar's default rounded borders and increase the bottom margin */
-    .navbar {
-      margin-bottom: 50px;
-      border-radius: 0;
-      background: #393e46;
-      border-color: #393e46;
-    }
-
-    /* Remove the jumbotron's default bottom margin */
-    .jumbotron {
-      margin-bottom: 0;
-    }
-
-    /* Add a gray background color and some padding to the footer */
-    footer {
-      background-color: #f2f2f2;
-      padding: 25px;
-    }
-
-    .fakeimg {
-      height: 400px;
-      background: #aaa;
-    }
-
-    #nttLogo {
-      height: 50px;
-    }
-
-    #footer {
-      background-color: #222831;
-      position: relative;
-      margin-top: -150px;
-      /* negative value of footer height */
-      height: 150px;
-      clear: both;
-      padding-top: 20px;
-    }
-  </style>
 </head>
 
 <body>
 
     <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
+      <div class="container-fluid" id="menu-top">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
             <span class="icon-bar"></span>
@@ -127,7 +87,7 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-            <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+            <li><a href="order_details.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
           </ul>
         </div>
       </div>

@@ -186,3 +186,43 @@ body {
        left: 0;
     }
  }
+
+
+
+ ul.menu,
+ul.sub-menu{
+    padding-left: 0;
+    background: #393e46;
+ }
+ ul.menu li{
+    list-style: none;
+    padding: 5px;
+ }
+ ul.menu > li:hover ul.sub-menu{
+    display: block;
+    min-width: 200px;
+ }
+ ul.sub-menu{
+    display: none;
+ }
+
+ @media (min-width: 800px) {
+    ul.menu > li {
+          display: inline-block;
+          position: relative;
+       }
+    ul.sub-menu{
+          left: 0;
+          position: absolute;
+          z-index: 1;
+       }
+    }
+
+
+
+
+
+
+
+
+    
