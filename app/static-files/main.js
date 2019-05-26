@@ -28,22 +28,33 @@ $(document).ready(() => {
                 var id_category = getRandomInt(0, respuesta.genres.length, list_id);
 
                 id = '#category_' + i;
-                console.log("Primer: " + id_category); 
+                valueI = i;
+                console.log("Primer: " + "#category_" + i);
                 $(id).text(respuesta.genres[id_category].description);
 
-                $.ajax({
-                    url: 'https://lectet.herokuapp.com/api/books/genre/' + (id_category + 1),
-                    success: function (respond) {
-                        for (var j = 0; j < 3; j++) {
-                            console.log(id_category);
-                            console.log(respond.books[j].name);
-                            $("#first-title-book" + j + "_" + id_category).text(respond.books[j].name);
+                    $.ajax({
+                        url: 'https://lectet.herokuapp.com/api/books/genre/' + (id_category + 1),
+                        success: function (respond) {
+                            
+                        console.log("Categoria: " + id_category + 1);
+                        for (var z = 0; z < 2; z++) {
+                            for (var j = 0; j < 3; j++) {
+                                console.log("Z = " + z + " , " + "J = " + j);
+                                console.log(respond.books[j].name);
+                                console.log(respond.books[j].price);
+                                console.log(".first-title-book" + z + "_" + j);
+                                console.log(".button" + z + "_" + j);
+                                $(".first-title-book" + z + "_" + j).text(respond.books[j].name);
+                                $(".price-book" + z + "_" + j).text(respond.books[j].price + " €");
+                                $(".button" + z + "_" + j).attr("onclick", "location.href='product.html?id=" + respond.books[j].id + "'");
+                            }
                         }
-                    },
-                    error: function () {
-                        console.log("No se ha podido obtener la información");
-                    }
-                })
+                        },
+                        error: function () {
+                            console.log("No se ha podido obtener la información");
+                        }
+                    })
+                
             }
         },
         error: function () {
@@ -77,25 +88,34 @@ $(document).ready(() => {
         return id;
     }
 
-    (function(){
-        $('.carousel-showmanymoveone .item').each(function(){
-          var itemToClone = $(this);
-      
-          for (var i=1;i<4;i++) {
-            itemToClone = itemToClone.next();
-      
-            // wrap around if at end of item collection
-            if (!itemToClone.length) {
-              itemToClone = $(this).siblings(':first');
+    (function () {
+        $('.carousel-showmanymoveone .item').each(function () {
+           
+            var itemToClone = $(this);
+
+            for (var i = 1; i < 4; i++) {
+                itemToClone = itemToClone.next();
+
+                // wrap around if at end of item collection
+                if (!itemToClone.length) {
+                    itemToClone = $(this).siblings(':first');
+                }
+
+                // grab item, clone, add marker class, add to collection
+                itemToClone.children(':first-child').clone()
+                    .addClass("cloneditem-" + (i))
+                    .appendTo($(this));
             }
-      
-            // grab item, clone, add marker class, add to collection
-            itemToClone.children(':first-child').clone()
-              .addClass("cloneditem-"+(i))
-              .appendTo($(this));
-          }
         });
-      }());
+    }());
+
+
+    
+
+
+
+
+    
 
     /*  function ajaxGet(url, callback) {
           var req = new XMLHttpRequest();
