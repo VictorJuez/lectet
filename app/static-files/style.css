@@ -52,6 +52,8 @@ body {
 
     background: transparent;
     border: none;
+
+    padding-bottom: 1.3%;
 }
 
 .button-search {
@@ -152,7 +154,7 @@ body {
 }
 
 .navbar {
-    margin-bottom: 50px;
+    margin-bottom: 0 !important;
     border-radius: 0;
     background: #393e46;
     border-color: #393e46;
@@ -213,6 +215,13 @@ body {
 footer {
     background: #222831 !important;
     margin-top: 3%;
+}
+
+.previous-price {
+    position: absolute;
+    right: 62%;
+    top: 90%;
+    text-decoration: line-through;
 }
 
 
@@ -282,25 +291,28 @@ body {
 
 
 
-
-
-
-.carousel-showmanymoveone .carousel-control {
+.carousel-showmanymoveone .carousel-control,
+.carousel-showmanymoveone-4 .carousel-control {
     width: 4%;
     background-image: none;
  }
  
- .carousel-showmanymoveone .carousel-control.left {
+ .carousel-showmanymoveone .carousel-control.left,
+ .carousel-showmanymoveone-4 .carousel-control.left {
     margin-left: 0;
  }
  
- .carousel-showmanymoveone .carousel-control.right {
+ .carousel-showmanymoveone .carousel-control.right,
+ .carousel-showmanymoveone-4 .carousel-control.right {
     margin-right: 0;
  }
  
  .carousel-showmanymoveone .cloneditem-1,
  .carousel-showmanymoveone .cloneditem-2,
- .carousel-showmanymoveone .cloneditem-3 {
+ .carousel-showmanymoveone .cloneditem-3,
+ .carousel-showmanymoveone-4 .cloneditem-1,
+ .carousel-showmanymoveone-4 .cloneditem-2,
+ .carousel-showmanymoveone-4 .cloneditem-3 {
     display: none;
  }
  
@@ -312,26 +324,34 @@ body {
  /* Medium Devices, Desktops */
  
  @media only screen and (max-width: 992px) {
-    .carousel .item .col-xs-12:nth-last-child(-n+2) {
+    .carousel .item .col-xs-12:nth-last-child(-n+1) {
        display: none;
     }
  }
  
  @media all and (min-width: 768px) {
     .carousel-showmanymoveone .carousel-inner > .active.left,
-    .carousel-showmanymoveone .carousel-inner > .prev {
+    .carousel-showmanymoveone .carousel-inner > .prev,
+    .carousel-showmanymoveone-4 .carousel-inner > .active.left,
+    .carousel-showmanymoveone-4 .carousel-inner > .prev {
        left: -50%;
     }
     .carousel-showmanymoveone .carousel-inner > .active.right,
-    .carousel-showmanymoveone .carousel-inner > .next {
+    .carousel-showmanymoveone .carousel-inner > .next,
+    .carousel-showmanymoveone-4 .carousel-inner > .active.right,
+    .carousel-showmanymoveone-4 .carousel-inner > .next {
        left: 50%;
     }
     .carousel-showmanymoveone .carousel-inner > .left,
     .carousel-showmanymoveone .carousel-inner > .prev.right,
-    .carousel-showmanymoveone .carousel-inner > .active {
+    .carousel-showmanymoveone .carousel-inner > .active,
+    .carousel-showmanymoveone-4 .carousel-inner > .left,
+    .carousel-showmanymoveone-4 .carousel-inner > .prev.right,
+    .carousel-showmanymoveone-4 .carousel-inner > .active {
        left: 0;
     }
-    .carousel-showmanymoveone .carousel-inner .cloneditem-1 {
+    .carousel-showmanymoveone .carousel-inner .cloneditem-1,
+    .carousel-showmanymoveone-4 .carousel-inner .cloneditem-1 {
        display: block;
     }
  }
@@ -339,20 +359,27 @@ body {
  @media all and (min-width: 768px) and (transform-3d),
  all and (min-width: 768px) and (-webkit-transform-3d) {
     .carousel-showmanymoveone .carousel-inner > .item.active.right,
-    .carousel-showmanymoveone .carousel-inner > .item.next {
+    .carousel-showmanymoveone .carousel-inner > .item.next,
+    .carousel-showmanymoveone-4 .carousel-inner > .item.active.right,
+    .carousel-showmanymoveone-4 .carousel-inner > .item.next {
        -webkit-transform: translate3d(50%, 0, 0);
        transform: translate3d(50%, 0, 0);
        left: 0;
     }
     .carousel-showmanymoveone .carousel-inner > .item.active.left,
-    .carousel-showmanymoveone .carousel-inner > .item.prev {
+    .carousel-showmanymoveone .carousel-inner > .item.prev,
+    .carousel-showmanymoveone-4 .carousel-inner > .item.active.left,
+    .carousel-showmanymoveone-4 .carousel-inner > .item.prev {
        -webkit-transform: translate3d(-50%, 0, 0);
        transform: translate3d(-50%, 0, 0);
        left: 0;
     }
     .carousel-showmanymoveone .carousel-inner > .item.left,
     .carousel-showmanymoveone .carousel-inner > .item.prev.right,
-    .carousel-showmanymoveone .carousel-inner > .item.active {
+    .carousel-showmanymoveone .carousel-inner > .item.active,
+    .carousel-showmanymoveone-4 .carousel-inner > .item.left,
+    .carousel-showmanymoveone-4 .carousel-inner > .item.prev.right,
+    .carousel-showmanymoveone-4 .carousel-inner > .item.active {
        -webkit-transform: translate3d(0, 0, 0);
        transform: translate3d(0, 0, 0);
        left: 0;
@@ -362,11 +389,11 @@ body {
  @media all and (min-width: 992px) {
     .carousel-showmanymoveone .carousel-inner > .active.left,
     .carousel-showmanymoveone .carousel-inner > .prev {
-       left: -25%;
+       left: -33.3%;
     }
     .carousel-showmanymoveone .carousel-inner > .active.right,
     .carousel-showmanymoveone .carousel-inner > .next {
-       left: 25%;
+       left: 33.3%;
     }
     .carousel-showmanymoveone .carousel-inner > .left,
     .carousel-showmanymoveone .carousel-inner > .prev.right,
@@ -377,25 +404,65 @@ body {
     .carousel-showmanymoveone .carousel-inner .cloneditem-3 {
        display: block;
     }
+
+
+    .carousel-showmanymoveone-4 .carousel-inner > .active.left,
+    .carousel-showmanymoveone-4 .carousel-inner > .prev {
+       left: -25%;
+    }
+    .carousel-showmanymoveone-4 .carousel-inner > .active.right,
+    .carousel-showmanymoveone-4 .carousel-inner > .next {
+       left: 25%;
+    }
+    .carousel-showmanymoveone-4 .carousel-inner > .left,
+    .carousel-showmanymoveone-4 .carousel-inner > .prev.right,
+    .carousel-showmanymoveone-4 .carousel-inner > .active {
+       left: 0;
+    }
+    .carousel-showmanymoveone-4 .carousel-inner .cloneditem-2,
+    .carousel-showmanymoveone-4 .carousel-inner .cloneditem-3 {
+       display: block;
+    }
  }
  
  @media all and (min-width: 992px) and (transform-3d),
  all and (min-width: 992px) and (-webkit-transform-3d) {
     .carousel-showmanymoveone .carousel-inner > .item.active.right,
     .carousel-showmanymoveone .carousel-inner > .item.next {
-       -webkit-transform: translate3d(25%, 0, 0);
-       transform: translate3d(25%, 0, 0);
+       -webkit-transform: translate3d(33.3%, 0, 0);
+       transform: translate3d(33.3%, 0, 0);
        left: 0;
     }
     .carousel-showmanymoveone .carousel-inner > .item.active.left,
     .carousel-showmanymoveone .carousel-inner > .item.prev {
-       -webkit-transform: translate3d(-25%, 0, 0);
-       transform: translate3d(-25%, 0, 0);
+       -webkit-transform: translate3d(-33.3%, 0, 0);
+       transform: translate3d(-33.3%, 0, 0);
        left: 0;
     }
     .carousel-showmanymoveone .carousel-inner > .item.left,
     .carousel-showmanymoveone .carousel-inner > .item.prev.right,
     .carousel-showmanymoveone .carousel-inner > .item.active {
+       -webkit-transform: translate3d(0, 0, 0);
+       transform: translate3d(0, 0, 0);
+       left: 0;
+    }
+
+
+    .carousel-showmanymoveone-4 .carousel-inner > .item.active.right,
+    .carousel-showmanymoveone-4 .carousel-inner > .item.next {
+       -webkit-transform: translate3d(25%, 0, 0);
+       transform: translate3d(25%, 0, 0);
+       left: 0;
+    }
+    .carousel-showmanymoveone-4 .carousel-inner > .item.active.left,
+    .carousel-showmanymoveone-4 .carousel-inner > .item.prev {
+       -webkit-transform: translate3d(-25%, 0, 0);
+       transform: translate3d(-25%, 0, 0);
+       left: 0;
+    }
+    .carousel-showmanymoveone-4 .carousel-inner > .item.left,
+    .carousel-showmanymoveone-4 .carousel-inner > .item.prev.right,
+    .carousel-showmanymoveone-4 .carousel-inner > .item.active {
        -webkit-transform: translate3d(0, 0, 0);
        transform: translate3d(0, 0, 0);
        left: 0;
@@ -411,84 +478,4 @@ body {
 
 
 
- /*-- Estilos básicos--*/
-
-ul.menu,
-ul.sub-menu{
-    padding-left: 0;
-    background: #393e46;
- }
- ul.menu li{
-    list-style: none;
-    padding: 5px;
- }
- ul.menu > li:hover ul.sub-menu{
-    display: block;
-    min-width: 200px;
- }
- ul.sub-menu{
-    display: none;
- }
-
- @media (min-width: 800px) {
-    ul.menu > li {
-          display: inline-block;
-          position: relative;
-       }
-    ul.sub-menu{
-          left: 0;
-          position: absolute;
-          z-index: 1;
-       }
-    }
-
-
-    /* --- Clase que agregaremos cuando el usuario haga scroll --- */
-.menu-fixed {
-	position:fixed;
-	z-index:1000;
-	top:0;
-	width:100%;
-    box-shadow:0px 4px 3px rgba(0,0,0,.5);
-    
-    background: #393e46;
-    border-color: #393e46;
-}
-
-/* Remove the navbar's default rounded borders and increase the bottom margin */
-.navbar {
-    margin-bottom: 50px;
-    border-radius: 0;
-    background: #393e46;
-    border-color: #393e46;
-  }
-
-  /* Remove the jumbotron's default bottom margin */
-  .jumbotron {
-    margin-bottom: 0;
-  }
-
-  /* Add a gray background color and some padding to the footer */
-  footer {
-    background-color: #f2f2f2;
-    padding: 25px;
-  }
-
-  .fakeimg {
-    height: 400px;
-    background: #aaa;
-  }
-
-  #nttLogo {
-    height: 50px;
-  }
-
-  #footer {
-    background-color: #222831;
-    position: relative;
-    margin-top: -150px;
-    /* negative value of footer height */
-    height: 150px;
-    clear: both;
-    padding-top: 20px;
-  }
+ 
