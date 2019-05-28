@@ -16,7 +16,7 @@ $(document).ready(() => {
         })*/
 
         var check = $.ajax({
-            url: 'http://localhost:3000/api/user/signIn',
+            url: 'https://lectet.herokuapp.com/api/user/signIn',
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json',
