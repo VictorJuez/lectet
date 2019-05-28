@@ -1,5 +1,8 @@
 $(document).ready(() => {
     console.log("HELLO WORLD");
+    const userkey = window.localStorage.getItem("lectet");
+    
+    if(userkey) console.log("myKey: "+userkey);
     var $button = $('#registerButton');
     $button.click(function(){
         /*$.ajax({
@@ -22,9 +25,10 @@ $(document).ready(() => {
                 "password": "lmao"
             }),
             success: function (response) {
-                console.log("estamos dentro gente");
                 if(response == null) console.log("empty response");
-                else console.log(response);
+                else console.log(response.token);
+                window.localStorage.setItem("lectet", response.token);
+                window.location.href = "index.html";
             },
             error: function () {
                 console.log("No se ha podido obtener la información");
