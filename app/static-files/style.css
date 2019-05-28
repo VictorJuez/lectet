@@ -212,11 +212,6 @@ body {
     white-space: pre;
 }
 
-footer {
-    background: #222831 !important;
-    margin-top: 3%;
-}
-
 .previous-price {
     position: absolute;
     right: 62%;
