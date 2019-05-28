@@ -1,3 +1,13 @@
+$.urlParam = function (name) {
+    var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
+    if (results == null) {
+        return null;
+    }
+    else {
+        return results[1] || 0;
+    }
+}
+
 $(document).ready(() => {
 
     var $author_name = $('#author_name');
@@ -6,7 +16,7 @@ $(document).ready(() => {
 
     $.ajax({
         type: 'GET',
-        url: 'https://lectet.herokuapp.com/api/authors/1',
+        url: 'https://lectet.herokuapp.com/api/authors/' + $.urlParam('id'),
         success: function (data) {
 
             $author_name.html('<h2> ' + data.author.name + " " + data.author.lastName + '</h2>');
