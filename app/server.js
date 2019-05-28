@@ -11,6 +11,7 @@ const bodyParser = require('body-parser')
 const routes = require('./routes');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger.json');
+const cors = require('cors');
 
 const app = express()
 const port = process.env.PORT || 3000 // When app executed on local machine, port = 3000, when on Heroku, port = process.env.PORT
@@ -24,6 +25,7 @@ app.use(
     extended: true,
   })
 )
+app.use(cors());
 
 // API routes
 app.use('/api',routes);
