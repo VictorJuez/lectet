@@ -12,15 +12,15 @@ $(document).ready(() => {
             }
         })*/
 
-        $.ajax({
-            url: 'https://lectet.herokuapp.com/api/signup',
-            method: 'post',
+        var check = $.ajax({
+            url: 'http://localhost:3000/api/user/signUp',
+            type: 'POST',
             dataType: 'json',
-            contentType: 'json',
-            data: {
-                email: 'victor@victor.com',
-                password: 'lmao'
-            },
+            contentType: 'application/json',
+            data: JSON.stringify({
+                "email": "victor@victor.com",
+                "password": "lmao"
+            }),
             success: function (response) {
                 console.log("estamos dentro gente");
                 if(response == null) console.log("empty response");
@@ -30,6 +30,7 @@ $(document).ready(() => {
                 console.log("No se ha podido obtener la información");
             }
         });
+        console.log(check);
     });
 });
 
