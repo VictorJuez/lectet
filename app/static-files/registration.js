@@ -2,18 +2,30 @@ $(document).ready(() => {
     console.log("HELLO WORLD");
     const userkey = window.localStorage.getItem("lectet");
     
-    if(userkey) console.log("myKey: "+userkey);
-    var $button = $('#registerButton');
-    $button.click(function(){
-        /*$.ajax({
-            url: 'https://lectet.herokuapp.com/api/authors/1',
-            success: function (response) {
+    if(userkey){
+        console.log("myKey: "+userkey);
+        $.ajax({
+            url: 'https://lectet.herokuapp.com/api/user/info',
+            beforeSend: function(request) {
+                request.setRequestHeader("Authorization", userkey);
+            },
+            success: function(response){
+                console.log("Im logged in! ");
                 console.log(response);
             },
-            error: function (){
-                console.log("No se ha podido obtener información");
+            error: function(){
+                console.log("Error while checking logging");
             }
-        })*/
+        });
+    }
+    else console.log("You are not logged in");
+
+    var $button = $('#registerButton');
+    $button.click(function(){
+        const $email = $('#email').val();
+        const $password = $('#password').val();
+        console.log("email: "+ $email);
+        console.log("password: "+ $password);
 
         var check = $.ajax({
             url: 'https://lectet.herokuapp.com/api/user/signUp',
@@ -21,8 +33,8 @@ $(document).ready(() => {
             dataType: 'json',
             contentType: 'application/json',
             data: JSON.stringify({
-                "email": "victor@victor.com",
-                "password": "lmao"
+                "email": $email,
+                "password": $password
             }),
             success: function (response) {
                 if(response == null) console.log("empty response");
