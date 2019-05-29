@@ -2,6 +2,8 @@ const bcrypt = require('bcryptjs');
 
 const User = (sequelize, type) => {
   const UserSequelize = sequelize.define('user', {
+      name: type.STRING,
+      surname: type.STRING,
       email: {
         type: type.STRING, 
         unique: true
