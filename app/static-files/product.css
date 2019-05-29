@@ -1,0 +1,15 @@
+.jumbotron {
+    margin-bottom: 0;
+}
+
+.fakeimg {
+    height: 100px;
+    background: #aaa;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#nttLogo {
+    height: 50px;
+}

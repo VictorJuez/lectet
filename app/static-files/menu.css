@@ -52,9 +52,6 @@
    }
  
    /* Remove the jumbotron's default bottom margin */
-   .jumbotron {
-     margin-bottom: 0;
-   }
  
    /* Add a gray background color and some padding to the footer */
    footer {
@@ -63,15 +60,11 @@
      margin-top: 5%;
    }
  
-   .fakeimg {
-     height: 400px;
-     background: #aaa;
-   }
- 
    #nttLogo {
      height: 50px;
    }
  
+   
    #myFooter {
       background-color: #3c3d41;
       color: white;
@@ -184,13 +177,13 @@
       height: 100%;
   }
   
-  body{
+  /*body{
       display: flex;
       display: -webkit-flex;
       flex-direction: column;
       -webkit-flex-direction: column;
       height: 100%;
-  }
+  }*/
   
   .content{
      flex: 1 0 auto;
