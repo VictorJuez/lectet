@@ -11,7 +11,11 @@ const getCart = async (request, response) => {
 
 const createCart = async (request, response) => {
     const requestCart = request.body;
-    const cart = await Cart.create({
+    var cart = await Cart.findOne({
+        where: {userId: request.user.id}
+    });
+    if(cart) cart.update();
+    else cart = await Cart.create({
         userId: request.user.id
     });
 
