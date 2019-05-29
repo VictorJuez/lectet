@@ -5,7 +5,7 @@ hr {
 
 body {
     background-color: #eeeeee;
-    font-family: 'EB Garamond', serif;
+    /*font-family: 'EB Garamond', serif;*/
 }
 
 .badge-discount {
@@ -269,10 +269,6 @@ body {
     font-weight: bold;
     font-size: 1.2em;
     margin-bottom: 2%;
-}
-
-body {
-    font-family: 'EB Garamond', serif;
 }
 
 .img-carrousel {
