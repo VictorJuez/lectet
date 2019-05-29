@@ -71,7 +71,9 @@
    #nttLogo {
      height: 50px;
    }
- 
+   .nttAuthor {
+    width: 350px;
+    }
    #myFooter {
       background-color: #3c3d41;
       color: white;
