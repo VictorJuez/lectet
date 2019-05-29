@@ -1,13 +1,13 @@
 $(document).ready(() => {
     console.log("HELLO WORLD");
-    const userkey = window.localStorage.getItem("lectet");
+    const userkey = JSON.parse(window.localStorage.getItem("lectet"));
     
     if(userkey){
-        console.log("myKey: "+userkey);
+        console.log(userkey);
         $.ajax({
             url: 'https://lectet.herokuapp.com/api/user/info',
             beforeSend: function(request) {
-                request.setRequestHeader("Authorization", userkey);
+                request.setRequestHeader("Authorization", userkey.token);
             },
             success: function(response){
                 console.log("Im logged in! ");
@@ -39,7 +39,10 @@ $(document).ready(() => {
             success: function (response) {
                 if(response == null) console.log("empty response");
                 else console.log(response.token);
-                window.localStorage.setItem("lectet", response.token);
+                window.localStorage.setItem("lectet", JSON.stringify({
+                    "email": $email,
+                    "token": response.token
+                }));
                 window.location.href = "index.html";
             },
             error: function () {
