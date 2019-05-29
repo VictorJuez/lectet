@@ -3,6 +3,7 @@ const UserModel = require('../models/users');
 const AuthorModel = require('../models/authors');
 const BookModel = require('../models/books');
 const EventModel = require('../models/events');
+const OrderModel = require('../models/orders');
 
 const sequelize = new Sequelize('degpai9eklcvs5', 'pfguwsqduqkxxv', 'ffbab27c92e5005956bf45d8883ea39428b2c3722f63d5607faeb493bdb88ae9', {
     host: 'ec2-54-247-85-251.eu-west-1.compute.amazonaws.com',
@@ -22,7 +23,7 @@ const Favourite = sequelize.define('favourite', {});
 const BookEvent = sequelize.define('book_event', {});
 const Author = AuthorModel(sequelize, Sequelize);
 const AuthorBook = sequelize.define('author_book', {});
-const Order = sequelize.define('order', {});
+const Order = OrderModel(sequelize, Sequelize);
 const OrderBook = sequelize.define('order_book', {quantity: Sequelize.INTEGER, unitPrice: Sequelize.DOUBLE});
 const Cart = sequelize.define('cart', {});
 const CartBook = sequelize.define('cart_book', {quantity: Sequelize.INTEGER, unitPrice: Sequelize.DOUBLE});
