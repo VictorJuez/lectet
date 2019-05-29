@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { Order, Book } = require('../helpers/sequelize');
+const { Order, Book, Sale } = require('../helpers/sequelize');
 
 const getAllOrders = async (request, response) => {
     const order = await Order.findAll({
@@ -31,6 +31,20 @@ const createOrder = async (request, response) => {
                 quantity: singleOrder.quantity,
                 unitPrice: book.price
             }});
+            
+            var sale = await Sale.findOne({
+                where: {"bookId": singleOrder.book}
+            });
+            if(sale) await sale.update({
+                "quantity": sale.quantity+singleOrder.quantity
+            });
+            else {
+                sale = await Sale.create({
+                    "quantity": singleOrder.quantity
+                });
+                sale.setBook(book);
+            }
+            
         }
     }
     const solution = await Order.findByPk(order.id, {
