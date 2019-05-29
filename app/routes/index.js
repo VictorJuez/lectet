@@ -8,10 +8,10 @@ app.get('/', (req, res) => {
 app.use('/user', require('./users'));
 app.use('/authors', require('./authors'));
 app.use('/books', require('./books'));
-app.use('/sales', require('./sales'));
 app.use('/ratings', require('./ratings'));
 app.use('/events', require('./events'));
 app.use('/orders', require('./orders'));
+app.use('/cart', require('./carts'));
 
 
 // the catch all route

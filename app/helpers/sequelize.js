@@ -2,7 +2,6 @@ const Sequelize = require('sequelize');
 const UserModel = require('../models/users');
 const AuthorModel = require('../models/authors');
 const BookModel = require('../models/books');
-const RatingModel = require('../models/ratings');
 const EventModel = require('../models/events');
 const OrderModel = require('../models/orders');
 
@@ -24,9 +23,15 @@ const Favourite = sequelize.define('favourite', {});
 const BookEvent = sequelize.define('book_event', {});
 const Author = AuthorModel(sequelize, Sequelize);
 const AuthorBook = sequelize.define('author_book', {});
-const Order = sequelize.define('order', {});
+const Order = OrderModel(sequelize, Sequelize);
 const OrderBook = sequelize.define('order_book', {quantity: Sequelize.INTEGER, unitPrice: Sequelize.DOUBLE});
+const Cart = sequelize.define('cart', {});
+const CartBook = sequelize.define('cart_book', {quantity: Sequelize.INTEGER, unitPrice: Sequelize.DOUBLE});
+const Sale = sequelize.define('sale', {quantity: Sequelize.INTEGER});
 
+Book.belongsToMany(Cart, {through: CartBook, unique:true });
+Cart.belongsToMany(Book, {through: CartBook, unique:true });
+Cart.belongsTo(User, {foreignKey: { allowNull: false }});
 Book.belongsTo(Genre);
 Book.belongsTo(Theme);
 Book.belongsToMany(Event, { through: BookEvent, unique:true });
@@ -37,6 +42,7 @@ Book.belongsToMany(Author, { through: AuthorBook, unique: true });
 Order.belongsTo(User, {foreignKey: { allowNull: false }});
 Order.belongsToMany(Book, { through: OrderBook, unique:true });
 Book.belongsToMany(Order, { through: OrderBook, unique:true });
+Sale.belongsTo(Book);
 
 /*
 const Rating = RatingModel(sequelize, Sequelize);
@@ -63,6 +69,8 @@ module.exports = {
   Author,
   Event,
   Order,
+  Cart,
+  Sale,
   AuthorBook
 }
 

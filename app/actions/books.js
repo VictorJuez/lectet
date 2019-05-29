@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { Book, Author, Genre, Theme, Favourite } = require('../helpers/sequelize');
+const { Book, Author, Genre, Theme, Favourite, Sale } = require('../helpers/sequelize');
 
 // BOOKS operations
 const getBooks = async (request, response) => {
@@ -43,8 +43,14 @@ const getBooksByTheme = async (request, response) => {
   response.status(200).json({books});
 }
 
-const getBestSellers = (request, response) => {
-
+const getBestSellers = async (request, response) => {
+  const bestSellers = await Sale.findAll({
+    order: [
+      ['quantity','DESC'],
+    ],
+  });
+  const result = bestSellers.slice();
+  response.status(200).json(result);
 }
 
 const getFavourites = async (request, response) => {

@@ -13,7 +13,7 @@ singToken = (user) => {
 
 // user/signUp
 const createUser = async (request, response) => {
-  const { email, password } = request.body;
+  const { name, surname, email, password } = request.body;
   console.log(email);
   
   // Check user with the same email
@@ -23,7 +23,7 @@ const createUser = async (request, response) => {
   }
 
   // Create new user
-  const newUser = await User.build({email, password});
+  const newUser = await User.build({name, surname, email, password});
   await newUser.save();
 
   // Generate token
@@ -41,10 +41,13 @@ const loginUser = (request, response) => {
 }
 
 // user/info    
-const getUser = (request, response) => {
-  response.json({
-    email: request.user.email
+const getUser = async (request, response) => {
+  const user = await User.findOne({
+    where: {email: request.user.email}
   });
+
+  if(user)response.json(user);
+  else response.json({"mssg": "user not found"});
 }
 
 const updateUser = (request, response) => {
