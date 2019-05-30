@@ -7,7 +7,7 @@
     width: auto !important;
 }
 
-img {
+.order-img {
     width: 60%;
     display: block;
     margin-left: auto;
@@ -27,7 +27,7 @@ hr {
     border: 0.5px solid gray;
 }
 
-button {
+.button-carrousel {
     width: 100%;
     height: 100%;
 
@@ -50,10 +50,6 @@ button {
     font-weight: bold;
     font-size: 1.2em;
     margin-bottom: 2%;
-}
-
-body {
-    font-family: 'EB Garamond', serif;
 }
 
 .img-carrousel {
@@ -186,38 +182,6 @@ body {
        left: 0;
     }
  }
-
-
-
- ul.menu,
-ul.sub-menu{
-    padding-left: 0;
-    background: #393e46;
- }
- ul.menu li{
-    list-style: none;
-    padding: 5px;
- }
- ul.menu > li:hover ul.sub-menu{
-    display: block;
-    min-width: 200px;
- }
- ul.sub-menu{
-    display: none;
- }
-
- @media (min-width: 800px) {
-    ul.menu > li {
-          display: inline-block;
-          position: relative;
-       }
-    ul.sub-menu{
-          left: 0;
-          position: absolute;
-          z-index: 1;
-       }
-    }
-
 
 
 

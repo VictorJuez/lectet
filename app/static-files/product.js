@@ -65,4 +65,39 @@ $(document).ready(() => {
             $(id).html(related_books);
         }
     });
+
+    document.getElementById("addToCart").onclick = function () {
+        addToCart()
+    };
+
+    const userkey = JSON.parse(window.localStorage.getItem("lectet"));
+
+    function addToCart () {
+        console.log("HE ENTRAOO");
+        console.log(userkey.token);
+        var $id = $.urlParam('id');
+
+        $.ajax({
+            url: 'https://lectet.herokuapp.com/api/cart/',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify([{
+                "book": $id,
+                "quantity": 1
+            }]),
+            beforeSend: function(request) {
+                request.setRequestHeader("Authorization", userkey.token);
+                console.log("DONE IT");
+                console.log(this.data);
+            },
+            success: function(response){
+                console.log("I ADD TO CART");
+                console.log(response);
+            },
+            error: function(){
+                console.log("Error while adding");
+            }
+        });
+    }
 });

@@ -9,168 +9,105 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="order.css">
+    <link rel="stylesheet" href="./menu.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
-
-    <style>
-        /* Remove the navbar's default rounded borders and increase the bottom margin */
-        .navbar {
-            margin-bottom: 50px;
-            border-radius: 0;
-            background: #393e46;
-            border-color: #393e46;
-        }
-
-        .navbar-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-top: 6px;
-        }
-
-        /* Remove the jumbotron's default bottom margin */
-        .jumbotron {
-            margin-bottom: 0;
-        }
-
-        /* Add a gray background color and some padding to the footer */
-        footer {
-            background-color: #f2f2f2;
-            padding: 25px;
-        }
-
-        .fakeimg {
-            height: 400px;
-            background: #aaa;
-        }
-
-        #nttLogo {
-            height: 50px;
-        }
-    </style>
 </head>
 
 <body>
 
-    <!-- <div class="jumbotron">
-        <div class="container text-center">
-            <h1>Online Store</h1>
-            <p>Mission, Vission & Values</p>
-        </div>
-    </div> -->
-
     <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <!--<a class="navbar-brand" href="#">Logo</a>-->
-            <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav menu">
-              <li>
-                <a href="#">Book</a>
-                <ul class="sub-menu">
-                   <li>
-                      <a href="">Sub menu 1</a>
-                   </li>
-                   <li>
-                      <a href="">Sub menu 2</a>
-                   </li>
-                   <li>
-                      <a href="">Sub menu 3</a>
-                   </li>
+        <div class="container-fluid" id="menu-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="#">Logo</a>-->
+                <a href="./index.html">
+                    <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav menu">
+                    <li>
+                        <a href="#">Category</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="">Sub menu 1</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 2</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Themes</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="">Sub menu 1</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 2</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Events</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="">Sub menu 1</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 2</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Others</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="">Recommended</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 2</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 3</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
-             </li>
-             <li>
-                <a href="#">Recommended</a>
-                <ul class="sub-menu">
-                   <li>
-                      <a href="">Sub menu 1</a>
-                   </li>
-                   <li>
-                      <a href="">Sub menu 2</a>
-                   </li>
-                   <li>
-                      <a href="">Sub menu 3</a>
-                   </li>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="login.html" id="loggeduser"><span class="glyphicon glyphicon-user"></span> Log in</a>
+                    </li>
+                    <li><a href="order_details.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a>
+                    </li>
                 </ul>
-             </li>
-             <li>
-                <a href="#">Events</a>
-                <ul class="sub-menu">
-                   <li>
-                      <a href="">Sub menu 1</a>
-                   </li>
-                   <li>
-                      <a href="">Sub menu 2</a>
-                   </li>
-                   <li>
-                      <a href="">Sub menu 3</a>
-                   </li>
-                </ul>
-             </li>
-             <li>
-              <a href="#">More</a>
-              <ul class="sub-menu">
-                 <li>
-                    <a href="">Sub menu 1</a>
-                 </li>
-                 <li>
-                    <a href="">Sub menu 2</a>
-                 </li>
-                 <li>
-                    <a href="">Sub menu 3</a>
-                 </li>
-              </ul>
-           </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-              <li><a href="order_details.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-            </ul>
-          </div>
+            </div>
         </div>
-      </nav>
+    </nav>
 
-   <!-- <div class="format-left cart-text">
+    <!-- <div class="format-left cart-text">
         <h3>Cart</h3>
     </div> -->
 
     <div class="container">
         <div class="row">
             <div class="format-left pedido col-sm-6 col-xs-11">
-                <hr />
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-4 col-xs-5 product">
-                            <img src="./images/harry_potter_secret_camara.jpg" class="img-responsive" alt="Image">
-                        </div>
-                        <div class="col-sm-6 col-xs-3">
-                            <h6>Name: Hola</h6>
-                            <h5>Surname: Hola</h5>
-                        </div>
-                        <div class="col-sm-2 col-xs-3">
-                            <h3>Price</h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-4 col-xs-5">
-                            <img src="./images/harry_potter_secret_camara.jpg" class="img-responsive" alt="Image">
-                        </div>
-                        <div class="col-sm-8 col-xs-3">
-                            <h6>Name: Hola</h6>
-                            <h5>Surname: Hola</h5>
-                        </div>
-                    </div>
+                <div id="cart">
+                    
                 </div>
             </div>
 
@@ -336,9 +273,9 @@
                         <div class="carousel-inner">
                             <div class="item active">
                                 <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <button onclick="location.href='product.html'">
-                                        <div id="book0_1">
-                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel"
+                                    <button class="button-carrousel button0_0" onclick="location.href='product.html'">
+                                        <div id="book0_0">
+                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel img-book0_0"
                                                 alt="Image">
                                         </div>
                                     </button>
@@ -346,9 +283,9 @@
                             </div>
                             <div class="item">
                                 <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <button onclick="location.href='product.html'">
-                                        <div id="book0_1">
-                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel"
+                                    <button class="button-carrousel button1_0" onclick="location.href='product.html'">
+                                        <div id="book1_0">
+                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel img-book1_0"
                                                 alt="Image">
                                         </div>
                                     </button>
@@ -356,9 +293,9 @@
                             </div>
                             <div class="item">
                                 <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <button onclick="location.href='product.html'">
-                                        <div id="book0_1">
-                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel"
+                                    <button class="button-carrousel button2_0" onclick="location.href='product.html'">
+                                        <div id="book2_0">
+                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel img-book2_0"
                                                 alt="Image">
                                         </div>
                                     </button>
@@ -366,9 +303,9 @@
                             </div>
                             <div class="item">
                                 <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <button onclick="location.href='product.html'">
-                                        <div id="book0_1">
-                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel"
+                                    <button class="button-carrousel button3_0" onclick="location.href='product.html'">
+                                        <div id="book3_0">
+                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel img-book3_0"
                                                 alt="Image">
                                         </div>
                                     </button>
@@ -376,9 +313,9 @@
                             </div>
                             <div class="item">
                                 <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <button onclick="location.href='product.html'">
-                                        <div id="book0_1">
-                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel"
+                                    <button class="button-carrousel button4_0" onclick="location.href='product.html'">
+                                        <div id="book4_0">
+                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel img-book4_0"
                                                 alt="Image">
                                         </div>
                                     </button>
@@ -386,9 +323,9 @@
                             </div>
                             <div class="item">
                                 <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <button onclick="location.href='product.html'">
-                                        <div id="book0_1">
-                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel"
+                                    <button class="button-carrousel button5_0" onclick="location.href='product.html'">
+                                        <div id="book5_0">
+                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel img-book5_0"
                                                 alt="Image">
                                         </div>
                                     </button>
@@ -396,9 +333,9 @@
                             </div>
                             <div class="item">
                                 <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <button onclick="location.href='product.html'">
-                                        <div id="book0_1">
-                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel"
+                                    <button class="button-carrousel button6_0" onclick="location.href='product.html'">
+                                        <div id="book6_0">
+                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel img-book6_0"
                                                 alt="Image">
                                         </div>
                                     </button>
@@ -406,9 +343,9 @@
                             </div>
                             <div class="item">
                                 <div class="col-xs-12 col-sm-6 col-md-2">
-                                    <button onclick="location.href='product.html'">
-                                        <div id="book0_1">
-                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel"
+                                    <button class="button-carrousel button7_0" onclick="location.href='product.html'">
+                                        <div id="book7_0">
+                                            <img src="./images/stephen_king_3.jpg" class="img-responsive img-carrousel img-book7_0"
                                                 alt="Image">
                                         </div>
                                     </button>
@@ -425,38 +362,62 @@
         </div>
     </div>
 
-    <footer class="container-fluid text-center">
-        <nav class="navbar navbar-inverse">
-          <div class="container-fluid">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#">Logo</a>
+    <footer id="myFooter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <h2 class="logo"><a href="./index.html">
+                                <img src="logo/Lectet - noBook.png" id="nttLogo" alt="lectet">
+                            </a></h2>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>Get started</h5>
+                        <ul>
+                            <li><a href="./index.html">Home</a></li>
+                            <li><a href="#">Sign up</a></li>
+                            <li><a href="#">Downloads</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>About us</h5>
+                        <ul>
+                            <li><a href="#">Company Information</a></li>
+                            <li><a href="contact-us.html">Contact us</a></li>
+                            <li><a href="#">Reviews</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-2">
+                        <h5>Support</h5>
+                        <ul>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="#">Help desk</a></li>
+                            <li><a href="#">Forums</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="social-networks">
+                            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                        <a href="contact-us.html">
+                        <button type="button" class="btn btn-default">Contact us</button>
+                        </a>
+                    </div>
+                </div>
             </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-              <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Deals</a></li>
-                <li><a href="#">Stores</a></li>
-                <li><a href="#">Contact</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-              </ul>
+            <div class="footer-copyright">
+                <p>© 2019 Copyright Lectet License </p>
             </div>
-          </div>
-        </nav>
-      </footer>
-    
+        </footer>
+
 
     </div>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
 
     <script src="./order.js"></script>
+    <script src="./menu.js"></script>
 </body>
 
 </html>

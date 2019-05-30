@@ -5,6 +5,7 @@ $(document).ready(function(){
     if(userkey){
         $user = $('#loggeduser');
         $user.text(userkey.email);
+        $user.attr("href", "");
     }
     else console.log("you are not logged in");
     

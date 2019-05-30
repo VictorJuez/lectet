@@ -28,7 +28,7 @@ $(document).ready(() => {
                 var id_category = getRandomInt(0, respuesta.genres.length, list_id);
 
                 id = '#category_' + i;
-                valueI = i;
+        
                 console.log("#category_" + i + " IS " + respuesta.genres[id_category].description);
                 $(id).text(respuesta.genres[id_category].description);
 
@@ -48,6 +48,7 @@ $(document).ready(() => {
                                 $(".price-book" + j + "_" + i).text(respond.books[j].price + " €");
                                 $(".button" + j + "_" + i).attr("onclick", "location.href='product.html?id=" + respond.books[j].id + "'");
                                 $(".second-title-book" + j + "_" + i).text(respond.books[j].authors[0].name + " " + respond.books[j].authors[0].lastName);
+                                $(".img-book" + j + "_" + i).attr("src", "./images/books/book_" + respond.books[j].id + ".jpg");
                             
                         }
                         },
