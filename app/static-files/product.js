@@ -7,7 +7,7 @@ $.urlParam = function (name) {
         return results[1] || 0;
     }
 }
-
+var genre = 0;
 
 $(document).ready(() => {
     console.log("id=" + $.urlParam('id'));
@@ -17,6 +17,13 @@ $(document).ready(() => {
     var $book_price = $('#book_price');
     var $book_description = $('#book_description');
     var $book_long_description = $('#book_long_description');
+    var $book_image0 = $('#book_image0');
+    var $book_image1 = $('#book_image1');
+    var $book_image2 = $('#book_image2');
+
+    $book_image0.attr("src", 'images/books/book_' + $.urlParam('id') + '.jpg');
+    $book_image1.attr("src", 'images/books/book_' + $.urlParam('id') + '.jpg');
+    $book_image2.attr("src", 'images/books/book_' + $.urlParam('id') + '.jpg');
     $.ajax({
         type: 'GET',
         url: 'https://lectet.herokuapp.com/api/books/' + $.urlParam('id'),
@@ -35,36 +42,38 @@ $(document).ready(() => {
             $book_price.html(data.book.price + '<span class="glyphicon glyphicon-euro"></span>');
             $book_description.html(data.book.description);
             $book_long_description.html(data.book.description);
+            genre = data.book.genreId;
+            $.ajax({
+                type: 'GET',
+                url: 'https://lectet.herokuapp.com/api/books/genre/' + genre,
+                success: function (data1) {
+                    console.log(data1);
+                    id = '#related_book';
+                    $(id).css({ 'visibility': 'visible' });
+                    var related_books = '';
+                    for (var i = 0; i < data1.books.length; i++) {
 
-
+                        // console.log(data.author.books[i].name);
+                        related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6">' +
+                            '<div class="single-related-product d-flex">' +
+                            '<a href=""><img src="images/books/book_' + data1.books[i].id + '.jpg' + '" class="fakeimg" alt=""></a>' +
+                            ' <div class="text-center">' +
+                            '<a href="' + 'product.html?id=' + data1.books[i].id + '" class="title">' + data1.books[i].name + '</a>' +
+                            '<div class="price">' +
+                            '<h6>' + '$' + data1.books[i].price + '</h6>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>' +
+                            '</div>';
+                    }
+                    $(id).html(related_books);
+                }
+            });
         }
     });
-    $.ajax({
-        type: 'GET',
-        url: 'https://lectet.herokuapp.com/api/books/favourites',
-        success: function (data1) {
-            console.log(data1);
-            id = '#related_book';
-            $(id).css({ 'visibility': 'visible' });
-            var related_books = '';
-            for (var i = 0; i < data1.books.length; i++) {
+    //console.log(genre);
 
-                // console.log(data.author.books[i].name);
-                related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6">' +
-                    '<div class="single-related-product d-flex">' +
-                    '<a href="#"><img src="" class="fakeimg" alt=""></a>' +
-                    ' <div class="text-center">' +
-                    '<a href="' + 'product.html?id=' + data1.books[i].id + '" class="title">' + data1.books[i].name + '</a>' +
-                    '<div class="price">' +
-                    '<h6>' + '$' + data1.books[i].price + '</h6>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
-            }
-            $(id).html(related_books);
-        }
-    });
+
 
     $.ajax({
         type: 'GET',
@@ -81,7 +90,7 @@ $(document).ready(() => {
                 '</div>' +
                 '</div>' +
                 '<div class="col-md-3 cta-button">' +
-                '<a href="event.html/' + data2.events[0].id + '" class="btn btn-lg btn-block btn-primary"> Go to the event</a>' +
+                '<a href="event.html/' + data2.events[0].id + '" class="btn btn-lg btn-block btn-primary"> To learn more</a>' +
                 '</div>' +
                 '</div>;';
 
