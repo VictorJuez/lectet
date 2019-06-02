@@ -66,13 +66,36 @@ $(document).ready(() => {
         }
     });
 
+    $.ajax({
+        type: 'GET',
+        url: 'https://lectet.herokuapp.com/api/events/book/' + $.urlParam('id'),
+        success: function (data2) {
+            console.log(data2);
+            id = '#event';
+            $(id).css({ 'visibility': 'visible' });
+            var books_event = '<div class="row">' +
+                '<div class="col-md-9 cta-contents">' +
+                '<h1 class="cta-title">' + data2.events[0].name + '</h1>' +
+                '<div class="cta-desc">' +
+                '<p>' + data2.events[0].description + '</p>' +
+                '</div>' +
+                '</div>' +
+                '<div class="col-md-3 cta-button">' +
+                '<a href="event.html/' + data2.events[0].id + '" class="btn btn-lg btn-block btn-primary"> Go to the event</a>' +
+                '</div>' +
+                '</div>;';
+
+            $(id).html(books_event);
+        }
+    });
+
     document.getElementById("addToCart").onclick = function () {
         addToCart()
     };
 
     const userkey = JSON.parse(window.localStorage.getItem("lectet"));
 
-    function addToCart () {
+    function addToCart() {
         console.log("HE ENTRAOO");
         console.log(userkey.token);
         var $id = $.urlParam('id');
@@ -86,16 +109,16 @@ $(document).ready(() => {
                 "book": $id,
                 "quantity": 1
             }]),
-            beforeSend: function(request) {
+            beforeSend: function (request) {
                 request.setRequestHeader("Authorization", userkey.token);
                 console.log("DONE IT");
                 console.log(this.data);
             },
-            success: function(response){
+            success: function (response) {
                 console.log("I ADD TO CART");
                 console.log(response);
             },
-            error: function(){
+            error: function () {
                 console.log("Error while adding");
             }
         });
