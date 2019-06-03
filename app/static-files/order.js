@@ -35,27 +35,46 @@ $(document).ready(() => {
 
       var id = "#cart";
 
+      var book_order = "#book-order";
+      var price_order = "#price-order";
+
       var book = '<hr/>';
+
+      var book_order_html = '';
+      var price_order_html = '';
+
+      var total = 0;
 
       console.log(response.cart.books.length);
 
       for (var x = 0; x < response.cart.books.length; x++) {
+
+        book_order_html = book_order_html + '<h4>' + response.cart.books[x].name + '</h4>';
+
+        price_order_html = price_order_html + '<h4 class="price">' + response.cart.books[x].price + ' €</h4>';
+
+        total = total + response.cart.books[x].price;
+        
         book = book + '<div class="container">' + '<div class="row">' +
           '<div class="col-sm-4 col-xs-5 product">' +
           '<img src="./images/books/book_' + response.cart.books[x].id + '.jpg" class="img-responsive order-img" alt="Image">' +
-        '</div>' +
-        '<div class="col-sm-6 col-xs-3">' +
-        '<h3>' + response.cart.books[x].name +'</h3>' +
-        '<h6>' + response.cart.books[x].description + '</h6>' +
-        '</div>' +
-        '<div class="col-sm-2 col-xs-3">' +
-        '<h5>Price: ' + response.cart.books[x].price + '</h5>' +
-        '</div>' +
-        '</div>' +
-        '</div>' + '<br/>' + '<br/>'
+          '</div>' +
+          '<div class="col-sm-6 col-xs-3">' +
+          '<h3>' + response.cart.books[x].name + '</h3>' +
+          '<h6>' + response.cart.books[x].description + '</h6>' +
+          '</div>' +
+          '<div class="col-sm-2 col-xs-3">' +
+          '<h5>Price: ' + response.cart.books[x].price + '</h5>' +
+          '</div>' +
+          '</div>' +
+          '</div>' + '<br/>' + '<br/>'
       }
 
+      $("#total-price").text(total + " €");
+
       $(id).html(book);
+      $(book_order).html(book_order_html);
+      $(price_order).html(price_order_html);
 
     },
     error: function () {

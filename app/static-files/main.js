@@ -19,6 +19,25 @@ $(document).ready(() => {
     });
 
     $.ajax({
+        url: 'https://lectet.herokuapp.com/api/books/favourites',
+        success: function (respond) {
+
+            console.log(respond);
+            for (var i = 0; i < 8; i++) {
+                $(".first-title-recommended_" + i).text(respond.books[i].name);
+                $(".price-recommended_" + i).text(respond.books[i].price + " €");
+                $(".button-recommended_" + i).attr("onclick", "location.href='product.html?id=" + respond.books[i].id + "'");
+                console.log(respond.books[i].authors[0].name + " " + respond.books[i].authors[0].lastName);
+                $(".second-title-recommended_" + i).text(respond.books[i].authors[0].name + " " + respond.books[i].authors[0].lastName);
+                $(".img-recommended_" + i).attr("src", "./images/books/book_" + respond.books[i].id + ".jpg");
+            }
+        },
+        error: function () {
+            console.log("No se ha podido obtener la información");
+        }
+    });
+
+    $.ajax({
         url: 'https://lectet.herokuapp.com/api/books/genres',
         success: function (respuesta) {
 

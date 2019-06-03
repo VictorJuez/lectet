@@ -1,5 +1,4 @@
 .pedido {
-    width: 50%;
     margin-left: 6%;
 }
 
@@ -15,8 +14,6 @@
 }
 
 .extracto {
-    border: 0.5px solid gray;
-    width: 40%;
     margin-right: 2%;
     margin-left: 2%;
 }
@@ -55,6 +52,17 @@ hr {
 .img-carrousel {
     width: 75%;
     height: auto;
+}
+
+.price {
+   position: relative;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#checkout {
+   width: 100%;
+   background: rgb(243, 21, 21);
 }
 
 
