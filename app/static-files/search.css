@@ -1,0 +1,42 @@
+/* Remove the navbar's default rounded borders and increase the bottom margin */
+.navbar {
+    margin-bottom: 50px;
+    border-radius: 0;
+    background: #393e46;
+    border-color: #393e46;
+}
+
+.navbar-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 6px;
+}
+
+
+/* Remove the jumbotron's default bottom margin */
+.jumbotron {
+    margin-bottom: 0;
+}
+
+/* Add a gray background color and some padding to the footer */
+.footer {
+    background-color: #f2f2f2;
+    padding: 25px;
+}
+
+.padding_all {
+    padding: 5%;
+}
+
+.fakeimg {
+    height: 100px;
+    background: #aaa;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#nttLogo {
+    height: 50px;
+}

@@ -4,8 +4,12 @@ hr {
 }
 
 body {
-    background-color: #eeeeee;
+    /*background-color: #eeeeee;*/
     /*font-family: 'EB Garamond', serif;*/
+}
+
+.img-jumbo {
+    
 }
 
 .badge-discount {

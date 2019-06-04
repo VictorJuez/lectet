@@ -2,8 +2,7 @@ $.urlParam = function (name) {
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (results == null) {
         return null;
-    }
-    else {
+    } else {
         return results[1] || 0;
     }
 }
@@ -49,7 +48,9 @@ $(document).ready(() => {
                 success: function (data1) {
                     console.log(data1);
                     id = '#related_book';
-                    $(id).css({ 'visibility': 'visible' });
+                    $(id).css({
+                        'visibility': 'visible'
+                    });
                     var related_books = '';
                     for (var i = 0; i < data1.books.length; i++) {
 
@@ -79,22 +80,27 @@ $(document).ready(() => {
         type: 'GET',
         url: 'https://lectet.herokuapp.com/api/events/book/' + $.urlParam('id'),
         success: function (data2) {
-            console.log(data2);
-            id = '#event';
-            $(id).css({ 'visibility': 'visible' });
-            var books_event = '<div class="row">' +
-                '<div class="col-md-9 cta-contents">' +
-                '<h1 class="cta-title">' + data2.events[0].name + '</h1>' +
-                '<div class="cta-desc">' +
-                '<p>' + data2.events[0].description + '</p>' +
-                '</div>' +
-                '</div>' +
-                '<div class="col-md-3 cta-button">' +
-                '<a href="event.html/' + data2.events[0].id + '" class="btn btn-lg btn-block btn-primary"> To learn more</a>' +
-                '</div>' +
-                '</div>;';
 
-            $(id).html(books_event);
+            if (data2.length > 0) {
+                console.log(data2);
+                id = '#event';
+                $(id).css({
+                    'visibility': 'visible'
+                });
+                var books_event = '<div class="row">' +
+                    '<div class="col-md-9 cta-contents">' +
+                    '<h1 class="cta-title">' + data2.events[0].name + '</h1>' +
+                    '<div class="cta-desc">' +
+                    '<p>' + data2.events[0].description + '</p>' +
+                    '</div>' +
+                    '</div>' +
+                    '<div class="col-md-3 cta-button">' +
+                    '<a href="./event.html?id=' + data2.events[0].id + '" class="btn btn-lg btn-block btn-primary"> To learn more</a>' +
+                    '</div>' +
+                    '</div>;';
+
+                $(id).html(books_event);
+            }
         }
     });
 
@@ -105,8 +111,6 @@ $(document).ready(() => {
     const userkey = JSON.parse(window.localStorage.getItem("lectet"));
 
     function addToCart() {
-        console.log("HE ENTRAOO");
-        console.log(userkey.token);
         var $id = $.urlParam('id');
 
         $.ajax({
