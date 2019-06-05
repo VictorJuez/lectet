@@ -9,7 +9,14 @@ body {
 }
 
 .img-jumbo {
-    
+    max-width: 100%;
+    height: 25rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.special-section {
+    text-align: center;
 }
 
 .badge-discount {

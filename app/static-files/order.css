@@ -62,7 +62,10 @@ hr {
 
 #checkout {
    width: 100%;
-   background: rgb(243, 21, 21);
+   height: 4rem;
+   background: #d9534f;
+   border-color: #d43f3a;
+   border-radius: 5px;
 }
 
 

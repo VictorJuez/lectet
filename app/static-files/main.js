@@ -43,40 +43,63 @@ $(document).ready(() => {
 
             var id;
             var list_id = [];
-            for (var i = 0; i < 2; i++) {
+            for (var i = 0; i < 3; i++) {
                 var id_category = getRandomInt(0, respuesta.genres.length, list_id);
 
                 id = '#category_' + i;
-        
+
                 console.log("#category_" + i + " IS " + respuesta.genres[id_category].description);
                 $(id).text(respuesta.genres[id_category].description);
 
-                    $.ajax({
-                        url: 'https://lectet.herokuapp.com/api/books/genre/' + (id_category + 1),
-                        async: false,
-                        success: function (respond) {
-                            
+                $.ajax({
+                    url: 'https://lectet.herokuapp.com/api/books/genre/' + (id_category + 1),
+                    async: false,
+                    success: function (respond) {
+
                         console.log("Categoria: " + respond.books[0].genreId);
-                       
-                            for (var j = 0; j < 8; j++) {
-                                console.log("I = " + i + " , " + "J = " + j);
-                                console.log(respond.books[j].name);
-                                console.log(respond.books[j].price);
-                                console.log(".first-title-book" + j + "_" + i);
-                                $(".first-title-book" + j + "_" + i).text(respond.books[j].name);
-                                $(".price-book" + j + "_" + i).text(respond.books[j].price + " €");
-                                $(".button" + j + "_" + i).attr("onclick", "location.href='product.html?id=" + respond.books[j].id + "'");
-                                $(".second-title-book" + j + "_" + i).text(respond.books[j].authors[0].name + " " + respond.books[j].authors[0].lastName);
-                                $(".img-book" + j + "_" + i).attr("src", "./images/books/book_" + respond.books[j].id + ".jpg");
-                            
+
+                        for (var j = 0; j < 8; j++) {
+                            console.log("I = " + i + " , " + "J = " + j);
+                            console.log(respond.books[j].name);
+                            console.log(respond.books[j].price);
+                            console.log(".first-title-book" + j + "_" + i);
+                            $(".first-title-book" + j + "_" + i).text(respond.books[j].name);
+                            $(".price-book" + j + "_" + i).text(respond.books[j].price + " €");
+                            $(".button" + j + "_" + i).attr("onclick", "location.href='product.html?id=" + respond.books[j].id + "'");
+                            $(".second-title-book" + j + "_" + i).text(respond.books[j].authors[0].name + " " + respond.books[j].authors[0].lastName);
+                            $(".img-book" + j + "_" + i).attr("src", "./images/books/book_" + respond.books[j].id + ".jpg");
+
                         }
-                        },
-                        error: function () {
-                            console.log("No se ha podido obtener la información");
-                        }
-                    })
-                
+                    },
+                    error: function () {
+                        console.log("No se ha podido obtener la información");
+                    }
+                })
+
             }
+        },
+        error: function () {
+            console.log("No se ha podido obtener la información");
+        }
+    });
+
+    $.ajax({
+        url: 'https://lectet.herokuapp.com/api/books/bestsellers',
+        success: function (respond) {
+
+            $.ajax({
+                url: 'https://lectet.herokuapp.com/api/books/' + respond[0].id,
+                success: function (respond) {
+                    $("#name-most-sell").text(respond.book.name);
+                    $("#author-most-sell").text(respond.book.authors[0].name + " " + respond.book.authors[0].lastName);
+                    $("#description-most-sell").text(respond.book.description);
+
+                    $("#img-most-sell").attr("src", "./images/books/book_" + respond.book.id + ".jpg");
+
+                    $("#button-most-sell").attr("onclick", "location.href='product.html?id=" + respond.book.id + "'");
+                }
+            })
+            
         },
         error: function () {
             console.log("No se ha podido obtener la información");
@@ -111,7 +134,7 @@ $(document).ready(() => {
 
     (function () {
         $('.carousel-showmanymoveone .item').each(function () {
-           
+
             var itemToClone = $(this);
 
             for (var i = 1; i < 3; i++) {
@@ -132,7 +155,7 @@ $(document).ready(() => {
 
     (function () {
         $('.carousel-showmanymoveone-4 .item').each(function () {
-           
+
             var itemToClone = $(this);
 
             for (var i = 1; i < 4; i++) {
@@ -152,12 +175,6 @@ $(document).ready(() => {
     }());
 
 
-    
-
-
-    
-
-    
 
     /*  function ajaxGet(url, callback) {
           var req = new XMLHttpRequest();

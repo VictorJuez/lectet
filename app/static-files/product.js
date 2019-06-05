@@ -33,7 +33,7 @@ $(document).ready(() => {
             var authors = '<p>';
             for (var i = 0; i < data.book.authors.length; i++) {
                 authors = authors + ' ' + 'Author: <span class="glyphicon glyphicon-user"></span>' +
-                    '<a class="nav-link" href="author.html?id=' + data.book.authors[i].id + '" style="color:#aaa">' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>'
+                    '<a class="nav-link" href="author.html?id=' + data.book.authors[i].id + '" style="color:#aaa"> ' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>'
             }
             authors = authors + '</p>';
             $author_name.html(authors);
@@ -42,6 +42,15 @@ $(document).ready(() => {
             $book_description.html(data.book.description);
             $book_long_description.html(data.book.description);
             genre = data.book.genreId;
+
+            $.ajax({
+                type: 'GET',
+                url: 'https://lectet.herokuapp.com/api/books/genres',
+                success: function (respond) { 
+                    $("#book_category").text(respond.genres[genre].description);
+                 }
+            });
+
             $.ajax({
                 type: 'GET',
                 url: 'https://lectet.herokuapp.com/api/books/genre/' + genre,
