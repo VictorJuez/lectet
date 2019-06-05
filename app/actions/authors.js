@@ -6,6 +6,12 @@ const getAuthorById = async (request, response) => {
   response.status(200).json({author});
 }
 
+const getAllAuthors = async (request, response) => {
+  const authors = await Author.findAll();
+  response.status(200).json(authors);
+}
+
 module.exports = {
   getAuthorById,
+  getAllAuthors
 }
