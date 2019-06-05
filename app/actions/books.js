@@ -67,6 +67,20 @@ const getFavourites = async (request, response) => {
   response.status(200).json({books});
 }
 
+const getBooksByFilter = async (request, response) => {
+  console.log(request.body);
+  const genres = request.body.genre;
+  const theme = request.body.theme;
+  const books = await Book.findAll({
+    where: {
+      themeId: theme,
+      genreId: genres
+    }
+  });
+
+  response.status(200).json(books);
+}
+
 module.exports = {
   getBooks,       // Books
   getBookById,
@@ -75,5 +89,6 @@ module.exports = {
   getBooksByGenre,
   getBooksByTheme,
   getBestSellers,
-  getFavourites
+  getFavourites,
+  getBooksByFilter
 }
