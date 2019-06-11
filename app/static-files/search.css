@@ -30,13 +30,54 @@
 }
 
 .fakeimg {
-    height: 100px;
-    background: #aaa;
+    height: 25rem;
     display: block;
     margin-left: auto;
     margin-right: auto;
+    
 }
 
 #nttLogo {
     height: 50px;
+}
+
+.book {
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+.button-book {
+    width: 90%;
+    margin-top: 10%;
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.author {
+    text-align: center;
+    margin: 10%;
+}
+
+.author-img {
+     /* cambia estos dos valores para definir el tamaño de tu círculo */
+     height: 100%;
+     width: 100%;
+     /* los siguientes valores son independientes del tamaño del círculo */
+     background-repeat: no-repeat;
+     background-position: 50%;
+     border-radius: 50%;
+     background-size: 100% auto;
+}
+
+.pagination {
+    position: relative;
+    left: 38%;
+}
+
+.card-book {
+    margin-right: auto;
+    margin-left: auto;
 }

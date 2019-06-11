@@ -25,41 +25,89 @@
     </div> -->
 
     <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
+            <div class="container-fluid" id="menu-top">
+              <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
                 </button>
-                <!-- <a class="navbar-brand" href="#">Logo</a> -->
-                <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
-
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Home</a></li>
-                    <li class="active"><a href="#">Products</a></li>
-                    <li><a href="#">Deals</a></li>
-                    <li><a href="#">Stores</a></li>
-                    <li><a href="#">Contact</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-center">
+                <!--<a class="navbar-brand" href="#">Logo</a>-->
+                <a href="./index.html">
+                  <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
+                </a>
+              </div>
+              <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav menu">
                     <li>
-                        <form class="form-inline md-form form-sm active-cyan-2 mt-2">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-primary" type="submit"><span
-                                    class="glyphicon glyphicon-search"></span></button>
-                        </form>
-                    </li>
+                        <a href="search.html?name=books">Books</a>
+                      </li>
+                  <li>
+                    <a href="#">Category</a>
+                    <ul class="sub-menu">
+                      <li>
+                        <a href="search.html?id=1&name=genre">Sub menu 1</a>
+                      </li>
+                      <li>
+                        <a href="search.html?id=2&name=genre">Sub menu 2</a>
+                      </li>
+                      <li>
+                        <a href="search.html?id=3&name=genre">Sub menu 3</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Themes</a>
+                    <ul class="sub-menu">
+                      <li>
+                        <a href="">Sub menu 1</a>
+                      </li>
+                      <li>
+                        <a href="">Sub menu 2</a>
+                      </li>
+                      <li>
+                        <a href="">Sub menu 3</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="search.html?name=authors">Authors</a>
+                  <li>
+                    <a href="#">Events</a>
+                    <ul class="sub-menu">
+                      <li>
+                        <a href="">Sub menu 1</a>
+                      </li>
+                      <li>
+                        <a href="">Sub menu 2</a>
+                      </li>
+                      <li>
+                        <a href="">Sub menu 3</a>
+                      </li>
+                    </ul>
+                  </li>
+                  <li>
+                    <a href="#">Others</a>
+                    <ul class="sub-menu">
+                      <li>
+                        <a href="">Recommended</a>
+                      </li>
+                      <li>
+                        <a href="">Sub menu 2</a>
+                      </li>
+                      <li>
+                        <a href="">Sub menu 3</a>
+                      </li>
+                    </ul>
+                  </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                  <li><a href="login.html" id="loggeduser"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
+                  <li><a href="order_details.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
                 </ul>
+              </div>
             </div>
-        </div>
-    </nav>
+          </nav>
 
     <!-- Page Content -->
     <div class="container">

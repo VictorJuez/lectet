@@ -60,9 +60,15 @@ hr {
     margin-right: auto;
 }
 
-#checkout {
+.checkout {
    width: 100%;
    height: 4rem;
+   background: #d9534f;
+   border-color: #d43f3a;
+   border-radius: 5px;
+}
+
+.delete {
    background: #d9534f;
    border-color: #d43f3a;
    border-radius: 5px;
