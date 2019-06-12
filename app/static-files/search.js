@@ -11,20 +11,20 @@ var selectedUrl;
 
 $(document).ready(() => {
 
-    if($.urlParam('name') != "authors") {
+    if($.urlParam('selected') != "authors" && $.urlParam('selected') != "events") {
 
-        if ($.urlParam('name') == "books") {
+        if ($.urlParam('selected') == "books") {
 
-            console.log("Name = " + $.urlParam('name'));
+            console.log("Selected = " + $.urlParam('selected'));
     
             selectedUrl = 'https://lectet.herokuapp.com/api/books/'
     
     
         } else {
            
-            //url: 'https://lectet.herokuapp.com/api/books/' + $.urlParam('name') + '/' + $.urlParam('id'),
+            //url: 'https://lectet.herokuapp.com/api/books/' + $.urlParam('selected') + '/' + $.urlParam('id'),
     
-            selectedUrl = 'https://lectet.herokuapp.com/api/books/' + $.urlParam('name') + '/3';
+            selectedUrl = 'https://lectet.herokuapp.com/api/books/' + $.urlParam('selected') + '/2';
     
         }
 
@@ -46,8 +46,8 @@ $(document).ready(() => {
                         '<img src="./images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
                         '<div class="card-body">' +
                         '<h4 class="card-title">' + respond.books[x].name + '</h4>' +
-                        '<a href="./author.html?id=' + respond.books[x].authors[0].id + '></a>' +
-                        '<h6 class="card-text">' + respond.books[x].authors[0].name + ' ' + respond.books[x].authors[0].lastName + '</h6>' +
+                        '<a href="./author.html?id=' + respond.books[x].authors[0].id + '" >' +
+                        '<h6 class="card-text">' + respond.books[x].authors[0].name + ' ' + respond.books[x].authors[0].lastName + '</h6>' + '</a>' +
                         '<a href="./product.html?id=' + respond.books[x].id + '" class="btn btn-primary button-book">' + respond.books[x].price + ' €' + '</a>' +
                         ' </div> ' +
                         '</div>' +
@@ -62,7 +62,7 @@ $(document).ready(() => {
 
     }
 
-    else {
+    else if($.urlParam('selected') == "authors") {
 
         $.ajax({
             type: 'GET',
@@ -96,4 +96,60 @@ $(document).ready(() => {
 
 
     }
+
+    else {
+
+        $.ajax({
+            type: 'GET',
+            url: 'https://lectet.herokuapp.com/api/events/',
+            success: function (respond) {
+                console.log(respond);
+    
+                var search = "#books-search";
+    
+                var book_search = '';
+    
+                for (var x = 0; x < 2; x++) {
+    
+                    book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4">' +
+    
+                        '<div class="card author" style="width: 18rem;">' +
+                        '<img class="event-img" src="./images/events/event_' + respond.events[x].id + '.jpg" class="fakeimg" alt="...">' +
+                        '<div class="card-body">' +
+                        '<h4 class="card-title">' + respond.events[x].name + '</h4>' +
+                        '<a href="./event.html?id=' + respond.events[x].id + '" class="btn btn-primary button-book"> Go to the event </a>' +
+                        ' </div> ' +
+                        '</div>' +
+    
+                        '</div>'
+                }
+    
+                $(search).html(book_search);
+    
+            }
+        });
+
+    }
+
+
+
+
+
+    var selectedGenre;
+    var selectedTheme;
+
+    var selectGenre = document.getElementById('Genre');
+    selectGenre.addEventListener('change',
+    function () {
+        selectedGenre = this.options[selectGenre.selectedIndex];
+        console.log(selectedGenre.value + ': ' + selectedGenre.text);
+    });
+
+    var selectTheme = document.getElementById('Theme');
+    selectTheme.addEventListener('change',
+    function () {
+        selectedTheme = this.options[selectTheme.selectedIndex];
+        console.log(selectedTheme.value + ': ' + selectedTheme.text);
+    });
+
 });

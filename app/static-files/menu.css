@@ -12,6 +12,8 @@
   ul.menu > li:hover ul.sub-menu{
      display: block;
      min-width: 200px;
+
+     color: white;
   }
   ul.sub-menu{
      display: none;
@@ -49,6 +51,16 @@
      border-radius: 0;
      background: #393e46;
      border-color: #393e46;
+   }
+
+   ul li a {
+       
+     color: #dad7d7 !important;
+   }
+
+   a:active, a:hover {
+    color: white !important;
+    text-decoration: underline;
    }
  
    /* Remove the jumbotron's default bottom margin */

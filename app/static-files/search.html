@@ -25,92 +25,122 @@
     </div> -->
 
     <nav class="navbar navbar-inverse">
-            <div class="container-fluid" id="menu-top">
-              <div class="navbar-header">
+        <div class="container-fluid" id="menu-top">
+            <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
                 <!--<a class="navbar-brand" href="#">Logo</a>-->
                 <a href="./index.html">
-                  <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
+                    <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
                 </a>
-              </div>
-              <div class="collapse navbar-collapse" id="myNavbar">
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav menu">
                     <li>
                         <a href="search.html?name=books">Books</a>
-                      </li>
-                  <li>
-                    <a href="#">Category</a>
-                    <ul class="sub-menu">
-                      <li>
-                        <a href="search.html?id=1&name=genre">Sub menu 1</a>
-                      </li>
-                      <li>
-                        <a href="search.html?id=2&name=genre">Sub menu 2</a>
-                      </li>
-                      <li>
-                        <a href="search.html?id=3&name=genre">Sub menu 3</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">Themes</a>
-                    <ul class="sub-menu">
-                      <li>
-                        <a href="">Sub menu 1</a>
-                      </li>
-                      <li>
-                        <a href="">Sub menu 2</a>
-                      </li>
-                      <li>
-                        <a href="">Sub menu 3</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="search.html?name=authors">Authors</a>
-                  <li>
-                    <a href="#">Events</a>
-                    <ul class="sub-menu">
-                      <li>
-                        <a href="">Sub menu 1</a>
-                      </li>
-                      <li>
-                        <a href="">Sub menu 2</a>
-                      </li>
-                      <li>
-                        <a href="">Sub menu 3</a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">Others</a>
-                    <ul class="sub-menu">
-                      <li>
-                        <a href="">Recommended</a>
-                      </li>
-                      <li>
-                        <a href="">Sub menu 2</a>
-                      </li>
-                      <li>
-                        <a href="">Sub menu 3</a>
-                      </li>
-                    </ul>
-                  </li>
+                    </li>
+                    <li>
+                        <a href="#">Category</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="search.html?id=1&name=genre">Sub menu 1</a>
+                            </li>
+                            <li>
+                                <a href="search.html?id=2&name=genre">Sub menu 2</a>
+                            </li>
+                            <li>
+                                <a href="search.html?id=3&name=genre">Sub menu 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Themes</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="">Sub menu 1</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 2</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="search.html?name=authors">Authors</a>
+                    <li>
+                        <a href="#">Events</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="">Sub menu 1</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 2</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Others</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="">Recommended</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 2</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 3</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                  <li><a href="login.html" id="loggeduser"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
-                  <li><a href="order_details.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+                    <li><a href="login.html" id="loggeduser"><span class="glyphicon glyphicon-user"></span> Log in</a>
+                    </li>
+                    <li><a href="order_details.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a>
+                    </li>
                 </ul>
-              </div>
             </div>
-          </nav>
+        </div>
+    </nav>
 
     <!-- Page Content -->
     <div class="container">
+
+        <div class="row">
+
+            <div class="col-sm-4">
+                <span>Category: </span>
+                <select id="Genre" class="form-control" name="Genre">
+                    <option value="null" selected> </option>
+                    <option value="Action">Action</option>
+                    <option value="Mistery">Mistery</option>
+                    <option value="Drama">Drama</opion>
+                    <option value="Fantasy">Fantasy</option>
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <span>Theme:</span>
+                <select id="Theme" class="form-control" name="Theme">
+                    <option value="null" selected> </option>
+                    <option value="Teenager">Teenager</option>
+                    <option value="Learn">Learn</option>
+                    <option value="Descriptive">Descriptive</opion>
+                    <option value="Family">Family</option>
+                </select>
+            </div>
+
+            <div class="col-sm-4">
+                <button id="search" class="search"> SEARCH </button>
+            </div>
+        </div>
 
         <!-- Page Heading -->
         <h1 class="my-4" id="search">Search results
@@ -118,7 +148,7 @@
         </h1>
 
         <div class="row" id="books-search">
-            
+
         </div>
         <!-- /.row -->
 
@@ -189,7 +219,7 @@
                         <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
                     </div>
                     <a href="contact-us.html">
-                    <button type="button" class="btn btn-default">Contact us</button>
+                        <button type="button" class="btn btn-default">Contact us</button>
                     </a>
                 </div>
             </div>

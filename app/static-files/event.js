@@ -22,7 +22,26 @@ $(document).ready(() => {
             console.log(respond.event.books[0].name);
             console.log(respond.event.books[0].authors[0].name);
 
+            var date = "";
+            var hour = "";
+
+            var dateReceive = respond.event.date;
+
+            for(var x = 0; x < 10; x++) {
+                date = date + dateReceive.charAt(x);
+            }
+
+            for(x = 11; x < 19; x++) {
+                hour = hour + dateReceive.charAt(x);
+            }
+
+            console.log(hour);
+
+            date = date.replace(/[-]/g, '/');
+
             $("#title-event").text(respond.event.name);
+            $("#date-event").text(date);
+            $("#hour-event").text(hour);
             $("#description-event").text(respond.event.description);
 
             $("#name-book").text(respond.event.books[0].name);
