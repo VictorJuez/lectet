@@ -8,23 +8,10 @@
     <!-- If IE use the latest rendering engine -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./menu.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <style>
-        /* Remove the navbar's default rounded borders and increase the bottom margin */
-        .navbar {
-            margin-bottom: 50px;
-            border-radius: 0;
-            background: #FCCD03;
-            border-color: #FCCD03;
-        }
-
-        .navbar-center {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            margin-top: 6px;
-        }
 
         /* Remove the jumbotron's default bottom margin */
         .jumbotron {
@@ -166,24 +153,6 @@
             display: block;
         }
 
-        /* End Login form Area css
-
-
-
-        /* Add a gray background color and some padding to the footer */
-        footer {
-            background-color: #f2f2f2;
-            padding: 25px;
-        }
-
-        .fakeimg {
-            height: 400px;
-            background: #aaa;
-        }
-
-        #nttLogo {
-            height: 50px;
-        }
     </style>
 </head>
 
@@ -197,40 +166,84 @@
     </div> -->
 
     <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <!-- <a class="navbar-brand" href="#">Logo</a> -->
-                <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
-            </div>
-            <div class="collapse navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="#">Home</a></li>
-                    <li><a href="#">Products</a></li>
-                    <li><a href="#">Deals</a></li>
-                    <li><a href="#">Stores</a></li>
-                    <li><a href="#">Contact</a></li>
+        <div class="container-fluid" id="menu-top">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!--<a class="navbar-brand" href="#">Logo</a>-->
+            <a href="./index.html">
+              <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav menu">
+              <li>
+                <a href="search.html?selected=books&name=Books">Books</a>
+              </li>
+              <li>
+                <a href="#">Category</a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="search.html?id=1&selected=genre&name=Fantasy">Fantasy</a>
+                  </li>
+                  <li>
+                    <a href="search.html?id=2&selected=genre&name=Action">Action</a>
+                  </li>
+                  <li>
+                    <a href="search.html?id=3&selected=genre&name=Mistery">Mistery</a>
+                  </li>
+                  <li>
+                    <a href="search.html?id=4&selected=genre&name=Drama">Drama</a>
+                  </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-center">
-                    <li>
-                        <form class="form-inline md-form form-sm active-cyan-2 mt-2">
-                            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-primary" type="submit"><span
-                                    class="glyphicon glyphicon-search"></span></button>
-                        </form>
-                    </li>
+              </li>
+              <li>
+                <a href="#">Themes</a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="search.html?id=1&selected=theme&name=Family">Family</a>
+                  </li>
+                  <li>
+                    <a href="search.html?id=2&selected=theme&name=Teenager">Teenager</a>
+                  </li>
+                  <li>
+                    <a href="search.html?id=3&selected=theme&name=Learn">Learn</a>
+                  </li>
+                  <li>
+                      <a href="search.html?id=4&selected=theme&name=Descriptive">Descriptive</a>
+                  </li>
                 </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+              </li>
+              <li>
+                <a href="search.html?selected=authors&name=Authors">Authors</a>
+              <li>
+                <a href="search.html?selected=events&name=Events">Events</a>
+              </li>
+              <li>
+                <a href="#">Others</a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="">Recommended</a>
+                  </li>
+                  <li>
+                    <a href="">Sub menu 2</a>
+                  </li>
+                  <li>
+                    <a href="">Sub menu 3</a>
+                  </li>
                 </ul>
-            </div>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="login.html" id="loggeduser"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
+              <li><a href="order_details.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+            </ul>
+          </div>
         </div>
-    </nav>
+      </nav>
 
     <!--================Login Box Area =================-->
     <section class="login_box_area section_gap">
@@ -265,12 +278,12 @@
                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email'">
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="password" name="name" placeholder="Password"
+                                <input type="password" class="form-control" id="password" name="name" placeholder="Password"
                                     onfocus="this.placeholder = ''" onblur="this.placeholder = 'Password'">
                             </div>
                             <div class="col-md-12 form-group">
-                                <input type="text" class="form-control" id="confirm_password" name="name"
-                                    placeholder="confirm password" onfocus="this.placeholder = ''"
+                                <input type="password" class="form-control" id="confirm_password" name="name"
+                                    placeholder="Confirm Password" onfocus="this.placeholder = ''"
                                     onblur="this.placeholder = 'confirm password'">
                             </div>
                             <div class="col-md-12 form-group">
@@ -292,15 +305,59 @@
     <!--================End Login Box Area =================-->
 
 
-    <footer class="container-fluid text-center">
-        <form class="form-inline">Get deals:
-            <input type="email" class="form-control" size="50" placeholder="Email Address">
-            <button type="button" class="btn btn-danger">Sign Up</button>
-        </form>
-    </footer>
+    <footer id="myFooter">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-3">
+              <h2 class="logo"><a href="./index.html">
+                  <img src="logo/Lectet - noBook.png" id="nttLogo" alt="lectet">
+                </a></h2>
+            </div>
+            <div class="col-sm-2">
+              <h5>Get started</h5>
+              <ul>
+                <li><a href="./index.html">Home</a></li>
+                <li><a href="#">Sign up</a></li>
+                <li><a href="#">Downloads</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-2">
+              <h5>About us</h5>
+              <ul>
+                <li><a href="#">Company Information</a></li>
+                <li><a href="contact-us.html">Contact us</a></li>
+                <li><a href="#">Reviews</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-2">
+              <h5>Support</h5>
+              <ul>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="#">Help desk</a></li>
+                <li><a href="#">Forums</a></li>
+              </ul>
+            </div>
+            <div class="col-sm-3">
+              <div class="social-networks">
+                <a href="#" class="twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="google"><i class="fab fa-google-plus"></i></a>
+              </div>
+              <a href="contact-us.html">
+                <button type="button" class="btn btn-default">Contact us</button>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright">
+          <p>© 2019 Copyright Lectet License </p>
+        </div>
+      </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="./registration.js"></script>
+    <script src="./menu.js"></script>
+
 </body>
 
 </html>

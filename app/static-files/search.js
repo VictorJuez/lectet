@@ -11,6 +11,41 @@ var selectedUrl;
 
 $(document).ready(() => {
 
+    var filter = "#filter";
+
+    var filter_html = "";
+
+    filter_html = filter_html + 
+     '<div class="col-sm-4">' +
+                '<span>Category: </span>' +
+                '<select id="Genre" class="form-control" name="Genre">' +
+                    '<option value="null" selected> </option>' +
+                    '<option value="Action">Action</option>' +
+                    '<option value="Mistery">Mistery</option>' +
+                    '<option value="Drama">Drama</option>' +
+                    '<option value="Fantasy">Fantasy</option>' +
+                '</select>' +
+            '</div>' +
+            '<div class="col-sm-4">' + 
+                '<span>Theme:</span>' +
+                '<select id="Theme" class="form-control" name="Theme">' +
+                    '<option value="null" selected> </option>' +
+                    '<option value="Teenager">Teenager</option>' +
+                    '<option value="Learn">Learn</option>' +
+                    '<option value="Descriptive">Descriptive</option>' +
+                    '<option value="Family">Family</option>' +
+                '</select>' +
+            '</div>' +
+
+            '<div class="col-sm-4">' +
+                '<button id="search" class="search"> SEARCH </button>' +
+            '</div>'
+
+    $(filter).html(filter_html);
+
+    $("#result").html($.urlParam('name'));
+
+
     if($.urlParam('selected') != "authors" && $.urlParam('selected') != "events") {
 
         if ($.urlParam('selected') == "books") {
@@ -25,6 +60,20 @@ $(document).ready(() => {
             //url: 'https://lectet.herokuapp.com/api/books/' + $.urlParam('selected') + '/' + $.urlParam('id'),
     
             selectedUrl = 'https://lectet.herokuapp.com/api/books/' + $.urlParam('selected') + '/2';
+
+            if($.urlParam('selected' == "genre")) { //DONT WORK, IT DO IT BEFORE GENERATE THE HTML
+                $('#Genre').removeAttr('selected')
+                            .filter('[value=' + $.urlParam('name') + ']')
+                            .attr('selected', true); 
+            }
+            else {
+                console.log("Entre");
+                console.log($.urlParam('name'));
+                console.log('[value=' + $.urlParam('name') + ']');
+                $('#Theme').removeAttr('selected')
+                            .filter('[value=' + $.urlParam('name') + ']')
+                            .attr('selected', true); 
+            }
     
         }
 
@@ -42,7 +91,7 @@ $(document).ready(() => {
     
                     book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4 card-book">' +
     
-                        '<div class="card book" style="width: 18rem;">' +
+                        '<div class="card result">' +
                         '<img src="./images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
                         '<div class="card-body">' +
                         '<h4 class="card-title">' + respond.books[x].name + '</h4>' +
@@ -54,7 +103,7 @@ $(document).ready(() => {
     
                         '</div>'
                 }
-    
+
                 $(search).html(book_search);
     
             }
@@ -63,6 +112,8 @@ $(document).ready(() => {
     }
 
     else if($.urlParam('selected') == "authors") {
+
+        $(filter).css("display", "none");
 
         $.ajax({
             type: 'GET',
@@ -78,8 +129,10 @@ $(document).ready(() => {
     
                     book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4">' +
     
-                        '<div class="card author" style="width: 18rem;">' +
-                        '<img class="author-img" src="./images/authors/author_1.jpg" class="fakeimg" alt="...">' +
+                        '<div class="card result author">' +
+                        '<div class="box">' +
+                        '<img class="author-img" src="./images/authors/author_1.jpg" alt="...">' +
+                        '</div>' +
                         '<div class="card-body">' +
                         '<h4 class="card-title">' + respond[x].name + ' ' + respond[x].lastName + '</h4>' +
                         '<a href="./product.html?id=' + respond[x].id + '" class="btn btn-primary button-book"> Go to profile </a>' +
@@ -113,7 +166,7 @@ $(document).ready(() => {
     
                     book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4">' +
     
-                        '<div class="card author" style="width: 18rem;">' +
+                        '<div class="card result" style="width: 18rem;">' +
                         '<img class="event-img" src="./images/events/event_' + respond.events[x].id + '.jpg" class="fakeimg" alt="...">' +
                         '<div class="card-body">' +
                         '<h4 class="card-title">' + respond.events[x].name + '</h4>' +

@@ -10,6 +10,9 @@ $(document).ready(() => {
 
                 id = '#event_' + i;
 
+                $("#item" + i).css('background', 'url(./images/events/event_' + i + '.jpg) no-repeat center center fixed')
+                $("#button-event_" + i).attr("onclick", "location.href='event.html?id=" + respuesta.events[i].id + "'");
+
                 $(id).html("<h3>" + respuesta.events[i].name + "</h3>");
             }
         },

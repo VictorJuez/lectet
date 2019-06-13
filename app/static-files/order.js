@@ -81,7 +81,7 @@ $(document).ready(() => {
               '<h6 class="description-book" id="description-book_' + x + '">' + response.cart.books[x].description + '</h6>' +
             '</div>' +
             '<div class="col-sm-2 col-xs-3">' +
-              '<h5 id="price-book_' + x + '" >Price: ' + response.cart.books[x].price * response.cart.books[x].cart_book.quantity + ' €</h5>' +
+              '<h5 id="price-book_' + x + '" >Price: ' + response.cart.books[x].price + ' €</h5>' +
               
               '<select id="' + x + '" class="form-control" name="Quantity">' +
                 '<option value="1" selected>1</option>' +
@@ -241,7 +241,7 @@ function getRandomInt(min, max, list_id) {
 
 document.getElementById("checkout").onclick = function () {
   addToCart();
-  //location.href='./shippment-info.html';
+  location.href='./shippment-info.html';
 };
 
 function addToCart() {

@@ -175,9 +175,32 @@ body {
     height: 4em;
 }
 
+#item0 {
+    -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover !important;
+}
+
 #item1 {
-    background: url(./images/firma_libro.jpg);
-    background-size: 100%;
+    -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover !important;
+}
+
+#item2 {
+    -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover !important;
+}
+
+#item3 {
+    -webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover !important;
 }
 
 @media (min-width: 22.5em) {

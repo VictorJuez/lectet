@@ -15,8 +15,7 @@ $(document).ready(() => {
 
     $.ajax({
         type: 'GET',
-      //  url: 'https://lectet.herokuapp.com/api/events/' + $.urlParam('id'),
-          url: 'https://lectet.herokuapp.com/api/events/1',
+          url: 'https://lectet.herokuapp.com/api/events/' + $.urlParam('id'),
         success: function (respond) {
             console.log(respond);
             console.log(respond.event.books[0].name);
@@ -31,7 +30,7 @@ $(document).ready(() => {
                 date = date + dateReceive.charAt(x);
             }
 
-            for(x = 11; x < 19; x++) {
+            for(x = 11; x < 16; x++) {
                 hour = hour + dateReceive.charAt(x);
             }
 

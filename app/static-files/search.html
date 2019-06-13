@@ -90,13 +90,7 @@
                         <a href="#">Others</a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="">Recommended</a>
-                            </li>
-                            <li>
-                                <a href="">Sub menu 2</a>
-                            </li>
-                            <li>
-                                <a href="">Sub menu 3</a>
+                                <a href="search.html?name=favourites">Recommended</a>
                             </li>
                         </ul>
                     </li>
@@ -114,36 +108,13 @@
     <!-- Page Content -->
     <div class="container">
 
-        <div class="row">
+        <div class="row" id="filter">
 
-            <div class="col-sm-4">
-                <span>Category: </span>
-                <select id="Genre" class="form-control" name="Genre">
-                    <option value="null" selected> </option>
-                    <option value="Action">Action</option>
-                    <option value="Mistery">Mistery</option>
-                    <option value="Drama">Drama</opion>
-                    <option value="Fantasy">Fantasy</option>
-                </select>
-            </div>
-            <div class="col-sm-4">
-                <span>Theme:</span>
-                <select id="Theme" class="form-control" name="Theme">
-                    <option value="null" selected> </option>
-                    <option value="Teenager">Teenager</option>
-                    <option value="Learn">Learn</option>
-                    <option value="Descriptive">Descriptive</opion>
-                    <option value="Family">Family</option>
-                </select>
-            </div>
-
-            <div class="col-sm-4">
-                <button id="search" class="search"> SEARCH </button>
-            </div>
+            
         </div>
 
         <!-- Page Heading -->
-        <h1 class="my-4" id="search">Search results
+        <h1 class="my-4" id="result">
             <!-- <small>Secondary Text</small> -->
         </h1>
 
