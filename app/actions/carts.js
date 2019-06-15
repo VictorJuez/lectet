@@ -42,8 +42,25 @@ const getCartById = async (request, response) => {
     response.status(200).json({cart});
 }
 
+const addBookToCart = async (request, response) => {
+    var cart = await Cart.findOne({
+        where: {userId: request.user.id},
+        include: [Book]
+    });
+    const book = await Book.findByPk(request.params.bookId);
+    await cart.addBook(book, { through: { 
+        quantity: 1,
+        unitPrice: book.price
+    }});
+    cart = await Cart.findByPk(cart.id,{
+        include: [Book]
+    });
+    response.status(200).json({cart});
+}
+
 module.exports = {
     getCart,
     createCart,
-    getCartById
+    getCartById,
+    addBookToCart
 }
