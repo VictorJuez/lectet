@@ -83,3 +83,21 @@
       margin-bottom: 20px;
     }
   }
+
+
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+ }
+ 
+ .popup-center {
+    text-align: center;
+ }
+
+ #button-modal {
+  background: #4fd956;
+  border-color: #4fd956;
+  border-radius: 5px;
+ }

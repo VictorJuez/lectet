@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Product Page</title>
+  <title>Lectet</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- If IE use the latest rendering engine -->
@@ -115,17 +115,17 @@
             </ol>
 
             <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
+            <div class="carousel-inner" role="listbox" id="carrousel-book">
               <div class="item active">
-                <img id="book_image0" src="logo\book.jpeg" alt="Book">
+                <img id="book_image0" class="image-book" src="logo\book.jpeg" alt="Book">
               </div>
 
               <div class="item">
-                <img id="book_image1" src="logo\book.jpeg" alt="Book">
+                <img id="book_image1" class="image-book" src="logo\book.jpeg" alt="Book">
               </div>
 
               <div class="item">
-                <img id="book_image2" src="logo\book.jpeg" alt="Book">
+                <img id="book_image2" class="image-book" src="logo\book.jpeg" alt="Book">
               </div>
             </div>
 
@@ -147,13 +147,42 @@
         <div class="row">
           <div class="col-lg-6 ">
             <button id="addToCart" type="button" class="btn btn-warning btn-lg btn-block padding_all"
-              onclick="addToCart()">
+              onclick="addToCart()" data-toggle="modal" data-target="#miModal">
               <span class="glyphicon glyphicon-shopping-cart"></span> ADD TO CART</button></div>
           <div class="col-lg-6">
-            <button type="button" class="btn btn-danger btn-lg btn-block padding_all"><span
-                class="glyphicon glyphicon-euro"></span> BUY NOW </button>
+            <a id="refer-buyNow">
+              <button id="buyNow" type="button" class="btn btn-danger btn-lg btn-block padding_all"><span
+                  class="glyphicon glyphicon-euro"></span> BUY NOW </button>
+            </a>
           </div>
         </div>
+
+        <div class="modal fade" id="miModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+          aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title popup-center" id="myModalLabel">The book was added correctly!</h4>
+              </div>
+              <div id="container-modal-body">
+                <div class="modal-body" id="myModalBody">
+                  <button type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">Follow buying</span>
+                  </button>
+                  <a href="order_details.html">
+                    <button type="button" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">Go to the shopping cart</span>
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <!-- </div>
                     </div>
                 </div> -->
@@ -167,14 +196,15 @@
         <h2 id="book_title">Name of the book</h2>
         <h5 id="author_name">
         </h5>
-        <p><button type="button" class="btn btn-success btw-sm">5 <span class="glyphicon glyphicon-star"></span></button>
+        <p><button type="button" class="btn btn-success btw-sm">5 <span
+              class="glyphicon glyphicon-star"></span></button>
           <a id=number_of_review class="nav-link" href="#" style="color: #aaa">000 rating & 000 review</a>
         </p>
         <p>
           <h1 id="book_price">000<span class="glyphicon glyphicon-euro"></span></h1>
         </p>
         <p style="color:green">
-          <span class="glyphicon glyphicon-tag"></span> Spacial Price 10% off*
+          <span class="glyphicon glyphicon-tag"></span> Special Price 10% off*
         </p>
         <p id="book_description">
           This is the descriotion of the book
@@ -182,7 +212,7 @@
         Type of book: <a class="nav-link" href="#" id="book_category" style="color: #aaa">category</a>
         <br>
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-lg-2"><span class="glyphicon glyphicon-map-marker"></span> Deliver to</div>
           <div class="col-lg-4">
             <div class="input-group input-group-sm">
@@ -192,7 +222,7 @@
               </span>
             </div>
           </div>
-        </div>
+        </div>-->
 
 
 
@@ -236,53 +266,53 @@
   </section>
   <!-- End related-product Area -->
   <footer id="myFooter">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-3">
-            <h2 class="logo"><a href="./index.html">
-                <img src="logo/Lectet - noBook.png" id="nttLogo" alt="lectet">
-              </a></h2>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-3">
+          <h2 class="logo"><a href="./index.html">
+              <img src="logo/Lectet - noBook.png" id="nttLogo" alt="lectet">
+            </a></h2>
+        </div>
+        <div class="col-sm-2">
+          <h5>Get started</h5>
+          <ul>
+            <li><a href="./index.html">Home</a></li>
+            <li><a href="#">Sign up</a></li>
+            <li><a href="#">Downloads</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-2">
+          <h5>About us</h5>
+          <ul>
+            <li><a href="#">Company Information</a></li>
+            <li><a href="contact-us.html">Contact us</a></li>
+            <li><a href="#">Reviews</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-2">
+          <h5>Support</h5>
+          <ul>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="#">Help desk</a></li>
+            <li><a href="#">Forums</a></li>
+          </ul>
+        </div>
+        <div class="col-sm-3">
+          <div class="social-networks">
+            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+            <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
           </div>
-          <div class="col-sm-2">
-            <h5>Get started</h5>
-            <ul>
-              <li><a href="./index.html">Home</a></li>
-              <li><a href="#">Sign up</a></li>
-              <li><a href="#">Downloads</a></li>
-            </ul>
-          </div>
-          <div class="col-sm-2">
-            <h5>About us</h5>
-            <ul>
-              <li><a href="#">Company Information</a></li>
-              <li><a href="contact-us.html">Contact us</a></li>
-              <li><a href="#">Reviews</a></li>
-            </ul>
-          </div>
-          <div class="col-sm-2">
-            <h5>Support</h5>
-            <ul>
-              <li><a href="faq.html">FAQ</a></li>
-              <li><a href="#">Help desk</a></li>
-              <li><a href="#">Forums</a></li>
-            </ul>
-          </div>
-          <div class="col-sm-3">
-            <div class="social-networks">
-              <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-              <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-              <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-            </div>
-            <a href="contact-us.html">
-              <button type="button" class="btn btn-default">Contact us</button>
-            </a>
-          </div>
+          <a href="contact-us.html">
+            <button type="button" class="btn btn-default">Contact us</button>
+          </a>
         </div>
       </div>
-      <div class="footer-copyright">
-        <p>© 2019 Copyright Lectet License </p>
-      </div>
-    </footer>
+    </div>
+    <div class="footer-copyright">
+      <p>© 2019 Copyright Lectet License </p>
+    </div>
+  </footer>
 
   <script src='./product.js'></script>
   <script src="./menu.js"></script>

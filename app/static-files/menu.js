@@ -7,7 +7,12 @@ $(document).ready(function(){
         $user.text(userkey.email);
         $user.attr("href", "");
     }
-    else console.log("you are not logged in");
+    else {
+        console.log("you are not logged in");
+        $("#cart").css({
+            'display': 'none'
+          });
+    }
     
     $(window).on('scroll', function(){
         if ( $(window).scrollTop() > altura ){
@@ -16,5 +21,5 @@ $(document).ready(function(){
             $('#menu-top').removeClass('menu-fixed');
         }
     });
- 
+
 });

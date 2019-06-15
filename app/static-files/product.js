@@ -21,8 +21,11 @@ $(document).ready(() => {
     var $book_image2 = $('#book_image2');
 
     $book_image0.attr("src", 'images/books/book_' + $.urlParam('id') + '.jpg');
-    $book_image1.attr("src", 'images/books/book_' + $.urlParam('id') + '.jpg');
-    $book_image2.attr("src", 'images/books/book_' + $.urlParam('id') + '.jpg');
+    $book_image1.attr("src", 'images/example_page_1.jpg');
+    $book_image2.attr("src", 'images/example_page_2.jpg');
+
+    $("#refer-buyNow").attr("href", "./shippment-info.html?direct=yes&id=" + $.urlParam('id'));
+
     $.ajax({
         type: 'GET',
         url: 'https://lectet.herokuapp.com/api/books/' + $.urlParam('id'),
@@ -66,7 +69,7 @@ $(document).ready(() => {
                         // console.log(data.author.books[i].name);
                         related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6">' +
                             '<div class="single-related-product d-flex">' +
-                            '<a href=""><img src="images/books/book_' + data1.books[i].id + '.jpg' + '" class="fakeimg" alt=""></a>' +
+                            '<a href="' + 'product.html?id=' + data1.books[i].id + '"><img src="images/books/book_' + data1.books[i].id + '.jpg' + '" class="fakeimg" alt=""></a>' +
                             ' <div class="text-center">' +
                             '<a href="' + 'product.html?id=' + data1.books[i].id + '" class="title">' + data1.books[i].name + '</a>' +
                             '<div class="price">' +
@@ -89,8 +92,7 @@ $(document).ready(() => {
         type: 'GET',
         url: 'https://lectet.herokuapp.com/api/events/book/' + $.urlParam('id'),
         success: function (data2) {
-
-            if (data2.length > 0) {
+            if (data2.events.length > 0) {
                 console.log(data2);
                 id = '#event';
                 $(id).css({
@@ -122,27 +124,57 @@ $(document).ready(() => {
     function addToCart() {
         var $id = $.urlParam('id');
 
-        $.ajax({
-            url: 'https://lectet.herokuapp.com/api/cart/',
-            type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify([{
-                "book": $id,
-                "quantity": 1
-            }]),
-            beforeSend: function (request) {
-                request.setRequestHeader("Authorization", userkey.token);
-                console.log("DONE IT");
-                console.log(this.data);
-            },
-            success: function (response) {
-                console.log("I ADD TO CART");
-                console.log(response);
-            },
-            error: function () {
-                console.log("Error while adding");
-            }
-        });
+        if(userkey){
+            $.ajax({
+                url: 'https://lectet.herokuapp.com/api/cart/' + $id,
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                beforeSend: function (request) {
+                    request.setRequestHeader("Authorization", userkey.token);
+                    console.log("DONE IT");
+                },
+                success: function (response) {
+                    console.log("I ADD TO CART");
+                    console.log(response);
+                },
+                error: function () {
+                    console.log("Error while adding");
+                }
+            });
+        }
+        else {
+            $("#myModalLabel").text("Not logged in");
+
+            var modalBody = "";
+
+            modalBody = modalBody + '<div class="modal-body popup-center">' + 
+            'You need to be logged in for buy a book.' +
+          '</div>' +
+          '<br/>' +
+          '<div class="modal-body popup-center">' +
+           'You can login by clicking on the button: ' +
+            '<a href="login.html">' +
+              '<button id="button-modal" type="button">' +
+                '<span aria-hidden="true">Login</span>' +
+              '</button>' +
+            '</a>' +
+            '<br/> ' +
+            '<br/>' +
+            'Or if you have not registered yet you can register by clicking the following button: ' +
+            '<a href="registration.html">' +
+              '<button id="button-modal" type="button">' +
+                '<span aria-hidden="true">Register</span>' +
+              '</button>' +
+            '</a>' +
+          '</div>'
+
+            $("#myModalBody").text("You need to be logged in for buy a book");
+            $("#container-modal-body").html(modalBody);
+        }
     }
+
+    document.getElementById("buyNow").onclick = function () {
+        //addToCart()
+    };
 });

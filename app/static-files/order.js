@@ -203,7 +203,7 @@ $(document).ready(() => {
 
         $(id).attr("onclick", "location.href='product.html?id=" + respond.books[id_category].id + "'");
 
-        $(".img-book" + i + "_0").attr("src", "./images/books/book_" + respond.books[i].id + ".jpg");
+        $(".img-book" + i + "_0").attr("src", "./images/books/book_" + respond.books[id_category].id + ".jpg");
       }
 
     },
@@ -241,7 +241,7 @@ function getRandomInt(min, max, list_id) {
 
 document.getElementById("checkout").onclick = function () {
   addToCart();
-  location.href='./shippment-info.html';
+  location.href='./shippment-info.html?direct=no';
 };
 
 function addToCart() {
@@ -273,7 +273,9 @@ function addToCart() {
   
   if(isOnly == false) {
     for(x; x < id_books.length; x++) {
-      new_data = new_data + ',{' + '"book"' + ':' + id_books[x] + ',' + '"quantity"' + ':' + quantityNew[x] + '}'
+      if(id_books[x] != -1) {
+        new_data = new_data + ',{' + '"book"' + ':' + id_books[x] + ',' + '"quantity"' + ':' + quantityNew[x] + '}'
+      }
     }
   }
   

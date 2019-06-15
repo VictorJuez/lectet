@@ -58,7 +58,7 @@
      color: #dad7d7 !important;
    }
 
-   a:active, a:hover {
+   li a:active, li a:hover {
     color: white !important;
     text-decoration: underline;
    }
