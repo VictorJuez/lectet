@@ -68,9 +68,11 @@ const getFavourites = async (request, response) => {
 }
 
 const getBooksByFilter = async (request, response) => {
-  console.log(request.body);
-  const genres = request.body.genre;
-  const theme = request.body.theme;
+  var genres = request.query.genre;
+  var theme = request.query.theme;
+  genres = genres.split(',');
+  theme = theme.split(',');
+
   const books = await Book.findAll({
     where: {
       themeId: theme,
