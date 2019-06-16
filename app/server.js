@@ -28,8 +28,8 @@ app.use(
 app.use(cors());
 
 // API routes
+app.use('/backend/swaggerui', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 app.use('/backend',routes);
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Start the server
 app.listen(port, () => {

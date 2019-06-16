@@ -1,7 +1,7 @@
 const app = module.exports = require('express')();
 var express = require('express');
 
-app.use('/', express.static('app/static-files'));
+app.use('/', express.static('app/static-files/backend'));
 
 //app.use('/auth', require('./auth'));
 app.use('/user', require('./users'));
