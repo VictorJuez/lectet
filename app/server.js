@@ -28,7 +28,7 @@ app.use(
 app.use(cors());
 
 // API routes
-app.use('/api',routes);
+app.use('/backend',routes);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Start the server
