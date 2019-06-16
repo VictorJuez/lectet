@@ -8,6 +8,7 @@ $.urlParam = function (name) {
 }
 
 var selectedUrl;
+var length;
 
 $(document).ready(() => {
 
@@ -80,6 +81,9 @@ $(document).ready(() => {
             type: 'GET',
             url: selectedUrl,
             success: function (respond) {
+
+                length = respond.books.length;
+
                 console.log(respond);
 
                 var search = "#books-search";
@@ -105,6 +109,7 @@ $(document).ready(() => {
 
                 $(search).html(book_search);
 
+                numberPages();
             }
         });
 
@@ -116,6 +121,9 @@ $(document).ready(() => {
             type: 'GET',
             url: 'https://lectet.herokuapp.com/api/authors/',
             success: function (respond) {
+
+                length = respond.length;
+
                 console.log(respond);
 
                 var search = "#books-search";
@@ -141,6 +149,7 @@ $(document).ready(() => {
 
                 $(search).html(book_search);
 
+                numberPages();
             }
         });
 
@@ -151,6 +160,9 @@ $(document).ready(() => {
             type: 'GET',
             url: 'https://lectet.herokuapp.com/api/events/',
             success: function (respond) {
+
+                length = respond.events.length;
+
                 console.log(respond);
 
                 var search = "#books-search";
@@ -173,6 +185,8 @@ $(document).ready(() => {
                 }
 
                 $(search).html(book_search);
+
+                numberPages();
 
             }
         });
@@ -230,6 +244,39 @@ $(document).ready(() => {
             }
         });
 
+    }
+
+    function numberPages() {
+
+        console.log(length);
+
+        var generateNumber = "";
+        var numberPages = length / 6;
+
+        generateNumber = generateNumber +
+            '<li class="page-item">' +
+            '<a class="page-link" href="#" aria-label="Previous">' +
+            '<span aria-hidden="true">&laquo;</span>' +
+            '<span class="sr-only">Previous</span>' +
+            '</a>' +
+            '</li>'
+
+        for (var x = 1; x <= numberPages + 1; x++) {
+            generateNumber = generateNumber +
+                '<li class="page-item">' +
+                '<a class="page-link" href="#">' + x + '</a>' +
+                '</li>'
+        }
+
+        generateNumber = generateNumber +
+            '<li class="page-item">' +
+            '<a class="page-link" href="#" aria-label="Next">' +
+            '<span aria-hidden="true">&raquo;</span>' +
+            '<span class="sr-only">Next</span>' +
+            '</a>' +
+            '</li>'
+
+        $("#nPages").html(generateNumber);
     }
 
 });
