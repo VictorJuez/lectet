@@ -73,7 +73,7 @@ $(document).ready(() => {
                             ' <div class="text-center">' +
                             '<a href="' + 'product.html?id=' + data1.books[i].id + '" class="title">' + data1.books[i].name + '</a>' +
                             '<div class="price">' +
-                            '<h6>' + '$' + data1.books[i].price + '</h6>' +
+                            '<h6>' + data1.books[i].price + ' €</h6>' +
                             '</div>' +
                             '</div>' +
                             '</div>' +
