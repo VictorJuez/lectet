@@ -1,8 +1,7 @@
 const app = module.exports = require('express')();
+var express = require('express');
 
-app.get('/', (req, res) => {
-  res.send({msg: 'hello! Server is up and running'});
-});
+app.use('/', express.static('app/public/backend'));
 
 //app.use('/auth', require('./auth'));
 app.use('/user', require('./users'));

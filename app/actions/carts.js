@@ -1,10 +1,13 @@
 const Sequelize = require('sequelize');
-const { Cart, Book } = require('../helpers/sequelize');
+const { Cart, Book, Author } = require('../helpers/sequelize');
 
 const getCart = async (request, response) => {
     const cart = await Cart.findOne({
         where: {userId: request.user.id},
-        include: [Book]
+        include: [{
+            model: Book,
+            include: [Author]
+        }]
     });
     response.status(200).json({cart});
 }
@@ -35,13 +38,6 @@ const createCart = async (request, response) => {
     response.status(200).json({'cart': solution});
 }
 
-const getCartById = async (request, response) => {
-    const cart = await Cart.findByPk(request.params.cartId, {
-        include: [Book]
-    });
-    response.status(200).json({cart});
-}
-
 const addBookToCart = async (request, response) => {
     var cart = await Cart.findOne({
         where: {userId: request.user.id},
@@ -61,6 +57,5 @@ const addBookToCart = async (request, response) => {
 module.exports = {
     getCart,
     createCart,
-    getCartById,
     addBookToCart
 }

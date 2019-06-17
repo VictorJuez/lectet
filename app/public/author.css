@@ -1,0 +1,26 @@
+.imgRedonda {
+     /* cambia estos dos valores para definir el tamaño de tu círculo */
+    /* height: 100%;
+     width: 100%;*/
+     /* los siguientes valores son independientes del tamaño del círculo */
+     /*background-repeat: no-repeat;
+     background-position: 50%;
+     border-radius: 50%;
+     background-size: 100% auto;*/
+
+     border-radius: 50%;
+
+     width: 24rem;
+    height: 24rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.fakeimg {
+     height: 100px;
+    background: #aaa;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

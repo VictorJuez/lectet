@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Product Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- If IE use the latest rendering engine -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="order.css">
+    <link rel="stylesheet" href="./menu.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid" id="menu-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="#">Logo</a>-->
+                <a href="./index.html">
+                    <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav menu">
+                    <li>
+                        <a href="#">Category</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="">Sub menu 1</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 2</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Themes</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="">Sub menu 1</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 2</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Events</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="">Sub menu 1</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 2</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Others</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="">Recommended</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 2</a>
+                            </li>
+                            <li>
+                                <a href="">Sub menu 3</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="login.html" id="loggeduser"><span class="glyphicon glyphicon-user"></span> Log in</a>
+                    </li>
+                    <li><a href="order_details.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <div class="format-left cart-text">
+        <h3>Cart</h3>
+    </div> -->
+
+    <div class="container">
+        <div class="row">
+            <div class="format-left pedido col-sm-11 col-md-6">
+                <div id="cart">
+
+                </div>
+            </div>
+
+
+            <div class="extracto col-sm-11 col-md-4">
+                <div class="jumbotron">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-8 col-xs-8" id="book-order">
+
+                            </div>
+                            <div class="col-sm-4 col-xs-4" id="price-order">
+
+                            </div>
+                        </div>
+                        <hr />
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm-8 col-xs-4">
+                                <h5>Total:</h5>
+                            </div>
+                            <div class="col-sm-4 col-xs-4" id="total-price">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="checkout" class="checkout"> CHECKOUT </button>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <br />
+
+    <div class="best-seller">
+        <div class="container">
+            <div class="section" id="category_1">Maybe you are interested in...</div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="carousel carousel-showmanymoveone slide" id="carousel-tilenav" data-interval="false">
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <div class="col-xs-12 col-sm-6 col-md-2">
+                                    <button class="button-carrousel button0_0" onclick="location.href='product.html'">
+                                        <div id="book0_0">
+                                            <img src="./images/stephen_king_3.jpg"
+                                                class="img-responsive img-carrousel img-book0_0" alt="Image">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-12 col-sm-6 col-md-2">
+                                    <button class="button-carrousel button1_0" onclick="location.href='product.html'">
+                                        <div id="book1_0">
+                                            <img src="./images/stephen_king_3.jpg"
+                                                class="img-responsive img-carrousel img-book1_0" alt="Image">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-12 col-sm-6 col-md-2">
+                                    <button class="button-carrousel button2_0" onclick="location.href='product.html'">
+                                        <div id="book2_0">
+                                            <img src="./images/stephen_king_3.jpg"
+                                                class="img-responsive img-carrousel img-book2_0" alt="Image">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-12 col-sm-6 col-md-2">
+                                    <button class="button-carrousel button3_0" onclick="location.href='product.html'">
+                                        <div id="book3_0">
+                                            <img src="./images/stephen_king_3.jpg"
+                                                class="img-responsive img-carrousel img-book3_0" alt="Image">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-12 col-sm-6 col-md-2">
+                                    <button class="button-carrousel button4_0" onclick="location.href='product.html'">
+                                        <div id="book4_0">
+                                            <img src="./images/stephen_king_3.jpg"
+                                                class="img-responsive img-carrousel img-book4_0" alt="Image">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-12 col-sm-6 col-md-2">
+                                    <button class="button-carrousel button5_0" onclick="location.href='product.html'">
+                                        <div id="book5_0">
+                                            <img src="./images/stephen_king_3.jpg"
+                                                class="img-responsive img-carrousel img-book5_0" alt="Image">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-12 col-sm-6 col-md-2">
+                                    <button class="button-carrousel button6_0" onclick="location.href='product.html'">
+                                        <div id="book6_0">
+                                            <img src="./images/stephen_king_3.jpg"
+                                                class="img-responsive img-carrousel img-book6_0" alt="Image">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="col-xs-12 col-sm-6 col-md-2">
+                                    <button class="button-carrousel button7_0" onclick="location.href='product.html'">
+                                        <div id="book7_0">
+                                            <img src="./images/stephen_king_3.jpg"
+                                                class="img-responsive img-carrousel img-book7_0" alt="Image">
+                                        </div>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="left carousel-control carousel-book" href="#carousel-tilenav" data-slide="prev"><i
+                                class="glyphicon glyphicon-chevron-left"></i></a>
+                        <a class="right carousel-control carousel-book" href="#carousel-tilenav" data-slide="next"><i
+                                class="glyphicon glyphicon-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="myFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h2 class="logo"><a href="./index.html">
+                            <img src="logo/Lectet - noBook.png" id="nttLogo" alt="lectet">
+                        </a></h2>
+                </div>
+                <div class="col-sm-2">
+                    <h5>Get started</h5>
+                    <ul>
+                        <li><a href="./index.html">Home</a></li>
+                        <li><a href="#">Sign up</a></li>
+                        <li><a href="#">Downloads</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5>About us</h5>
+                    <ul>
+                        <li><a href="#">Company Information</a></li>
+                        <li><a href="contact-us.html">Contact us</a></li>
+                        <li><a href="#">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-2">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Forums</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <div class="social-networks">
+                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
+                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                    </div>
+                    <a href="contact-us.html">
+                        <button type="button" class="btn btn-default">Contact us</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2019 Copyright Lectet License </p>
+        </div>
+    </footer>
+
+
+    </div>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js'></script>
+
+    <script src="./order.js"></script>
+    <script src="./menu.js"></script>
+    <script src="./dotdotdot.js"></script>
+</body>
+
+</html>

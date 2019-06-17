@@ -1,0 +1,491 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Swagger Lectet
+  description: >-
+    Lectet API documentation, all the secured requests (with a locker on it)
+    have to passed a token authorization into its header. This token is used to
+    identify the user inside the system. In order to get this token you have to
+    create a new user using the signUp request (its response will give a token)
+    or using the signIn request if the user already exists (its response will
+    also give a token). The token will expire after 1 day for security reasons,
+    so after that time a new login or signup will be required in order to obtain
+    a new token.
+host: lectet.herokuapp.com
+schemes:
+  - https
+basePath: /api
+securityDefinitions:
+  JWT:
+    description: ''
+    type: apiKey
+    name: Authorization
+    in: header
+paths:
+  /user/signUp:
+    post:
+      tags:
+        - user
+      summary: Sing up into the system
+      parameters:
+        - in: body
+          name: credentials
+          description: Credentials of the user to login
+          schema:
+            type: object
+            required:
+              - email
+              - password
+            properties:
+              email:
+                type: string
+              password:
+                type: string
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+                example: >-
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJsZWN0ZXQiLCJzdWIiOjIsImlhdCI6MTU1NjA5OTM0NzAzOCwiZXhwIjoxNTU2MTg1NzQ3MDM4fQ.cQdmUXljJYB4vArsnrIiHZalFTlvNzzPklWuu8BCJBY
+  /user/signIn:
+    post:
+      tags:
+        - user
+      summary: Login user into the system
+      parameters:
+        - in: body
+          name: credentials
+          description: Credentials of the user to login
+          schema:
+            type: object
+            required:
+              - email
+              - password
+            properties:
+              email:
+                type: string
+              password:
+                type: string
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              token:
+                type: string
+                example: >-
+                  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJsZWN0ZXQiLCJzdWIiOjIsImlhdCI6MTU1NjA5OTM0NzAzOCwiZXhwIjoxNTU2MTg1NzQ3MDM4fQ.cQdmUXljJYB4vArsnrIiHZalFTlvNzzPklWuu8BCJBY
+  /user/info:
+    get:
+      tags:
+        - user
+      summary: Get personal information about logged user
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+                example: myemail@email.com
+      security:
+        - JWT: []
+    put:
+      tags:
+        - user
+      summary: Update personal information about logged user
+      parameters:
+        - in: body
+          name: user parameters
+          description: Credentials of the user to login
+          schema:
+            type: object
+            properties:
+              email:
+                type: string
+              password:
+                type: string
+      responses:
+        '200':
+          description: Success response
+      security:
+        - JWT: []
+  /books/:
+    get:
+      tags:
+        - book
+      summary: Get all books
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              books:
+                type: array
+                items:
+                  $ref: '#/definitions/BookAuthor'
+  '/books/{bookId}':
+    get:
+      tags:
+        - book
+      summary: Get all books
+      parameters:
+        - in: path
+          name: bookId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              book:
+                $ref: '#/definitions/BookAuthor'
+  /books/genres:
+    get:
+      tags:
+        - book
+      summary: Get all books' genres
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              genres:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    description:
+                      type: string
+  /books/themes:
+    get:
+      tags:
+        - book
+      summary: Get all books' themes
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              genres:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    description:
+                      type: string
+  /books/favourites:
+    get:
+      tags:
+        - book
+      summary: Get 'ourfavourites' list books
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              books:
+                type: array
+                items:
+                  $ref: '#/definitions/BookAuthor'
+  '/books/genre/{genreId}':
+    get:
+      tags:
+        - book
+      summary: Get all books that belongs to the specified genre
+      parameters:
+        - in: path
+          name: genreId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              books:
+                type: array
+                items:
+                  $ref: '#/definitions/BookAuthor'
+  '/books/theme/{themeId}':
+    get:
+      tags:
+        - book
+      summary: Get all books that belongs to the specified theme
+      parameters:
+        - in: path
+          name: themeId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              books:
+                type: array
+                items:
+                  $ref: '#/definitions/BookAuthor'
+  /events/:
+    get:
+      tags:
+        - event
+      summary: Get all events
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              events:
+                type: array
+                items:
+                  $ref: '#/definitions/Event'
+  '/events/{eventId}':
+    get:
+      tags:
+        - event
+      summary: Get the specified event
+      parameters:
+        - in: path
+          name: eventId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              event:
+                $ref: '#/definitions/Event'
+  '/events/book/{bookId}':
+    get:
+      tags:
+        - event
+      summary: Get all the events of the specified book
+      parameters:
+        - in: path
+          name: bookId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              events:
+                type: array
+                items:
+                  $ref: '#/definitions/Event'
+  /events/now:
+    get:
+      tags:
+        - event
+      summary: Get all this months' events
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              events:
+                type: array
+                items:
+                  $ref: '#/definitions/Event'
+  '/authors/{authorId}':
+    get:
+      tags:
+        - author
+      summary: Get the specified author
+      parameters:
+        - in: path
+          name: authorId
+          required: true
+          type: string
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              author:
+                $ref: '#/definitions/AuthorBook'
+  /orders/:
+    post:
+      tags:
+        - order
+      summary: Create a new order for logged user
+      parameters:
+        - in: body
+          name: Order details
+          description: Order details
+          schema:
+            $ref: '#/definitions/CreateOrder'
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              order:
+                $ref: '#/definitions/Order'
+      security:
+        - JWT: []
+    get:
+      tags:
+        - order
+      summary: Get all orders for logged user
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              orders:
+                type: array
+                items:
+                  $ref: '#/definitions/Order'
+      security:
+        - JWT: []
+  '/orders/{orderId}':
+    get:
+      tags:
+        - order
+      summary: Get the specified order given its id
+      parameters:
+        - in: path
+          required: true
+          name: orderId
+          type: string
+      responses:
+        '200':
+          description: Success response
+          schema:
+            type: object
+            properties:
+              order:
+                $ref: '#/definitions/Order'
+      security:
+        - JWT: []
+definitions:
+  User:
+    type: object
+    properties:
+      id:
+        type: integer
+      email:
+        type: string
+      password:
+        type: string
+  Book:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      price:
+        type: number
+  Author:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+  Event:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      description:
+        type: string
+      date:
+        type: string
+        format: date
+      books:
+        type: array
+        items:
+          $ref: '#/definitions/BookAuthor'
+  BookAuthor:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      price:
+        type: number
+      authors:
+        type: array
+        items:
+          $ref: '#/definitions/Author'
+  AuthorBook:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      books:
+        type: array
+        items:
+          $ref: '#/definitions/Book'
+  CreateOrder:
+    type: array
+    items:
+      type: object
+      properties:
+        book:
+          type: integer
+        quantity:
+          type: integer
+  Order:
+    type: object
+    properties:
+      id:
+        type: integer
+      userId:
+        type: integer
+      books:
+        type: array
+        items:
+          $ref: '#/definitions/BookOrdered'
+  BookOrdered:
+    type: object
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      price:
+        type: number
+      order_book:
+        type: object
+        properties:
+          quantity:
+            type: integer
+          unitPrice:
+            type: integer
