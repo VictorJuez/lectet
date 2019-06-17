@@ -4,10 +4,7 @@ const { Cart, Book, Author } = require('../helpers/sequelize');
 const getCart = async (request, response) => {
     const cart = await Cart.findOne({
         where: {userId: request.user.id},
-        include: [{
-            model: Book,
-            include: [Author]
-        }]
+        include: [Book]
     });
     response.status(200).json({cart});
 }

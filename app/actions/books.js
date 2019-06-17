@@ -77,7 +77,8 @@ const getBooksByFilter = async (request, response) => {
     where: {
       themeId: theme,
       genreId: genres
-    }
+    },
+    include: [Author]
   });
 
   response.status(200).json(books);
