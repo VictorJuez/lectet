@@ -9,7 +9,7 @@
   "schemes": [
     "https"
   ],
-  "basePath": "/api",
+  "basePath": "/backend",
   "securityDefinitions": {
     "JWT": {
       "description": "",
@@ -119,6 +119,15 @@
             "schema": {
               "type": "object",
               "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "name": {
+                  "type": "string"
+                },
+                "surname": {
+                  "type": "string"
+                },
                 "email": {
                   "type": "string",
                   "example": "myemail@email.com"
@@ -197,7 +206,7 @@
         "tags": [
           "book"
         ],
-        "summary": "Get all books",
+        "summary": "Get single book information",
         "parameters": [
           {
             "in": "path",
@@ -265,7 +274,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "genres": {
+                "themes": {
                   "type": "array",
                   "items": {
                     "type": "object",
@@ -482,6 +491,25 @@
         }
       }
     },
+    "/authors/": {
+      "get": {
+        "tags": [
+          "author"
+        ],
+        "summary": "Get all authors",
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Author"
+              }
+            }
+          }
+        }
+      }
+    },
     "/authors/{authorId}": {
       "get": {
         "tags": [
@@ -509,6 +537,90 @@
             }
           }
         }
+      }
+    },
+    "/cart/": {
+      "get": {
+        "tags": [
+          "cart"
+        ],
+        "summary": "get logged user cart",
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cart": {
+                  "$ref": "#/definitions/Cart"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "cart"
+        ],
+        "summary": "set cart to logged user",
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cart": {
+                  "$ref": "#/definitions/Cart"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
+      }
+    },
+    "/cart/{bookId}": {
+      "post": {
+        "tags": [
+          "cart"
+        ],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "bookId",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "summary": "add one unity of the specified book to the cart",
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "cart": {
+                  "$ref": "#/definitions/Cart"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "JWT": []
+          }
+        ]
       }
     },
     "/orders/": {
@@ -616,6 +728,12 @@
         "id": {
           "type": "integer"
         },
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
         "email": {
           "type": "string"
         },
@@ -633,8 +751,17 @@
         "name": {
           "type": "string"
         },
+        "description": {
+          "type": "string"
+        },
         "price": {
           "type": "number"
+        },
+        "genreId": {
+          "type": "integer"
+        },
+        "themeId": {
+          "type": "integer"
         }
       }
     },
@@ -645,6 +772,12 @@
           "type": "integer"
         },
         "name": {
+          "type": "string"
+        },
+        "lastName": {
+          "type": "integer"
+        },
+        "description": {
           "type": "string"
         }
       }
@@ -668,7 +801,72 @@
         "books": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/BookAuthor"
+            "$ref": "#/definitions/BookEvent"
+          }
+        }
+      }
+    },
+    "BookEvent": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number"
+        },
+        "genreId": {
+          "type": "integer"
+        },
+        "themeId": {
+          "type": "integer"
+        },
+        "book_event": {
+          "type": "object",
+          "properties": {
+            "bookId": {
+              "type": "integer"
+            },
+            "eventId": {
+              "type": "integer"
+            }
+          }
+        },
+        "authors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "lastName": {
+                "type": "integer"
+              },
+              "description": {
+                "type": "string"
+              },
+              "author_book": {
+                "type": "object",
+                "properties": {
+                  "authorId": {
+                    "type": "integer"
+                  },
+                  "bookId": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -682,13 +880,47 @@
         "name": {
           "type": "string"
         },
+        "description": {
+          "type": "string"
+        },
         "price": {
           "type": "number"
+        },
+        "genreId": {
+          "type": "integer"
+        },
+        "themeId": {
+          "type": "integer"
         },
         "authors": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Author"
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "lastName": {
+                "type": "integer"
+              },
+              "description": {
+                "type": "string"
+              },
+              "author_book": {
+                "type": "object",
+                "properties": {
+                  "authorId": {
+                    "type": "integer"
+                  },
+                  "bookId": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -702,10 +934,47 @@
         "name": {
           "type": "string"
         },
+        "lastName": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "string"
+        },
         "books": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/Book"
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "price": {
+                "type": "number"
+              },
+              "genreId": {
+                "type": "integer"
+              },
+              "themeId": {
+                "type": "integer"
+              },
+              "author_book": {
+                "type": "object",
+                "properties": {
+                  "authorId": {
+                    "type": "integer"
+                  },
+                  "bookId": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -730,6 +999,27 @@
         "id": {
           "type": "integer"
         },
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
         "userId": {
           "type": "integer"
         },
@@ -750,8 +1040,17 @@
         "name": {
           "type": "string"
         },
+        "description": {
+          "type": "string"
+        },
         "price": {
-          "type": "number"
+          "type": "integer"
+        },
+        "genreId": {
+          "type": "integer"
+        },
+        "themeId": {
+          "type": "integer"
         },
         "order_book": {
           "type": "object",
@@ -760,6 +1059,69 @@
               "type": "integer"
             },
             "unitPrice": {
+              "type": "integer"
+            },
+            "bookId": {
+              "type": "integer"
+            },
+            "cartId": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "Cart": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "userId": {
+          "type": "integer"
+        },
+        "books": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/BookCart"
+          }
+        }
+      }
+    },
+    "BookCart": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "price": {
+          "type": "integer"
+        },
+        "genreId": {
+          "type": "integer"
+        },
+        "themeId": {
+          "type": "integer"
+        },
+        "cart_book": {
+          "type": "object",
+          "properties": {
+            "quantity": {
+              "type": "integer"
+            },
+            "unitPrice": {
+              "type": "integer"
+            },
+            "bookId": {
+              "type": "integer"
+            },
+            "cartId": {
               "type": "integer"
             }
           }
