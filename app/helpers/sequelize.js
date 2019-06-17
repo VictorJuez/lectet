@@ -11,7 +11,10 @@ const sequelize = new Sequelize('degpai9eklcvs5', 'pfguwsqduqkxxv', 'ffbab27c92e
     protocol: 'postgres',
     dialectOptions: {
         ssl: true
-    }
+    },
+    define: {
+      timestamps: false
+    },
   });
 
 const User = UserModel(sequelize, Sequelize);
