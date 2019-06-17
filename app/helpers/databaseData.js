@@ -127,7 +127,7 @@ async function testDb() {
   await book7.setGenre(genre5);
   await book7.addAuthor(author4);
 
-  const author5 = await Author.build({
+  const author5 = await Author.create({
     name: 'George',
     lastName: 'R. R. Martin',
     description: 'George Raymond Richard Martin, also known as GRRM, is an American novelist and short story writer in the fantasy, horror, and science fiction genres, screenwriter, and television producer.'
@@ -170,7 +170,7 @@ async function testDb() {
   await book11.save();
   await book11.setTheme(theme2);
   await book11.setGenre(genre6);
-  await book10.addAuthor(author5);
+  await book11.addAuthor(author5);
 
   const book12 = await Book.build({
     name: 'A Game of Thrones: part 5',
