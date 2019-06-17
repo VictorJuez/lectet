@@ -34,17 +34,15 @@ async function testDb() {
 
   const user1 = await User.create({ email: 'jaume@gmail.com', password: 'lmao' });
 
-  const genre6 = await Genre.create({ description: "Fantasy" });
   const genre1 = await Genre.create({ description: "Action" });
-  const genre2 = await Genre.create({ description: "Mistery" });
-  const genre3 = await Genre.create({ description: "Drama" });
-  const genre4 = await Genre.create({ description: "Thriller" });
-  const genre5 = await Genre.create({ description: "Biography" });
+  const genre2 = await Genre.create({ description: "Academic" });
+  const genre3 = await Genre.create({ description: "Fiction" });
+  const genre5 = await Genre.create({ description: "History" });
 
-  const theme1 = await Theme.create({ description: "Family" });
+
+  const theme1 = await Theme.create({ description: "Descriptive" });
   const theme2 = await Theme.create({ description: "Teenager" });
-  const theme3 = await Theme.create({ description: "Learn" });
-  const theme4 = await Theme.create({ description: "Descriptive" });
+  const theme3 = await Theme.create({ description: "Comic" });
 
   const book1 = await Book.build({
     name: 'Harry Potter and the Philosopher\'s Stone',
@@ -52,8 +50,8 @@ async function testDb() {
     price: 13
   });
   await book1.save();
+  await book1.setGenre(genre3);
   await book1.setTheme(theme2);
-  await book1.setGenre(genre2);
   await book1.addAuthor(author2);
 
   const book2 = await Book.build({
@@ -62,8 +60,8 @@ async function testDb() {
     price: 15
   });
   await book2.save();
+  await book2.setGenre(genre3);
   await book2.setTheme(theme2);
-  await book2.setGenre(genre2);
   await book2.addAuthor(author2);
 
   const book3 = await Book.build({
@@ -72,8 +70,8 @@ async function testDb() {
     price: 11
   });
   await book3.save();
+  await book3.setGenre(genre3);
   await book3.setTheme(theme2);
-  await book3.setGenre(genre2);
   await book3.addAuthor(author2);
 
   const book4 = await Book.build({
@@ -82,8 +80,8 @@ async function testDb() {
     price: 14
   });
   await book4.save();
+  await book4.setGenre(genre3);
   await book4.setTheme(theme2);
-  await book4.setGenre(genre2);
   await book4.addAuthor(author2);
 
   const book5 = await Book.build({
@@ -92,8 +90,8 @@ async function testDb() {
     price: 8
   });
   await book5.save().then(book2 => book2.addAuthor(author1));
-  await book5.setTheme(theme4);
   await book5.setGenre(genre5);
+  await book5.setTheme(theme1);
 
   const author3 = await Author.create({
     name: 'Anne',
@@ -107,8 +105,8 @@ async function testDb() {
     price: 9
   });
   await book6.save();
-  await book6.setTheme(theme2);
-  await book6.setGenre(genre2);
+  await book6.setGenre(genre5);
+  await book6.setTheme(theme1);
   await book6.addAuthor(author3);
 
   const author4 = await Author.create({
@@ -123,8 +121,8 @@ async function testDb() {
     price: 18
   });
   await book7.save();
-  await book7.setTheme(theme3);
   await book7.setGenre(genre5);
+  await book7.setTheme(theme1);
   await book7.addAuthor(author4);
 
   const author5 = await Author.create({
@@ -138,8 +136,8 @@ async function testDb() {
     price: 40
   });
   await book8.save();
+  await book8.setGenre(genre3);
   await book8.setTheme(theme2);
-  await book8.setGenre(genre6);
   await book8.addAuthor(author5);
 
   const book9 = await Book.build({
@@ -148,8 +146,8 @@ async function testDb() {
     price: 40
   });
   await book9.save();
+  await book9.setGenre(genre3);
   await book9.setTheme(theme2);
-  await book9.setGenre(genre6);
   await book9.addAuthor(author5);
 
   const book10 = await Book.build({
@@ -158,8 +156,8 @@ async function testDb() {
     price: 40
   });
   await book10.save();
+  await book10.setGenre(genre3);
   await book10.setTheme(theme2);
-  await book10.setGenre(genre6);
   await book10.addAuthor(author5);
 
   const book11 = await Book.build({
@@ -168,8 +166,8 @@ async function testDb() {
     price: 40
   });
   await book11.save();
+  await book11.setGenre(genre3);
   await book11.setTheme(theme2);
-  await book11.setGenre(genre6);
   await book11.addAuthor(author5);
 
   const book12 = await Book.build({
@@ -178,8 +176,8 @@ async function testDb() {
     price: 40
   });
   await book12.save();
+  await book12.setGenre(genre3);
   await book12.setTheme(theme2);
-  await book12.setGenre(genre6);
   await book12.addAuthor(author5);
 
   const book13 = await Book.build({
@@ -188,16 +186,208 @@ async function testDb() {
     price: 40
   });
   await book13.save();
+  await book13.setGenre(genre3);
   await book13.setTheme(theme2);
-  await book13.setGenre(genre6);
   await book13.addAuthor(author5);
 
+  const author6 = await Author.create({
+    name: 'Dav',
+    lastName: 'Pilkey',
+    description: 'Dav Pilkey was born on March 4th, 1966 in Cleveland, OH. His father (David, Sr.) was a steel salesman, and his mother (Barbara) was the organist at a local church. Dav\'s older sister (Cindy) was a highly-skilled professional tattletale. I don\'t remember much about my early childhood, except that I was almost always happy. My parents tell me that I used to laugh in my sleep all the time, even as an infant. When I wasn\'t laughing, I kept myself busy by drawing. While the other kids in the neighborhood were outside playing baseball and football, I was inside drawing animals, monsters, and super-hero guys. Life was pretty cool when I was little...and then school started.'
+  });
+  const book14 = await Book.build({
+    name: 'Dog Man: Brawl of the Wild: From the Creator of Captain Underpants',
+    description: "George and Harold have created a new hero who digs into deception, claws after crooks, and rolls over robbers. When Greg the police dog and his cop companion are injured on the job, a life-saving surgery changes the course of history, and Dog Man is born.",
+    price: 7
+  });
+  await book14.save();
+  await book14.setGenre(genre1);
+  await book14.setTheme(theme3);
+  await book14.addAuthor(author6);
+
+  const book15 = await Book.build({
+    name: 'Dog Man: Lord of the Fleas',
+    description: "George and Harold have created a new hero who digs into deception, claws after crooks, and rolls over robbers. When Greg the police dog and his cop companion are injured on the job, a life-saving surgery changes the course of history, and Dog Man is born.",
+    price: 6
+  });
+  await book15.save();
+  await book15.setGenre(genre1);
+  await book15.setTheme(theme3);
+  await book15.addAuthor(author6);
+
+  const book16 = await Book.build({
+    name: 'Dog Man: Unleashed ',
+    description: "George and Harold have created a new hero who digs into deception, claws after crooks, and rolls over robbers. When Greg the police dog and his cop companion are injured on the job, a life-saving surgery changes the course of history, and Dog Man is born.",
+    price: 8
+  });
+  await book16.save();
+  await book16.setGenre(genre1);
+  await book16.setTheme(theme3);
+  await book16.addAuthor(author6);
+
+  const book17 = await Book.build({
+    name: 'Dog Man and Cat Kid: From the Creator of Captain Underpants',
+    description: "George and Harold have created a new hero who digs into deception, claws after crooks, and rolls over robbers. When Greg the police dog and his cop companion are injured on the job, a life-saving surgery changes the course of history, and Dog Man is born.",
+    price: 9
+  });
+  await book17.save();
+  await book17.setGenre(genre1);
+  await book17.setTheme(theme3);
+  await book17.addAuthor(author6);
+
+  const book18 = await Book.build({
+    name: 'Dog Man: For Whom the Ball Rolls',
+    description: "George and Harold have created a new hero who digs into deception, claws after crooks, and rolls over robbers. When Greg the police dog and his cop companion are injured on the job, a life-saving surgery changes the course of history, and Dog Man is born.",
+    price: 5
+  });
+  await book18.save();
+  await book18.setGenre(genre1);
+  await book18.setTheme(theme3);
+  await book18.addAuthor(author6);
+
+  const book19 = await Book.build({
+    name: 'Dog Man: Fetch-22',
+    description: "George and Harold have created a new hero who digs into deception, claws after crooks, and rolls over robbers. When Greg the police dog and his cop companion are injured on the job, a life-saving surgery changes the course of history, and Dog Man is born.",
+    price: 10
+  });
+  await book19.save();
+  await book19.setGenre(genre1);
+  await book19.setTheme(theme3);
+  await book19.addAuthor(author6);
+
+  const author7 = await Author.create({
+    name: 'David',
+    lastName: 'Flanagan',
+    description: 'David Flanagan is a computer programmer who spends most of his time writing about JavaScript and Java. His books with O\'Reilly include Java in a Nutshell, Java Examples in a Nutshell, Java Foundation Classes in a Nutshell, JavaScript: The Definitive Guide, and JavaScript Pocket Reference. David has a degree in computer science and engineering from the Massachusetts Institute of Technology. He lives with his wife and children in the U.S. Pacific Northwest between the cities of Seattle, Washington and Vancouver, British Columbia. David has a blog at www.davidflanagan.com.'
+  });
+  const book20 = await Book.build({
+    name: 'Java in a Nutshell',
+    description: "The latest edition of Java in a Nutshell is designed to help experienced Java programmers get the most out of Java 7 and 8, but it’s also a learning path for new developers. Chock full of examples that demonstrate how to take complete advantage of modern Java APIs and development best practices, the first section of this thoroughly updated book provides a fast-paced, no-fluff introduction to the Java programming language and the core runtime aspects of the Java platform.",
+    price: 25
+  });
+  await book20.save();
+  await book20.setGenre(genre2);
+  await book20.setTheme(theme1);
+  await book20.addAuthor(author7);
+
+  const book21 = await Book.build({
+    name: 'JavaScript Pocket Reference',
+    description: "The latest edition of Java in a Nutshell is designed to help experienced Java programmers get the most out of Java 7 and 8, but it’s also a learning path for new developers. Chock full of examples that demonstrate how to take complete advantage of modern Java APIs and development best practices, the first section of this thoroughly updated book provides a fast-paced, no-fluff introduction to the Java programming language and the core runtime aspects of the Java platform.",
+    price: 28
+  });
+  await book21.save();
+  await book21.setGenre(genre2);
+  await book21.setTheme(theme1);
+  await book21.addAuthor(author7);
+
+  const book22 = await Book.build({
+    name: 'jQuery Pocket Reference',
+    description: "The latest edition of Java in a Nutshell is designed to help experienced Java programmers get the most out of Java 7 and 8, but it’s also a learning path for new developers. Chock full of examples that demonstrate how to take complete advantage of modern Java APIs and development best practices, the first section of this thoroughly updated book provides a fast-paced, no-fluff introduction to the Java programming language and the core runtime aspects of the Java platform.",
+    price: 21
+  });
+  await book22.save();
+  await book22.setGenre(genre2);
+  await book22.setTheme(theme1);
+  await book22.addAuthor(author7);
+
+  const book23 = await Book.build({
+    name: 'The Ruby Programming Language',
+    description: "The latest edition of Java in a Nutshell is designed to help experienced Java programmers get the most out of Java 7 and 8, but it’s also a learning path for new developers. Chock full of examples that demonstrate how to take complete advantage of modern Java APIs and development best practices, the first section of this thoroughly updated book provides a fast-paced, no-fluff introduction to the Java programming language and the core runtime aspects of the Java platform.",
+    price: 21
+  });
+  await book23.save();
+  await book23.setGenre(genre2);
+  await book23.setTheme(theme1);
+  await book23.addAuthor(author7);
+
+  const book24 = await Book.build({
+    name: 'Java Enterprise in a Nutshell',
+    description: "The latest edition of Java in a Nutshell is designed to help experienced Java programmers get the most out of Java 7 and 8, but it’s also a learning path for new developers. Chock full of examples that demonstrate how to take complete advantage of modern Java APIs and development best practices, the first section of this thoroughly updated book provides a fast-paced, no-fluff introduction to the Java programming language and the core runtime aspects of the Java platform.",
+    price: 50
+  });
+  await book24.save();
+  await book24.setGenre(genre2);
+  await book24.setTheme(theme1);
+  await book24.addAuthor(author7);
+
+  const book25 = await Book.build({
+    name: 'Canvas Pocket Reference',
+    description: "The latest edition of Java in a Nutshell is designed to help experienced Java programmers get the most out of Java 7 and 8, but it’s also a learning path for new developers. Chock full of examples that demonstrate how to take complete advantage of modern Java APIs and development best practices, the first section of this thoroughly updated book provides a fast-paced, no-fluff introduction to the Java programming language and the core runtime aspects of the Java platform.",
+    price: 12
+  });
+  await book25.save();
+  await book25.setGenre(genre2);
+  await book25.setTheme(theme1);
+  await book25.addAuthor(author7);
+
+  const author8 = await Author.create({
+    name: 'William',
+    lastName: 'Shakespeare',
+    description: 'William Shakespeare was an English poet and playwright, widely regarded as the greatest writer in the English language and the world\'s preeminent dramatist. He is often called England\'s national poet and the "Bard of Avon". His surviving works, including some collaborations, consist of 38 plays, 154 sonnets, two long narrative poems, and several other poems. His plays have been translated into every major living language and are performed more often than those of any other playwright.'
+  });
+  const book26 = await Book.build({
+    name: 'Macbeth',
+    description: "Dark and violent, Macbeth is also the most theatrically spectacular of Shakespeare's tragedies. Promised a golden future as ruler of Scotland by three sinister witches, Macbeth murders the king to ensure his ambitions are realized. But he soon learns the meaning of terror - killing once, he must kill again and again, and the dead return to haunt him. A story of war and witchcraft, Macbeth also explores the relationship between husband and wife, and the risks they are prepared to take to achieve their desires.",
+    price: 2
+  });
+  await book26.save();
+  await book26.setGenre(genre5);
+  await book26.setTheme(theme1);
+  await book26.addAuthor(author8);
+
+  const book27 = await Book.build({
+    name: 'King Lear',
+    description: "Dark and violent, Macbeth is also the most theatrically spectacular of Shakespeare's tragedies. Promised a golden future as ruler of Scotland by three sinister witches, Macbeth murders the king to ensure his ambitions are realized. But he soon learns the meaning of terror - killing once, he must kill again and again, and the dead return to haunt him. A story of war and witchcraft, Macbeth also explores the relationship between husband and wife, and the risks they are prepared to take to achieve their desires.",
+    price: 5
+  });
+  await book27.save();
+  await book27.setGenre(genre5);
+  await book27.setTheme(theme1);
+  await book27.addAuthor(author8);
+
+  const book28 = await Book.build({
+    name: 'Hamlet: Prince of Denmark',
+    description: "Dark and violent, Macbeth is also the most theatrically spectacular of Shakespeare's tragedies. Promised a golden future as ruler of Scotland by three sinister witches, Macbeth murders the king to ensure his ambitions are realized. But he soon learns the meaning of terror - killing once, he must kill again and again, and the dead return to haunt him. A story of war and witchcraft, Macbeth also explores the relationship between husband and wife, and the risks they are prepared to take to achieve their desires.",
+    price: 10
+  });
+  await book28.save();
+  await book28.setGenre(genre5);
+  await book28.setTheme(theme1);
+  await book28.addAuthor(author8);
+
+  const book29 = await Book.build({
+    name: 'Othello',
+    description: "Dark and violent, Macbeth is also the most theatrically spectacular of Shakespeare's tragedies. Promised a golden future as ruler of Scotland by three sinister witches, Macbeth murders the king to ensure his ambitions are realized. But he soon learns the meaning of terror - killing once, he must kill again and again, and the dead return to haunt him. A story of war and witchcraft, Macbeth also explores the relationship between husband and wife, and the risks they are prepared to take to achieve their desires.",
+    price: 6
+  });
+  await book29.save();
+  await book29.setGenre(genre5);
+  await book29.setTheme(theme1);
+  await book29.addAuthor(author8);
 
   const fav = await Favourite.build();
   book2.setFavourite(fav);
 
   const fav2 = await Favourite.build();
   book1.setFavourite(fav2);
+
+  const fav3 = await Favourite.build();
+  book20.setFavourite(fav3);
+
+  const fav4 = await Favourite.build();
+  book25.setFavourite(fav4);
+
+  const fav5 = await Favourite.build();
+  book15.setFavourite(fav5);
+
+  const fav6 = await Favourite.build();
+  book18.setFavourite(fav6);
+
+  const fav7 = await Favourite.build();
+  book13.setFavourite(fav7);
+
+  const fav8 = await Favourite.build();
+  book7.setFavourite(fav8);
 
   // new Date(year, month-1, day, hours+2, minutes, seconds, milliseconds)
   const event1 = await Event.create({
