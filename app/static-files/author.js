@@ -31,11 +31,11 @@ $(document).ready(() => {
                 // console.log(data.author.books[i].name);
                 related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6">' +
                     '<div class="single-related-product d-flex">' +
-                    '<a href="#"><img src="" class="fakeimg" alt=""></a>' +
+                    '<a href="#"><img src="images/books/book_'+ data.author.books[i].id +'.jpg" class="fakeimg" alt=""></a>' +
                     ' <div class="text-center">' +
                     '<a href="' + 'product.html?id=' + data.author.books[i].id + '" class="title">' + data.author.books[i].name + '</a>' +
                     '<div class="price">' +
-                    '<h6>' + '$' + data.author.books[i].price + '</h6>' +
+                    '<h6>' + data.author.books[i].price + ' €</h6>' +
                     '</div>' +
                     '</div>' +
                     '</div>' +

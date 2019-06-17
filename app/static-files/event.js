@@ -38,12 +38,15 @@ $(document).ready(() => {
 
             date = date.replace(/[-]/g, '/');
 
+            $("#event-img").attr("src", "./images/events/event_" + $.urlParam('id') + ".jpg")
+
             $("#title-event").text(respond.event.name);
             $("#date-event").text(date);
             $("#hour-event").text(hour);
             $("#description-event").text(respond.event.description);
 
             $("#name-book").text(respond.event.books[0].name);
+            $("#img-book").attr("src", "./images/books/book_" + respond.event.books[0].id + ".jpg");
             $("#author-book").text(respond.event.books[0].authors[0].name + " " + respond.event.books[0].authors[0].lastName);
             $("#description-book").text(respond.event.books[0].description);
             $("#button-book").attr("onclick", "location.href='product.html?id=" + respond.event.books[0].id + "'");

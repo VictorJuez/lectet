@@ -25,6 +25,8 @@ $(document).ready(() => {
         '<option value="2">Action</option>' +
         '<option value="3">Mistery</option>' +
         '<option value="4">Drama</option>' +
+        '<option value="5">Thriller</option>' +
+        '<option value="6">Biography</option>' +
         '</select>' +
         '</div>' +
         '<div class="col-sm-4">' +
@@ -140,7 +142,7 @@ $(document).ready(() => {
                         '</div>' +
                         '<div class="card-body">' +
                         '<h4 class="card-title">' + respond[x].name + ' ' + respond[x].lastName + '</h4>' +
-                        '<a href="./product.html?id=' + respond[x].id + '" class="btn btn-primary button-book"> Go to profile </a>' +
+                        '<a href="./author.html?id=' + respond[x].id + '" class="btn btn-primary button-book"> Go to profile </a>' +
                         ' </div> ' +
                         '</div>' +
 
@@ -155,6 +157,8 @@ $(document).ready(() => {
 
 
     } else {
+
+        $(filter).css("display", "none");
 
         $.ajax({
             type: 'GET',
@@ -171,16 +175,15 @@ $(document).ready(() => {
 
                 for (var x = 0; x < 2; x++) {
 
-                    book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4">' +
+                    book_search = book_search + '<div class="col-xs-10 separation">' +
 
-                        '<div class="card result" style="width: 18rem;">' +
-                        '<img class="event-img" src="./images/events/event_' + respond.events[x].id + '.jpg" class="fakeimg" alt="...">' +
-                        '<div class="card-body">' +
+                        '<div class="card result-event">' +
+                        '<img class="img-event result-event" src="./images/events/event_' + respond.events[x].id + '.jpg" alt="...">' +
+                        '<div class="card-body result-info-event">' +
                         '<h4 class="card-title">' + respond.events[x].name + '</h4>' +
                         '<a href="./event.html?id=' + respond.events[x].id + '" class="btn btn-primary button-book"> Go to the event </a>' +
                         ' </div> ' +
                         '</div>' +
-
                         '</div>'
                 }
 
@@ -223,24 +226,43 @@ $(document).ready(() => {
     function generateSearch() {
 
         $.ajax({
-            url: 'https://lectet.herokuapp.com/api/books/filter',
+            url: 'https://lectet.herokuapp.com/api/books/filter/?genre=' + selectedGenre.value + '&theme=' + selectedTheme.value,
             type: 'GET',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify({
-                "genre": [selectedGenre.value],
-                "theme": [selectedTheme.value]
-            }),
-            beforeSend: function (request) {
-                console.log("DONE IT");
-                console.log(this.data);
-            },
-            success: function (response) {
-                console.log("I ADD TO CART");
-                console.log(response);
+            success: function (respond) {
+                
+                console.log(respond);
+
+                length = respond.length;
+
+                console.log(respond);
+
+                var search = "#books-search";
+
+                var book_search = '';
+
+                for (var x = 0; x < 1; x++) {
+
+                    book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4 card-book">' +
+
+                        '<div class="card result">' +
+                        '<img src="./images/books/book_' + respond[x].id + '.jpg" class="fakeimg" alt="...">' +
+                        '<div class="card-body">' +
+                        '<h4 class="card-title">' + respond[x].name + '</h4>' +
+                        '<a href="./product.html?id=' + respond[x].id + '" class="btn btn-primary button-book">' + respond[x].price + ' €' + '</a>' +
+                        ' </div> ' +
+                        '</div>' +
+
+                        '</div>'
+                }
+
+                $("#result").text(selectedGenre.text + " / " + selectedTheme.text);
+                $(search).html(book_search);
+
+                numberPages();
+
             },
             error: function () {
-                console.log("Error while adding");
+                console.log("Error while looking for books");
             }
         });
 
