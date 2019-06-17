@@ -569,6 +569,27 @@
           "cart"
         ],
         "summary": "set cart to logged user",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "Books",
+            "description": "Specification of books to add to cart",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "book": {
+                    "type": "integer"
+                  },
+                  "quantity": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success response",
@@ -980,15 +1001,41 @@
       }
     },
     "CreateOrder": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "book": {
-            "type": "integer"
-          },
-          "quantity": {
-            "type": "integer"
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "surname": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "address": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "cart": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "book": {
+                "type": "integer"
+              },
+              "quantity": {
+                "type": "integer"
+              }
+            }
           }
         }
       }
