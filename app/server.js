@@ -18,7 +18,7 @@ const port = process.env.PORT || 3000 // When app executed on local machine, po
 
 // Middlewares
 app.use(morgan('dev'))
-app.use(express.static('app/static-files')); // Here we define front-end directory
+app.use(express.static('app/public')); // Here we define front-end directory
 app.use(bodyParser.json())
 app.use(
   bodyParser.urlencoded({
