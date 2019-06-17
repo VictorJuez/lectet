@@ -16,7 +16,7 @@ $(document).ready(() => {
 
     $.ajax({
         type: 'GET',
-        url: 'https://lectet.herokuapp.com/api/authors/' + $.urlParam('id'),
+        url: 'https://lectet.herokuapp.com/backend/authors/' + $.urlParam('id'),
         success: function (data) {
 
             $author_name.html('<h2> ' + data.author.name + " " + data.author.lastName + '</h2>');

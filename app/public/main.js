@@ -2,7 +2,7 @@ $(document).ready(() => {
     var $body = $('body');
 
     $.ajax({
-        url: 'https://lectet.herokuapp.com/api/events/now',
+        url: 'https://lectet.herokuapp.com/backend/events/now',
         success: function (respuesta) {
 
             var id;
@@ -22,7 +22,7 @@ $(document).ready(() => {
     });
 
     $.ajax({
-        url: 'https://lectet.herokuapp.com/api/books/favourites',
+        url: 'https://lectet.herokuapp.com/backend/books/favourites',
         success: function (respond) {
 
             console.log(respond);
@@ -41,7 +41,7 @@ $(document).ready(() => {
     });
 
     $.ajax({
-        url: 'https://lectet.herokuapp.com/api/books/genres',
+        url: 'https://lectet.herokuapp.com/backend/books/genres',
         success: function (respuesta) {
 
             var id;
@@ -55,7 +55,7 @@ $(document).ready(() => {
                 $(id).text(respuesta.genres[id_category].description);
 
                 $.ajax({
-                    url: 'https://lectet.herokuapp.com/api/books/genre/' + (id_category + 1),
+                    url: 'https://lectet.herokuapp.com/backend/books/genre/' + (id_category + 1),
                     async: false,
                     success: function (respond) {
 
@@ -87,11 +87,11 @@ $(document).ready(() => {
     });
 
     $.ajax({
-        url: 'https://lectet.herokuapp.com/api/books/bestsellers',
+        url: 'https://lectet.herokuapp.com/backend/books/bestsellers',
         success: function (respond) {
 
             $.ajax({
-                url: 'https://lectet.herokuapp.com/api/books/' + respond[0].id,
+                url: 'https://lectet.herokuapp.com/backend/books/' + respond[0].id,
                 success: function (respond) {
                     $("#name-most-sell").text(respond.book.name);
                     $("#author-most-sell").text(respond.book.authors[0].name + " " + respond.book.authors[0].lastName);
@@ -102,7 +102,26 @@ $(document).ready(() => {
                     $("#button-most-sell").attr("onclick", "location.href='product.html?id=" + respond.book.id + "'");
                 }
             })
-            
+
+        },
+        error: function () {
+            console.log("No se ha podido obtener la información");
+        }
+    });
+
+    $.ajax({
+        url: 'https://lectet.herokuapp.com/backend/books/8',
+        success: function (respond) {
+
+
+            $("#name-best-valorate").text(respond.book.name);
+            $("#author-best-valorate").text(respond.book.authors[0].name + " " + respond.book.authors[0].lastName);
+            $("#description-best-valorate").text(respond.book.description);
+
+            $("#img-best-valorate").attr("src", "./images/books/book_" + respond.book.id + ".jpg");
+
+            $("#button-best-valorate").attr("onclick", "location.href='product.html?id=" + respond.book.id + "'");
+
         },
         error: function () {
             console.log("No se ha podido obtener la información");
@@ -199,7 +218,7 @@ $(document).ready(() => {
     /*
          $.ajax({
              type: 'GET',
-             url: 'https://lectet.herokuapp.com/api/events/now',
+             url: 'https://lectet.herokuapp.com/backend/events/now',
              dataType: "json",
            }).done(function(data) {
              alert(data); // imprimimos la respuesta
@@ -213,7 +232,7 @@ $(document).ready(() => {
     /*
 
           $.ajax({
-            url: 'api/events/now',
+            url: 'backend/events/now',
             type: 'GET',
             dataType: "json",
             success: function( response ) {
@@ -226,7 +245,7 @@ $(document).ready(() => {
 
         $('#single-user-btn').click(() => {
             const idUser = $('#id-user').val();
-            var userURL = 'api/users/' + idUser;
+            var userURL = 'backend/users/' + idUser;
         
             $.ajax({
                 url: userURL,
@@ -246,7 +265,7 @@ $(document).ready(() => {
         
         $('#all-users-btn').click(() => {
             console.log("button clicked!");
-            var userURL = 'api/users/';
+            var userURL = 'backend/users/';
         
             $.ajax({
                 url: userURL,
@@ -266,7 +285,7 @@ $(document).ready(() => {
             });
         });
         // define a generic Ajax error handler:
-        // http://api.jquery.com/ajaxerror/
+        // http://backend.jquery.com/ajaxerror/
         $(document).ajaxError(() => {
           console.log("unknown ajax error!");
         });*/

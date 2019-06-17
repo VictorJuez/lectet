@@ -11,7 +11,7 @@ const userkey = JSON.parse(window.localStorage.getItem("lectet"));
 
 $(document).ready(() => {
     $.ajax({
-        url: 'https://lectet.herokuapp.com/api/user/info',
+        url: 'https://lectet.herokuapp.com/backend/user/info',
         type: 'GET',
         beforeSend: function (request) {
             request.setRequestHeader("Authorization", userkey.token);
@@ -35,7 +35,7 @@ $(document).ready(() => {
     if ($.urlParam('direct') == "no") {
 
         $.ajax({
-            url: 'https://lectet.herokuapp.com/api/cart/',
+            url: 'https://lectet.herokuapp.com/backend/cart/',
             type: 'GET',
             beforeSend: function (request) {
                 request.setRequestHeader("Authorization", userkey.token);
@@ -75,7 +75,7 @@ $(document).ready(() => {
     } else {
 
         $.ajax({
-            url: 'https://lectet.herokuapp.com/api/books/' + $.urlParam('id'),
+            url: 'https://lectet.herokuapp.com/backend/books/' + $.urlParam('id'),
             type: 'GET',
             success: function (respond) {
 

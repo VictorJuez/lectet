@@ -11,7 +11,7 @@ $(document).ready(() => {
         console.log("password: "+ $password);
 
         var check = $.ajax({
-            url: 'https://lectet.herokuapp.com/api/user/signIn',
+            url: 'https://lectet.herokuapp.com/backend/user/signIn',
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json',

@@ -74,3 +74,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     console.log(dot);
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    console.log("HE ENTRADO");
+
+    let wrapper = document.querySelector(".card-title");
+    let options = {
+        height: 2,
+        truncate: "word",
+    };
+    let dot = new Dotdotdot(wrapper, options);
+    dot.API.truncate();
+
+    console.log(dot);
+});

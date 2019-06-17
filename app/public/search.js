@@ -55,26 +55,54 @@ $(document).ready(() => {
 
             console.log("Selected = " + $.urlParam('selected'));
 
-            selectedUrl = 'https://lectet.herokuapp.com/api/books/'
+            selectedUrl = 'https://lectet.herokuapp.com/backend/books/'
 
 
         } else {
 
-            //url: 'https://lectet.herokuapp.com/api/books/' + $.urlParam('selected') + '/' + $.urlParam('id'),
+            selectedUrl = 'https://lectet.herokuapp.com/backend/books/' + $.urlParam('selected') + '/' + $.urlParam('id');
 
-            selectedUrl = 'https://lectet.herokuapp.com/api/books/' + $.urlParam('selected') + '/2';
+            //selectedUrl = 'https://lectet.herokuapp.com/backend/books/' + $.urlParam('selected') + '/2';
 
-            if ($.urlParam('selected' == "genre")) { //DONT WORK, IT DO IT BEFORE GENERATE THE HTML
-                $('#Genre').removeAttr('selected')
-                    .filter('[value=' + $.urlParam('name') + ']')
-                    .attr('selected', true);
+            if ($.urlParam('selected') == "genre") { //DONT WORK, IT DO IT BEFORE GENERATE THE HTML
+                /* $('#Genre').removeAttr('selected')
+                     .filter('[value=' + $.urlParam('name') + ']')
+                     .attr('selected', true);*/
+
+                var sel = document.getElementById("Genre");
+
+                var val = $.urlParam('id');
+
+                var opts = sel.options;
+                console.log(opts);
+                for (var opt, j = 0; opt = opts[j]; j++) {
+                    if (opt.value == val) {
+                        sel.selectedIndex = j;
+                        break;
+                    }
+                }
             } else {
-                console.log("Entre");
+                /*console.log("Entre");
                 console.log($.urlParam('name'));
                 console.log('[value=' + $.urlParam('name') + ']');
-                $('#Theme').removeAttr('selected')
-                    .filter('[value=' + $.urlParam('name') + ']')
-                    .attr('selected', true);
+                var elemento = document.getElementById("Theme");
+                console.log(elemento);
+                $(elemento).removeAttr('selected')
+                     .filter('[value=' + $.urlParam('name') + ']')
+                    .attr('selected', true);*/
+
+                var sel = document.getElementById("Theme");
+
+                var val = $.urlParam('id');
+
+                var opts = sel.options;
+                console.log(opts);
+                for (var opt, j = 0; opt = opts[j]; j++) {
+                    if (opt.value == val) {
+                        sel.selectedIndex = j;
+                        break;
+                    }
+                }
             }
 
         }
@@ -92,7 +120,15 @@ $(document).ready(() => {
 
                 var book_search = '';
 
-                for (var x = 0; x < 5; x++) {
+                var max = length;
+
+                if ((6 * $.urlParam('page')) < max) {
+                    max = 6 * $.urlParam('page');
+                }
+
+                console.log(max);
+
+                for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
 
                     book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4 card-book">' +
 
@@ -121,7 +157,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: 'GET',
-            url: 'https://lectet.herokuapp.com/api/authors/',
+            url: 'https://lectet.herokuapp.com/backend/authors/',
             success: function (respond) {
 
                 length = respond.length;
@@ -132,7 +168,13 @@ $(document).ready(() => {
 
                 var book_search = '';
 
-                for (var x = 0; x < 4; x++) {
+                var max = length;
+
+                if ((6 * $.urlParam('page')) < max) {
+                    max = 6 * $.urlParam('page');
+                }
+
+                for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
 
                     book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4">' +
 
@@ -162,7 +204,7 @@ $(document).ready(() => {
 
         $.ajax({
             type: 'GET',
-            url: 'https://lectet.herokuapp.com/api/events/',
+            url: 'https://lectet.herokuapp.com/backend/events/',
             success: function (respond) {
 
                 length = respond.events.length;
@@ -173,7 +215,13 @@ $(document).ready(() => {
 
                 var book_search = '';
 
-                for (var x = 0; x < 2; x++) {
+                var max = length;
+
+                if ((6 * $.urlParam('page')) < max) {
+                    max = 6 * $.urlParam('page');
+                }
+
+                for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
 
                     book_search = book_search + '<div class="col-xs-10 separation">' +
 
@@ -226,10 +274,10 @@ $(document).ready(() => {
     function generateSearch() {
 
         $.ajax({
-            url: 'https://lectet.herokuapp.com/api/books/filter/?genre=' + selectedGenre.value + '&theme=' + selectedTheme.value,
+            url: 'https://lectet.herokuapp.com/backend/books/filter/?genre=' + selectedGenre.value + '&theme=' + selectedTheme.value,
             type: 'GET',
             success: function (respond) {
-                
+
                 console.log(respond);
 
                 length = respond.length;
@@ -240,7 +288,13 @@ $(document).ready(() => {
 
                 var book_search = '';
 
-                for (var x = 0; x < 1; x++) {
+                var max = length;
+
+                if ((6 * $.urlParam('page')) < max) {
+                    max = 6 * $.urlParam('page');
+                }
+
+                for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
 
                     book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4 card-book">' +
 
@@ -248,6 +302,8 @@ $(document).ready(() => {
                         '<img src="./images/books/book_' + respond[x].id + '.jpg" class="fakeimg" alt="...">' +
                         '<div class="card-body">' +
                         '<h4 class="card-title">' + respond[x].name + '</h4>' +
+                        '<a href="./author.html?id=' + respond[x].authors[0].id + '" >' +
+                        '<h6 class="card-text">' + respond[x].authors[0].name + ' ' + respond[x].authors[0].lastName + '</h6>' + '</a>' +
                         '<a href="./product.html?id=' + respond[x].id + '" class="btn btn-primary button-book">' + respond[x].price + ' €' + '</a>' +
                         ' </div> ' +
                         '</div>' +
@@ -275,24 +331,52 @@ $(document).ready(() => {
         var generateNumber = "";
         var numberPages = length / 6;
 
+        numberPages = Math.ceil(numberPages);
+
+        console.log(numberPages);
+
+        var url = "search.html?"
+
+        if ($.urlParam('selected') == "genre" || $.urlParam('selected') == "theme") {
+            url = url + "id=" + $.urlParam('id') + "&";
+        }
+
+        url = url + "selected=" + $.urlParam('selected') + "&name=" + $.urlParam('name') + "&page=";
+
+        var previous = parseInt($.urlParam('page')) - 1;
+
+        if (previous < 1) {
+            previous = 1;
+        }
+
         generateNumber = generateNumber +
             '<li class="page-item">' +
-            '<a class="page-link" href="#" aria-label="Previous">' +
+            '<a class="page-link" href="' + url + previous + '" aria-label="Previous">' +
             '<span aria-hidden="true">&laquo;</span>' +
             '<span class="sr-only">Previous</span>' +
             '</a>' +
             '</li>'
 
-        for (var x = 1; x <= numberPages + 1; x++) {
+        for (var x = 1; x <= numberPages; x++) {
             generateNumber = generateNumber +
                 '<li class="page-item">' +
-                '<a class="page-link" href="#">' + x + '</a>' +
+                '<a class="page-link" href="' + url + x + '">' + x + '</a>' +
                 '</li>'
         }
 
+        var next = parseInt($.urlParam('page')) + 1;
+
+        console.log(next);
+        console.log(numberPages);
+
+        if (next > numberPages) {
+            next = numberPages;
+        }
+
+
         generateNumber = generateNumber +
             '<li class="page-item">' +
-            '<a class="page-link" href="#" aria-label="Next">' +
+            '<a class="page-link" href="' + url + next + '" aria-label="Next">' +
             '<span aria-hidden="true">&raquo;</span>' +
             '<span class="sr-only">Next</span>' +
             '</a>' +

@@ -5,7 +5,7 @@ $(document).ready(() => {
     if(userkey){
         console.log(userkey);
         $.ajax({
-            url: 'https://lectet.herokuapp.com/api/user/info',
+            url: 'https://lectet.herokuapp.com/backend/user/info',
             beforeSend: function(request) {
                 request.setRequestHeader("Authorization", userkey.token);
             },
@@ -28,7 +28,7 @@ $(document).ready(() => {
         console.log("password: "+ $password);
 
         var check = $.ajax({
-            url: 'https://lectet.herokuapp.com/api/user/signUp',
+            url: 'https://lectet.herokuapp.com/backend/user/signUp',
             type: 'POST',
             dataType: 'json',
             contentType: 'application/json',

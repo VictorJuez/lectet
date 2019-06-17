@@ -28,7 +28,7 @@ $(document).ready(() => {
 
     $.ajax({
         type: 'GET',
-        url: 'https://lectet.herokuapp.com/api/books/' + $.urlParam('id'),
+        url: 'https://lectet.herokuapp.com/backend/books/' + $.urlParam('id'),
         success: function (data) {
             console.log(data);
             $book_title.html('<p>' + data.book.name + '</p>');
@@ -48,7 +48,7 @@ $(document).ready(() => {
 
             $.ajax({
                 type: 'GET',
-                url: 'https://lectet.herokuapp.com/api/books/genres',
+                url: 'https://lectet.herokuapp.com/backend/books/genres',
                 success: function (respond) { 
                     $("#book_category").text(respond.genres[genre].description);
                  }
@@ -56,7 +56,7 @@ $(document).ready(() => {
 
             $.ajax({
                 type: 'GET',
-                url: 'https://lectet.herokuapp.com/api/books/genre/' + genre,
+                url: 'https://lectet.herokuapp.com/backend/books/genre/' + genre,
                 success: function (data1) {
                     console.log(data1);
                     id = '#related_book';
@@ -90,7 +90,7 @@ $(document).ready(() => {
 
     $.ajax({
         type: 'GET',
-        url: 'https://lectet.herokuapp.com/api/events/book/' + $.urlParam('id'),
+        url: 'https://lectet.herokuapp.com/backend/events/book/' + $.urlParam('id'),
         success: function (data2) {
             if (data2.events.length > 0) {
                 console.log(data2);
@@ -126,7 +126,7 @@ $(document).ready(() => {
 
         if(userkey){
             $.ajax({
-                url: 'https://lectet.herokuapp.com/api/cart/' + $id,
+                url: 'https://lectet.herokuapp.com/backend/cart/' + $id,
                 type: 'POST',
                 dataType: 'json',
                 contentType: 'application/json',

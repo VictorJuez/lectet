@@ -29,7 +29,7 @@ var total;
 
 $(document).ready(() => {
   $.ajax({
-    url: 'https://lectet.herokuapp.com/api/cart/',
+    url: 'https://lectet.herokuapp.com/backend/cart/',
     type: 'GET',
     async: false,
     beforeSend: function (request) {
@@ -189,7 +189,7 @@ function deleteBook (x) {
 
 $(document).ready(() => {
   $.ajax({
-    url: 'https://lectet.herokuapp.com/api/books/',
+    url: 'https://lectet.herokuapp.com/backend/books/',
     success: function (respond) {
 
       var id;
@@ -284,7 +284,7 @@ function addToCart() {
   console.log(new_data);
 
   $.ajax({
-      url: 'https://lectet.herokuapp.com/api/cart/',
+      url: 'https://lectet.herokuapp.com/backend/cart/',
       type: 'POST',
       async: false,
       dataType: 'json',
