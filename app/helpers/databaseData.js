@@ -391,15 +391,41 @@ async function testDb() {
 
   // new Date(year, month-1, day, hours+2, minutes, seconds, milliseconds)
   const event1 = await Event.create({
-    name: 'Summer book event',
+    name: 'Usborne book event',
     date: new Date(2019, 6 - 1, 1, 17 + 2, 30)
   })
   const event2 = await Event.create({
-    name: 'Summer book event',
+    name: 'The open book event',
     date: new Date(2019, 6 - 1, 1, 17 + 2, 30)
   })
+  const event3 = await Event.create({
+    name: 'Feria del libro la Rioja 2018',
+    date: new Date(2019, 8 - 1, 1, 17 + 2, 30)
+  })
+  const event4 = await Event.create({
+    name: 'Feria del libro Juan Filloy',
+    date: new Date(2019, 20 - 1, 1, 17 + 2, 30)
+  })
+  const event5 = await Event.create({
+    name: 'Feria internacional del libro',
+    date: new Date(2019, 15 - 1, 1, 17 + 2, 30)
+  })
+  const event6 = await Event.create({
+    name: 'Kent Police open day book event',
+    date: new Date(2019, 22 - 1, 1, 17 + 2, 30)
+  })
   await book1.addEvent(event1);
-  await book2.addEvent(event2);
+  await book2.addEvent(event1);
+  await book23.addEvent(event2);
+  await book24.addEvent(event2);
+  await book8.addEvent(event3);
+  await book9.addEvent(event3);
+  await book11.addEvent(event4);
+  await book12.addEvent(event4);
+  await book15.addEvent(event5);
+  await book16.addEvent(event5);
+  await book6.addEvent(event6);
+  await book7.addEvent(event6);
 
   //user1.addOrderedBook(book1, {quantity: '10'});
   //user1.addRatingBook(book1, {rating: '5'});
