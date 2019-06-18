@@ -127,7 +127,7 @@ $(document).ready(() => {
         success: function (respond) {
 
             $.ajax({
-                url: 'https://lectet.herokuapp.com/backend/books/' + respond[0].id,
+                url: 'https://lectet.herokuapp.com/backend/books/' + respond[0].bookId,
                 success: function (respond) {
                     $("#name-most-sell").text(respond.book.name);
                     $("#author-most-sell").text(respond.book.authors[0].name + " " + respond.book.authors[0].lastName);

@@ -48,9 +48,9 @@ $(document).ready(() => {
             $.ajax({
                 type: 'GET',
                 url: 'https://lectet.herokuapp.com/backend/books/genres',
-                success: function (respond) { 
+                success: function (respond) {
                     $("#book_category").text(respond.genres[genre].description);
-                 }
+                }
             });
 
             $.ajax({
@@ -63,20 +63,31 @@ $(document).ready(() => {
                         'visibility': 'visible'
                     });
                     var related_books = '';
-                    for (var i = 0; i < data1.books.length; i++) {
 
-                        // console.log(data.author.books[i].name);
-                        related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6">' +
-                            '<div class="single-related-product d-flex">' +
-                            '<a href="' + 'product.html?id=' + data1.books[i].id + '"><img src="images/books/book_' + data1.books[i].id + '.jpg' + '" class="fakeimg" alt=""></a>' +
-                            ' <div class="text-center">' +
-                            '<a href="' + 'product.html?id=' + data1.books[i].id + '" class="title">' + data1.books[i].name + '</a>' +
-                            '<div class="price">' +
-                            '<h6>' + data1.books[i].price + ' €</h6>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>' +
-                            '</div>';
+                    var length = data1.books.length;
+
+                    if (length > 6) {
+                        length = 6;
+                    }
+
+                    for (var i = 0; i < length; i++) {
+
+                        if (data1.books[i].id != $.urlParam('id')) {
+                            // console.log(data.author.books[i].name);
+                            related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6">' +
+                                '<div class="single-related-product d-flex">' +
+                                '<a href="' + 'product.html?id=' + data1.books[i].id + '"><img src="images/books/book_' + data1.books[i].id + '.jpg' + '" class="fakeimg" alt=""></a>' +
+                                ' <div class="text-center">' +
+                                '<a href="' + 'product.html?id=' + data1.books[i].id + '" class="title">' + data1.books[i].name + '</a>' +
+                                '<div class="price">' +
+                                '<h6>' + data1.books[i].price + ' €</h6>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>' +
+                                '</div>';
+                        }
+                        else
+                            length = length + 1;
                     }
                     $(id).html(related_books);
                 }
@@ -124,7 +135,7 @@ $(document).ready(() => {
 
         var $id = $.urlParam('id');
 
-        if(userkey){
+        if (userkey) {
 
             $.ajax({
                 url: 'https://lectet.herokuapp.com/backend/cart/',
@@ -137,7 +148,7 @@ $(document).ready(() => {
                 },
                 success: function (response) {
 
-                    if(response.cart == null) {
+                    if (response.cart == null) {
                         console.log("NO EXISTE CESTA");
 
                         $.ajax({
@@ -182,9 +193,7 @@ $(document).ready(() => {
                                 console.log(error);
                             }
                         });
-                    }
-
-                    else {
+                    } else {
                         $.ajax({
                             url: 'https://lectet.herokuapp.com/backend/cart/' + $id,
                             type: 'POST',
@@ -212,32 +221,31 @@ $(document).ready(() => {
                     console.log(error);
                 }
             });
-        }
-        else {
+        } else {
             $("#myModalLabel").text("Not logged in");
 
             var modalBody = "";
 
-            modalBody = modalBody + '<div class="modal-body popup-center">' + 
-            'You need to be logged in for buy a book.' +
-          '</div>' +
-          '<br/>' +
-          '<div class="modal-body popup-center">' +
-           'You can login by clicking on the button: ' +
-            '<a href="login.html">' +
-              '<button id="button-modal" type="button">' +
+            modalBody = modalBody + '<div class="modal-body popup-center">' +
+                'You need to be logged in for buy a book.' +
+                '</div>' +
+                '<br/>' +
+                '<div class="modal-body popup-center">' +
+                'You can login by clicking on the button: ' +
+                '<a href="login.html">' +
+                '<button id="button-modal" type="button">' +
                 '<span aria-hidden="true">Login</span>' +
-              '</button>' +
-            '</a>' +
-            '<br/> ' +
-            '<br/>' +
-            'Or if you have not registered yet you can register by clicking the following button: ' +
-            '<a href="registration.html">' +
-              '<button id="button-modal" type="button">' +
+                '</button>' +
+                '</a>' +
+                '<br/> ' +
+                '<br/>' +
+                'Or if you have not registered yet you can register by clicking the following button: ' +
+                '<a href="registration.html">' +
+                '<button id="button-modal" type="button">' +
                 '<span aria-hidden="true">Register</span>' +
-              '</button>' +
-            '</a>' +
-          '</div>'
+                '</button>' +
+                '</a>' +
+                '</div>'
 
             $("#myModalBody").text("You need to be logged in for buy a book");
             $("#container-modal-body").html(modalBody);
