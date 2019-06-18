@@ -1,104 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Document</title>
 </head>
+
 <body>
-    <h1 id="documentation-of-the-backend-part">Documentation of the Backend part</h1>
+	<h1 id="documentation-of-the-backend-part">Documentation of the Backend part</h1>
 
-    <style type="text/css">
-        .tg  {border-collapse:collapse;border-spacing:0;}
-        .tg td{font-family:Arial, sans-serif;font-size:14px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-        .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-        .tg .tg-0lax{text-align:left;vertical-align:top}
-        </style>
-        <table class="tg">
-            <tr>
-            <th class="tg-0lax">Member nº</th>
-            <th class="tg-0lax">Role</th>
-            <th class="tg-0lax">First Name</th>
-            <th class="tg-0lax">Last Name</th>
-            <th class="tg-0lax">Matricola</th>
-            <th class="tg-0lax">Email address</th>
-            </tr>
-            <tr>
-            <td class="tg-0lax">1</td>
-            <td class="tg-0lax">Designer / Frontend developer</td>
-            <td class="tg-0lax">Arnab</td>
-            <td class="tg-0lax">Dey</td>
-            <td class="tg-0lax"></td>
-            <td class="tg-0lax">arnab.dey@mail.polimi.it</td>
-            </tr>
-            <tr>
-            <td class="tg-0lax">2</td>
-            <td class="tg-0lax">Frontend developer</td>
-            <td class="tg-0lax">Julian</td>
-            <td class="tg-0lax">Mangut</td>
-            <td class="tg-0lax"></td>
-            <td class="tg-0lax">jcuellarr@alumnos.unex.es</td>
-            </tr>
-            <tr>
-            <td class="tg-0lax">3</td>
-            <td class="tg-0lax">Backend developer / Administrator</td>
-            <td class="tg-0lax">Víctor</td>
-            <td class="tg-0lax">Juez</td>
-            <td class="tg-0lax">917281</td>
-            <td class="tg-0lax">victor.juez@mail.polimi.it</td>
-            </tr>
-        </table>
-    <ul>
-        <li>Deliverable D2: the YAML or JSON file containing the specification of the app API can be found at <a
-            href="https://lectet.herokuapp.com/backend/spec.yaml">this address</a>.</li>
-        <li>Deliverable D3: the SwaggerUI page of the
-            same API is available at <a href="https://lectet.herokuapp.com/backend/swaggerui">this address</a>.</li>
-        <li>Deliverable D4: the
-            source code of D0 is available as a zip file at <a href="https://lectet.herokuapp.com/backend/app.zip">this address</a>.</li>
-        <li>Deliverable D5: the address of the online source control repository is available <a
-            href="https://github.com/VictorJuez/lectet">this address</a>. We hereby declare that this is a private repository and,
-            upon request, we will give access to the instructors.</li>
-    </ul>
+	<style type="text/css">
+		.tg {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
 
-    <h2>Specification</h2>
-        <h3>Web Architecture</h3>
-            <p>Describe here, with a diagram, the components of your web application and how they interact. Highlight which parts belong to the application layer, data layer or presentation layer. How did you ensure that HTML is not rendered server side?</p>
-        <h3>API</h3>
-            <h4>REST compliance</h4>
-                <p>Describe here to what extent did you follow REST principles and what are the reasons for which you might have decided to diverge. Note, you must not describe the whole API here, just the design decisions.</p>
-            <h4>OpenAPI Resource models</h4>
-                <p>Describe here synthetically, which models you have introduced for resources.</p>
-        <h3>Data Model</h3>
-            <p>ER Diagram:</p>
-            <img src="./ERDiagram.png" style="width:65%">
-            <p>Describe with an ER diagram the model used in the data layer of your web application. How these map to the OpenAPI data model?</p>
+		.tg td {
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			padding: 10px 5px;
+			border-style: solid;
+			border-width: 1px;
+			overflow: hidden;
+			word-break: normal;
+			border-color: black;
+		}
 
-    <h2>Implementation</h2>
-        <h3>Tools used</h3>
-            <p>Describe here which tools, languages and frameworks did you use for the backend of the application.</p>
-        <h3>Discussion</h3>
-            <p>Describe here:</p>
-            <ul>
-                <li>How did you make sure your web application adheres to the provided OpenAPI specification?</li>
-                <li>Why do you think your web application adheres to common practices to partition the web application (static assets vs. application data)</li>
-                <li>Describe synthetically why and how did you manage session state, what are the state change triggering actions (e.g., POST to login etc..).</li>
-                <li>Which technology did you use (relational or a no-SQL database) for managing the data model?</li>
-            </ul>
-    <h2>Other Information</h2>
-        <h3>Task Assignment</h3>
-            <p>Describe here how development tasks have been subdivided among members of the group, e.g.:</p>
-            <ul>
-                <li>Foo worked on front end (80%) and OpenAPI Spec (20% of the time)</li>
-                <li>Bar worked on ....</li>
-            </ul>
-        <h3>Analysis of existing API</h3>
-            <p>Describe here if you have found relevant APIs that have inspired the OpenAPI specification and why (at least two).</p>
-        <h3>Learning Outcome</h3>
-            <p>What was the most important thing all the members have learned while developing this part of the project, what questions remained unanswered, how you will use what you've learned in your everyday life? Examples:</p>
-            <ul>
-                <li>Foo learned to write SQL queries and Javascript but wanted to know more about caching, he's probably going to create his own startup with what she has learned</li>
-                <li>Bar learned how to deploy on a cloud platform, he would have liked to know more about promises for asynchronous code..</li>
-            </ul>
+		.tg th {
+			font-family: Arial, sans-serif;
+			font-size: 14px;
+			font-weight: normal;
+			padding: 10px 5px;
+			border-style: solid;
+			border-width: 1px;
+			overflow: hidden;
+			word-break: normal;
+			border-color: black;
+		}
+
+		.tg .tg-0lax {
+			text-align: left;
+			vertical-align: top
+		}
+	</style>
+	<table class="tg">
+		<tr>
+			<th class="tg-0lax">Member nº</th>
+			<th class="tg-0lax">Role</th>
+			<th class="tg-0lax">First Name</th>
+			<th class="tg-0lax">Last Name</th>
+			<th class="tg-0lax">Matricola</th>
+			<th class="tg-0lax">Email address</th>
+		</tr>
+		<tr>
+			<td class="tg-0lax">1</td>
+			<td class="tg-0lax">Designer / Frontend developer</td>
+			<td class="tg-0lax">Arnab</td>
+			<td class="tg-0lax">Dey</td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax">arnab.dey@mail.polimi.it</td>
+		</tr>
+		<tr>
+			<td class="tg-0lax">2</td>
+			<td class="tg-0lax">Frontend developer</td>
+			<td class="tg-0lax">Julian</td>
+			<td class="tg-0lax">Mangut</td>
+			<td class="tg-0lax"></td>
+			<td class="tg-0lax">jcuellarr@alumnos.unex.es</td>
+		</tr>
+		<tr>
+			<td class="tg-0lax">3</td>
+			<td class="tg-0lax">Backend developer / Administrator</td>
+			<td class="tg-0lax">Víctor</td>
+			<td class="tg-0lax">Juez</td>
+			<td class="tg-0lax">917281</td>
+			<td class="tg-0lax">victor.juez@mail.polimi.it</td>
+		</tr>
+	</table>
+	<ul>
+		<li>Deliverable D2: the YAML or JSON file containing the specification of the app API can be found at <a
+				href="https://lectet.herokuapp.com/backend/spec.yaml">this address</a>.</li>
+		<li>Deliverable D3: the SwaggerUI page of the
+			same API is available at <a href="https://lectet.herokuapp.com/backend/swaggerui">this address</a>.</li>
+		<li>Deliverable D4: the
+			source code of D0 is available as a zip file at <a href="https://lectet.herokuapp.com/backend/app.zip">this
+				address</a>.</li>
+		<li>Deliverable D5: the address of the online source control repository is available <a
+				href="https://github.com/VictorJuez/lectet">this address</a>. We hereby declare that this is a private
+			repository and,
+			upon request, we will give access to the instructors.</li>
+	</ul>
+
+	<h2>Specification</h2>
+	<h3>Web Architecture</h3>
+	<img src="webarchitecture.png" style="width:65%">
+	<p>Describe here, with a diagram, the components of your web application and how they interact. Highlight which
+		parts belong to the application layer, data layer or presentation layer. How did you ensure that HTML is not
+		rendered server side?</p>
+
+	<p>We have followed the <a href="https://codeburst.io/fractal-a-nodejs-app-structure-for-infinite-scale-d74dda57ee11">Fractal Structure</a>
+		for this project, as we concluded it was the simplest and well defined structure for NodeJS backend implementation
+		we found.</p>
+	<ul>
+		<li>
+			<b>Presentation Layer:</b>
+			<ul>
+				<li>
+					<b>Frontend static-files:</b>
+					<span>It's the hole interface of the web applications, all the HTML, CSS and JacaScript files of the
+						application.</span>
+				</li>
+				<li>
+					<b>Backend documentation:</b>
+					<span>All the backend documentation needed for the project.</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<b>Application Layer:</b>
+			<ul>
+				<li>
+					<b>API Routes:</b>
+					<span>Is the backend router, in charge of routing the HTTP requests to the application.</span>
+				</li>
+				<li>
+					<b>Actions:</b>
+					<span>Main backend component, where the logic of the application is implemented, after being redirected by the
+						router to the specific action, applies the corresponding logic of the action using and modifying the
+						necessary model objects.</span>
+				</li>
+				<li>
+					<b>Helpers:</b>
+					<span>Auxiliary functions for the application like data entry validation</span>
+				</li>
+				<li>
+					<b>Models:</b>
+					<span>Where data objects used by our ORM and the application are defined, they will be used and modified by
+						the action component. <br>Also it is in charge of applying the changes of the data objects to the
+						Database</span>
+				</li>
+			</ul>
+		</li>
+		<li>
+			<b>Data Layer:</b>
+			<ul>
+				<li>
+					<b>Database:</b>
+					<span>Our PostgreSQL database where all the data is stored. Accessed only by the Model component of the
+						Application Layer.</span>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<p>Regarding to the HTML files not being rendered served side, we used <a href="https://expressjs.com/en/starter/static-files.html">static-files function</a> that Express JS web
+		application offers.<br>What it basically does is that the directory you specified as static will be served to the
+		client without being rendered on the server</p>
+
+	<h3>API</h3>
+	<h4>REST compliance</h4>
+	<p>Describe here to what extent did you follow REST principles and what are the reasons for which you might have
+		decided to diverge. Note, you must not describe the whole API here, just the design decisions.</p>
+
+		<span>The principles we have followed and how we followed them:</span>
+		<ul>
+			<li>
+				<b>Uniform interface: </b>
+				<span>We followed this principle identifying our resources inside our applications and giving each of them they own logical URI and following guideliness across the system (like name convention).</span>
+			</li>
+			<li>
+					<b>Client–server: </b>
+					<span>We followed this principle as we have our client (frontend) separated of our server. Therefore both of them can evolve separately without any dependency on each other</span>
+			</li>
+			<li>
+				<b>Stateless:</b>
+				<span>We followed this principle making all the client-server interaction stateless, meaning that server is not storing anything about past client's requests. Every request is considered as new.</span>
+			</li>
+			<li>
+					<b>Layered System:</b>
+					<span>We have followed this system as the client does not know whether it is connected to the end server or to an intermediate along the way. Even though we have not used it as our system does not interact with any other server but our single one.</span>
+				</li>
+			
+			<p>The principles we have not followed and why:</p>
+			<li>
+				<b>Cacheable:</b>
+				<span>We have not followed this principle as it was out of our knowledge to apply it.</span>
+			</li>
+			<li>
+				<b>Code on demand:</b>
+				<span>We have not used this principle as we are not returning any executable code as a response of any call</span>
+			</li>
+		</ul>
+
+	<h4>OpenAPI Resource models</h4>
+	<p>Describe here synthetically, which models you have introduced for resources.</p>
+	<h3>Data Model</h3>
+	<p>ER Diagram:</p>
+	<img src="./ERDiagram.png" style="width:65%">
+	<p>Describe with an ER diagram the model used in the data layer of your web application. How these map to the
+		OpenAPI data model?</p>
+
+	<h2>Implementation</h2>
+	<h3>Tools used</h3>
+	<p>Describe here which tools, languages and frameworks did you use for the backend of the application.</p>
+	<h3>Discussion</h3>
+	<p>Describe here:</p>
+	<ul>
+		<li>How did you make sure your web application adheres to the provided OpenAPI specification?</li>
+		<li>Why do you think your web application adheres to common practices to partition the web application (static
+			assets vs. application data)</li>
+		<li>Describe synthetically why and how did you manage session state, what are the state change triggering
+			actions (e.g., POST to login etc..).</li>
+		<li>Which technology did you use (relational or a no-SQL database) for managing the data model?</li>
+	</ul>
+	<h2>Other Information</h2>
+	<h3>Task Assignment</h3>
+	<p>Describe here how development tasks have been subdivided among members of the group, e.g.:</p>
+	<ul>
+		<li>Foo worked on front end (80%) and OpenAPI Spec (20% of the time)</li>
+		<li>Bar worked on ....</li>
+	</ul>
+	<h3>Analysis of existing API</h3>
+	<p>Describe here if you have found relevant APIs that have inspired the OpenAPI specification and why (at least
+		two).</p>
+	<h3>Learning Outcome</h3>
+	<p>What was the most important thing all the members have learned while developing this part of the project, what
+		questions remained unanswered, how you will use what you've learned in your everyday life? Examples:</p>
+	<ul>
+		<li>Foo learned to write SQL queries and Javascript but wanted to know more about caching, he's probably going
+			to create his own startup with what she has learned</li>
+		<li>Bar learned how to deploy on a cloud platform, he would have liked to know more about promises for
+			asynchronous code..</li>
+	</ul>
 </body>
+
 </html>
