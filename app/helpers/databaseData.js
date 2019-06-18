@@ -531,13 +531,4 @@ async function testDb() {
   await book16.addEvent(event5);
   await book6.addEvent(event6);
   await book7.addEvent(event6);
-
-  //user1.addOrderedBook(book1, {quantity: '10'});
-  //user1.addRatingBook(book1, {rating: '5'});
-  const order = await Order.create({
-    userId: user1.id
-  });
-
-  await order.addBook(book1, { through: { quantity: 10 } });
-  await order.addBook(book2, { through: { quantity: 3 } });
 }

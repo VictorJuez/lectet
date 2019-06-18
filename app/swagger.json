@@ -318,6 +318,36 @@
         }
       }
     },
+    "/books/bestsellers": {
+      "get": {
+        "tags": [
+          "book"
+        ],
+        "summary": "Get best sellers' book list",
+        "responses": {
+          "200": {
+            "description": "Success response",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "quantity": {
+                    "type": "integer"
+                  },
+                  "bookId": {
+                    "type": "integer"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/books/genre/{genreId}": {
       "get": {
         "tags": [
