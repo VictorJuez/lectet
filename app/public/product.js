@@ -8,6 +8,7 @@ $.urlParam = function (name) {
 }
 var genre = 0;
 
+
 $(document).ready(() => {
     console.log("id=" + $.urlParam('id'));
     var $book_title = $('#book_title');
@@ -120,14 +121,14 @@ $(document).ready(() => {
     const userkey = JSON.parse(window.localStorage.getItem("lectet"));
 
     function addToCart() {
+
         var $id = $.urlParam('id');
 
         if(userkey){
+
             $.ajax({
-                url: 'https://lectet.herokuapp.com/backend/cart/' + $id,
-                type: 'POST',
-                dataType: 'json',
-                contentType: 'application/json',
+                url: 'https://lectet.herokuapp.com/backend/cart/',
+                type: 'GET',
                 beforeSend: function (request) {
                     request.setRequestHeader("Authorization", userkey.token);
                     console.log(userkey.token);
@@ -135,8 +136,76 @@ $(document).ready(() => {
                     console.log('https://lectet.herokuapp.com/backend/cart/' + $id);
                 },
                 success: function (response) {
-                    console.log("I ADD TO CART");
-                    console.log(response);
+
+                    if(response.cart == null) {
+                        console.log("NO EXISTE CESTA");
+
+                        $.ajax({
+                            url: 'https://lectet.herokuapp.com/backend/cart/',
+                            type: 'POST',
+                            data: [],
+                            dataType: 'json',
+                            contentType: 'application/json',
+                            beforeSend: function (request) {
+                                request.setRequestHeader("Authorization", userkey.token);
+                                console.log(userkey.token);
+                                console.log("DONE IT");
+                                console.log('https://lectet.herokuapp.com/backend/cart/' + $id);
+                            },
+                            success: function (response) {
+                                console.log("I ADD TO CART");
+                                console.log(response);
+
+                                $.ajax({
+                                    url: 'https://lectet.herokuapp.com/backend/cart/' + $id,
+                                    type: 'POST',
+                                    dataType: 'json',
+                                    contentType: 'application/json',
+                                    beforeSend: function (request) {
+                                        request.setRequestHeader("Authorization", userkey.token);
+                                        console.log(userkey.token);
+                                        console.log("DONE IT");
+                                        console.log('https://lectet.herokuapp.com/backend/cart/' + $id);
+                                    },
+                                    success: function (response) {
+                                        console.log("I ADD TO CART");
+                                        console.log(response);
+                                    },
+                                    error: function (error) {
+                                        console.log("Error while adding");
+                                        console.log(error);
+                                    }
+                                });
+                            },
+                            error: function (error) {
+                                console.log("Error while adding");
+                                console.log(error);
+                            }
+                        });
+                    }
+
+                    else {
+                        $.ajax({
+                            url: 'https://lectet.herokuapp.com/backend/cart/' + $id,
+                            type: 'POST',
+                            dataType: 'json',
+                            contentType: 'application/json',
+                            beforeSend: function (request) {
+                                request.setRequestHeader("Authorization", userkey.token);
+                                console.log(userkey.token);
+                                console.log("DONE IT");
+                                console.log('https://lectet.herokuapp.com/backend/cart/' + $id);
+                            },
+                            success: function (response) {
+                                console.log("I ADD TO CART");
+                                console.log(response);
+                            },
+                            error: function (error) {
+                                console.log("Error while adding");
+                                console.log(error);
+                            }
+                        });
+                    }
                 },
                 error: function (error) {
                     console.log("Error while adding");
