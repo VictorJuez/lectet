@@ -365,6 +365,111 @@ async function testDb() {
   await book29.setTheme(theme1);
   await book29.addAuthor(author8);
 
+  const author9 = await Author.create({
+    name: 'CGP',
+    lastName: 'Books',
+    description: 'If you\'ve been in school in the last twenty years, or know anybody that has, chances are you\'ll have come across CGP - 90% of UK schools use our books! Every year CGP helps millions of students do brilliantly in their exams. We have over 1000 bestselling revision and practice books for ages 5-18 and beyond, covering Primary, 11+, Key Stage 3, GCSE, A-Level, Functional Skills and more. We\'re the UK\'s No.1 Educational Publisher, but success hasn\'t gone to our heads - we\'re still dedicated to making the best books at the lowest prices... and we\'re not afraid to throw in some fun along the way!'
+  });
+  const book30 = await Book.build({
+    name: 'Grade 9-1 GCSE Physics',
+    description: "This fantastic CGP Revision Guide is perfectly matched to the Higher Level Grade 9-1 AQA GCSE Physics course. Every topic is explained with clear, succinct study notes, examples and diagrams - and there are practice questions at the end of every page to test you on what you’ve learned (with answers and mark schemes included). We’ve covered all the crucial new elements of the Grade 9-1 course, including the required practicals, maths skills and Working Scientifically. What’s more, a free Online Edition of the whole book is included - just use the unique access code printed inside the cover to access it on a PC, Mac or tablet! And to make sure you’re 100% prepared for the final exams, a matching Physics Exam Practice Workbook is also available from CGP",
+    price: 6
+  });
+  await book30.save();
+  await book30.setGenre(genre2);
+  await book30.setTheme(theme1);
+  await book30.addAuthor(author9);
+
+  const book31 = await Book.build({
+    name: 'Grade 9-1 GCSE Chemistry',
+    description: "This fantastic CGP Revision Guide is perfectly matched to the Higher Level Grade 9-1 AQA GCSE Chemistry course. Every topic is explained with clear, succinct study notes, examples and diagrams - and there are practice questions at the end of every page to test you on what you’ve learned (with answers and mark schemes included). We’ve covered all the crucial new elements of the Grade 9-1 course, including the required practicals, maths skills and Working Scientifically. What’s more, a free Online Edition of the whole book is included - just use the unique access code printed inside the cover to access it on a PC, Mac or tablet! And to make sure you’re 100% prepared for the final exams, a matching Chemistry Exam Practice Workbook is also available from CGP",
+    price: 6
+  });
+  await book31.save();
+  await book31.setGenre(genre2);
+  await book31.setTheme(theme1);
+  await book31.addAuthor(author9);
+
+  const book32 = await Book.build({
+    name: 'Grade 9-1 GCSE Biology',
+    description: "This fantastic CGP Revision Guide is perfectly matched to the Higher Level Grade 9-1 AQA GCSE Biology course. Every topic is explained with clear, succinct study notes, examples and diagrams - and there are practice questions at the end of every page to test you on what you’ve learned (with answers and mark schemes included). We’ve covered all the crucial new elements of the Grade 9-1 course, including the required practicals, maths skills and Working Scientifically. What’s more, a free Online Edition of the whole book is included - just use the unique access code printed inside the cover to access it on a PC, Mac or tablet! And to make sure you’re 100% prepared for the final exams, a matching Biology Exam Practice Workbook is also available from CGP",
+    price: 6
+  });
+  await book32.save();
+  await book32.setGenre(genre2);
+  await book32.setTheme(theme1);
+  await book32.addAuthor(author9);
+
+  const author10 = await Author.create({
+    name: 'James',
+    lastName: 'Holland',
+    description: 'James Holland was born in Salisbury, Wiltshire, and studied history at Durham University. A member of the British Commission for Military History and the Guild of Battlefield Guides, he also regularly contributes reviews and articles in national newspapers and magazines and appears on national radio. His many books include Fortress Malta, Italy\'s Sorrow, The Battle of Britain and his fictional WW2 series featuring Sergeant Jack Tanner.'
+  });
+  const book33 = await Book.build({
+    name: 'Normandy ‘44',
+    description: "D-Day and the 76 days of bitter fighting in Normandy that followed have come to be seen as a defining episode in the Second World War. Its story has been endlessly retold, and yet it remains a narrative burdened by both myth and assumed knowledge. In this reexamined history, James Holland presents a broader overview, one that challenges much of what we think we know about D-Day and the Normandy campaign. The sheer size and scale of the Allies’ war machine ultimately dominates the strategic, operational and tactical limitations of the German forces. This was a brutal campaign. In terms of daily casualties, the numbers were worse than for any one battle during the First World War.",
+    price: 13
+  });
+  await book33.save();
+  await book33.setGenre(genre5);
+  await book33.setTheme(theme1);
+  await book33.addAuthor(author10);
+
+  const book34 = await Book.build({
+    name: 'Burma \'44',
+    description: "In February 1944, a rag-tag collection of clerks, drivers, doctors, muleteers, and other base troops, stiffened by a few dogged Yorkshiremen and a handful of tank crews managed to hold out against some of the finest infantry in the Japanese Army, and then defeat them in what was one of the most astonishing battles of the Second World War.",
+    price: 30
+  });
+  await book34.save();
+  await book34.setGenre(genre5);
+  await book34.setTheme(theme1);
+  await book34.addAuthor(author10);
+
+  const book35 = await Book.build({
+    name: 'Big Week: The Biggest Air Battle of World War Two',
+    description: "During the third week of February 1944, the combined Allied air forces launched their first-ever round-the-clock bomber offensive against Germany. The aim was to smash the main factories and production centres of the Luftwaffe and at the same time draw the German fighter force up into the air and into battle.",
+    price: 20
+  });
+  await book35.save();
+  await book35.setGenre(genre5);
+  await book35.setTheme(theme1);
+  await book35.addAuthor(author10);
+
+  const author11 = await Author.create({
+    name: 'Kentaro',
+    lastName: 'Miura',
+    description: 'Kentaro Miura was born in Chiba City, Chiba Prefecture, Japan, in 1966. In 1976, at the early age of 10, Miura made his first manga, entitled Miuranger, that was published for his classmates in a school publication; the manga ended up spanning 40 volumes. In 1977, Miura created his second manga called Ken e no michi (剣への道 The Way to the Sword), using India ink for the first time. When he was in middle school in 1979, Miura\'s drawing techniques improved greatly as he started using professional drawing techniques. His first dōjinshi was published, with the help of friends, in a magazine in 1982.'
+  });
+  const book36 = await Book.build({
+    name: 'Berserk Deluxe Volume 1',
+    description: "Have you got the Guts? Kentaro Miura's Berserk has outraged, horrified, and delighted manga and anime fanatics since 1989, creating an international legion of hardcore devotees and inspiring a plethora of TV series, feature films, and video games. And now the badass champion of adult fantasy manga is presented in an oversized 7\" x 10\" deluxe hardcover edition, nearly 700 pages amassing the first three Berserk volumes, with following volumes to come to serve up the entire series in handsome bookshelf collections. No Guts, no glory!",
+    price: 28
+  });
+  await book36.save();
+  await book36.setGenre(genre1);
+  await book36.setTheme(theme3);
+  await book36.addAuthor(author11);
+
+  const book37 = await Book.build({
+    name: 'Berserk Deluxe Volume 2',
+    description: "The reigning king of adult fantasy manga now in deluxe 7x10 hardcover editions! Born in tragedy, raised in abuse and neglect, young Guts is hardened into a warrior of fearsome prowess and fearless will, drawing the attention of the charismatic Griffith, commander of the elite mercenary legion, the Band of the Hawk. This crossroad will take Guts to fame and glory... and to damnation! Collects Berserk volumes 4, 5, and 6. Kentaro Miura's Berserk has cast its enormous shadow for three decades, creating an international legion of acolytes and inspiring a parade of TV series, feature films, and video games. And now celebrating its thirtieth anniversary, the entire Berserk series is being released in handsome oversized bookshelf format, each collecting three volumes of the original manga.",
+    price: 27
+  });
+  await book37.save();
+  await book37.setGenre(genre1);
+  await book37.setTheme(theme3);
+  await book37.addAuthor(author11);
+
+  const book38 = await Book.build({
+    name: 'Berserk Deluxe Volume 3',
+    description: "The acclaimed adult fantasy manga now in 7x10 deluxe hardcover editions! The hundred-year war between the kingdoms of Midland and Tudor nears an end as the legendary Band of the Hawk mercenaries, led by the charismatic Griffith and his fearless berserker champion Guts, turn the tide in Midland's favour. But impending victory ignites a secret war within Midland, as those seeking courtly favor see the ambitious Griffith as an obstacle to power. And nothing is more powerful than an enemy unseen] Collects Berserk volumes 7-9. Kentaro Miura's Berserk has reigned in darkness for three decades, creating an international legion of acolytes and inspiring anime TV series and feature films, video and card games, and a phalanx of related products. And now celebrating its thirtieth anniversary, the entire Berserk series is being released in handsome oversized bookshelf editions, each collecting three volumes of the original manga.",
+    price: 37
+  });
+  await book38.save();
+  await book38.setGenre(genre1);
+  await book38.setTheme(theme3);
+  await book38.addAuthor(author11);
+
   const fav = await Favourite.build();
   book2.setFavourite(fav);
 
