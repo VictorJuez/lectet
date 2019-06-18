@@ -128,7 +128,9 @@ $(document).ready(() => {
                     book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4 card-book">' +
 
                         '<div class="card result">' +
+                        '<a href="./product.html?id=' + respond.books[x].id + '">' +
                         '<img src="./images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
+                        '</a>' +
                         '<div class="card-body">' +
                         '<div class="name-book">' +
                         '<h4 class="card-title">' + respond.books[x].name + '</h4>' +
@@ -267,7 +269,9 @@ $(document).ready(() => {
                     book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4 card-book">' +
 
                     '<div class="card result">' +
+                    '<a href="./product.html?id=' + respond.books[x].id + '" >' +
                     '<img src="./images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
+                    '</a>' +
                     '<div class="card-body">' +
                     '<div class="name-book">' +
                     '<h4 class="card-title">' + respond.books[x].name + '</h4>' +
@@ -338,7 +342,9 @@ $(document).ready(() => {
                     book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4 card-book">' +
 
                         '<div class="card result">' +
+                        '<a href="./product.html?id=' + respond[x].id + '">' + 
                         '<img src="./images/books/book_' + respond[x].id + '.jpg" class="fakeimg" alt="...">' +
+                        '</a>' +
                         '<div class="card-body">' +
                         '<h4 class="card-title">' + respond[x].name + '</h4>' +
                         '<a href="./author.html?id=' + respond[x].authors[0].id + '" >' +
