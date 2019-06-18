@@ -91,8 +91,8 @@
 }
 
 .pagination {
-    position: relative;
-    left: 38%;
+    /*position: relative;
+    left: 44%;*/
 }
 
 .card-book {
@@ -133,4 +133,15 @@
 .name-book {
     height: 35px;
     width: auto;
+}
+
+.color-pagination {
+    color: black !important;
+}
+
+.container-pagination {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

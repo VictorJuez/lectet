@@ -20,10 +20,10 @@ $(document).ready(() => {
 
                 id = '#event_' + i;
 
-                $("#item" + i).css('background', 'url(./images/events/event_' + i + '.jpg) no-repeat center center fixed')
+                $("#item" + i).css('background', 'url(./images/events/event_' + respuesta.events[i].id + '.jpg) no-repeat center center fixed')
                 $("#button-event_" + i).attr("onclick", "location.href='event.html?id=" + respuesta.events[i].id + "'");
 
-                $(id).html("<h3>" + respuesta.events[i].name + "</h3>");
+                $(id).html('<h3 class="event-name">' + respuesta.events[i].name + '</h3>');
 
                 if (i == (length - 1) && length < 4) {
 
@@ -38,7 +38,7 @@ $(document).ready(() => {
                             for (var x = difference; x < 4; x++) {
                                 id = '#event_' + x;
 
-                                $("#item" + x).css('background', 'url(./images/events/event_' + x + '.jpg) no-repeat center center fixed')
+                                $("#item" + x).css('background', 'url(./images/events/event_' + respond.events[x].id + '.jpg) no-repeat center center fixed')
                                 $("#button-event_" + x).attr("onclick", "location.href='event.html?id=" + respond.events[x].id + "'");
 
                                 $(id).html("<h3>" + respond.events[x].name + "</h3>");

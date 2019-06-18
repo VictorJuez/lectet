@@ -50,7 +50,7 @@ $(document).ready(() => {
     $("#result").html($.urlParam('name'));
 
 
-    if ($.urlParam('selected') != "authors" && $.urlParam('selected') != "events") {
+    if ($.urlParam('selected') == "books" || $.urlParam('selected') == "genre" || $.urlParam('selected') == "theme") {
 
         if ($.urlParam('selected') == "books") {
 
@@ -195,7 +195,7 @@ $(document).ready(() => {
         });
 
 
-    } else {
+    } else if ($.urlParam('selected') == "events") {
 
         $(filter).css("display", "none");
 
@@ -239,6 +239,54 @@ $(document).ready(() => {
             }
         });
 
+    } else if ($.urlParam('selected') == "favourites") {
+
+        $(filter).css("display", "none");
+
+        $.ajax({
+            type: 'GET',
+            url: 'https://lectet.herokuapp.com/backend/books/favourites',
+            success: function (respond) {
+
+                length = respond.books.length;
+
+                console.log(respond);
+
+                var search = "#books-search";
+
+                var book_search = '';
+
+                var max = length;
+
+                if ((6 * $.urlParam('page')) < max) {
+                    max = 6 * $.urlParam('page');
+                }
+
+                for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
+
+                    book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4 card-book">' +
+
+                    '<div class="card result">' +
+                    '<img src="./images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
+                    '<div class="card-body">' +
+                    '<div class="name-book">' +
+                    '<h4 class="card-title">' + respond.books[x].name + '</h4>' +
+                    '</div>' +
+                    '<a href="./author.html?id=' + respond.books[x].authors[0].id + '" >' +
+                    '<h6 class="card-text">' + respond.books[x].authors[0].name + ' ' + respond.books[x].authors[0].lastName + '</h6>' + '</a>' +
+                    '<a href="./product.html?id=' + respond.books[x].id + '" class="btn btn-primary button-book">' + respond.books[x].price + ' €' + '</a>' +
+                    ' </div> ' +
+                    '</div>' +
+
+                    '</div>'
+                }
+
+                $(search).html(book_search);
+
+                numberPages();
+
+            }
+        });
     }
 
 
@@ -342,7 +390,7 @@ $(document).ready(() => {
 
         generateNumber = generateNumber +
             '<li class="page-item">' +
-            '<a class="page-link" href="' + url + previous + '" aria-label="Previous">' +
+            '<a class="page-link color-pagination" href="' + url + previous + '" aria-label="Previous">' +
             '<span aria-hidden="true">&laquo;</span>' +
             '<span class="sr-only">Previous</span>' +
             '</a>' +
@@ -351,7 +399,7 @@ $(document).ready(() => {
         for (var x = 1; x <= numberPages; x++) {
             generateNumber = generateNumber +
                 '<li class="page-item">' +
-                '<a class="page-link" href="' + url + x + '">' + x + '</a>' +
+                '<a class="page-link color-pagination" href="' + url + x + '">' + x + '</a>' +
                 '</li>'
         }
 
@@ -367,7 +415,7 @@ $(document).ready(() => {
 
         generateNumber = generateNumber +
             '<li class="page-item">' +
-            '<a class="page-link" href="' + url + next + '" aria-label="Next">' +
+            '<a class="page-link color-pagination" href="' + url + next + '" aria-label="Next">' +
             '<span aria-hidden="true">&raquo;</span>' +
             '<span class="sr-only">Next</span>' +
             '</a>' +

@@ -15,6 +15,10 @@ body {
     margin-left: auto;
 }
 
+.event-name {
+    text-align: center;
+}
+
 .special-section {
     text-align: center;
 }
