@@ -12,17 +12,13 @@
     <link rel="stylesheet" href="./search.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+  integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 </head>
 
-<body>
-
-    <!-- <div class="jumbotron">
-        <div class="container text-center">
-            <h1>Online Store</h1>
-            <p>Mission, Vission & Values</p>
-        </div>
-    </div> -->
+<body onload="load()">
 
     <nav class="navbar navbar-inverse">
         <div class="container-fluid" id="menu-top">
@@ -40,57 +36,30 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav menu">
                     <li>
-                        <a href="search.html?name=books">Books</a>
+                        <a href="search.html?selected=books&name=Books&page=1">Books</a>
                     </li>
                     <li>
                         <a href="#">Category</a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="search.html?id=1&name=genre">Sub menu 1</a>
-                            </li>
-                            <li>
-                                <a href="search.html?id=2&name=genre">Sub menu 2</a>
-                            </li>
-                            <li>
-                                <a href="search.html?id=3&name=genre">Sub menu 3</a>
-                            </li>
+                        <ul class="sub-menu" id="category-sub-menu">
+
                         </ul>
                     </li>
                     <li>
                         <a href="#">Themes</a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="">Sub menu 1</a>
-                            </li>
-                            <li>
-                                <a href="">Sub menu 2</a>
-                            </li>
-                            <li>
-                                <a href="">Sub menu 3</a>
-                            </li>
+                        <ul class="sub-menu" id="theme-sub-menu">
+
                         </ul>
                     </li>
                     <li>
-                        <a href="search.html?name=authors">Authors</a>
+                        <a href="search.html?selected=authors&name=Authors&page=1">Authors</a>
                     <li>
-                        <a href="#">Events</a>
-                        <ul class="sub-menu">
-                            <li>
-                                <a href="">Sub menu 1</a>
-                            </li>
-                            <li>
-                                <a href="">Sub menu 2</a>
-                            </li>
-                            <li>
-                                <a href="">Sub menu 3</a>
-                            </li>
-                        </ul>
+                        <a href="search.html?selected=events&name=Events&page=1">Events</a>
                     </li>
                     <li>
                         <a href="#">Others</a>
                         <ul class="sub-menu">
                             <li>
-                                <a href="search.html?name=favourites">Recommended</a>
+                                <a href="search.html?selected=favourites&name=Recommended&page=1">Recommended</a>
                             </li>
                         </ul>
                     </li>
@@ -98,8 +67,8 @@
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="login.html" id="loggeduser"><span class="glyphicon glyphicon-user"></span> Log in</a>
                     </li>
-                    <li><a href="order_details.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a>
-                    </li>
+                    <li><a href="order_details.html" id="cart"><span class="glyphicon glyphicon-shopping-cart"></span>
+                            Cart</a></li>
                 </ul>
             </div>
         </div>
@@ -124,64 +93,61 @@
 
         <!-- Pagination -->
         <ul class="pagination justify-content-center" id="nPages">
-            
+
         </ul>
 
     </div>
     <!-- /.container -->
 
     <footer id="myFooter">
-        <div class="container">
-            <div class="row">
+            <div class="container">
+              <div class="row">
                 <div class="col-sm-3">
-                    <h2 class="logo"><a href="./index.html">
-                            <img src="logo/Lectet - noBook.png" id="nttLogo" alt="lectet">
-                        </a></h2>
+                  <h2 class="logo"><a href="./index.html">
+                      <img src="logo/Lectet - noBook.png" id="nttLogo" alt="lectet">
+                    </a></h2>
                 </div>
                 <div class="col-sm-2">
-                    <h5>Get started</h5>
-                    <ul>
-                        <li><a href="./index.html">Home</a></li>
-                        <li><a href="#">Sign up</a></li>
-                        <li><a href="#">Downloads</a></li>
-                    </ul>
+                  <h5>Get started</h5>
+                  <ul>
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./login.html">Log in</a></li>
+                    <li><a href="./registration.html">Sign up</a></li>
+                  </ul>
                 </div>
                 <div class="col-sm-2">
-                    <h5>About us</h5>
-                    <ul>
-                        <li><a href="#">Company Information</a></li>
-                        <li><a href="contact-us.html">Contact us</a></li>
-                        <li><a href="#">Reviews</a></li>
-                    </ul>
+                  <h5>About us</h5>
+                  <ul>
+                    <li><a href="#">Company Information</a></li>
+                    <li><a href="contact-us.html">Contact us</a></li>
+                  </ul>
                 </div>
                 <div class="col-sm-2">
-                    <h5>Support</h5>
-                    <ul>
-                        <li><a href="faq.html">FAQ</a></li>
-                        <li><a href="#">Help desk</a></li>
-                        <li><a href="#">Forums</a></li>
-                    </ul>
+                  <h5>Support</h5>
+                  <ul>
+                    <li><a href="faq.html">FAQ</a></li>
+                  </ul>
                 </div>
                 <div class="col-sm-3">
-                    <div class="social-networks">
-                        <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-                        <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-                        <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
-                    </div>
-                    <a href="contact-us.html">
-                        <button type="button" class="btn btn-default">Contact us</button>
-                    </a>
+                  <div class="social-networks">
+                    <a href="https://twitter.com/?lang=en" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/" class="facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/?hl=en" class="instagram"><i class="fab fa-instagram"></i></a>
+                  </div>
+                  <a href="contact-us.html">
+                    <button type="button" class="btn btn-default">Contact us</button>
+                  </a>
                 </div>
+              </div>
             </div>
-        </div>
-        <div class="footer-copyright">
-            <p>© 2019 Copyright Lectet License </p>
-        </div>
-    </footer>
+            <div class="footer-copyright">
+              <p>© 2019 Copyright Lectet License </p>
+            </div>
+          </footer>
 
     <script src="./menu.js"></script>
     <script src="./search.js"></script>
-    <script src="dotdotdot.js"></script>
+    <script src="./dotdotdot.js"></script>
 
 </body>
 

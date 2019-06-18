@@ -10,6 +10,10 @@ $.urlParam = function (name) {
 var selectedUrl;
 var length;
 
+
+var selectedGenre;
+var selectedTheme;
+
 $(document).ready(() => {
 
     var filter = "#filter";
@@ -21,22 +25,19 @@ $(document).ready(() => {
         '<span>Category: </span>' +
         '<select id="Genre" class="form-control" name="Genre">' +
         '<option value="null" selected> </option>' +
-        '<option value="1">Fantasy</option>' +
-        '<option value="2">Action</option>' +
-        '<option value="3">Mistery</option>' +
-        '<option value="4">Drama</option>' +
-        '<option value="5">Thriller</option>' +
-        '<option value="6">Biography</option>' +
+        '<option value="1">Action</option>' +
+        '<option value="2">Academic</option>' +
+        '<option value="3">Fiction</option>' +
+        '<option value="4">History</option>' +
         '</select>' +
         '</div>' +
         '<div class="col-sm-4">' +
         '<span>Theme:</span>' +
         '<select id="Theme" class="form-control" name="Theme">' +
         '<option value="null" selected> </option>' +
-        '<option value="1">Family</option>' +
+        '<option value="1">Descriptive</option>' +
         '<option value="2">Teenager</option>' +
-        '<option value="3">Learn</option>' +
-        '<option value="4">Descriptive</option>' +
+        '<option value="3">Comic</option>' +
         '</select>' +
         '</div>' +
 
@@ -64,10 +65,7 @@ $(document).ready(() => {
 
             //selectedUrl = 'https://lectet.herokuapp.com/backend/books/' + $.urlParam('selected') + '/2';
 
-            if ($.urlParam('selected') == "genre") { //DONT WORK, IT DO IT BEFORE GENERATE THE HTML
-                /* $('#Genre').removeAttr('selected')
-                     .filter('[value=' + $.urlParam('name') + ']')
-                     .attr('selected', true);*/
+            if ($.urlParam('selected') == "genre") {
 
                 var sel = document.getElementById("Genre");
 
@@ -75,31 +73,28 @@ $(document).ready(() => {
 
                 var opts = sel.options;
                 console.log(opts);
+
                 for (var opt, j = 0; opt = opts[j]; j++) {
                     if (opt.value == val) {
                         sel.selectedIndex = j;
+                        selectedGenre = opt;
                         break;
                     }
                 }
+
             } else {
-                /*console.log("Entre");
-                console.log($.urlParam('name'));
-                console.log('[value=' + $.urlParam('name') + ']');
-                var elemento = document.getElementById("Theme");
-                console.log(elemento);
-                $(elemento).removeAttr('selected')
-                     .filter('[value=' + $.urlParam('name') + ']')
-                    .attr('selected', true);*/
 
                 var sel = document.getElementById("Theme");
 
                 var val = $.urlParam('id');
 
                 var opts = sel.options;
+
                 console.log(opts);
                 for (var opt, j = 0; opt = opts[j]; j++) {
                     if (opt.value == val) {
                         sel.selectedIndex = j;
+                        selectedTheme = opt;
                         break;
                     }
                 }
@@ -135,7 +130,9 @@ $(document).ready(() => {
                         '<div class="card result">' +
                         '<img src="./images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
                         '<div class="card-body">' +
+                        '<div class="name-book">' +
                         '<h4 class="card-title">' + respond.books[x].name + '</h4>' +
+                        '</div>' +
                         '<a href="./author.html?id=' + respond.books[x].authors[0].id + '" >' +
                         '<h6 class="card-text">' + respond.books[x].authors[0].name + ' ' + respond.books[x].authors[0].lastName + '</h6>' + '</a>' +
                         '<a href="./product.html?id=' + respond.books[x].id + '" class="btn btn-primary button-book">' + respond.books[x].price + ' €' + '</a>' +
@@ -180,7 +177,7 @@ $(document).ready(() => {
 
                         '<div class="card result author">' +
                         '<div class="box">' +
-                        '<img class="author-img" src="./images/authors/author_1.jpg" alt="...">' +
+                        '<img class="author-img" src="./images/authors/author_' + respond[x].id + '.jpg" alt="...">' +
                         '</div>' +
                         '<div class="card-body">' +
                         '<h4 class="card-title">' + respond[x].name + ' ' + respond[x].lastName + '</h4>' +
@@ -244,12 +241,6 @@ $(document).ready(() => {
 
     }
 
-
-
-
-
-    var selectedGenre;
-    var selectedTheme;
 
     var selectGenre = document.getElementById('Genre');
     selectGenre.addEventListener('change',

@@ -41,7 +41,7 @@ $(document).ready(() => {
       console.log("all good");
       console.log(response);
 
-      var id = "#cart";
+      var id = "#cart-order";
 
       var book_order = "#book-order";
       var price_order = "#price-order";

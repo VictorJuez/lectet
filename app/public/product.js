@@ -15,7 +15,6 @@ $(document).ready(() => {
     var $author_name_bottom = $('#author_name_bottom');
     var $book_price = $('#book_price');
     var $book_description = $('#book_description');
-    var $book_long_description = $('#book_long_description');
     var $book_image0 = $('#book_image0');
     var $book_image1 = $('#book_image1');
     var $book_image2 = $('#book_image2');
@@ -43,7 +42,6 @@ $(document).ready(() => {
             $author_name_bottom.html(authors);
             $book_price.html(data.book.price + '<span class="glyphicon glyphicon-euro"></span>');
             $book_description.html(data.book.description);
-            $book_long_description.html(data.book.description);
             genre = data.book.genreId;
 
             $.ajax({
@@ -116,7 +114,7 @@ $(document).ready(() => {
     });
 
     document.getElementById("addToCart").onclick = function () {
-        addToCart()
+        addToCart();
     };
 
     const userkey = JSON.parse(window.localStorage.getItem("lectet"));
@@ -132,14 +130,17 @@ $(document).ready(() => {
                 contentType: 'application/json',
                 beforeSend: function (request) {
                     request.setRequestHeader("Authorization", userkey.token);
+                    console.log(userkey.token);
                     console.log("DONE IT");
+                    console.log('https://lectet.herokuapp.com/backend/cart/' + $id);
                 },
                 success: function (response) {
                     console.log("I ADD TO CART");
                     console.log(response);
                 },
-                error: function () {
+                error: function (error) {
                     console.log("Error while adding");
+                    console.log(error);
                 }
             });
         }

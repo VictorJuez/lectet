@@ -12,95 +12,65 @@
   <link rel="stylesheet" href="./faq.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
 </head>
 
 <body>
 
-  <!-- <div class="jumbotron">
-        <div class="container text-center">
-            <h1>Online Store</h1>
-            <p>Mission, Vission & Values</p>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid" id="menu-top">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!--<a class="navbar-brand" href="#">Logo</a>-->
+          <a href="./index.html">
+            <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
+          </a>
         </div>
-    </div> -->
-
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid" id="menu-top">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <!--<a class="navbar-brand" href="#">Logo</a>-->
-        <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
+        <div class="collapse navbar-collapse" id="myNavbar">
+          <ul class="nav navbar-nav menu">
+            <li>
+              <a href="search.html?selected=books&name=Books&page=1">Books</a>
+            </li>
+            <li>
+              <a href="#">Category</a>
+              <ul class="sub-menu" id="category-sub-menu">
+                
+              </ul>
+            </li>
+            <li>
+              <a href="#">Themes</a>
+              <ul class="sub-menu" id="theme-sub-menu">
+               
+              </ul>
+            </li>
+            <li>
+              <a href="search.html?selected=authors&name=Authors&page=1">Authors</a>
+            <li>
+              <a href="search.html?selected=events&name=Events&page=1">Events</a>
+            </li>
+            <li>
+              <a href="#">Others</a>
+              <ul class="sub-menu">
+                <li>
+                  <a href="search.html?selected=favourites&name=Recommended&page=1">Recommended</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="login.html" id="loggeduser"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
+            <li><a href="order_details.html" id="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+          </ul>
+        </div>
       </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav menu">
-          <li>
-            <a href="#">Book</a>
-            <ul class="sub-menu">
-              <li>
-                <a href="">Sub menu 1</a>
-              </li>
-              <li>
-                <a href="">Sub menu 2</a>
-              </li>
-              <li>
-                <a href="">Sub menu 3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Recommended</a>
-            <ul class="sub-menu">
-              <li>
-                <a href="">Sub menu 1</a>
-              </li>
-              <li>
-                <a href="">Sub menu 2</a>
-              </li>
-              <li>
-                <a href="">Sub menu 3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">Events</a>
-            <ul class="sub-menu">
-              <li>
-                <a href="">Sub menu 1</a>
-              </li>
-              <li>
-                <a href="">Sub menu 2</a>
-              </li>
-              <li>
-                <a href="">Sub menu 3</a>
-              </li>
-            </ul>
-          </li>
-          <li>
-            <a href="#">More</a>
-            <ul class="sub-menu">
-              <li>
-                <a href="">Sub menu 1</a>
-              </li>
-              <li>
-                <a href="">Sub menu 2</a>
-              </li>
-              <li>
-                <a href="">Sub menu 3</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#"><span class="glyphicon glyphicon-user"></span> Your Account</a></li>
-          <li><a href="order_details.html"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+    </nav>
 
 
   <div class="container">
@@ -144,7 +114,7 @@
               <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse"
                 data-parent="#faqAccordion" data-target="#question2">
                 <h4 class="panel-title">
-                  <a href="#" class="ing">Q: How to order from lectect?</a>
+                  <a href="#" class="ing">Q: How to order from lectet?</a>
                 </h4>
 
               </div>
@@ -177,16 +147,15 @@
               <div class="panel-heading accordion-toggle collapsed question-toggle" data-toggle="collapse"
                 data-parent="#faqAccordion" data-target="#question4">
                 <h4 class="panel-title">
-                  <a href="#" class="ing">Q: How do I make an account for letect?</a>
+                  <a href="#" class="ing">Q: How do I make an account for lectet?</a>
                 </h4>
 
               </div>
               <div id="question4" class="panel-collapse collapse" style="height: 0px;">
                 <div class="panel-body">
 
-                  <p>To create an account in our website you need to follow two simple steps. first you need to click
-                    the login button
-                    in that page you will find a button for sign up and then you need to feel a form.
+                  <p>To create an account in our website you need to follow two simple steps. First you need to click
+                    the <a href="./login.html">login</a> button in that page you will find a button for <a href="./registration.html">sign up</a> and then you need to feel a form.
                   </p>
                 </div>
               </div>
@@ -203,7 +172,7 @@
               <div id="question5" class="panel-collapse collapse" style="height: 0px;">
                 <div class="panel-body">
 
-                  <p>click on the login link on the top right corner of the website then you can fill the form with your
+                  <p>Click on the <a href="./login.html">login</a> link on the top right corner of the website then you can fill the form with your
                     login information.</p>
                 </div>
               </div>
@@ -219,53 +188,50 @@
 
 
   <footer id="myFooter">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-3">
-          <h2 class="logo"><a href="./index.html">
-              <img src="logo/Lectet - noBook.png" id="nttLogo" alt="lectet">
-            </a></h2>
-        </div>
-        <div class="col-sm-2">
-          <h5>Get started</h5>
-          <ul>
-            <li><a href="./index.html">Home</a></li>
-            <li><a href="#">Sign up</a></li>
-            <li><a href="#">Downloads</a></li>
-          </ul>
-        </div>
-        <div class="col-sm-2">
-          <h5>About us</h5>
-          <ul>
-            <li><a href="#">Company Information</a></li>
-            <li><a href="contact-us.html">Contact us</a></li>
-            <li><a href="#">Reviews</a></li>
-          </ul>
-        </div>
-        <div class="col-sm-2">
-          <h5>Support</h5>
-          <ul>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="#">Help desk</a></li>
-            <li><a href="#">Forums</a></li>
-          </ul>
-        </div>
-        <div class="col-sm-3">
-          <div class="social-networks">
-            <a href="#" class="twitter"><i class="fa fa-twitter"></i></a>
-            <a href="#" class="facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-3">
+            <h2 class="logo"><a href="./index.html">
+                <img src="logo/Lectet - noBook.png" id="nttLogo" alt="lectet">
+              </a></h2>
           </div>
-          <a href="contact-us.html">
-            <button type="button" class="btn btn-default">Contact us</button>
-          </a>
+          <div class="col-sm-2">
+            <h5>Get started</h5>
+            <ul>
+              <li><a href="./index.html">Home</a></li>
+              <li><a href="./login.html">Log in</a></li>
+              <li><a href="./registration.html">Sign up</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-2">
+            <h5>About us</h5>
+            <ul>
+              <li><a href="#">Company Information</a></li>
+              <li><a href="contact-us.html">Contact us</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-2">
+            <h5>Support</h5>
+            <ul>
+              <li><a href="faq.html">FAQ</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-3">
+            <div class="social-networks">
+              <a href="https://twitter.com/?lang=en" class="twitter"><i class="fab fa-twitter"></i></a>
+              <a href="https://www.facebook.com/" class="facebook"><i class="fab fa-facebook"></i></a>
+              <a href="https://www.instagram.com/?hl=en" class="instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <a href="contact-us.html">
+              <button type="button" class="btn btn-default">Contact us</button>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="footer-copyright">
-      <p>© 2019 Copyright Lectet License </p>
-    </div>
-  </footer>
+      <div class="footer-copyright">
+        <p>© 2019 Copyright Lectet License </p>
+      </div>
+    </footer>
 
   <script src="./menu.js"></script>
 

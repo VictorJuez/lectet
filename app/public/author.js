@@ -11,7 +11,6 @@ $.urlParam = function (name) {
 $(document).ready(() => {
 
     var $author_name = $('#author_name');
-    var $short_bio = $('#short_bio');
     var $long_bio = $('#long_bio');
 
     $.ajax({
@@ -20,8 +19,8 @@ $(document).ready(() => {
         success: function (data) {
 
             $author_name.html('<h2> ' + data.author.name + " " + data.author.lastName + '</h2>');
-            $short_bio.html('<p>' + data.author.description + '</p>');
             $long_bio.html('<p>' + data.author.description + '</p>');
+            $("#author_img").attr("src", "images/authors/author_" + $.urlParam('id') + ".jpg");
 
             id = '#related_book';
             $(id).css({ 'visibility': 'visible' });

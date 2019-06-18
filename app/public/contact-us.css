@@ -24,3 +24,8 @@
   opacity: 0;
 }
 
+#send {
+  border: none;
+  background: none;
+  width: 100%;
+}

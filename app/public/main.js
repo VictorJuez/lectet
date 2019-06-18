@@ -1,12 +1,22 @@
 $(document).ready(() => {
-    var $body = $('body');
 
     $.ajax({
         url: 'https://lectet.herokuapp.com/backend/events/now',
         success: function (respuesta) {
 
             var id;
-            for (var i = 0; i < respuesta.events.length; i++) {
+
+            var length = respuesta.events.length;
+            var difference = 0;
+
+            if (length > 4) {
+                length = 4;
+            } else {
+                difference = respuesta.events.length;
+            }
+
+            console.log(respuesta.events.length);
+            for (var i = 0; i < length; i++) {
 
                 id = '#event_' + i;
 
@@ -14,6 +24,32 @@ $(document).ready(() => {
                 $("#button-event_" + i).attr("onclick", "location.href='event.html?id=" + respuesta.events[i].id + "'");
 
                 $(id).html("<h3>" + respuesta.events[i].name + "</h3>");
+
+                if (i == (length - 1) && length < 4) {
+
+                    console.log("ENTRO");
+                    console.log(difference);
+
+                    $.ajax({
+                        url: 'https://lectet.herokuapp.com/backend/events/',
+                        async: true,
+                        success: function (respond) {
+
+                            for (var x = difference; x < 4; x++) {
+                                id = '#event_' + x;
+
+                                $("#item" + x).css('background', 'url(./images/events/event_' + x + '.jpg) no-repeat center center fixed')
+                                $("#button-event_" + x).attr("onclick", "location.href='event.html?id=" + respond.events[x].id + "'");
+
+                                $(id).html("<h3>" + respond.events[x].name + "</h3>");
+                            }
+                        },
+                        error: function () {
+                            console.log("No se ha podido obtener la información");
+                        }
+                    });
+
+                }
             }
         },
         error: function () {

@@ -4,14 +4,20 @@
 }
 
 #button-book {
-    width: 100%;
+    width: 90%;
     border: none;
+
+    margin-left: 6%;
 
     border-radius: 10px;
 }
 
+#container-book {
+    width: 100%;
+}
+
 .book-event {
-    width: 55%;
+    width: 45%;
     max-height: 100%;
     margin-right: auto;
     margin-left: auto;
@@ -20,4 +26,8 @@
 .jumbotron {
     padding-bottom: 24px !important;
     padding-top: 24px !important;
+}
+
+#information {
+    text-align: center;
 }

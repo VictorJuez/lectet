@@ -9,6 +9,9 @@ $.urlParam = function (name) {
 
 const userkey = JSON.parse(window.localStorage.getItem("lectet"));
 
+var booksId = [];
+var booksQuantity = [];
+
 $(document).ready(() => {
     $.ajax({
         url: 'https://lectet.herokuapp.com/backend/user/info',
@@ -54,6 +57,9 @@ $(document).ready(() => {
                 for (var x = 0; x < respond.cart.books.length; x++) {
                     quantity = quantity + respond.cart.books[x].cart_book.quantity;
                     console.log(respond.cart.books[x].cart_book.quantity);
+
+                    booksId.push(respond.cart.books[x].id);
+                    booksQuantity.push(respond.cart.books[x].cart_book.quantity);
 
                     order = order + '<p><a href="#">' + respond.cart.books[x].name + '</a> <span class="price">' +
                         respond.cart.books[x].cart_book.quantity + ' x ' +
@@ -107,7 +113,8 @@ $(document).ready(() => {
     }
 
     document.getElementById("checkout").onclick = function () {
-        modalOpen()
+        modalOpen();
+        createOrder();
     };
 
     function modalOpen() {
@@ -115,5 +122,72 @@ $(document).ready(() => {
             backdrop: 'static',
             keyboard: false
         })
+    }
+
+    function createOrder() {
+
+        var cart = "";
+
+        for (var x = 0; x < booksId.length; x++) {
+
+            if ((booksId.length - x) > 1) {
+                cart = cart + '{ "book"' + ':' + booksId[x] + ',' + '"quantity"' + ':' + booksQuantity[x] + '},'
+            } else
+                cart = cart + '{ "book"' + ':' + booksId[x] + ',' + '"quantity"' + ':' + booksQuantity[x] + '}'
+        }
+
+        var dataInfo = '{ "name"' + ': ' + '"' + document.getElementById("fname").value + '",' +
+            '"email"' + ': ' + '"' + document.getElementById("email").value + '",' +
+            '"address"' + ': ' + '"' + document.getElementById("address").value + '",' +
+            '"city"' + ': ' + '"' + document.getElementById("city").value + '",' +
+            '"country"' + ': ' + '"' + document.getElementById("country").value + '",' +
+            '"zip"' + ': ' + '"' + document.getElementById("zip").value + '",' +
+            '"cart"' + ': ' + '[' + cart + ']}';
+
+        console.log(dataInfo);
+
+        $.ajax({
+             url: 'https://lectet.herokuapp.com/backend/orders/',
+             type: 'POST',
+             dataType: 'json',
+             contentType: 'application/json',
+             data: dataInfo,
+             beforeSend: function (request) {
+                 request.setRequestHeader("Authorization", userkey.token);
+                 console.log("DONE IT");
+                 console.log(userkey.token);
+             },
+             success: function (response) {
+                 console.log("I ADD TO CART");
+                 console.log(response);
+             },
+             error: function (error) {
+                 console.log("Error while adding");
+                 console.log(error);
+             }
+         });
+
+         $.ajax({
+            url: 'https://lectet.herokuapp.com/backend/cart/',
+            type: 'POST',
+            async: false,
+            dataType: 'json',
+            contentType: 'application/json',
+            data: [],
+            beforeSend: function (request) {
+                request.setRequestHeader("Authorization", userkey.token);
+                console.log("DONE IT");
+                console.log(this.data);
+                console.log(userkey.token);
+            },
+            success: function (response) {
+                console.log("I ADD TO CART");
+                console.log(response);
+            },
+            error: function (response) {
+                console.log("Error while adding");
+                console.log(response);
+            }
+        });
     }
 });
