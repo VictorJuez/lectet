@@ -195,24 +195,89 @@
 
 	<h4>OpenAPI Resource models</h4>
 	<p>Describe here synthetically, which models you have introduced for resources.</p>
+		<ul>
+			<li>
+				<b>Users</b>
+				<span>Information about users and its details.</span>
+			</li>
+			<li>
+				<b>Authors</b>
+				<span>Contains useful information about the authors of the books in the application.</span>
+			</li>
+			<li>
+				<b>Books</b>
+				<span>Contains the information needed to define a book in the application.</span>
+			</li>
+			<li>
+				<b>Events</b>
+				<span>Contains the information about an event where a book is presented and its details.</span>
+			</li>
+			<li>
+				<b>Cart</b>
+				<span>Shopping cart details for users including the information about the books added in the cart.</span>
+			</li>
+			<li>
+				<b>Orders</b>
+				<span>Contains the information about an order including books and customer information.</span>
+			</li>
+		</ul>
 	<h3>Data Model</h3>
 	<p>ER Diagram:</p>
 	<img src="./ERDiagram.png" style="width:65%">
 	<p>Describe with an ER diagram the model used in the data layer of your web application. How these map to the
 		OpenAPI data model?</p>
 
+		<p>As we can see we have the big six data classes: <b>Users, Authors, Books, Events, Cart and Orders</b> that we have already described above in the OpenAPI resoure model section, and then the other ones are used to make the relations needed between them.
+			<br>We can observe that on the OpenAPI there are calls that its responses includes information about few of the big six data classes together, meaning that the other classes used for the relations have been involved.</p>
+
 	<h2>Implementation</h2>
 	<h3>Tools used</h3>
 	<p>Describe here which tools, languages and frameworks did you use for the backend of the application.</p>
+	<span>The backend has been developed with <b>NodeJS</b> on the server and a <b>PostgreSQL</b> database, and also the following tools and frameworks:</span>
+			<ul>
+				<li>
+					<a href="https://github.com/hapijs/joi"><b>Joi:</b></a>
+					<span>Is an object schema description language and validator for JavaScript objects. Used in the login/register functionalities in order to validate the correct format of data inserted by the user.</span>
+				</li>
+				<li>
+					<a href="http://docs.sequelizejs.com/"><b>Sequelize:</b></a>
+					<span>Is a NodeJS based ORM for PostgreSQL and other databases. It features solid transaction support, relations, eager and lazy loading, read replication and more. Used to simplify the database operations.</span>
+				</li>
+				<li>
+					<a href="http://expressjs.com/"><b>Express js:</b></a>
+					<span>Web framework for NodeJS. Provides a robust set of features for web and mobile applications</span>
+				</li>
+				<li>
+					<a href="http://www.passportjs.org/packages/passport-jwt/"><b>Passport-jwt</b>:</a>
+					<span>This module lets you authenticate endpoints using a JSON web token. It is intended to be used to secure RESTful endpoints without sessions.</span>
+				</li>
+				<li>
+						<a href="https://www.npmjs.com/package/morgan"><b>Morgan</b>:</a>
+						<span>HTTP request logger middleware for node.js.</span>
+				</li>
+				<li>
+						<a href="https://www.npmjs.com/package/body-parser"><b>Body Parser</b></a>
+						<span>Node.js parsing middleware. Parse incoming request bodies in a middleware before your handlers, available under the req.body property.</span>
+				</li>
+			</ul>
 	<h3>Discussion</h3>
 	<p>Describe here:</p>
 	<ul>
-		<li>How did you make sure your web application adheres to the provided OpenAPI specification?</li>
+		<li>How did you make sure your web application adheres to the provided OpenAPI specification?<br>
+			Because the web application was developed in parellel alongside the OpenAPI specification, therefore in all moments any changes made in any of the two parts was applied into the others.
+		</li>
 		<li>Why do you think your web application adheres to common practices to partition the web application (static
-			assets vs. application data)</li>
+			assets vs. application data)<br>
+			Because as said in the beginning of the documentation, the use of the Express js <b>static-files</b> function ensures that the frontend files sent to the client are not rendered in the server. Therefore the backend and the frontend are hardly separated.
+		</li>
 		<li>Describe synthetically why and how did you manage session state, what are the state change triggering
-			actions (e.g., POST to login etc..).</li>
-		<li>Which technology did you use (relational or a no-SQL database) for managing the data model?</li>
+			actions (e.g., POST to login etc..).<br>
+			We used the <b>passport-jwt</b> module for that purpose, so when a user is logged into the system through a POST to login, the response of that call is a jwt-token which is an encrypted code that later on on the frontend is used to save it into the Local Storage of the browser. Then when a protected call to the API is done (needs authorization) this token is loaded from the fronted and added into the Authorization header parameter of the request to the API. Once this request is received in the backend, the system takes the token and checks its value with the passport-jwt module, and in case to be correct we have the user identificated. 
+		</li>
+		<li>Which technology did you use (relational or a no-SQL database) for managing the data model?<br>
+			We used a relational database, specifically <b>PostgreSQL</b>
+		</li>
+
 	</ul>
 	<h2>Other Information</h2>
 	<h3>Task Assignment</h3>
