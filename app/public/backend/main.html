@@ -100,7 +100,9 @@
 		parts belong to the application layer, data layer or presentation layer. How did you ensure that HTML is not
 		rendered server side?</p>
 
-	<p>We have followed the <a href="https://codeburst.io/fractal-a-nodejs-app-structure-for-infinite-scale-d74dda57ee11">Fractal Structure</a> for this project, as we concluded it was the simplest and well defined structure for NodeJS backend implementation we found.</p>
+	<p>We have followed the <a href="https://codeburst.io/fractal-a-nodejs-app-structure-for-infinite-scale-d74dda57ee11">Fractal Structure</a>
+		for this project, as we concluded it was the simplest and well defined structure for NodeJS backend implementation
+		we found.</p>
 	<ul>
 		<li>
 			<b>Presentation Layer:</b>
@@ -125,7 +127,9 @@
 				</li>
 				<li>
 					<b>Actions:</b>
-					<span>Main backend component, where the logic of the application is implemented, after being redirected by the router to the specific action, applies the corresponding logic of the action using and modifying the necessary model objects.</span>
+					<span>Main backend component, where the logic of the application is implemented, after being redirected by the
+						router to the specific action, applies the corresponding logic of the action using and modifying the
+						necessary model objects.</span>
 				</li>
 				<li>
 					<b>Helpers:</b>
@@ -133,24 +137,62 @@
 				</li>
 				<li>
 					<b>Models:</b>
-					<span>Where data objects used by our ORM and the application are defined, they will be used and modified by the action component. \nAlso it is in charge of applying the changes of the data objects to the Database</span>
+					<span>Where data objects used by our ORM and the application are defined, they will be used and modified by
+						the action component. <br>Also it is in charge of applying the changes of the data objects to the
+						Database</span>
 				</li>
 			</ul>
 		</li>
 		<li>
 			<b>Data Layer:</b>
-				<ul>
-					<li>
-						<b>Database:</b>
-						<span>Our PostgreSQL database where all the data is stored. Accessed only by the Model component of the Application Layer.</span>
-					</li>
-				</ul>
+			<ul>
+				<li>
+					<b>Database:</b>
+					<span>Our PostgreSQL database where all the data is stored. Accessed only by the Model component of the
+						Application Layer.</span>
+				</li>
+			</ul>
 		</li>
 	</ul>
+	<p>Regarding to the HTML files not being rendered served side, we used <a href="https://expressjs.com/en/starter/static-files.html">static-files function</a> that Express JS web
+		application offers.<br>What it basically does is that the directory you specified as static will be served to the
+		client without being rendered on the server</p>
+
 	<h3>API</h3>
 	<h4>REST compliance</h4>
 	<p>Describe here to what extent did you follow REST principles and what are the reasons for which you might have
 		decided to diverge. Note, you must not describe the whole API here, just the design decisions.</p>
+
+		<span>The principles we have followed and how we followed them:</span>
+		<ul>
+			<li>
+				<b>Uniform interface: </b>
+				<span>We followed this principle identifying our resources inside our applications and giving each of them they own logical URI and following guideliness across the system (like name convention).</span>
+			</li>
+			<li>
+					<b>Client–server: </b>
+					<span>We followed this principle as we have our client (frontend) separated of our server. Therefore both of them can evolve separately without any dependency on each other</span>
+			</li>
+			<li>
+				<b>Stateless:</b>
+				<span>We followed this principle making all the client-server interaction stateless, meaning that server is not storing anything about past client's requests. Every request is considered as new.</span>
+			</li>
+			<li>
+					<b>Layered System:</b>
+					<span>We have followed this system as the client does not know whether it is connected to the end server or to an intermediate along the way. Even though we have not used it as our system does not interact with any other server but our single one.</span>
+				</li>
+			
+			<p>The principles we have not followed and why:</p>
+			<li>
+				<b>Cacheable:</b>
+				<span>We have not followed this principle as it was out of our knowledge to apply it.</span>
+			</li>
+			<li>
+				<b>Code on demand:</b>
+				<span>We have not used this principle as we are not returning any executable code as a response of any call</span>
+			</li>
+		</ul>
+
 	<h4>OpenAPI Resource models</h4>
 	<p>Describe here synthetically, which models you have introduced for resources.</p>
 	<h3>Data Model</h3>
