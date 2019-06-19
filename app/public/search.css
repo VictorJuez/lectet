@@ -37,6 +37,11 @@
     
 }
 
+.fakeimg:hover {
+    -webkit-transform: scale(1.04);
+        transform: scale(1.04);
+}
+
 #nttLogo {
     height: 50px;
 }

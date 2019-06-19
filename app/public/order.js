@@ -240,8 +240,21 @@ function getRandomInt(min, max, list_id) {
 }
 
 document.getElementById("checkout").onclick = function () {
-  addToCart();
-  location.href='./shippment-info.html?direct=no';
+  
+  var enter = false;
+  
+  if(id_books.length > 0) {
+    for(var x = 0; x < id_books.length && enter == false; x++) {
+      if(id_books[x] != -1) {
+        enter = true;
+      }
+    }
+  }
+
+  if(enter == true) {
+    addToCart();
+    location.href='./shippment-info.html?direct=no';
+  }
 };
 
 function addToCart() {
