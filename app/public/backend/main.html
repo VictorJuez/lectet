@@ -56,7 +56,7 @@
 		</tr>
 		<tr>
 			<td class="tg-0lax">1</td>
-			<td class="tg-0lax">Designer / Frontend developer</td>
+			<td class="tg-0lax">Frontend designer</td>
 			<td class="tg-0lax">Arnab</td>
 			<td class="tg-0lax">Dey</td>
 			<td class="tg-0lax"></td>
@@ -66,7 +66,7 @@
 			<td class="tg-0lax">2</td>
 			<td class="tg-0lax">Frontend developer</td>
 			<td class="tg-0lax">Julian</td>
-			<td class="tg-0lax">Mangut</td>
+			<td class="tg-0lax">Cuellar</td>
 			<td class="tg-0lax"></td>
 			<td class="tg-0lax">jcuellarr@alumnos.unex.es</td>
 		</tr>
@@ -263,18 +263,18 @@
 	<h3>Discussion</h3>
 	<p>Describe here:</p>
 	<ul>
-		<li>How did you make sure your web application adheres to the provided OpenAPI specification?<br>
+		<li style="margin-bottom: 10pt">How did you make sure your web application adheres to the provided OpenAPI specification?<br>
 			Because the web application was developed in parellel alongside the OpenAPI specification, therefore in all moments any changes made in any of the two parts was applied into the others.
 		</li>
-		<li>Why do you think your web application adheres to common practices to partition the web application (static
+		<li style="margin-bottom: 10pt">Why do you think your web application adheres to common practices to partition the web application (static
 			assets vs. application data)<br>
-			Because as said in the beginning of the documentation, the use of the Express js <b>static-files</b> function ensures that the frontend files sent to the client are not rendered in the server. Therefore the backend and the frontend are hardly separated.
+			Because as said in the beginning of the documentation, the use of the <a href="https://expressjs.com/en/starter/static-files.html">Express js <b>static-files</b></a> function ensures that the frontend files sent to the client are not rendered in the server. Therefore the backend and the frontend are hardly separated.
 		</li>
-		<li>Describe synthetically why and how did you manage session state, what are the state change triggering
+		<li style="margin-bottom: 10pt">Describe synthetically why and how did you manage session state, what are the state change triggering
 			actions (e.g., POST to login etc..).<br>
-			We used the <b>passport-jwt</b> module for that purpose, so when a user is logged into the system through a POST to login, the response of that call is a jwt-token which is an encrypted code that later on on the frontend is used to save it into the Local Storage of the browser. Then when a protected call to the API is done (needs authorization) this token is loaded from the fronted and added into the Authorization header parameter of the request to the API. Once this request is received in the backend, the system takes the token and checks its value with the passport-jwt module, and in case to be correct we have the user identificated. 
+			We used the <a href="http://www.passportjs.org/packages/passport-jwt/"><b>passport-jwt</b></a> module for that purpose, so when a user is logged into the system through a POST to login, the response of that call is a jwt-token which is an encrypted code that later on on the frontend is used to save it into the Local Storage of the browser. Then when a protected call to the API is done (needs authorization) this token is loaded from the fronted and added into the Authorization header parameter of the request to the API. Once this request is received in the backend, the system takes the token and checks its value with the passport-jwt module, and in case to be correct we have the user identificated. 
 		</li>
-		<li>Which technology did you use (relational or a no-SQL database) for managing the data model?<br>
+		<li style="margin-bottom: 10pt">Which technology did you use (relational or a no-SQL database) for managing the data model?<br>
 			We used a relational database, specifically <b>PostgreSQL</b>
 		</li>
 
@@ -283,12 +283,22 @@
 	<h3>Task Assignment</h3>
 	<p>Describe here how development tasks have been subdivided among members of the group, e.g.:</p>
 	<ul>
-		<li>Foo worked on front end (80%) and OpenAPI Spec (20% of the time)</li>
-		<li>Bar worked on ....</li>
+		<li>Arnab worked on front end design (60%), front end documentation (20%) and usability (20% of the time)</li>
+		<li>Julian worked on front end development (90%) and on the database structure (10% of the time )</li>
+		<li>Víctor worked on the back end development (80%), back end documentation (10%) and fron end development (10% of the time)</li>
 	</ul>
 	<h3>Analysis of existing API</h3>
 	<p>Describe here if you have found relevant APIs that have inspired the OpenAPI specification and why (at least
 		two).</p>
+		<li><b>Twitter API:</b>
+			<span>Helped us to see the basics of APIs and learn how parameters are passed.</span>
+		</li>
+		<li><b>Skyscanner Flight Search API:</b>
+			<span>Helped us to see how to differenciate the data resources.</span>
+		</li>
+		<li><b>Google Maps API:</b>
+			<span>Made us realize the existence of api keys in order to do certain requests.</span>
+		</li>
 	<h3>Learning Outcome</h3>
 	<p>What was the most important thing all the members have learned while developing this part of the project, what
 		questions remained unanswered, how you will use what you've learned in your everyday life? Examples:</p>
@@ -297,6 +307,7 @@
 			to create his own startup with what she has learned</li>
 		<li>Bar learned how to deploy on a cloud platform, he would have liked to know more about promises for
 			asynchronous code..</li>
+		<li>Víctor learned how to deploy on a cloud platform and to develop an API with Node.js but he would have liked to be more involved in the frontend development. He's starting his own startup based on a web application, and all that has been done here will be useful for him.</li>
 	</ul>
 </body>
 
