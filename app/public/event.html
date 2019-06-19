@@ -20,58 +20,57 @@
 
 <body>
 
-  <nav class="navbar navbar-inverse">
-    <div class="container-fluid" id="menu-top">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <!--<a class="navbar-brand" href="#">Logo</a>-->
-        <a href="./index.html">
-          <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
-        </a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav menu">
-          <li>
-            <a href="search.html?selected=books&name=Books&page=1">Books</a>
-          </li>
-          <li>
-            <a href="#">Category</a>
-            <ul class="sub-menu" id="category-sub-menu">
-
-            </ul>
-          </li>
-          <li>
-            <a href="#">Themes</a>
-            <ul class="sub-menu" id="theme-sub-menu">
-
-            </ul>
-          </li>
-          <li>
-            <a href="search.html?selected=authors&name=Authors&page=1">Authors</a>
-          <li>
-            <a href="search.html?selected=events&name=Events&page=1">Events</a>
-          </li>
-          <li>
-            <a href="#">Others</a>
-            <ul class="sub-menu">
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid" id="menu-top">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <!--<a class="navbar-brand" href="#">Logo</a>-->
+            <a href="./index.html">
+              <img src="logo/Lectet.png" id="nttLogo" alt="lectet">
+            </a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav menu">
               <li>
-                <a href="search.html?selected=favourites&name=Recommended&page=1">Recommended</a>
+                <a href="search.html?selected=books&name=Books&page=1">Books</a>
+              </li>
+              <li>
+                <a>Category</a>
+                <ul class="sub-menu" id="category-sub-menu">
+                  
+                </ul>
+              </li>
+              <li>
+                <a>Themes</a>
+                <ul class="sub-menu" id="theme-sub-menu">
+                 
+                </ul>
+              </li>
+              <li>
+                <a href="search.html?selected=authors&name=Authors&page=1">Authors</a>
+              <li>
+                <a href="search.html?selected=events&name=Events&page=1">Events</a>
+              </li>
+              <li>
+                <a>Others</a>
+                <ul class="sub-menu">
+                  <li>
+                    <a href="search.html?selected=favourites&name=Recommended&page=1">Recommended</a>
+                  </li>
+                </ul>
               </li>
             </ul>
-          </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="login.html" id="loggeduser"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
-          <li><a href="order_details.html" id="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </nav>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a href="login.html" id="loggeduser"><span class="glyphicon glyphicon-user"></span> Log in</a></li>
+              <li><a href="order_details.html" id="cart"><span class="glyphicon glyphicon-shopping-cart"></span> Cart</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
 
   <div class="container">
@@ -123,21 +122,21 @@
             <h5>Get started</h5>
             <ul>
               <li><a href="./index.html">Home</a></li>
-              <li><a href="./login.html">Log in</a></li>
-              <li><a href="./registration.html">Sign up</a></li>
+              <li id="login"><a href="./login.html">Log in</a></li>
+              <li id="registration"><a href="./registration.html">Sign up</a></li>
             </ul>
           </div>
           <div class="col-sm-2">
             <h5>About us</h5>
             <ul>
               <li><a href="#">Company Information</a></li>
-              <li><a href="contact-us.html">Contact us</a></li>
             </ul>
           </div>
           <div class="col-sm-2">
             <h5>Support</h5>
             <ul>
               <li><a href="faq.html">FAQ</a></li>
+              <li><a href="contact-us.html">Contact us</a></li>
             </ul>
           </div>
           <div class="col-sm-3">

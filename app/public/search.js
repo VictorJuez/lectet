@@ -11,8 +11,12 @@ var selectedUrl;
 var length;
 
 
-var selectedGenre;
-var selectedTheme;
+var selectedGenre = null;
+var selectedTheme = null;
+var selectedFilterGenre;
+var selectedFilterTheme;
+var nameSelectedGenre;
+var nameSelectedTheme;
 
 $(document).ready(() => {
 
@@ -40,265 +44,323 @@ $(document).ready(() => {
         '<option value="3">Comic</option>' +
         '</select>' +
         '</div>' +
-
         '<div class="col-sm-4">' +
+        '<a id="a-search">' +
         '<button id="search" class="search"> SEARCH </button>' +
+        '</a>' +
         '</div>'
 
     $(filter).html(filter_html);
 
     $("#result").html($.urlParam('name'));
 
+    if ($.urlParam('filter') == "yes") {
+        console.log("ENTRE EN EL FILTRO");
+        selectedFilterGenre = $.urlParam('genre');
+        selectedFilterTheme = $.urlParam('theme');
 
-    if ($.urlParam('selected') == "books" || $.urlParam('selected') == "genre" || $.urlParam('selected') == "theme") {
+        nameSelectedGenre = $.urlParam('nameGenre');
+        nameSelectedTheme = $.urlParam('nameTheme');
 
-        if ($.urlParam('selected') == "books") {
+        putSelectedGenre();
+        putSelectedTheme();
+        console.log("NO SE QUE PASA");
 
-            console.log("Selected = " + $.urlParam('selected'));
+        generateSearch();
 
-            selectedUrl = 'https://lectet.herokuapp.com/backend/books/'
+    } else {
+        if ($.urlParam('selected') == "books" || $.urlParam('selected') == "genre" || $.urlParam('selected') == "theme") {
 
+            if ($.urlParam('selected') == "books") {
 
-        } else {
+                console.log("Selected = " + $.urlParam('selected'));
 
-            selectedUrl = 'https://lectet.herokuapp.com/backend/books/' + $.urlParam('selected') + '/' + $.urlParam('id');
+                selectedUrl = 'https://lectet.herokuapp.com/backend/books/'
 
-            //selectedUrl = 'https://lectet.herokuapp.com/backend/books/' + $.urlParam('selected') + '/2';
-
-            if ($.urlParam('selected') == "genre") {
-
-                var sel = document.getElementById("Genre");
-
-                var val = $.urlParam('id');
-
-                var opts = sel.options;
-                console.log(opts);
-
-                for (var opt, j = 0; opt = opts[j]; j++) {
-                    if (opt.value == val) {
-                        sel.selectedIndex = j;
-                        selectedGenre = opt;
-                        break;
-                    }
-                }
 
             } else {
 
-                var sel = document.getElementById("Theme");
+                selectedUrl = 'https://lectet.herokuapp.com/backend/books/' + $.urlParam('selected') + '/' + $.urlParam('id');
 
-                var val = $.urlParam('id');
+                //selectedUrl = 'https://lectet.herokuapp.com/backend/books/' + $.urlParam('selected') + '/2';
 
-                var opts = sel.options;
+                if ($.urlParam('selected') == "genre") {
 
-                console.log(opts);
-                for (var opt, j = 0; opt = opts[j]; j++) {
-                    if (opt.value == val) {
-                        sel.selectedIndex = j;
-                        selectedTheme = opt;
-                        break;
+                    putSelectedGenre();
+
+                } else {
+
+                    putSelectedTheme();
+
+                }
+
+            }
+
+            $.ajax({
+                type: 'GET',
+                url: selectedUrl,
+                success: function (respond) {
+
+                    length = respond.books.length;
+
+                    console.log(respond);
+
+                    var search = "#books-search";
+
+                    var book_search = '';
+
+                    var max = length;
+
+                    if ((6 * $.urlParam('page')) < max) {
+                        max = 6 * $.urlParam('page');
                     }
-                }
-            }
 
+                    console.log(max);
+
+                    for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
+
+                        book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4 card-book">' +
+
+                            '<div class="card result">' +
+                            '<a href="./product.html?id=' + respond.books[x].id + '">' +
+                            '<img src="./images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
+                            '</a>' +
+                            '<div class="card-body">' +
+                            '<div class="name-book">' +
+                            '<h4 class="card-title">' + respond.books[x].name + '</h4>' +
+                            '</div>' +
+                            '<a href="./author.html?id=' + respond.books[x].authors[0].id + '" >' +
+                            '<h6 class="card-text">' + respond.books[x].authors[0].name + ' ' + respond.books[x].authors[0].lastName + '</h6>' + '</a>' +
+                            '<a href="./product.html?id=' + respond.books[x].id + '" class="btn btn-primary button-book">' + respond.books[x].price + ' €' + '</a>' +
+                            ' </div> ' +
+                            '</div>' +
+
+                            '</div>'
+                    }
+
+                    $(search).html(book_search);
+
+                    numberPages();
+                }
+            });
+
+        } else if ($.urlParam('selected') == "authors") {
+
+            $(filter).css("display", "none");
+
+            $.ajax({
+                type: 'GET',
+                url: 'https://lectet.herokuapp.com/backend/authors/',
+                success: function (respond) {
+
+                    length = respond.length;
+
+                    console.log(respond);
+
+                    var search = "#books-search";
+
+                    var book_search = '';
+
+                    var max = length;
+
+                    if ((6 * $.urlParam('page')) < max) {
+                        max = 6 * $.urlParam('page');
+                    }
+
+                    for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
+
+                        book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4">' +
+
+                            '<div class="card result author">' +
+                            '<div class="box">' +
+                            '<img class="author-img" src="./images/authors/author_' + respond[x].id + '.jpg" alt="...">' +
+                            '</div>' +
+                            '<div class="card-body">' +
+                            '<h4 class="card-title">' + respond[x].name + ' ' + respond[x].lastName + '</h4>' +
+                            '<a href="./author.html?id=' + respond[x].id + '" class="btn btn-primary button-book"> Go to profile </a>' +
+                            ' </div> ' +
+                            '</div>' +
+
+                            '</div>'
+                    }
+
+                    $(search).html(book_search);
+
+                    numberPages();
+                }
+            });
+
+
+        } else if ($.urlParam('selected') == "events") {
+
+            $(filter).css("display", "none");
+
+            $.ajax({
+                type: 'GET',
+                url: 'https://lectet.herokuapp.com/backend/events/',
+                success: function (respond) {
+
+                    length = respond.events.length;
+
+                    console.log(respond);
+
+                    var search = "#books-search";
+
+                    var book_search = '';
+
+                    var max = length;
+
+                    if ((6 * $.urlParam('page')) < max) {
+                        max = 6 * $.urlParam('page');
+                    }
+
+                    for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
+
+                        book_search = book_search + '<div class="col-xs-10 separation">' +
+
+                            '<div class="card result-event">' +
+                            '<img class="img-event result-event" src="./images/events/event_' + respond.events[x].id + '.jpg" alt="...">' +
+                            '<div class="card-body result-info-event">' +
+                            '<h4 class="card-title">' + respond.events[x].name + '</h4>' +
+                            '<a href="./event.html?id=' + respond.events[x].id + '" class="btn btn-primary button-book"> Go to the event </a>' +
+                            ' </div> ' +
+                            '</div>' +
+                            '</div>'
+                    }
+
+                    $(search).html(book_search);
+
+                    numberPages();
+
+                }
+            });
+
+        } else if ($.urlParam('selected') == "favourites") {
+
+            $(filter).css("display", "none");
+
+            $.ajax({
+                type: 'GET',
+                url: 'https://lectet.herokuapp.com/backend/books/favourites',
+                success: function (respond) {
+
+                    length = respond.books.length;
+
+                    console.log(respond);
+
+                    var search = "#books-search";
+
+                    var book_search = '';
+
+                    var max = length;
+
+                    if ((6 * $.urlParam('page')) < max) {
+                        max = 6 * $.urlParam('page');
+                    }
+
+                    for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
+
+                        book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4 card-book">' +
+
+                            '<div class="card result">' +
+                            '<a href="./product.html?id=' + respond.books[x].id + '" >' +
+                            '<img src="./images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
+                            '</a>' +
+                            '<div class="card-body">' +
+                            '<div class="name-book">' +
+                            '<h4 class="card-title">' + respond.books[x].name + '</h4>' +
+                            '</div>' +
+                            '<a href="./author.html?id=' + respond.books[x].authors[0].id + '" >' +
+                            '<h6 class="card-text">' + respond.books[x].authors[0].name + ' ' + respond.books[x].authors[0].lastName + '</h6>' + '</a>' +
+                            '<a href="./product.html?id=' + respond.books[x].id + '" class="btn btn-primary button-book">' + respond.books[x].price + ' €' + '</a>' +
+                            ' </div> ' +
+                            '</div>' +
+
+                            '</div>'
+                    }
+
+                    $(search).html(book_search);
+
+                    numberPages();
+
+                }
+            });
         }
-
-        $.ajax({
-            type: 'GET',
-            url: selectedUrl,
-            success: function (respond) {
-
-                length = respond.books.length;
-
-                console.log(respond);
-
-                var search = "#books-search";
-
-                var book_search = '';
-
-                var max = length;
-
-                if ((6 * $.urlParam('page')) < max) {
-                    max = 6 * $.urlParam('page');
-                }
-
-                console.log(max);
-
-                for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
-
-                    book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4 card-book">' +
-
-                        '<div class="card result">' +
-                        '<a href="./product.html?id=' + respond.books[x].id + '">' +
-                        '<img src="./images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
-                        '</a>' +
-                        '<div class="card-body">' +
-                        '<div class="name-book">' +
-                        '<h4 class="card-title">' + respond.books[x].name + '</h4>' +
-                        '</div>' +
-                        '<a href="./author.html?id=' + respond.books[x].authors[0].id + '" >' +
-                        '<h6 class="card-text">' + respond.books[x].authors[0].name + ' ' + respond.books[x].authors[0].lastName + '</h6>' + '</a>' +
-                        '<a href="./product.html?id=' + respond.books[x].id + '" class="btn btn-primary button-book">' + respond.books[x].price + ' €' + '</a>' +
-                        ' </div> ' +
-                        '</div>' +
-
-                        '</div>'
-                }
-
-                $(search).html(book_search);
-
-                numberPages();
-            }
-        });
-
-    } else if ($.urlParam('selected') == "authors") {
-
-        $(filter).css("display", "none");
-
-        $.ajax({
-            type: 'GET',
-            url: 'https://lectet.herokuapp.com/backend/authors/',
-            success: function (respond) {
-
-                length = respond.length;
-
-                console.log(respond);
-
-                var search = "#books-search";
-
-                var book_search = '';
-
-                var max = length;
-
-                if ((6 * $.urlParam('page')) < max) {
-                    max = 6 * $.urlParam('page');
-                }
-
-                for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
-
-                    book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4">' +
-
-                        '<div class="card result author">' +
-                        '<div class="box">' +
-                        '<img class="author-img" src="./images/authors/author_' + respond[x].id + '.jpg" alt="...">' +
-                        '</div>' +
-                        '<div class="card-body">' +
-                        '<h4 class="card-title">' + respond[x].name + ' ' + respond[x].lastName + '</h4>' +
-                        '<a href="./author.html?id=' + respond[x].id + '" class="btn btn-primary button-book"> Go to profile </a>' +
-                        ' </div> ' +
-                        '</div>' +
-
-                        '</div>'
-                }
-
-                $(search).html(book_search);
-
-                numberPages();
-            }
-        });
-
-
-    } else if ($.urlParam('selected') == "events") {
-
-        $(filter).css("display", "none");
-
-        $.ajax({
-            type: 'GET',
-            url: 'https://lectet.herokuapp.com/backend/events/',
-            success: function (respond) {
-
-                length = respond.events.length;
-
-                console.log(respond);
-
-                var search = "#books-search";
-
-                var book_search = '';
-
-                var max = length;
-
-                if ((6 * $.urlParam('page')) < max) {
-                    max = 6 * $.urlParam('page');
-                }
-
-                for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
-
-                    book_search = book_search + '<div class="col-xs-10 separation">' +
-
-                        '<div class="card result-event">' +
-                        '<img class="img-event result-event" src="./images/events/event_' + respond.events[x].id + '.jpg" alt="...">' +
-                        '<div class="card-body result-info-event">' +
-                        '<h4 class="card-title">' + respond.events[x].name + '</h4>' +
-                        '<a href="./event.html?id=' + respond.events[x].id + '" class="btn btn-primary button-book"> Go to the event </a>' +
-                        ' </div> ' +
-                        '</div>' +
-                        '</div>'
-                }
-
-                $(search).html(book_search);
-
-                numberPages();
-
-            }
-        });
-
-    } else if ($.urlParam('selected') == "favourites") {
-
-        $(filter).css("display", "none");
-
-        $.ajax({
-            type: 'GET',
-            url: 'https://lectet.herokuapp.com/backend/books/favourites',
-            success: function (respond) {
-
-                length = respond.books.length;
-
-                console.log(respond);
-
-                var search = "#books-search";
-
-                var book_search = '';
-
-                var max = length;
-
-                if ((6 * $.urlParam('page')) < max) {
-                    max = 6 * $.urlParam('page');
-                }
-
-                for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
-
-                    book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4 card-book">' +
-
-                    '<div class="card result">' +
-                    '<a href="./product.html?id=' + respond.books[x].id + '" >' +
-                    '<img src="./images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
-                    '</a>' +
-                    '<div class="card-body">' +
-                    '<div class="name-book">' +
-                    '<h4 class="card-title">' + respond.books[x].name + '</h4>' +
-                    '</div>' +
-                    '<a href="./author.html?id=' + respond.books[x].authors[0].id + '" >' +
-                    '<h6 class="card-text">' + respond.books[x].authors[0].name + ' ' + respond.books[x].authors[0].lastName + '</h6>' + '</a>' +
-                    '<a href="./product.html?id=' + respond.books[x].id + '" class="btn btn-primary button-book">' + respond.books[x].price + ' €' + '</a>' +
-                    ' </div> ' +
-                    '</div>' +
-
-                    '</div>'
-                }
-
-                $(search).html(book_search);
-
-                numberPages();
-
-            }
-        });
     }
 
+    function putSelectedGenre() {
+
+        var sel = document.getElementById("Genre");
+
+        if ($.urlParam("filter") == "yes") {
+            var val = $.urlParam('genre');
+            console.log(val);
+        } else {
+            var val = $.urlParam('id');
+        }
+
+        var opts = sel.options;
+        console.log(opts);
+
+        for (var opt, j = 0; opt = opts[j]; j++) {
+            if (opt.value == val) {
+                sel.selectedIndex = j;
+                selectedGenre = opt;
+                if ($.urlParam("filter") != "yes") {
+                    $("#a-search").attr("href", "search.html?id=" + $.urlParam("id") + "&selected=genre&name=" + $.urlParam("name") + "&page=1");
+                }
+                break;
+            }
+        }
+    }
+
+    function putSelectedTheme() {
+
+        var sel = document.getElementById("Theme");
+
+        if ($.urlParam("filter") == "yes") {
+            var val = $.urlParam('theme');
+            console.log(val);
+        } else {
+            var val = $.urlParam('id');
+        }
+
+        var opts = sel.options;
+
+        console.log(opts);
+        for (var opt, j = 0; opt = opts[j]; j++) {
+            if (opt.value == val) {
+                sel.selectedIndex = j;
+                selectedTheme = opt;
+                if ($.urlParam("filter") != "yes") {
+                    $("#a-search").attr("href", "search.html?id=" + $.urlParam("id") + "&selected=theme&name=" + $.urlParam("name") + "&page=1");
+                }
+                break;
+            }
+        }
+    }
 
     var selectGenre = document.getElementById('Genre');
     selectGenre.addEventListener('change',
         function () {
+
             selectedGenre = this.options[selectGenre.selectedIndex];
+            console.log("ENTRO EN CATEGORY CON : " + selectedGenre.value);
             console.log(selectedGenre.value + ': ' + selectedGenre.text);
+            if (selectedTheme != null) {
+                if (selectedTheme.value != "null" && selectedGenre.value != "null") {
+                    $("#a-search").attr("href", "search.html?filter=yes&genre=" + selectedGenre.value + "&nameGenre=" + selectedGenre.text + "&theme=" + selectedTheme.value + "&nameTheme=" + selectedTheme.text + "&page=1")
+                } else if (selectedTheme.value != "null") {
+                    $("#a-search").attr("href", "search.html?id=" + selectedTheme.value + "&selected=theme&name=" + selectedTheme.text + "&page=1");
+                }
+            }
+
+            if(selectedTheme == null || selectedTheme.value == "null") {
+                if (selectedGenre.value != "null") {
+                    $("#a-search").attr("href", "search.html?id=" + selectedGenre.value + "&selected=genre&name=" + selectedGenre.text + "&page=1");
+                }
+            }
+
         });
 
     var selectTheme = document.getElementById('Theme');
@@ -306,18 +368,33 @@ $(document).ready(() => {
         function () {
             selectedTheme = this.options[selectTheme.selectedIndex];
             console.log(selectedTheme.value + ': ' + selectedTheme.text);
+            if (selectedGenre != null) {
+                if (selectedGenre.value != "null" && selectedTheme.value != "null") {
+                    $("#a-search").attr("href", "search.html?filter=yes&genre=" + selectedGenre.value + "&nameGenre=" + selectedGenre.text + "&theme=" + selectedTheme.value + "&nameTheme=" + selectedTheme.text + "&page=1")
+                } else if (selectedGenre.value != "null") {
+                    $("#a-search").attr("href", "search.html?id=" + selectedGenre.value + "&selected=genre&name=" + selectedGenre.text + "&page=1");
+                }
+            }
+
+            if(selectedGenre == null || selectedGenre.value == "null") {
+                if (selectedTheme.value != "null") {
+                    $("#a-search").attr("href", "search.html?id=" + selectedTheme.value + "&selected=theme&name=" + selectedTheme.text + "&page=1");
+                }
+            }
+
         });
 
 
     document.getElementById("search").onclick = function () {
         console.log(selectedGenre.value);
-        generateSearch();
+        //generateSearch();
     };
 
     function generateSearch() {
-
+        console.log("SIGO SIN SABER QUE PASA");
+        console.log(selectedGenre);
         $.ajax({
-            url: 'https://lectet.herokuapp.com/backend/books/filter/?genre=' + selectedGenre.value + '&theme=' + selectedTheme.value,
+            url: 'https://lectet.herokuapp.com/backend/books/filter/?genre=' + selectedFilterGenre + '&theme=' + selectedFilterTheme,
             type: 'GET',
             success: function (respond) {
 
@@ -342,11 +419,13 @@ $(document).ready(() => {
                     book_search = book_search + '<div class="col-lg-4 col-sm-6 mb-4 card-book">' +
 
                         '<div class="card result">' +
-                        '<a href="./product.html?id=' + respond[x].id + '">' + 
+                        '<a href="./product.html?id=' + respond[x].id + '">' +
                         '<img src="./images/books/book_' + respond[x].id + '.jpg" class="fakeimg" alt="...">' +
                         '</a>' +
                         '<div class="card-body">' +
+                        '<div class="name-book">' +
                         '<h4 class="card-title">' + respond[x].name + '</h4>' +
+                        '</div>' +
                         '<a href="./author.html?id=' + respond[x].authors[0].id + '" >' +
                         '<h6 class="card-text">' + respond[x].authors[0].name + ' ' + respond[x].authors[0].lastName + '</h6>' + '</a>' +
                         '<a href="./product.html?id=' + respond[x].id + '" class="btn btn-primary button-book">' + respond[x].price + ' €' + '</a>' +
@@ -354,9 +433,10 @@ $(document).ready(() => {
                         '</div>' +
 
                         '</div>'
+
                 }
 
-                $("#result").text(selectedGenre.text + " / " + selectedTheme.text);
+                $("#result").text(nameSelectedGenre + " / " + nameSelectedTheme);
                 $(search).html(book_search);
 
                 numberPages();
@@ -382,11 +462,15 @@ $(document).ready(() => {
 
         var url = "search.html?"
 
-        if ($.urlParam('selected') == "genre" || $.urlParam('selected') == "theme") {
-            url = url + "id=" + $.urlParam('id') + "&";
-        }
+        if ($.urlParam('filter') == "yes") {
+            url = url + "filter=yes&genre=" + selectedFilterGenre + "&nameGenre=" + nameSelectedGenre + "&theme=" + selectedFilterTheme + "&nameTheme=" + nameSelectedTheme + "&page="
+        } else {
+            if ($.urlParam('selected') == "genre" || $.urlParam('selected') == "theme") {
+                url = url + "id=" + $.urlParam('id') + "&";
+            }
 
-        url = url + "selected=" + $.urlParam('selected') + "&name=" + $.urlParam('name') + "&page=";
+            url = url + "selected=" + $.urlParam('selected') + "&name=" + $.urlParam('name') + "&page=";
+        }
 
         var previous = parseInt($.urlParam('page')) - 1;
 

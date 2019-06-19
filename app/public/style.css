@@ -76,7 +76,7 @@ body {
 }
 
 .panel-body img {
-    max-width: 50%;
+    max-width: 100%;
     height: 23rem !important;
     position: relative;
     margin-left: auto;
@@ -100,17 +100,9 @@ body {
     margin-right: auto;
 }
 
-.container {
-    display: table;
-}
-
 .jumbotron .container {
     width: 0 !important;
     min-width: 100%;
-}
-
-.row {
-    display: table-row;
 }
 
 .cell {
@@ -129,6 +121,8 @@ body {
     text-align: left;
     border-radius: 10px;
     min-height: 51.7px;
+    max-width: 100%;
+    min-width: 100%;
 }
 
 .first-title {

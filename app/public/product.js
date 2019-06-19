@@ -111,14 +111,11 @@ $(document).ready(() => {
                 var books_event = '<div class="row">' +
                     '<div class="col-md-9 cta-contents">' +
                     '<h1 class="cta-title">' + data2.events[0].name + '</h1>' +
-                    '<div class="cta-desc">' +
-                    '<p>' + data2.events[0].description + '</p>' +
-                    '</div>' +
                     '</div>' +
                     '<div class="col-md-3 cta-button">' +
                     '<a href="./event.html?id=' + data2.events[0].id + '" class="btn btn-lg btn-block btn-primary"> To learn more</a>' +
                     '</div>' +
-                    '</div>;';
+                    '</div>';
 
                 $(id).html(books_event);
             }

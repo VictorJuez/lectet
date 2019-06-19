@@ -254,7 +254,7 @@ document.addEventListener("load", () => {
 function load() {
     console.log("SI JODERRRRRRR");
 
-    setTimeout("later()", 300);
+    setTimeout("later()", 500);
 }
 
 function later() {

@@ -6,6 +6,8 @@ $(document).ready(function () {
         $user = $('#loggeduser');
         $user.text(userkey.email);
         $user.attr("href", "");
+        $("#login").css({'display': 'none'});
+        $("#registration").css({'display': 'none'});
     } else {
         console.log("you are not logged in");
         $("#cart").css({
