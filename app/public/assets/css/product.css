@@ -12,10 +12,18 @@
 
 .add-button {
     padding-left: 6% !important;
+    background-color: #386404;
+    border-color: #2f5703;
+}
+
+.buy-button {
+    background-color: #9e2c28;
+    border-color: #d43f3a;
 }
 
 .mark-review {
     background-color: rgb(255, 208, 0);
+    color: #000000;
 }
 
 .specifications-space {
@@ -31,6 +39,7 @@
     height: 10rem;
     border: 1px solid black;
     border-radius: 10px;
+    padding: 2%;
 }
 
 .star {

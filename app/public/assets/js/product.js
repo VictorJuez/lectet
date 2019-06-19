@@ -37,9 +37,9 @@ $(document).ready(() => {
             var authorBottom = '<p>';
             var author = '';
             for (var i = 0; i < data.book.authors.length; i++) {
-                author = author + '<a class="nav-link" href="./author.html?id=' + data.book.authors[i].id + '" style="color:#aaa"> ' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>';
+                author = author + '<a class="nav-link" href="./author.html?id=' + data.book.authors[i].id + '"> ' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>';
                 authorBottom = authorBottom + ' ' + 'Author: <span class="glyphicon glyphicon-user"></span>' +
-                    '<a class="nav-link" href="./author.html?id=' + data.book.authors[i].id + '" style="color:#aaa"> ' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>'
+                    '<a class="nav-link" href="./author.html?id=' + data.book.authors[i].id + '"> ' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>'
             }
             authorBottom = authorBottom + '</p>';
 
@@ -89,7 +89,7 @@ $(document).ready(() => {
                             // console.log(data.author.books[i].name);
                             related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6">' +
                                 '<div class="single-related-product d-flex">' +
-                                '<a href="' + './product.html?id=' + data1.books[i].id + '"><img src="../assets/images/books/book_' + data1.books[i].id + '.jpg' + '" class="fakeimg" alt=""></a>' +
+                                '<a href="' + './product.html?id=' + data1.books[i].id + '"><img src="../assets/images/books/book_' + data1.books[i].id + '.jpg' + '" class="fakeimg" alt="Image"></a>' +
                                 ' <div class="text-center text-related-book">' +
                                 '<a href="' + './product.html?id=' + data1.books[i].id + '" class="title">' + data1.books[i].name + '</a>' +
                                 '</div>' +

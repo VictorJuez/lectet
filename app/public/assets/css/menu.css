@@ -41,16 +41,16 @@
      width:100%;
      box-shadow:0px 4px 3px rgba(0,0,0,.5);
      
-     background: #393e46;
-     border-color: #393e46;
+     background: #393e46 !important;
+     border-color: #393e46 !important;
  }
  
  /* Remove the navbar's default rounded borders and increase the bottom margin */
  .navbar {
      margin-bottom: 50px;
      border-radius: 0;
-     background: #393e46;
-     border-color: #393e46;
+     background: #393e46 !important;
+     border-color: #393e46 !important;
    }
 
    ul li a {
@@ -166,7 +166,7 @@
   
   #myFooter .btn {
       color: white;
-      background-color: #d84b6b;
+      background-color: #a31d3b;
       border-radius: 20px;
       border: none;
       width: 150px;

@@ -63,15 +63,17 @@ hr {
 .checkout {
    width: 100%;
    height: 4rem;
-   background: #d9534f;
+   background: #9e2c28;
    border-color: #d43f3a;
    border-radius: 5px;
+   color: white;
 }
 
 .delete {
-   background: #d9534f;
+   background: #9e2c28;
    border-color: #d43f3a;
    border-radius: 5px;
+   color: white;
 }
 
 

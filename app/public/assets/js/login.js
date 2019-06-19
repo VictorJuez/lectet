@@ -4,6 +4,7 @@ $(document).ready(() => {
 
     if (userkey) console.log("myKey: " + userkey);
     var $button = $('#loginButton');
+
     $button.click(function () {
         const $email = $('#email').val();
         const $password = $('#password').val();
@@ -29,6 +30,9 @@ $(document).ready(() => {
                 window.location.href = "../index.html";
             },
             error: function () {
+                $("#error").css({
+                    'display': 'block'
+                });
                 console.log("No se ha podido obtener la información");
             }
         });

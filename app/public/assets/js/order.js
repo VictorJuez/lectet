@@ -54,15 +54,17 @@ $(document).ready(() => {
 
       total = 0;
 
+      var order = "";
+
       console.log(response.cart.books.length);
 
       length_cart = response.cart.books.length;
 
       for (var x = 0; x < response.cart.books.length; x++) {
 
-        book_order_html = book_order_html + '<h4 id="extract-name-book_' + x + '">' + response.cart.books[x].name + '</h4>';
-
-        price_order_html = price_order_html + '<h4 id="extract-price-book_' + x + '" class="price">' + response.cart.books[x].price * response.cart.books[x].cart_book.quantity + ' €</h4>';
+        order = order + '<div class="col-sm-8 col-xs-8" id="book-order">' + '<h4 id="extract-name-book_' + x + '">' + response.cart.books[x].name + '</h4>' +
+        '</div>' + '<div class="col-sm-4 col-xs-4" id="price-order">' + '<h4 id="extract-price-book_' + x + '" class="price">' + response.cart.books[x].price * response.cart.books[x].cart_book.quantity + ' €</h4>' +
+        '</div>';
 
         total = total + (response.cart.books[x].price * response.cart.books[x].cart_book.quantity);
 
@@ -105,8 +107,7 @@ $(document).ready(() => {
       }
 
       $(id).html(book);
-      $(book_order).html(book_order_html);
-      $(price_order).html(price_order_html);
+      $("#order").html(order);
 
       for (var y = 0; y < response.cart.books.length; y++) {
         $('#' + y + ' option').removeAttr('selected')
