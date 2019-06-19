@@ -39,7 +39,6 @@ $(document).ready(() => {
                 if (response == null) console.log("empty response");
                 else console.log(response.token);
                 window.localStorage.setItem("lectet", JSON.stringify({
-                    "email": $email,
                     "token": response.token
                 }));
                 window.location.href = "../index.html";

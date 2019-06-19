@@ -4,14 +4,28 @@ $(document).ready(function () {
 
     const userkey = JSON.parse(window.localStorage.getItem("lectet"));
     if (userkey) {
-        $user = $('#loggeduser');
-        $user.text(userkey.email);
-        $user.attr("href", "");
-        $("#login").css({
-            'display': 'none'
-        });
-        $("#registration").css({
-            'display': 'none'
+
+        $.ajax({
+            url: 'https://lectet.herokuapp.com/backend/user/info',
+            beforeSend: function (request) {
+                request.setRequestHeader("Authorization", userkey.token);
+            },
+            success: function (response) {
+                console.log("Im logged in! ");
+                console.log(response);
+                $user = $('#loggeduser');
+                $user.text(response.email);
+                $user.attr("href", "");
+                $("#login").css({
+                    'display': 'none'
+                });
+                $("#registration").css({
+                    'display': 'none'
+                });
+            },
+            error: function () {
+                console.log("Error while checking logging");
+            }
         });
     } else {
         console.log("you are not logged in");
