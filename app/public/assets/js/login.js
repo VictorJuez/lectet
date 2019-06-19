@@ -2,7 +2,7 @@ $(document).ready(() => {
     console.log("HELLO WORLD");
     const userkey = JSON.parse(window.localStorage.getItem("lectet"));
 
-    if (userkey) console.log("myKey: " + userkey);
+    if (userkey) console.log("myKey: " + userkey.token);
     var $button = $('#loginButton');
     $button.click(function () {
         const $email = $('#email').val();
@@ -23,7 +23,6 @@ $(document).ready(() => {
                 if (response == null) console.log("empty response");
                 else console.log(response.token);
                 window.localStorage.setItem("lectet", JSON.stringify({
-                    "email": $email,
                     "token": response.token
                 }));
                 window.location.href = "../index.html";
