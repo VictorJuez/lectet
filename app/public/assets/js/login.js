@@ -26,7 +26,7 @@ $(document).ready(() => {
                     "email": $email,
                     "token": response.token
                 }));
-                window.location.href = "index.html";
+                window.location.href = "../index.html";
             },
             error: function () {
                 console.log("No se ha podido obtener la información");

@@ -20,9 +20,9 @@ $(document).ready(() => {
     var $book_image1 = $('#book_image1');
     var $book_image2 = $('#book_image2');
 
-    $book_image0.attr("src", 'images/books/book_' + $.urlParam('id') + '.jpg');
-    $book_image1.attr("src", 'images/example_page_1.jpg');
-    $book_image2.attr("src", 'images/example_page_2.jpg');
+    $book_image0.attr("src", '../assets/images/books/book_' + $.urlParam('id') + '.jpg');
+    $book_image1.attr("src", '../assets/images/example_page_1.jpg');
+    $book_image2.attr("src", '../assets/images/example_page_2.jpg');
 
     $("#refer-buyNow").attr("href", "./shippment-info.html?direct=yes&id=" + $.urlParam('id'));
 
@@ -36,7 +36,7 @@ $(document).ready(() => {
             var authors = '<p>';
             for (var i = 0; i < data.book.authors.length; i++) {
                 authors = authors + ' ' + 'Author: <span class="glyphicon glyphicon-user"></span>' +
-                    '<a class="nav-link" href="author.html?id=' + data.book.authors[i].id + '" style="color:#aaa"> ' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>'
+                    '<a class="nav-link" href="./author.html?id=' + data.book.authors[i].id + '" style="color:#aaa"> ' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>'
             }
             authors = authors + '</p>';
             $author_name.html(authors);
@@ -76,9 +76,9 @@ $(document).ready(() => {
                             // console.log(data.author.books[i].name);
                             related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6">' +
                                 '<div class="single-related-product d-flex">' +
-                                '<a href="' + 'product.html?id=' + data1.books[i].id + '"><img src="images/books/book_' + data1.books[i].id + '.jpg' + '" class="fakeimg" alt=""></a>' +
+                                '<a href="' + './product.html?id=' + data1.books[i].id + '"><img src="../assets/images/books/book_' + data1.books[i].id + '.jpg' + '" class="fakeimg" alt=""></a>' +
                                 ' <div class="text-center">' +
-                                '<a href="' + 'product.html?id=' + data1.books[i].id + '" class="title">' + data1.books[i].name + '</a>' +
+                                '<a href="' + './product.html?id=' + data1.books[i].id + '" class="title">' + data1.books[i].name + '</a>' +
                                 '<div class="price">' +
                                 '<h6>' + data1.books[i].price + ' €</h6>' +
                                 '</div>' +
@@ -229,7 +229,7 @@ $(document).ready(() => {
                 '<br/>' +
                 '<div class="modal-body popup-center">' +
                 'You can login by clicking on the button: ' +
-                '<a href="login.html">' +
+                '<a href="./login.html">' +
                 '<button id="button-modal" type="button">' +
                 '<span aria-hidden="true">Login</span>' +
                 '</button>' +
@@ -237,7 +237,7 @@ $(document).ready(() => {
                 '<br/> ' +
                 '<br/>' +
                 'Or if you have not registered yet you can register by clicking the following button: ' +
-                '<a href="registration.html">' +
+                '<a href="./registration.html">' +
                 '<button id="button-modal" type="button">' +
                 '<span aria-hidden="true">Register</span>' +
                 '</button>' +

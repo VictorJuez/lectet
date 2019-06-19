@@ -74,7 +74,7 @@ $(document).ready(() => {
         '<div class="container book_' + x + '">' + 
           '<div class="row">' +
             '<div class="col-sm-4 col-xs-5 product">' +
-              '<img src="./images/books/book_' + response.cart.books[x].id + '.jpg" class="img-responsive order-img" alt="Image">' +
+              '<img src="../assets/images/books/book_' + response.cart.books[x].id + '.jpg" class="img-responsive order-img" alt="Image">' +
             '</div>' +
             '<div class="col-sm-6 col-xs-3">' +
               '<h3>' + response.cart.books[x].name + '</h3>' +
@@ -195,15 +195,15 @@ $(document).ready(() => {
       var id;
       var list_id = [];
 
-      for (var i = 0; i < 7; i++) {
+      for (var i = 0; i < 8; i++) {
 
         var id_category = getRandomInt(0, respond.books.length, list_id);
 
         id = '.button' + i + '_0';
 
-        $(id).attr("onclick", "location.href='product.html?id=" + respond.books[id_category].id + "'");
+        $(id).attr("onclick", "location.href='./product.html?id=" + respond.books[id_category].id + "'");
 
-        $(".img-book" + i + "_0").attr("src", "./images/books/book_" + respond.books[id_category].id + ".jpg");
+        $(".img-book" + i + "_0").attr("src", "../assets/images/books/book_" + respond.books[id_category].id + ".jpg");
       }
 
     },

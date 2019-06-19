@@ -20,8 +20,8 @@ $(document).ready(() => {
 
                 id = '#event_' + i;
 
-                $("#item" + i).css('background', 'url(./images/events/event_' + respuesta.events[i].id + '.jpg) no-repeat center center fixed')
-                $("#button-event_" + i).attr("onclick", "location.href='event.html?id=" + respuesta.events[i].id + "'");
+                $("#item" + i).css('background', 'url(./assets/images/events/event_' + respuesta.events[i].id + '.jpg) no-repeat center center fixed')
+                $("#button-event_" + i).attr("onclick", "location.href='./pages/event.html?id=" + respuesta.events[i].id + "'");
 
                 $(id).html('<h3 class="event-name">' + respuesta.events[i].name + '</h3>');
 
@@ -38,8 +38,8 @@ $(document).ready(() => {
                             for (var x = difference; x < 4; x++) {
                                 id = '#event_' + x;
 
-                                $("#item" + x).css('background', 'url(./images/events/event_' + respond.events[x].id + '.jpg) no-repeat center center fixed')
-                                $("#button-event_" + x).attr("onclick", "location.href='event.html?id=" + respond.events[x].id + "'");
+                                $("#item" + x).css('background', 'url(./assets/images/events/event_' + respond.events[x].id + '.jpg) no-repeat center center fixed')
+                                $("#button-event_" + x).attr("onclick", "location.href='./pages/event.html?id=" + respond.events[x].id + "'");
 
                                 $(id).html("<h3>" + respond.events[x].name + "</h3>");
                             }
@@ -65,10 +65,10 @@ $(document).ready(() => {
             for (var i = 0; i < 8; i++) {
                 $(".first-title-recommended_" + i).text(respond.books[i].name);
                 $(".price-recommended_" + i).text(respond.books[i].price + " €");
-                $(".button-recommended_" + i).attr("onclick", "location.href='product.html?id=" + respond.books[i].id + "'");
+                $(".button-recommended_" + i).attr("onclick", "location.href='./pages/product.html?id=" + respond.books[i].id + "'");
                 console.log(respond.books[i].authors[0].name + " " + respond.books[i].authors[0].lastName);
                 $(".second-title-recommended_" + i).text(respond.books[i].authors[0].name + " " + respond.books[i].authors[0].lastName);
-                $(".img-recommended_" + i).attr("src", "./images/books/book_" + respond.books[i].id + ".jpg");
+                $(".img-recommended_" + i).attr("src", "./assets/images/books/book_" + respond.books[i].id + ".jpg");
             }
         },
         error: function () {
@@ -104,9 +104,9 @@ $(document).ready(() => {
                             console.log(".first-title-book" + j + "_" + i);
                             $(".first-title-book" + j + "_" + i).text(respond.books[j].name);
                             $(".price-book" + j + "_" + i).text(respond.books[j].price + " €");
-                            $(".button" + j + "_" + i).attr("onclick", "location.href='product.html?id=" + respond.books[j].id + "'");
+                            $(".button" + j + "_" + i).attr("onclick", "location.href='./pages/product.html?id=" + respond.books[j].id + "'");
                             $(".second-title-book" + j + "_" + i).text(respond.books[j].authors[0].name + " " + respond.books[j].authors[0].lastName);
-                            $(".img-book" + j + "_" + i).attr("src", "./images/books/book_" + respond.books[j].id + ".jpg");
+                            $(".img-book" + j + "_" + i).attr("src", "./assets/images/books/book_" + respond.books[j].id + ".jpg");
 
                         }
                     },
@@ -133,9 +133,9 @@ $(document).ready(() => {
                     $("#author-most-sell").text(respond.book.authors[0].name + " " + respond.book.authors[0].lastName);
                     $("#description-most-sell").text(respond.book.description);
 
-                    $("#img-most-sell").attr("src", "./images/books/book_" + respond.book.id + ".jpg");
+                    $("#img-most-sell").attr("src", "./assets/images/books/book_" + respond.book.id + ".jpg");
 
-                    $("#button-most-sell").attr("onclick", "location.href='product.html?id=" + respond.book.id + "'");
+                    $("#button-most-sell").attr("onclick", "location.href='./pages/product.html?id=" + respond.book.id + "'");
                 }
             })
 
@@ -154,9 +154,9 @@ $(document).ready(() => {
             $("#author-best-valorate").text(respond.book.authors[0].name + " " + respond.book.authors[0].lastName);
             $("#description-best-valorate").text(respond.book.description);
 
-            $("#img-best-valorate").attr("src", "./images/books/book_" + respond.book.id + ".jpg");
+            $("#img-best-valorate").attr("src", "./assets/images/books/book_" + respond.book.id + ".jpg");
 
-            $("#button-best-valorate").attr("onclick", "location.href='product.html?id=" + respond.book.id + "'");
+            $("#button-best-valorate").attr("onclick", "location.href='./pages/product.html?id=" + respond.book.id + "'");
 
         },
         error: function () {
@@ -231,98 +231,4 @@ $(document).ready(() => {
             }
         });
     }());
-
-
-
-    /*  function ajaxGet(url, callback) {
-          var req = new XMLHttpRequest();
-          req.open("GET", url, true);
-          req.addEventListener("load", function() {
-            if (req.status >= 200 && req.status < 400) {
-              // Llamada ala función callback pasándole la respuesta
-              callback(req.responseText);
-            } else {
-              console.error(req.status + " " + req.statusText);
-            }
-          });
-          req.addEventListener("error", function(){
-            console.error("Error de red");
-          });
-          req.send(null);
-        }*/
-
-    /*
-         $.ajax({
-             type: 'GET',
-             url: 'https://lectet.herokuapp.com/backend/events/now',
-             dataType: "json",
-           }).done(function(data) {
-             alert(data); // imprimimos la respuesta
-           }).fail(function(data) {
-             alert("Algo salió mal");
-             alert(data);
-           }).always(function() {
-             alert("Siempre se ejecuta")
-           });*/
-
-    /*
-
-          $.ajax({
-            url: 'backend/events/now',
-            type: 'GET',
-            dataType: "json",
-            success: function( response ) {
-                alert("He conseguido entrar");
-            },
-            error: function(XMLHttpRequest, textStatus, errorThrown) {
-                console.log(errorThrown);
-             }
-        });
-
-        $('#single-user-btn').click(() => {
-            const idUser = $('#id-user').val();
-            var userURL = 'backend/users/' + idUser;
-        
-            $.ajax({
-                url: userURL,
-                type: 'GET',
-                dataType: "json",
-                success: function( response ) {
-                    console.log(response);
-                    const user = response[0];
-                    $('#found-user').text('User found:');
-                    $body.append('<p>name:'+ user.name +' email:'+ user.email+'</p>');
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                 }
-            });
-        });
-        
-        $('#all-users-btn').click(() => {
-            console.log("button clicked!");
-            var userURL = 'backend/users/';
-        
-            $.ajax({
-                url: userURL,
-                type: 'GET',
-                dataType: "json",
-                success: function( response ) {
-                    console.log(response);
-                    for(var i=0; i<response.length; ++i){
-                        var user = response[i];
-                        $('#found-user').text('User found:');
-                        $body.append('<p>name:'+ user.name +' email:'+ user.email+'</p>');
-                    }
-                },
-                error: function(XMLHttpRequest, textStatus, errorThrown) {
-                    console.log(errorThrown);
-                 }
-            });
-        });
-        // define a generic Ajax error handler:
-        // http://backend.jquery.com/ajaxerror/
-        $(document).ajaxError(() => {
-          console.log("unknown ajax error!");
-        });*/
 });

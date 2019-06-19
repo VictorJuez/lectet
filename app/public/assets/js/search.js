@@ -123,7 +123,7 @@ $(document).ready(() => {
 
                             '<div class="card result">' +
                             '<a href="./product.html?id=' + respond.books[x].id + '">' +
-                            '<img src="./images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
+                            '<img src="../assets/images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
                             '</a>' +
                             '<div class="card-body">' +
                             '<div class="name-book">' +
@@ -173,7 +173,7 @@ $(document).ready(() => {
 
                             '<div class="card result author">' +
                             '<div class="box">' +
-                            '<img class="author-img" src="./images/authors/author_' + respond[x].id + '.jpg" alt="...">' +
+                            '<img class="author-img" src="../assets/images/authors/author_' + respond[x].id + '.jpg" alt="...">' +
                             '</div>' +
                             '<div class="card-body">' +
                             '<h4 class="card-title">' + respond[x].name + ' ' + respond[x].lastName + '</h4>' +
@@ -219,7 +219,7 @@ $(document).ready(() => {
                         book_search = book_search + '<div class="col-xs-10 separation">' +
 
                             '<div class="card result-event">' +
-                            '<img class="img-event result-event" src="./images/events/event_' + respond.events[x].id + '.jpg" alt="...">' +
+                            '<img class="img-event result-event" src="../assets/images/events/event_' + respond.events[x].id + '.jpg" alt="...">' +
                             '<div class="card-body result-info-event">' +
                             '<h4 class="card-title">' + respond.events[x].name + '</h4>' +
                             '<a href="./event.html?id=' + respond.events[x].id + '" class="btn btn-primary button-book"> Go to the event </a>' +
@@ -264,7 +264,7 @@ $(document).ready(() => {
 
                             '<div class="card result">' +
                             '<a href="./product.html?id=' + respond.books[x].id + '" >' +
-                            '<img src="./images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
+                            '<img src="../assets/images/books/book_' + respond.books[x].id + '.jpg" class="fakeimg" alt="...">' +
                             '</a>' +
                             '<div class="card-body">' +
                             '<div class="name-book">' +
@@ -307,7 +307,7 @@ $(document).ready(() => {
                 sel.selectedIndex = j;
                 selectedGenre = opt;
                 if ($.urlParam("filter") != "yes") {
-                    $("#a-search").attr("href", "search.html?id=" + $.urlParam("id") + "&selected=genre&name=" + $.urlParam("name") + "&page=1");
+                    $("#a-search").attr("href", "./search.html?id=" + $.urlParam("id") + "&selected=genre&name=" + $.urlParam("name") + "&page=1");
                 }
                 break;
             }
@@ -333,7 +333,7 @@ $(document).ready(() => {
                 sel.selectedIndex = j;
                 selectedTheme = opt;
                 if ($.urlParam("filter") != "yes") {
-                    $("#a-search").attr("href", "search.html?id=" + $.urlParam("id") + "&selected=theme&name=" + $.urlParam("name") + "&page=1");
+                    $("#a-search").attr("href", "./search.html?id=" + $.urlParam("id") + "&selected=theme&name=" + $.urlParam("name") + "&page=1");
                 }
                 break;
             }
@@ -349,15 +349,15 @@ $(document).ready(() => {
             console.log(selectedGenre.value + ': ' + selectedGenre.text);
             if (selectedTheme != null) {
                 if (selectedTheme.value != "null" && selectedGenre.value != "null") {
-                    $("#a-search").attr("href", "search.html?filter=yes&genre=" + selectedGenre.value + "&nameGenre=" + selectedGenre.text + "&theme=" + selectedTheme.value + "&nameTheme=" + selectedTheme.text + "&page=1")
+                    $("#a-search").attr("href", "./search.html?filter=yes&genre=" + selectedGenre.value + "&nameGenre=" + selectedGenre.text + "&theme=" + selectedTheme.value + "&nameTheme=" + selectedTheme.text + "&page=1")
                 } else if (selectedTheme.value != "null") {
-                    $("#a-search").attr("href", "search.html?id=" + selectedTheme.value + "&selected=theme&name=" + selectedTheme.text + "&page=1");
+                    $("#a-search").attr("href", "./search.html?id=" + selectedTheme.value + "&selected=theme&name=" + selectedTheme.text + "&page=1");
                 }
             }
 
             if(selectedTheme == null || selectedTheme.value == "null") {
                 if (selectedGenre.value != "null") {
-                    $("#a-search").attr("href", "search.html?id=" + selectedGenre.value + "&selected=genre&name=" + selectedGenre.text + "&page=1");
+                    $("#a-search").attr("href", "./search.html?id=" + selectedGenre.value + "&selected=genre&name=" + selectedGenre.text + "&page=1");
                 }
             }
 
@@ -370,15 +370,15 @@ $(document).ready(() => {
             console.log(selectedTheme.value + ': ' + selectedTheme.text);
             if (selectedGenre != null) {
                 if (selectedGenre.value != "null" && selectedTheme.value != "null") {
-                    $("#a-search").attr("href", "search.html?filter=yes&genre=" + selectedGenre.value + "&nameGenre=" + selectedGenre.text + "&theme=" + selectedTheme.value + "&nameTheme=" + selectedTheme.text + "&page=1")
+                    $("#a-search").attr("href", "./search.html?filter=yes&genre=" + selectedGenre.value + "&nameGenre=" + selectedGenre.text + "&theme=" + selectedTheme.value + "&nameTheme=" + selectedTheme.text + "&page=1")
                 } else if (selectedGenre.value != "null") {
-                    $("#a-search").attr("href", "search.html?id=" + selectedGenre.value + "&selected=genre&name=" + selectedGenre.text + "&page=1");
+                    $("#a-search").attr("href", "./search.html?id=" + selectedGenre.value + "&selected=genre&name=" + selectedGenre.text + "&page=1");
                 }
             }
 
             if(selectedGenre == null || selectedGenre.value == "null") {
                 if (selectedTheme.value != "null") {
-                    $("#a-search").attr("href", "search.html?id=" + selectedTheme.value + "&selected=theme&name=" + selectedTheme.text + "&page=1");
+                    $("#a-search").attr("href", "./search.html?id=" + selectedTheme.value + "&selected=theme&name=" + selectedTheme.text + "&page=1");
                 }
             }
 
@@ -420,7 +420,7 @@ $(document).ready(() => {
 
                         '<div class="card result">' +
                         '<a href="./product.html?id=' + respond[x].id + '">' +
-                        '<img src="./images/books/book_' + respond[x].id + '.jpg" class="fakeimg" alt="...">' +
+                        '<img src="../assets/images/books/book_' + respond[x].id + '.jpg" class="fakeimg" alt="...">' +
                         '</a>' +
                         '<div class="card-body">' +
                         '<div class="name-book">' +
@@ -460,7 +460,7 @@ $(document).ready(() => {
 
         console.log(numberPages);
 
-        var url = "search.html?"
+        var url = "./search.html?"
 
         if ($.urlParam('filter') == "yes") {
             url = url + "filter=yes&genre=" + selectedFilterGenre + "&nameGenre=" + nameSelectedGenre + "&theme=" + selectedFilterTheme + "&nameTheme=" + nameSelectedTheme + "&page="
