@@ -14,6 +14,42 @@
     padding-left: 6% !important;
 }
 
+.mark-review {
+    background-color: rgb(255, 208, 0);
+}
+
+.specifications-space {
+    margin-left: 1%;
+}
+
+.review-space {
+    margin-left: 8%;
+    width: 85%;
+}
+
+.review {
+    height: 10rem;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.star {
+    color: rgb(255, 208, 0);
+}
+
+.star-empty {
+    border-color: rgb(255, 208, 0);
+}
+
+.section-title {
+    margin-bottom: 4%;
+}
+
+.text-related-book {
+    margin-bottom: 5%;
+    margin-top: 2%;
+}
+
 #nttLogo {
     height: 50px;
 }

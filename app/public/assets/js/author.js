@@ -7,6 +7,9 @@ $.urlParam = function (name) {
     }
 }
 
+var categories = [];
+var themes = [];
+
 $(document).ready(() => {
 
     var $author_name = $('#author_name');
@@ -28,21 +31,59 @@ $(document).ready(() => {
             var related_books = '';
             for (var i = 0; i < data.author.books.length; i++) {
 
+                insertCategoryTheme(data.author.books[i].genreId, data.author.books[i].themeId);
+
                 // console.log(data.author.books[i].name);
                 related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6">' +
                     '<div class="single-related-product d-flex">' +
                     '<a href="#"><img src="../assets/images/books/book_' + data.author.books[i].id + '.jpg" class="fakeimg" alt=""></a>' +
-                    ' <div class="text-center">' +
+                    ' <div class="text-center text-related-book">' +
                     '<a href="' + './product.html?id=' + data.author.books[i].id + '" class="title">' + data.author.books[i].name + '</a>' +
-                    '<div class="price">' +
-                    '<h6>' + data.author.books[i].price + ' €</h6>' +
-                    '</div>' +
                     '</div>' +
                     '</div>' +
                     '</div>';
             }
+
+            extractCategoryTheme ();
+
+            console.log(categories);
+            console.log(themes);
+
             $(id).html(related_books);
 
         }
     });
 });
+
+function insertCategoryTheme (category, theme) {
+
+    var insideCategory = false;
+    var insideTheme = false;
+
+    for(var x = 0; x < categories.length && insideCategory == false; x++) {
+        if(categories[x] == category) {
+            insideCategory = true;
+        }
+    }
+
+    for(var x = 0; x < themes.length && insideTheme == false; x++) {
+        if(themes[x] == theme) {
+            insideTheme = true;
+        }
+    }
+
+    if(insideCategory == false) {
+        categories.push(category);
+    }
+
+    if(insideTheme == false) {
+        themes.push(theme);
+    }
+
+}
+
+function extractCategoryTheme() {
+
+
+
+}

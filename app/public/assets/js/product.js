@@ -6,8 +6,9 @@ $.urlParam = function (name) {
         return results[1] || 0;
     }
 }
-var genre = 0;
 
+var genre = "";
+var theme = "";
 
 $(document).ready(() => {
     console.log("id=" + $.urlParam('id'));
@@ -33,17 +34,21 @@ $(document).ready(() => {
             console.log(data);
             $book_title.html('<p>' + data.book.name + '</p>');
             // $author_name.html('<p>' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</p>');
-            var authors = '<p>';
+            var authorBottom = '<p>';
+            var author = '';
             for (var i = 0; i < data.book.authors.length; i++) {
-                authors = authors + ' ' + 'Author: <span class="glyphicon glyphicon-user"></span>' +
+                author = author + '<a class="nav-link" href="./author.html?id=' + data.book.authors[i].id + '" style="color:#aaa"> ' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>';
+                authorBottom = authorBottom + ' ' + 'Author: <span class="glyphicon glyphicon-user"></span>' +
                     '<a class="nav-link" href="./author.html?id=' + data.book.authors[i].id + '" style="color:#aaa"> ' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>'
             }
-            authors = authors + '</p>';
-            $author_name.html(authors);
-            $author_name_bottom.html(authors);
+            authorBottom = authorBottom + '</p>';
+
+            $author_name.html(author);
+            $author_name_bottom.html(authorBottom);
             $book_price.html(data.book.price + '<span class="glyphicon glyphicon-euro"></span>');
             $book_description.html(data.book.description);
             genre = data.book.genreId;
+            theme = data.book.themeId;
 
             $.ajax({
                 type: 'GET',
@@ -52,6 +57,14 @@ $(document).ready(() => {
                     $("#book_category").text(respond.genres[genre].description);
                 }
             });
+
+            $.ajax({
+                type: 'GET',
+                url: 'https://lectet.herokuapp.com/backend/books/themes',
+                success: function (respond) {
+                    $("#book_theme").text(respond.themes[theme].description);
+                }
+            })
 
             $.ajax({
                 type: 'GET',
@@ -77,11 +90,8 @@ $(document).ready(() => {
                             related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6">' +
                                 '<div class="single-related-product d-flex">' +
                                 '<a href="' + './product.html?id=' + data1.books[i].id + '"><img src="../assets/images/books/book_' + data1.books[i].id + '.jpg' + '" class="fakeimg" alt=""></a>' +
-                                ' <div class="text-center">' +
+                                ' <div class="text-center text-related-book">' +
                                 '<a href="' + './product.html?id=' + data1.books[i].id + '" class="title">' + data1.books[i].name + '</a>' +
-                                '<div class="price">' +
-                                '<h6>' + data1.books[i].price + ' €</h6>' +
-                                '</div>' +
                                 '</div>' +
                                 '</div>' +
                                 '</div>';

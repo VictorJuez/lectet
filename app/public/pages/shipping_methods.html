@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Lectet</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- If IE use the latest rendering engine -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../assets/css/menu.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+        integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid" id="menu-top">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="#">Logo</a>-->
+                <a href="../index.html">
+                    <img src="../assets/images/logo/Lectet.png" id="nttLogo" alt="lectet">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav menu">
+                    <li>
+                        <a href="./search.html?selected=books&name=Books&page=1">Books</a>
+                    </li>
+                    <li>
+                        <a>Category</a>
+                        <ul class="sub-menu" id="category-sub-menu">
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a>Themes</a>
+                        <ul class="sub-menu" id="theme-sub-menu">
+
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="./search.html?selected=authors&name=Authors&page=1">Authors</a>
+                    <li>
+                        <a href="./search.html?selected=events&name=Events&page=1">Events</a>
+                    </li>
+                    <li>
+                        <a>Others</a>
+                        <ul class="sub-menu">
+                            <li>
+                                <a href="./search.html?selected=favourites&name=Recommended&page=1">Recommended</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="./login.html" id="loggeduser"><span class="glyphicon glyphicon-user"></span> Log in</a>
+                    </li>
+                    <li><a href="./order_details.html" id="cart"><span class="glyphicon glyphicon-shopping-cart"></span>
+                            Cart</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Shipping information</h1>
+                <br />
+                <p>The shipping options may vary based on the delivery address, the time of purchase and the
+                    availability of items.</p>
+
+                <p><strong>At the time of processing your purchase, we will inform you via email about the delivery
+                        date of your order.
+
+                    </strong></p>
+
+                <p>Possible delivery options:</p>
+
+                <ul>
+                    <li>
+                        <p class='method'>Collection eBook - FREE</span></p>
+
+                        <p>The eBook will be send you via email, also you will have the possibility of download
+                            from your profile.</p>
+
+                    </li>
+
+                    <li>
+                        <p class='method'>Collection Paperback / Hardcover:</p>
+
+                        <ul class='dashed-list'>
+                            <li>
+                                <p class='subMethod'>Standard delivery - FREE</p>
+                                <p>The estimated delivery period is 2-4 business days, depending on the delivery
+                                    address.
+                                </p>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+                <p class='endingTimesNote'>The time periods indicated above will be longer for more remote regions.</p>
+
+                <p class='endingTimesNote'>Please remember that deliveries are only made on business days.</p>
+
+                <br />
+                <br />
+
+                </section>
+                <div class="help-data-wrapper " id="ESpot_Help_OrderStatus" data-key="OrderStatus">
+                    <div class="help-data-icon"><img
+                            src="//static.zara.net/photos//mkt/misc/help/icons//icon-80-help-shipping-status.svg?timestamp=1550654368093" />
+                        <h2>Order status</h2>
+                    </div>
+                    <div class="help-data-info">
+                        <section class="help-info">
+                            <p>You’ll receive order status updates via email.</p>
+                            <p>You can also access this information in your profile.&nbsp;
+
+                                If you aren’t registered, click on the “Order Information” link in your confirmation
+                                email to track it.
+                    </div>
+                    <br/>
+                    <div class="help-data-wrapper " id="ESpot_Help_DeliveryRestrictions"
+                        data-key="DeliveryRestrictions">
+                        <div class="help-data-icon"><img
+                                src="//static.zara.net/photos//mkt/misc/help/icons//icon-80-help-shipping-restrictions.svg?timestamp=1550654368093" />
+                            <h2>Restrictions</h2>
+                        </div>
+                        <div class="help-data-info">
+                            <section class="help-info">
+                                <p>At Lectet, we try our hardest to reach all corners of the world. If there are any
+                                    shipping restrictions for your delivery address, you’ll see this at the time of
+                                    purchase.</p>
+                            </section>
+                        </div>
+                        <br/>
+                        <div class="help-data-wrapper " id="ESpot_Help_SplitOrders" data-key="SplitOrders">
+                            <div class="help-data-icon"><img
+                                    src="//static.zara.net/photos//mkt/misc/help/icons//icon-80-help-shipping-split-orders.svg?timestamp=1550654368093" />
+                                <h2>Split orders</h2>
+                            </div>
+                            <div class="help-data-info">
+                                <section class="help-info">
+                                    <p>Your order may be dispatched from various warehouses. If this happens, we’ll
+                                        notify you via email to tell you which items you’ll be receiving in each
+                                        delivery.</p>
+                                </section>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <footer id="myFooter">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-3">
+                  <h2 class="logo"><a href="../index.html">
+                      <img src="../assets/images/logo/Lectet - noBook.png" id="nttLogo" alt="lectet">
+                    </a></h2>
+                </div>
+                <div class="col-sm-2">
+                  <h5>Get started</h5>
+                  <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li id="registration"><a href="./registration.html">Sign up</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-2">
+                  <h5>About us</h5>
+                  <ul>
+                    <li><a href="#">Company Information</a></li>
+                    <li><a href="./shipping_methods.html">Shipping information</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-2">
+                  <h5>Support</h5>
+                  <ul>
+                    <li><a href="./faq.html">FAQ</a></li>
+                    <li><a href="./contact-us.html">Contact us</a></li>
+                  </ul>
+                </div>
+                <div class="col-sm-3">
+                  <div class="social-networks">
+                    <a href="https://twitter.com/?lang=en" class="twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.facebook.com/" class="facebook"><i class="fab fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/?hl=en" class="instagram"><i class="fab fa-instagram"></i></a>
+                  </div>
+                  <a href="./contact-us.html">
+                    <button type="button" class="btn btn-default">Contact us</button>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="footer-copyright">
+              <p>© 2019 Copyright Lectet License </p>
+            </div>
+          </footer>
+
+    <script src='../assets/js/menu.js'></script>
+</body>
+
+</html>
