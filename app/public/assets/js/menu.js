@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    
     var altura = $('#menu-top').offset().top;
 
     const userkey = JSON.parse(window.localStorage.getItem("lectet"));

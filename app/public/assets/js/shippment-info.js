@@ -147,27 +147,27 @@ $(document).ready(() => {
         console.log(dataInfo);
 
         $.ajax({
-             url: 'https://lectet.herokuapp.com/backend/orders/',
-             type: 'POST',
-             dataType: 'json',
-             contentType: 'application/json',
-             data: dataInfo,
-             beforeSend: function (request) {
-                 request.setRequestHeader("Authorization", userkey.token);
-                 console.log("DONE IT");
-                 console.log(userkey.token);
-             },
-             success: function (response) {
-                 console.log("I ADD TO CART");
-                 console.log(response);
-             },
-             error: function (error) {
-                 console.log("Error while adding");
-                 console.log(error);
-             }
-         });
+            url: 'https://lectet.herokuapp.com/backend/orders/',
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: dataInfo,
+            beforeSend: function (request) {
+                request.setRequestHeader("Authorization", userkey.token);
+                console.log("DONE IT");
+                console.log(userkey.token);
+            },
+            success: function (response) {
+                console.log("I ADD TO CART");
+                console.log(response);
+            },
+            error: function (error) {
+                console.log("Error while adding");
+                console.log(error);
+            }
+        });
 
-         $.ajax({
+        $.ajax({
             url: 'https://lectet.herokuapp.com/backend/cart/',
             type: 'POST',
             async: false,

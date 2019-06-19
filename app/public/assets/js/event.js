@@ -2,12 +2,10 @@ $.urlParam = function (name) {
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (results == null) {
         return null;
-    }
-    else {
+    } else {
         return results[1] || 0;
     }
 }
-
 
 
 $(document).ready(() => {
@@ -15,7 +13,7 @@ $(document).ready(() => {
 
     $.ajax({
         type: 'GET',
-          url: 'https://lectet.herokuapp.com/backend/events/' + $.urlParam('id'),
+        url: 'https://lectet.herokuapp.com/backend/events/' + $.urlParam('id'),
         success: function (respond) {
             console.log(respond);
             console.log(respond.event.books[0].name);
@@ -26,11 +24,11 @@ $(document).ready(() => {
 
             var dateReceive = respond.event.date;
 
-            for(var x = 0; x < 10; x++) {
+            for (var x = 0; x < 10; x++) {
                 date = date + dateReceive.charAt(x);
             }
 
-            for(x = 11; x < 16; x++) {
+            for (x = 11; x < 16; x++) {
                 hour = hour + dateReceive.charAt(x);
             }
 

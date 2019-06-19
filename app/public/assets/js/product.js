@@ -85,8 +85,7 @@ $(document).ready(() => {
                                 '</div>' +
                                 '</div>' +
                                 '</div>';
-                        }
-                        else
+                        } else
                             length = length + 1;
                     }
                     $(id).html(related_books);
@@ -94,9 +93,6 @@ $(document).ready(() => {
             });
         }
     });
-    //console.log(genre);
-
-
 
     $.ajax({
         type: 'GET',
@@ -110,7 +106,7 @@ $(document).ready(() => {
                 });
                 var books_event = '<div class="row">' +
                     '<div class="col-md-9 cta-contents">' +
-                    '<h1 class="cta-title">' + data2.events[0].name + '</h1>' +
+                    '<h3 class="cta-title">' + data2.events[0].name + '</h3>' +
                     '</div>' +
                     '<div class="col-md-3 cta-button">' +
                     '<a href="./event.html?id=' + data2.events[0].id + '" class="btn btn-lg btn-block btn-primary"> To learn more</a>' +
@@ -249,7 +245,4 @@ $(document).ready(() => {
         }
     }
 
-    document.getElementById("buyNow").onclick = function () {
-        //addToCart()
-    };
 });

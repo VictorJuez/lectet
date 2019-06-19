@@ -1,14 +1,14 @@
 $(document).ready(() => {
     console.log("HELLO WORLD");
     const userkey = JSON.parse(window.localStorage.getItem("lectet"));
-    
-    if(userkey) console.log("myKey: "+userkey);
+
+    if (userkey) console.log("myKey: " + userkey);
     var $button = $('#loginButton');
-    $button.click(function(){
+    $button.click(function () {
         const $email = $('#email').val();
         const $password = $('#password').val();
-        console.log("email: "+ $email);
-        console.log("password: "+ $password);
+        console.log("email: " + $email);
+        console.log("password: " + $password);
 
         var check = $.ajax({
             url: 'https://lectet.herokuapp.com/backend/user/signIn',
@@ -20,7 +20,7 @@ $(document).ready(() => {
                 "password": $password
             }),
             success: function (response) {
-                if(response == null) console.log("empty response");
+                if (response == null) console.log("empty response");
                 else console.log(response.token);
                 window.localStorage.setItem("lectet", JSON.stringify({
                     "email": $email,

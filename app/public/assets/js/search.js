@@ -46,7 +46,7 @@ $(document).ready(() => {
         '</div>' +
         '<div class="col-sm-4">' +
         '<a id="a-search">' +
-        '<button id="search" class="search"> SEARCH </button>' +
+        '<button id="search" class="search btn-primary"> SEARCH </button>' +
         '</a>' +
         '</div>'
 
@@ -355,7 +355,7 @@ $(document).ready(() => {
                 }
             }
 
-            if(selectedTheme == null || selectedTheme.value == "null") {
+            if (selectedTheme == null || selectedTheme.value == "null") {
                 if (selectedGenre.value != "null") {
                     $("#a-search").attr("href", "./search.html?id=" + selectedGenre.value + "&selected=genre&name=" + selectedGenre.text + "&page=1");
                 }
@@ -376,7 +376,7 @@ $(document).ready(() => {
                 }
             }
 
-            if(selectedGenre == null || selectedGenre.value == "null") {
+            if (selectedGenre == null || selectedGenre.value == "null") {
                 if (selectedTheme.value != "null") {
                     $("#a-search").attr("href", "./search.html?id=" + selectedTheme.value + "&selected=theme&name=" + selectedTheme.text + "&page=1");
                 }
