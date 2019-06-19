@@ -56,17 +56,17 @@
 		</tr>
 		<tr>
 			<td class="tg-0lax">1</td>
-			<td class="tg-0lax">Designer / Frontend developer</td>
+			<td class="tg-0lax">Frontend designer and fronted developer</td>
 			<td class="tg-0lax">Arnab</td>
 			<td class="tg-0lax">Dey</td>
-			<td class="tg-0lax"></td>
+			<td class="tg-0lax">893291</td>
 			<td class="tg-0lax">arnab.dey@mail.polimi.it</td>
 		</tr>
 		<tr>
 			<td class="tg-0lax">2</td>
 			<td class="tg-0lax">Frontend developer</td>
 			<td class="tg-0lax">Julian</td>
-			<td class="tg-0lax">Mangut</td>
+			<td class="tg-0lax">Cuellar</td>
 			<td class="tg-0lax"></td>
 			<td class="tg-0lax">jcuellarr@alumnos.unex.es</td>
 		</tr>
@@ -100,8 +100,11 @@
 		parts belong to the application layer, data layer or presentation layer. How did you ensure that HTML is not
 		rendered server side?</p>
 
-	<p>We have followed the <a href="https://codeburst.io/fractal-a-nodejs-app-structure-for-infinite-scale-d74dda57ee11">Fractal Structure</a>
-		for this project, as we concluded it was the simplest and well defined structure for NodeJS backend implementation
+	<p>We have followed the <a
+			href="https://codeburst.io/fractal-a-nodejs-app-structure-for-infinite-scale-d74dda57ee11">Fractal
+			Structure</a>
+		for this project, as we concluded it was the simplest and well defined structure for NodeJS backend
+		implementation
 		we found.</p>
 	<ul>
 		<li>
@@ -127,8 +130,10 @@
 				</li>
 				<li>
 					<b>Actions:</b>
-					<span>Main backend component, where the logic of the application is implemented, after being redirected by the
-						router to the specific action, applies the corresponding logic of the action using and modifying the
+					<span>Main backend component, where the logic of the application is implemented, after being
+						redirected by the
+						router to the specific action, applies the corresponding logic of the action using and modifying
+						the
 						necessary model objects.</span>
 				</li>
 				<li>
@@ -137,8 +142,10 @@
 				</li>
 				<li>
 					<b>Models:</b>
-					<span>Where data objects used by our ORM and the application are defined, they will be used and modified by
-						the action component. <br>Also it is in charge of applying the changes of the data objects to the
+					<span>Where data objects used by our ORM and the application are defined, they will be used and
+						modified by
+						the action component. <br>Also it is in charge of applying the changes of the data objects to
+						the
 						Database</span>
 				</li>
 			</ul>
@@ -148,14 +155,17 @@
 			<ul>
 				<li>
 					<b>Database:</b>
-					<span>Our PostgreSQL database where all the data is stored. Accessed only by the Model component of the
+					<span>Our PostgreSQL database where all the data is stored. Accessed only by the Model component of
+						the
 						Application Layer.</span>
 				</li>
 			</ul>
 		</li>
 	</ul>
-	<p>Regarding to the HTML files not being rendered served side, we used <a href="https://expressjs.com/en/starter/static-files.html">static-files function</a> that Express JS web
-		application offers.<br>What it basically does is that the directory you specified as static will be served to the
+	<p>Regarding to the HTML files not being rendered served side, we used <a
+			href="https://expressjs.com/en/starter/static-files.html">static-files function</a> that Express JS web
+		application offers.<br>What it basically does is that the directory you specified as static will be served to
+		the
 		client without being rendered on the server</p>
 
 	<h3>API</h3>
@@ -163,75 +173,186 @@
 	<p>Describe here to what extent did you follow REST principles and what are the reasons for which you might have
 		decided to diverge. Note, you must not describe the whole API here, just the design decisions.</p>
 
-		<span>The principles we have followed and how we followed them:</span>
-		<ul>
-			<li>
-				<b>Uniform interface: </b>
-				<span>We followed this principle identifying our resources inside our applications and giving each of them they own logical URI and following guideliness across the system (like name convention).</span>
-			</li>
-			<li>
-					<b>Client–server: </b>
-					<span>We followed this principle as we have our client (frontend) separated of our server. Therefore both of them can evolve separately without any dependency on each other</span>
-			</li>
-			<li>
-				<b>Stateless:</b>
-				<span>We followed this principle making all the client-server interaction stateless, meaning that server is not storing anything about past client's requests. Every request is considered as new.</span>
-			</li>
-			<li>
-					<b>Layered System:</b>
-					<span>We have followed this system as the client does not know whether it is connected to the end server or to an intermediate along the way. Even though we have not used it as our system does not interact with any other server but our single one.</span>
-				</li>
-			
-			<p>The principles we have not followed and why:</p>
-			<li>
-				<b>Cacheable:</b>
-				<span>We have not followed this principle as it was out of our knowledge to apply it.</span>
-			</li>
-			<li>
-				<b>Code on demand:</b>
-				<span>We have not used this principle as we are not returning any executable code as a response of any call</span>
-			</li>
-		</ul>
+	<span>The principles we have followed and how we followed them:</span>
+	<ul>
+		<li>
+			<b>Uniform interface: </b>
+			<span>We followed this principle identifying our resources inside our applications and giving each of them
+				they own logical URI and following guideliness across the system (like name convention).</span>
+		</li>
+		<li>
+			<b>Client–server: </b>
+			<span>We followed this principle as we have our client (frontend) separated of our server. Therefore both of
+				them can evolve separately without any dependency on each other</span>
+		</li>
+		<li>
+			<b>Stateless:</b>
+			<span>We followed this principle making all the client-server interaction stateless, meaning that server is
+				not storing anything about past client's requests. Every request is considered as new.</span>
+		</li>
+		<li>
+			<b>Layered System:</b>
+			<span>We have followed this system as the client does not know whether it is connected to the end server or
+				to an intermediate along the way. Even though we have not used it as our system does not interact with
+				any other server but our single one.</span>
+		</li>
+
+		<p>The principles we have not followed and why:</p>
+		<li>
+			<b>Cacheable:</b>
+			<span>We have not followed this principle as it was out of our knowledge to apply it.</span>
+		</li>
+		<li>
+			<b>Code on demand:</b>
+			<span>We have not used this principle as we are not returning any executable code as a response of any
+				call</span>
+		</li>
+	</ul>
 
 	<h4>OpenAPI Resource models</h4>
 	<p>Describe here synthetically, which models you have introduced for resources.</p>
+	<ul>
+		<li>
+			<b>Users</b>
+			<span>Information about users and its details.</span>
+		</li>
+		<li>
+			<b>Authors</b>
+			<span>Contains useful information about the authors of the books in the application.</span>
+		</li>
+		<li>
+			<b>Books</b>
+			<span>Contains the information needed to define a book in the application.</span>
+		</li>
+		<li>
+			<b>Events</b>
+			<span>Contains the information about an event where a book is presented and its details.</span>
+		</li>
+		<li>
+			<b>Cart</b>
+			<span>Shopping cart details for users including the information about the books added in the cart.</span>
+		</li>
+		<li>
+			<b>Orders</b>
+			<span>Contains the information about an order including books and customer information.</span>
+		</li>
+	</ul>
 	<h3>Data Model</h3>
 	<p>ER Diagram:</p>
 	<img src="./ERDiagram.png" style="width:65%">
 	<p>Describe with an ER diagram the model used in the data layer of your web application. How these map to the
 		OpenAPI data model?</p>
 
+	<p>As we can see we have the big six data classes: <b>Users, Authors, Books, Events, Cart and Orders</b> that we
+		have already described above in the OpenAPI resoure model section, and then the other ones are used to make the
+		relations needed between them.
+		<br>We can observe that on the OpenAPI there are calls that its responses includes information about few of the
+		big six data classes together, meaning that the other classes used for the relations have been involved.</p>
+
 	<h2>Implementation</h2>
 	<h3>Tools used</h3>
 	<p>Describe here which tools, languages and frameworks did you use for the backend of the application.</p>
+	<span>The backend has been developed with <b>NodeJS</b> on the server and a <b>PostgreSQL</b> database, and also the
+		following tools and frameworks:</span>
+	<ul>
+		<li>
+			<a href="https://github.com/hapijs/joi"><b>Joi:</b></a>
+			<span>Is an object schema description language and validator for JavaScript objects. Used in the
+				login/register functionalities in order to validate the correct format of data inserted by the
+				user.</span>
+		</li>
+		<li>
+			<a href="http://docs.sequelizejs.com/"><b>Sequelize:</b></a>
+			<span>Is a NodeJS based ORM for PostgreSQL and other databases. It features solid transaction support,
+				relations, eager and lazy loading, read replication and more. Used to simplify the database
+				operations.</span>
+		</li>
+		<li>
+			<a href="http://expressjs.com/"><b>Express js:</b></a>
+			<span>Web framework for NodeJS. Provides a robust set of features for web and mobile applications</span>
+		</li>
+		<li>
+			<a href="http://www.passportjs.org/packages/passport-jwt/"><b>Passport-jwt</b>:</a>
+			<span>This module lets you authenticate endpoints using a JSON web token. It is intended to be used to
+				secure RESTful endpoints without sessions.</span>
+		</li>
+		<li>
+			<a href="https://www.npmjs.com/package/morgan"><b>Morgan</b>:</a>
+			<span>HTTP request logger middleware for node.js.</span>
+		</li>
+		<li>
+			<a href="https://www.npmjs.com/package/body-parser"><b>Body Parser</b></a>
+			<span>Node.js parsing middleware. Parse incoming request bodies in a middleware before your handlers,
+				available under the req.body property.</span>
+		</li>
+	</ul>
 	<h3>Discussion</h3>
 	<p>Describe here:</p>
 	<ul>
-		<li>How did you make sure your web application adheres to the provided OpenAPI specification?</li>
-		<li>Why do you think your web application adheres to common practices to partition the web application (static
-			assets vs. application data)</li>
-		<li>Describe synthetically why and how did you manage session state, what are the state change triggering
-			actions (e.g., POST to login etc..).</li>
-		<li>Which technology did you use (relational or a no-SQL database) for managing the data model?</li>
+		<li style="margin-bottom: 10pt">How did you make sure your web application adheres to the provided OpenAPI
+			specification?<br>
+			Because the web application was developed in parellel alongside the OpenAPI specification, therefore in all
+			moments any changes made in any of the two parts was applied into the others.
+		</li>
+		<li style="margin-bottom: 10pt">Why do you think your web application adheres to common practices to partition
+			the web application (static
+			assets vs. application data)<br>
+			Because as said in the beginning of the documentation, the use of the <a
+				href="https://expressjs.com/en/starter/static-files.html">Express js <b>static-files</b></a> function
+			ensures that the frontend files sent to the client are not rendered in the server. Therefore the backend and
+			the frontend are hardly separated.
+		</li>
+		<li style="margin-bottom: 10pt">Describe synthetically why and how did you manage session state, what are the
+			state change triggering
+			actions (e.g., POST to login etc..).<br>
+			We used the <a href="http://www.passportjs.org/packages/passport-jwt/"><b>passport-jwt</b></a> module for
+			that purpose, so when a user is logged into the system through a POST to login, the response of that call is
+			a jwt-token which is an encrypted code that later on on the frontend is used to save it into the Local
+			Storage of the browser. Then when a protected call to the API is done (needs authorization) this token is
+			loaded from the fronted and added into the Authorization header parameter of the request to the API. Once
+			this request is received in the backend, the system takes the token and checks its value with the
+			passport-jwt module, and in case to be correct we have the user identificated.
+		</li>
+		<li style="margin-bottom: 10pt">Which technology did you use (relational or a no-SQL database) for managing the
+			data model?<br>
+			We used a relational database, specifically <b>PostgreSQL</b>
+		</li>
+
 	</ul>
 	<h2>Other Information</h2>
 	<h3>Task Assignment</h3>
 	<p>Describe here how development tasks have been subdivided among members of the group, e.g.:</p>
 	<ul>
-		<li>Foo worked on front end (80%) and OpenAPI Spec (20% of the time)</li>
-		<li>Bar worked on ....</li>
+		<li>Arnab worked on front end design and development(60%), front end documentation (20%) and usability (20% of
+			the time)</li>
+		<li>Julian worked on front end development (90%) and on the database structure (10% of the time )</li>
+		<li>Víctor worked on the back end development (80%), back end documentation (10%) and fron end development (10%
+			of the time)</li>
 	</ul>
 	<h3>Analysis of existing API</h3>
 	<p>Describe here if you have found relevant APIs that have inspired the OpenAPI specification and why (at least
 		two).</p>
+	<li><b>Twitter API:</b>
+		<span>Helped us to see the basics of APIs and learn how parameters are passed.</span>
+	</li>
+	<li><b>Skyscanner Flight Search API:</b>
+		<span>Helped us to see how to differenciate the data resources.</span>
+	</li>
+	<li><b>Google Maps API:</b>
+		<span>Made us realize the existence of api keys in order to do certain requests.</span>
+	</li>
 	<h3>Learning Outcome</h3>
 	<p>What was the most important thing all the members have learned while developing this part of the project, what
 		questions remained unanswered, how you will use what you've learned in your everyday life? Examples:</p>
 	<ul>
 		<li>Foo learned to write SQL queries and Javascript but wanted to know more about caching, he's probably going
 			to create his own startup with what she has learned</li>
-		<li>Bar learned how to deploy on a cloud platform, he would have liked to know more about promises for
+		<li>Arnab learned how to work with htm, css and bootstrap to developed an complete application, also learned
+			about nodejs and ajax. he would have liked to know more about promises for
 			asynchronous code..</li>
+		<li>Víctor learned how to deploy on a cloud platform and to develop an API with Node.js but he would have liked
+			to be more involved in the frontend development. He's starting his own startup based on a web application,
+			and all that has been done here will be useful for him.</li>
 	</ul>
 </body>
 
