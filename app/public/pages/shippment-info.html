@@ -18,6 +18,13 @@
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
     integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
+  <style>
+    .error {
+      color: red;
+      display: none;
+    }
+  </style>
+
 </head>
 
 <body>
@@ -141,7 +148,10 @@
             <input type="checkbox" checked="checked" name="sameadr"> Shipping address same as billing
           </label>
         </form>
-        <button id="checkout" class="btn">Continue to checkout</button>
+        <div id="error" class="error">
+          <p id="error_text"></p>
+        </div>  
+        <button id="checkout" class="btn">Place order</button>
       </div>
     </div>
 

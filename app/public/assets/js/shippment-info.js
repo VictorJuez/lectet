@@ -111,6 +111,12 @@ $(document).ready(() => {
             modalOpen();
             createOrder();
         }
+        else {
+            $("#error").css({
+                'display': 'block'
+            });
+            $('#error_text').text("All camps have to be filled");
+        }
     };
 
     function modalOpen() {
