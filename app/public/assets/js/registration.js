@@ -53,7 +53,9 @@ $(document).ready(() => {
             contentType: 'application/json',
             data: JSON.stringify({
                 "email": $email,
-                "password": $password
+                "password": $password,
+                "name":$firstName,
+                "surname":$secondName
             }),
             success: function (response) {
                 if (response == null) console.log("empty response");
