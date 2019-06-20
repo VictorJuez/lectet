@@ -21,6 +21,20 @@
     border-color: #d43f3a;
 }
 
+.button-follow {
+    margin-right: 4%;
+}
+
+.button-shopping{
+    margin-left: 4%;
+}
+
+#myModalBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .mark-review {
     background-color: rgb(255, 208, 0);
     color: #000000;
@@ -57,6 +71,10 @@
 .text-related-book {
     margin-bottom: 5%;
     margin-top: 2%;
+}
+
+.separation-related-book {
+    margin-bottom: 2%;
 }
 
 #nttLogo {

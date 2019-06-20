@@ -113,8 +113,11 @@ $(document).ready(() => {
     }
 
     document.getElementById("checkout").onclick = function () {
-        modalOpen();
-        createOrder();
+        if ((document.getElementById("fname").value != "") && (document.getElementById("email").value != "") && (document.getElementById("address").value != "") &&
+            (document.getElementById("city").value != "") && (document.getElementById("country").value != "") && (document.getElementById("zip").value)) {
+            modalOpen();
+            createOrder();
+        }
     };
 
     function modalOpen() {

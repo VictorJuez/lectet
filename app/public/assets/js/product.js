@@ -87,7 +87,7 @@ $(document).ready(() => {
 
                         if (data1.books[i].id != $.urlParam('id')) {
                             // console.log(data.author.books[i].name);
-                            related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6">' +
+                            related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 separation-related-book">' +
                                 '<div class="single-related-product d-flex">' +
                                 '<a href="' + './product.html?id=' + data1.books[i].id + '"><img src="../assets/images/books/book_' + data1.books[i].id + '.jpg' + '" class="fakeimg" alt="Image"></a>' +
                                 ' <div class="text-center text-related-book">' +

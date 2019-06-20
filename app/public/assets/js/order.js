@@ -147,14 +147,10 @@ $(document).ready(() => {
 
         total = 0;
 
-        console.log("NO ESTOY TOCANDO NADA");
-
         //$(price[this.id]).text("Price: " + newPrices[this.id] + " €");
         $(extract[this.id]).text(newPrices[this.id] + " €");
 
         for (var x = 0; x < newPrices.length; x++) {
-
-          console.log("New Price: " + newPrices[x]);
 
           total = total + newPrices[x];
         }
@@ -214,6 +210,20 @@ function deleteBook(x) {
 
   id_books[x] = -1;
   newPrices[x] = 0;
+
+  var length_books = 0;
+
+  for(var x; x < id_books.length && length_books == 0; x++) {
+    if(id_books[x] != -1) {
+      length_books = length_books + 1;
+    }
+  }
+
+  if (length_books == 0) {
+    book = "<p>Your shopping cart is empty</p>";
+  }
+
+  $("#cart-order").html(book);
 }
 
 function getRandomInt(min, max, list_id) {

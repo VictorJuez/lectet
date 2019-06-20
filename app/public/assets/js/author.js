@@ -7,8 +7,8 @@ $.urlParam = function (name) {
     }
 }
 
-var categories = [];
-var themes = [];
+var category = "";
+var theme = "";
 
 $(document).ready(() => {
 
@@ -24,6 +24,8 @@ $(document).ready(() => {
             $long_bio.html('<p>' + data.author.description + '</p>');
             $("#author_img").attr("src", "../assets/images/authors/author_" + $.urlParam('id') + ".jpg");
 
+            
+
             id = '#related_book';
             $(id).css({
                 'visibility': 'visible'
@@ -31,7 +33,8 @@ $(document).ready(() => {
             var related_books = '';
             for (var i = 0; i < data.author.books.length; i++) {
 
-                insertCategoryTheme(data.author.books[i].genreId, data.author.books[i].themeId);
+                category = data.author.books[i].genreId;
+                theme = data.author.books[i].themeId;
 
                 // console.log(data.author.books[i].name);
                 related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6">' +
@@ -44,10 +47,8 @@ $(document).ready(() => {
                     '</div>';
             }
 
-            extractCategoryTheme ();
-
-            console.log(categories);
-            console.log(themes);
+            extractCategory(category);
+            extractTheme(theme);
 
             $(id).html(related_books);
 
@@ -55,35 +56,22 @@ $(document).ready(() => {
     });
 });
 
-function insertCategoryTheme (category, theme) {
-
-    var insideCategory = false;
-    var insideTheme = false;
-
-    for(var x = 0; x < categories.length && insideCategory == false; x++) {
-        if(categories[x] == category) {
-            insideCategory = true;
+function extractCategory(category) {
+    $.ajax({
+        type: 'GET',
+        url: 'https://lectet.herokuapp.com/backend/books/genres',
+        success: function (respond) {
+            $("#author_genre").text(respond.genres[category].description);
         }
-    }
-
-    for(var x = 0; x < themes.length && insideTheme == false; x++) {
-        if(themes[x] == theme) {
-            insideTheme = true;
-        }
-    }
-
-    if(insideCategory == false) {
-        categories.push(category);
-    }
-
-    if(insideTheme == false) {
-        themes.push(theme);
-    }
-
+    });
 }
 
-function extractCategoryTheme() {
-
-
-
+function extractTheme(theme) {
+    $.ajax({
+        type: 'GET',
+        url: 'https://lectet.herokuapp.com/backend/books/themes',
+        success: function (respond) {
+            $("#author_theme").text(respond.themes[theme].description);
+        }
+    })
 }
