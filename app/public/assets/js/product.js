@@ -9,6 +9,7 @@ $.urlParam = function (name) {
 
 var genre = "";
 var theme = "";
+var refer = ""
 
 $(document).ready(() => {
     var $book_title = $('#book_title');
@@ -24,7 +25,7 @@ $(document).ready(() => {
     $book_image1.attr("src", '../assets/images/example_page_1.jpg');
     $book_image2.attr("src", '../assets/images/example_page_2.jpg');
 
-    $("#refer-buyNow").attr("href", "./shippment-info.html?direct=yes&id=" + $.urlParam('id'));
+    refer = "./shippment-info.html?direct=yes&id=" + $.urlParam('id');
 
     $.ajax({
         type: 'GET',
@@ -36,7 +37,7 @@ $(document).ready(() => {
             var author = '';
             for (var i = 0; i < data.book.authors.length; i++) {
                 author = author + '<a class="nav-link" href="./author.html?id=' + data.book.authors[i].id + '"> ' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>';
-                authorBottom = authorBottom + ' ' + 'Author: <span class="fas fa-euro-sign"></span>' +
+                authorBottom = authorBottom + ' ' + 'Author: <span class="fas fa-feather-alt"></span>' +
                     '<a class="nav-link" href="./author.html?id=' + data.book.authors[i].id + '"> ' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>'
             }
             authorBottom = authorBottom + '</p>';
@@ -197,7 +198,30 @@ $(document).ready(() => {
                 }
             });
         } else {
-            $("#myModalLabel").text("Not logged in");
+           
+            generateModal();
+        }
+    }
+
+    document.getElementById("buyNow").onclick = function () {
+        buyNow();
+    };
+
+    function buyNow () {
+        if(userkey) {
+            window.location.href = refer;
+        }
+
+        else {
+            generateModal();
+        }
+    }
+
+});
+
+function generateModal() {
+
+    $("#myModalLabel").text("Not logged in");
 
             var modalBody = "";
 
@@ -224,7 +248,4 @@ $(document).ready(() => {
 
             $("#myModalBody").text("You need to be logged in for buy a book");
             $("#container-modal-body").html(modalBody);
-        }
-    }
-
-});
+}
