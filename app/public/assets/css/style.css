@@ -182,28 +182,28 @@ body {
     -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
-background-size: cover !important;
+background-size: 100% 100% !important;
 }
 
 #item1 {
     -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
-background-size: cover !important;
+background-size: 100% 100% !important;
 }
 
 #item2 {
     -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
-background-size: cover !important;
+background-size: 100% 100% !important;
 }
 
 #item3 {
     -webkit-background-size: cover;
 -moz-background-size: cover;
 -o-background-size: cover;
-background-size: cover !important;
+background-size: 100% 100% !important;
 }
 
 @media (min-width: 22.5em) {
