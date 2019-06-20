@@ -22,6 +22,9 @@ $(document).ready(function () {
                 $("#registration").css({
                     'display': 'none'
                 });
+                $("#logOut-main").css({
+                    'display': ''
+                });
             },
             error: function () {
                 console.log("Error while checking logging");
@@ -90,5 +93,11 @@ $(document).ready(function () {
             console.log("No se ha podido obtener la información");
         }
     });
-
 });
+
+function logOut () {
+    window.localStorage.removeItem('lectet');
+
+    console.log("HACIENDO LOG OUT");
+}
+

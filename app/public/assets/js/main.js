@@ -15,7 +15,6 @@ $(document).ready(() => {
                 difference = respuesta.events.length;
             }
 
-            console.log(respuesta.events.length);
             for (var i = 0; i < length; i++) {
 
                 id = '#event_' + i;
@@ -26,9 +25,6 @@ $(document).ready(() => {
                 $(id).html('<h3 class="event-name">' + respuesta.events[i].name + '</h3>');
 
                 if (i == (length - 1) && length < 4) {
-
-                    console.log("ENTRO");
-                    console.log(difference);
 
                     $.ajax({
                         url: 'https://lectet.herokuapp.com/backend/events/',
@@ -61,12 +57,10 @@ $(document).ready(() => {
         url: 'https://lectet.herokuapp.com/backend/books/favourites',
         success: function (respond) {
 
-            console.log(respond);
             for (var i = 0; i < 8; i++) {
                 $(".first-title-recommended_" + i).text(respond.books[i].name);
                 $(".price-recommended_" + i).text(respond.books[i].price + " €");
                 $(".button-recommended_" + i).attr("onclick", "location.href='./pages/product.html?id=" + respond.books[i].id + "'");
-                console.log(respond.books[i].authors[0].name + " " + respond.books[i].authors[0].lastName);
                 $(".second-title-recommended_" + i).text(respond.books[i].authors[0].name + " " + respond.books[i].authors[0].lastName);
                 $(".img-recommended_" + i).attr("src", "./assets/images/books/book_" + respond.books[i].id + ".jpg");
             }
@@ -87,7 +81,6 @@ $(document).ready(() => {
 
                 id = '#category_' + i;
 
-                console.log("#category_" + i + " IS " + respuesta.genres[id_category].description);
                 $(id).text(respuesta.genres[id_category].description);
 
                 $.ajax({
@@ -95,13 +88,7 @@ $(document).ready(() => {
                     async: false,
                     success: function (respond) {
 
-                        console.log("Categoria: " + respond.books[0].genreId);
-
                         for (var j = 0; j < 8; j++) {
-                            console.log("I = " + i + " , " + "J = " + j);
-                            console.log(respond.books[j].name);
-                            console.log(respond.books[j].price);
-                            console.log(".first-title-book" + j + "_" + i);
                             $(".first-title-book" + j + "_" + i).text(respond.books[j].name);
                             $(".price-book" + j + "_" + i).text(respond.books[j].price + " €");
                             $(".button" + j + "_" + i).attr("onclick", "location.href='./pages/product.html?id=" + respond.books[j].id + "'");
