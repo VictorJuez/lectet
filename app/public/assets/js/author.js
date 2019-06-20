@@ -45,7 +45,8 @@ $(document).ready(() => {
                     '</div>' +
                     '</div>';
             }
-
+            console.log(category);
+            console.log(theme);
             extractCategory(category);
             extractTheme(theme);
 
@@ -60,7 +61,7 @@ function extractCategory(category) {
         type: 'GET',
         url: 'https://lectet.herokuapp.com/backend/books/genres',
         success: function (respond) {
-            $("#author_genre").text(respond.genres[category].description);
+            $("#author_genre").text(respond.genres[category - 1].description);
         }
     });
 }
@@ -70,7 +71,7 @@ function extractTheme(theme) {
         type: 'GET',
         url: 'https://lectet.herokuapp.com/backend/books/themes',
         success: function (respond) {
-            $("#author_theme").text(respond.themes[theme].description);
+            $("#author_theme").text(respond.themes[theme - 1].description);
         }
     })
 }

@@ -53,7 +53,7 @@ $(document).ready(() => {
                 type: 'GET',
                 url: 'https://lectet.herokuapp.com/backend/books/genres',
                 success: function (respond) {
-                    $("#book_category").text(respond.genres[genre].description);
+                    $("#book_category").text(respond.genres[genre - 1].description);
                 }
             });
 
@@ -61,7 +61,7 @@ $(document).ready(() => {
                 type: 'GET',
                 url: 'https://lectet.herokuapp.com/backend/books/themes',
                 success: function (respond) {
-                    $("#book_theme").text(respond.themes[theme].description);
+                    $("#book_theme").text(respond.themes[theme - 1].description);
                 }
             })
 
