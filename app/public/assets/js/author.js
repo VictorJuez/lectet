@@ -36,7 +36,6 @@ $(document).ready(() => {
                 category = data.author.books[i].genreId;
                 theme = data.author.books[i].themeId;
 
-                // console.log(data.author.books[i].name);
                 related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6">' +
                     '<div class="single-related-product d-flex">' +
                     '<a href="#"><img src="../assets/images/books/book_' + data.author.books[i].id + '.jpg" class="fakeimg" alt=""></a>' +

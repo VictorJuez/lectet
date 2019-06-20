@@ -11,7 +11,6 @@ var genre = "";
 var theme = "";
 
 $(document).ready(() => {
-    console.log("id=" + $.urlParam('id'));
     var $book_title = $('#book_title');
     var $author_name = $('#author_name');
     var $author_name_bottom = $('#author_name_bottom');
@@ -31,7 +30,6 @@ $(document).ready(() => {
         type: 'GET',
         url: 'https://lectet.herokuapp.com/backend/books/' + $.urlParam('id'),
         success: function (data) {
-            console.log(data);
             $book_title.html('<p>' + data.book.name + '</p>');
             // $author_name.html('<p>' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</p>');
             var authorBottom = '<p>';
@@ -70,7 +68,6 @@ $(document).ready(() => {
                 type: 'GET',
                 url: 'https://lectet.herokuapp.com/backend/books/genre/' + genre,
                 success: function (data1) {
-                    console.log(data1);
                     id = '#related_book';
                     $(id).css({
                         'visibility': 'visible'
@@ -86,7 +83,6 @@ $(document).ready(() => {
                     for (var i = 0; i < length; i++) {
 
                         if (data1.books[i].id != $.urlParam('id')) {
-                            // console.log(data.author.books[i].name);
                             related_books = related_books + '<div class="col-lg-4 col-md-6 col-sm-6 col-xs-6 separation-related-book">' +
                                 '<div class="single-related-product d-flex">' +
                                 '<a href="' + './product.html?id=' + data1.books[i].id + '"><img src="../assets/images/books/book_' + data1.books[i].id + '.jpg' + '" class="fakeimg" alt="Image"></a>' +
@@ -109,7 +105,6 @@ $(document).ready(() => {
         url: 'https://lectet.herokuapp.com/backend/events/book/' + $.urlParam('id'),
         success: function (data2) {
             if (data2.events.length > 0) {
-                console.log(data2);
                 id = '#event';
                 $(id).css({
                     'visibility': 'visible'
@@ -145,14 +140,10 @@ $(document).ready(() => {
                 type: 'GET',
                 beforeSend: function (request) {
                     request.setRequestHeader("Authorization", userkey.token);
-                    console.log(userkey.token);
-                    console.log("DONE IT");
-                    console.log('https://lectet.herokuapp.com/backend/cart/' + $id);
                 },
                 success: function (response) {
 
                     if (response.cart == null) {
-                        console.log("NO EXISTE CESTA");
 
                         $.ajax({
                             url: 'https://lectet.herokuapp.com/backend/cart/',
@@ -162,13 +153,8 @@ $(document).ready(() => {
                             contentType: 'application/json',
                             beforeSend: function (request) {
                                 request.setRequestHeader("Authorization", userkey.token);
-                                console.log(userkey.token);
-                                console.log("DONE IT");
-                                console.log('https://lectet.herokuapp.com/backend/cart/' + $id);
                             },
                             success: function (response) {
-                                console.log("I ADD TO CART");
-                                console.log(response);
 
                                 $.ajax({
                                     url: 'https://lectet.herokuapp.com/backend/cart/' + $id,
@@ -177,23 +163,16 @@ $(document).ready(() => {
                                     contentType: 'application/json',
                                     beforeSend: function (request) {
                                         request.setRequestHeader("Authorization", userkey.token);
-                                        console.log(userkey.token);
-                                        console.log("DONE IT");
-                                        console.log('https://lectet.herokuapp.com/backend/cart/' + $id);
                                     },
                                     success: function (response) {
-                                        console.log("I ADD TO CART");
-                                        console.log(response);
                                     },
                                     error: function (error) {
                                         console.log("Error while adding");
-                                        console.log(error);
                                     }
                                 });
                             },
                             error: function (error) {
                                 console.log("Error while adding");
-                                console.log(error);
                             }
                         });
                     } else {
@@ -204,24 +183,17 @@ $(document).ready(() => {
                             contentType: 'application/json',
                             beforeSend: function (request) {
                                 request.setRequestHeader("Authorization", userkey.token);
-                                console.log(userkey.token);
-                                console.log("DONE IT");
-                                console.log('https://lectet.herokuapp.com/backend/cart/' + $id);
                             },
                             success: function (response) {
-                                console.log("I ADD TO CART");
-                                console.log(response);
                             },
                             error: function (error) {
                                 console.log("Error while adding");
-                                console.log(error);
                             }
                         });
                     }
                 },
                 error: function (error) {
                     console.log("Error while adding");
-                    console.log(error);
                 }
             });
         } else {

@@ -41,7 +41,7 @@ $(document).ready(() => {
                             }
                         },
                         error: function () {
-                            console.log("No se ha podido obtener la información");
+                            console.log("The information could not be obtained.");
                         }
                     });
 
@@ -49,7 +49,7 @@ $(document).ready(() => {
             }
         },
         error: function () {
-            console.log("No se ha podido obtener la información");
+            console.log("The information could not be obtained.");
         }
     });
 
@@ -66,7 +66,7 @@ $(document).ready(() => {
             }
         },
         error: function () {
-            console.log("No se ha podido obtener la información");
+            console.log("The information could not be obtained.");
         }
     });
 
@@ -98,14 +98,14 @@ $(document).ready(() => {
                         }
                     },
                     error: function () {
-                        console.log("No se ha podido obtener la información");
+                        console.log("The information could not be obtained.");
                     }
                 })
 
             }
         },
         error: function () {
-            console.log("No se ha podido obtener la información");
+            console.log("The information could not be obtained.");
         }
     });
 
@@ -128,7 +128,7 @@ $(document).ready(() => {
 
         },
         error: function () {
-            console.log("No se ha podido obtener la información");
+            console.log("The information could not be obtained.");
         }
     });
 
@@ -147,7 +147,7 @@ $(document).ready(() => {
 
         },
         error: function () {
-            console.log("No se ha podido obtener la información");
+            console.log("The information could not be obtained.");
         }
     });
 

@@ -200,10 +200,6 @@ function deleteBook(x) {
 
   var totalElement = document.getElementById('total-price');
 
-  console.log(total);
-
-  console.log(newPrices[x]);
-
   total = total - newPrices[x];
 
   $(totalElement).text(total + " €");
@@ -306,8 +302,6 @@ function addToCart() {
 
   new_data = new_data + "]";
 
-  console.log(new_data);
-
   $.ajax({
     url: 'https://lectet.herokuapp.com/backend/cart/',
     type: 'POST',
@@ -317,17 +311,11 @@ function addToCart() {
     data: new_data,
     beforeSend: function (request) {
       request.setRequestHeader("Authorization", userkey.token);
-      console.log("DONE IT");
-      console.log(this.data);
-      console.log(userkey.token);
     },
     success: function (response) {
-      console.log("I ADD TO CART");
-      console.log(response);
     },
     error: function (response) {
       console.log("Error while adding");
-      console.log(response);
     }
   });
 

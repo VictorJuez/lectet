@@ -9,15 +9,11 @@ $.urlParam = function (name) {
 
 
 $(document).ready(() => {
-    console.log("id=" + $.urlParam('id'));
 
     $.ajax({
         type: 'GET',
         url: 'https://lectet.herokuapp.com/backend/events/' + $.urlParam('id'),
         success: function (respond) {
-            console.log(respond);
-            console.log(respond.event.books[0].name);
-            console.log(respond.event.books[0].authors[0].name);
 
             var date = "";
             var hour = "";
@@ -31,9 +27,7 @@ $(document).ready(() => {
             for (x = 11; x < 16; x++) {
                 hour = hour + dateReceive.charAt(x);
             }
-
-            console.log(hour);
-
+            
             date = date.replace(/[-]/g, '/');
 
             $("#event-img").attr("src", "../assets/images/events/event_" + $.urlParam('id') + ".jpg")

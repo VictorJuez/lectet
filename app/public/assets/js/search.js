@@ -55,7 +55,6 @@ $(document).ready(() => {
     $("#result").html($.urlParam('name'));
 
     if ($.urlParam('filter') == "yes") {
-        console.log("ENTRE EN EL FILTRO");
         selectedFilterGenre = $.urlParam('genre');
         selectedFilterTheme = $.urlParam('theme');
 
@@ -64,7 +63,6 @@ $(document).ready(() => {
 
         putSelectedGenre();
         putSelectedTheme();
-        console.log("NO SE QUE PASA");
 
         generateSearch();
 
@@ -72,8 +70,6 @@ $(document).ready(() => {
         if ($.urlParam('selected') == "books" || $.urlParam('selected') == "genre" || $.urlParam('selected') == "theme") {
 
             if ($.urlParam('selected') == "books") {
-
-                console.log("Selected = " + $.urlParam('selected'));
 
                 selectedUrl = 'https://lectet.herokuapp.com/backend/books/'
 
@@ -103,8 +99,6 @@ $(document).ready(() => {
 
                     length = respond.books.length;
 
-                    console.log(respond);
-
                     var search = "#books-search";
 
                     var book_search = '';
@@ -114,8 +108,6 @@ $(document).ready(() => {
                     if ((6 * $.urlParam('page')) < max) {
                         max = 6 * $.urlParam('page');
                     }
-
-                    console.log(max);
 
                     for (var x = 6 * ($.urlParam('page') - 1); x < max; x++) {
 
@@ -154,8 +146,6 @@ $(document).ready(() => {
                 success: function (respond) {
 
                     length = respond.length;
-
-                    console.log(respond);
 
                     var search = "#books-search";
 
@@ -202,8 +192,6 @@ $(document).ready(() => {
 
                     length = respond.events.length;
 
-                    console.log(respond);
-
                     var search = "#books-search";
 
                     var book_search = '';
@@ -245,8 +233,6 @@ $(document).ready(() => {
                 success: function (respond) {
 
                     length = respond.books.length;
-
-                    console.log(respond);
 
                     var search = "#books-search";
 
@@ -294,13 +280,11 @@ $(document).ready(() => {
 
         if ($.urlParam("filter") == "yes") {
             var val = $.urlParam('genre');
-            console.log(val);
         } else {
             var val = $.urlParam('id');
         }
 
         var opts = sel.options;
-        console.log(opts);
 
         for (var opt, j = 0; opt = opts[j]; j++) {
             if (opt.value == val) {
@@ -320,14 +304,12 @@ $(document).ready(() => {
 
         if ($.urlParam("filter") == "yes") {
             var val = $.urlParam('theme');
-            console.log(val);
         } else {
             var val = $.urlParam('id');
         }
 
         var opts = sel.options;
 
-        console.log(opts);
         for (var opt, j = 0; opt = opts[j]; j++) {
             if (opt.value == val) {
                 sel.selectedIndex = j;
@@ -345,8 +327,6 @@ $(document).ready(() => {
         function () {
 
             selectedGenre = this.options[selectGenre.selectedIndex];
-            console.log("ENTRO EN CATEGORY CON : " + selectedGenre.value);
-            console.log(selectedGenre.value + ': ' + selectedGenre.text);
             if (selectedTheme != null) {
                 if (selectedTheme.value != "null" && selectedGenre.value != "null") {
                     $("#a-search").attr("href", "./search.html?filter=yes&genre=" + selectedGenre.value + "&nameGenre=" + selectedGenre.text + "&theme=" + selectedTheme.value + "&nameTheme=" + selectedTheme.text + "&page=1")
@@ -367,7 +347,6 @@ $(document).ready(() => {
     selectTheme.addEventListener('change',
         function () {
             selectedTheme = this.options[selectTheme.selectedIndex];
-            console.log(selectedTheme.value + ': ' + selectedTheme.text);
             if (selectedGenre != null) {
                 if (selectedGenre.value != "null" && selectedTheme.value != "null") {
                     $("#a-search").attr("href", "./search.html?filter=yes&genre=" + selectedGenre.value + "&nameGenre=" + selectedGenre.text + "&theme=" + selectedTheme.value + "&nameTheme=" + selectedTheme.text + "&page=1")
@@ -384,25 +363,13 @@ $(document).ready(() => {
 
         });
 
-
-    document.getElementById("search").onclick = function () {
-        console.log(selectedGenre.value);
-        //generateSearch();
-    };
-
     function generateSearch() {
-        console.log("SIGO SIN SABER QUE PASA");
-        console.log(selectedGenre);
         $.ajax({
             url: 'https://lectet.herokuapp.com/backend/books/filter/?genre=' + selectedFilterGenre + '&theme=' + selectedFilterTheme,
             type: 'GET',
             success: function (respond) {
 
-                console.log(respond);
-
                 length = respond.length;
-
-                console.log(respond);
 
                 var search = "#books-search";
 
@@ -451,14 +418,10 @@ $(document).ready(() => {
 
     function numberPages() {
 
-        console.log(length);
-
         var generateNumber = "";
         var numberPages = length / 6;
 
         numberPages = Math.ceil(numberPages);
-
-        console.log(numberPages);
 
         var url = "./search.html?"
 
@@ -494,9 +457,6 @@ $(document).ready(() => {
         }
 
         var next = parseInt($.urlParam('page')) + 1;
-
-        console.log(next);
-        console.log(numberPages);
 
         if (next > numberPages) {
             next = numberPages;

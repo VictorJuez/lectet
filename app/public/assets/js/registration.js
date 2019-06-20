@@ -1,17 +1,13 @@
 $(document).ready(() => {
-    console.log("HELLO WORLD");
     const userkey = JSON.parse(window.localStorage.getItem("lectet"));
 
     if (userkey) {
-        console.log(userkey);
         $.ajax({
             url: 'https://lectet.herokuapp.com/backend/user/info',
             beforeSend: function (request) {
                 request.setRequestHeader("Authorization", userkey.token);
             },
             success: function (response) {
-                console.log("Im logged in! ");
-                console.log(response);
                 window.location.href = "../index.html";
             },
             error: function () {
@@ -28,11 +24,6 @@ $(document).ready(() => {
         const $firstName = $('#first_name').val();
         const $secondName = $('#second_name').val();
         const $terms = $('#t_and_c');
-        console.log("name: " + $firstName);
-        console.log("surname: " + $secondName);
-        console.log("email: " + $email);
-        console.log("password: " + $password);
-        console.log("confirmPassword: " + $confirmPassword);
         if($firstName == "" || $secondName == "" || $password == "" || $email == "" || $confirmPassword == ""){
             throwError("Please fill all the camps");
             return;
@@ -41,7 +32,7 @@ $(document).ready(() => {
             throwError("Passwords are not equals");
             return;
         }
-        if($terms.is(":checked")) console.log("terms and conditions: checked");
+        if($terms.is(":checked")) console.log("Terms and conditions: checked");
         else {
             throwError("You have to accept the terms and conditions");
             return;
@@ -66,13 +57,11 @@ $(document).ready(() => {
                 window.location.href = "../index.html";
             },
             error: function (error) {
-                console.log(error);
                 if(error.status == 400) throwError(error.responseJSON.details[0].message);
                 else if(error.status == 403) throwError(error.responseJSON.error);
                 else throwError("Error ocurred");
             }
         });
-        console.log(check);
     });
 });
 

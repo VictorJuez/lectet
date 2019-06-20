@@ -10,8 +10,6 @@ $(document).ready(() => {
     $button.click(function () {
         const $email = $('#email').val();
         const $password = $('#password').val();
-        console.log("email: " + $email);
-        console.log("password: " + $password);
 
         var check = $.ajax({
             url: 'https://lectet.herokuapp.com/backend/user/signIn',
@@ -34,10 +32,9 @@ $(document).ready(() => {
                 $("#error").css({
                     'display': 'block'
                 });
-                console.log("No se ha podido obtener la información");
+                console.log("The information could not be obtained.");
             }
         });
-        console.log(check);
     });
 });
 

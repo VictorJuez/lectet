@@ -176,8 +176,6 @@ var Dotdotdot = function () {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    console.log("HE ENTRADO");
-
     let wrapper = document.querySelector(".text-description");
     let options = {
         height: 100,
@@ -185,14 +183,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     let dot = new Dotdotdot(wrapper, options);
     dot.API.truncate();
-
-    console.log(dot);
 });
 
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    console.log("HE ENTRADO");
 
     let wrapper = document.querySelector("#description-most-sell");
     let options = {
@@ -201,14 +195,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     let dot = new Dotdotdot(wrapper, options);
     dot.API.truncate();
-
-    console.log(dot);
 });
 
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    console.log("HE ENTRADO");
 
     let wrapper = document.querySelector("#description-book_0");
     let options = {
@@ -217,13 +207,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     let dot = new Dotdotdot(wrapper, options);
     dot.API.truncate();
-
-    console.log(dot);
 });
 
 document.addEventListener("DOMContentLoaded", () => {
-
-    console.log("HE ENTRADO");
 
     let wrapper = document.querySelector("#description-book_1");
     let options = {
@@ -232,13 +218,9 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     let dot = new Dotdotdot(wrapper, options);
     dot.API.truncate();
-
-    console.log(dot);
 });
 
 document.addEventListener("load", () => {
-
-    console.log("HE ENTRADO");
 
     let wrapper = document.querySelector(".card-title");
     let options = {
@@ -247,13 +229,9 @@ document.addEventListener("load", () => {
     };
     let dot = new Dotdotdot(wrapper, options);
     dot.API.truncate();
-
-    console.log(dot);
 });
 
 function load() {
-    console.log("SI JODERRRRRRR");
-
     setTimeout("later()", 500);
 }
 

@@ -11,8 +11,6 @@ $(document).ready(function () {
                 request.setRequestHeader("Authorization", userkey.token);
             },
             success: function (response) {
-                console.log("Im logged in! ");
-                console.log(response);
                 $user = $('#loggeduser');
                 $user.text(response.email);
                 $user.removeAttr("href");
@@ -31,7 +29,7 @@ $(document).ready(function () {
             }
         });
     } else {
-        console.log("you are not logged in");
+        console.log("You are not logged in");
         $("#cart").css({
             'display': 'none'
         });
@@ -66,7 +64,7 @@ $(document).ready(function () {
             $("#category-sub-menu-index").html(subMenu_Index);
         },
         error: function () {
-            console.log("No se ha podido obtener la información");
+            console.log("The information could not be obtained.");
         }
     });
 
@@ -90,14 +88,12 @@ $(document).ready(function () {
             $("#theme-sub-menu-index").html(subMenu_Index);
         },
         error: function () {
-            console.log("No se ha podido obtener la información");
+            console.log("The information could not be obtained.");
         }
     });
 });
 
 function logOut () {
     window.localStorage.removeItem('lectet');
-
-    console.log("HACIENDO LOG OUT");
 }
 

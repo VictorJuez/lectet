@@ -18,17 +18,13 @@ $(document).ready(() => {
         type: 'GET',
         beforeSend: function (request) {
             request.setRequestHeader("Authorization", userkey.token);
-            console.log("DONE IT");
-            console.log(this.data);
         },
         success: function (respond) {
             $("#fname").text(respond.name + " " + respond.surname);
             $("#email").attr("value", respond.email);
-
-            console.log(respond.email);
         },
         error: function () {
-            console.log("Error");
+            console.log("The information could not be obtained.");
         }
     });
 
@@ -42,8 +38,6 @@ $(document).ready(() => {
             type: 'GET',
             beforeSend: function (request) {
                 request.setRequestHeader("Authorization", userkey.token);
-                console.log("DONE IT");
-                console.log(this.data);
             },
             success: function (respond) {
 
@@ -56,7 +50,6 @@ $(document).ready(() => {
 
                 for (var x = 0; x < respond.cart.books.length; x++) {
                     quantity = quantity + respond.cart.books[x].cart_book.quantity;
-                    console.log(respond.cart.books[x].cart_book.quantity);
 
                     booksId.push(respond.cart.books[x].id);
                     booksQuantity.push(respond.cart.books[x].cart_book.quantity);
@@ -75,7 +68,7 @@ $(document).ready(() => {
                 $(id).html(order);
             },
             error: function () {
-                console.log("Error");
+                console.log("The information could not be obtained.");
             }
         });
     } else {
@@ -106,7 +99,7 @@ $(document).ready(() => {
                 $(id).html(order);
             },
             error: function () {
-                console.log("Error");
+                console.log("The information could not be obtained.");
             }
         });
 
@@ -147,8 +140,6 @@ $(document).ready(() => {
             '"zip"' + ': ' + '"' + document.getElementById("zip").value + '",' +
             '"cart"' + ': ' + '[' + cart + ']}';
 
-        console.log(dataInfo);
-
         $.ajax({
             url: 'https://lectet.herokuapp.com/backend/orders/',
             type: 'POST',
@@ -157,16 +148,11 @@ $(document).ready(() => {
             data: dataInfo,
             beforeSend: function (request) {
                 request.setRequestHeader("Authorization", userkey.token);
-                console.log("DONE IT");
-                console.log(userkey.token);
             },
             success: function (response) {
-                console.log("I ADD TO CART");
-                console.log(response);
             },
             error: function (error) {
                 console.log("Error while adding");
-                console.log(error);
             }
         });
 
@@ -179,17 +165,11 @@ $(document).ready(() => {
             data: [],
             beforeSend: function (request) {
                 request.setRequestHeader("Authorization", userkey.token);
-                console.log("DONE IT");
-                console.log(this.data);
-                console.log(userkey.token);
             },
             success: function (response) {
-                console.log("I ADD TO CART");
-                console.log(response);
             },
             error: function (response) {
                 console.log("Error while adding");
-                console.log(response);
             }
         });
     }
