@@ -154,6 +154,10 @@
       margin-top: 20px;
       display: block;
     }
+    .error {
+      color: red;
+      display: none;
+    }
   </style>
 </head>
 
@@ -254,8 +258,11 @@
               <div class="col-md-12 form-group">
                 <div class="creat_account">
                   <input type="checkbox" id="t_and_c" name="selector">
-                  <label for="f-option2">Accept terms and conditions</label>
+                  <label for="f-option2" >Accept terms and conditions</label>
                 </div>
+              </div>
+              <div id="error" class="error">
+                  <p id="error_text"></p>
               </div>
               <div class="col-md-12 form-group">
                 <a id="registerButton" class="btn btn-success btn-lg">Register</a>
