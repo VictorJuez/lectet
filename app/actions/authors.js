@@ -1,4 +1,4 @@
-const { Author, Book } = require('../helpers/sequelize');
+const { Author, Book } = require('../orm/sequelize');
 
 const getAuthorById = async (request, response) => {
   console.log(request.params.id);

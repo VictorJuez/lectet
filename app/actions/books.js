@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { Book, Author, Genre, Theme, Favourite, Sale } = require('../helpers/sequelize');
+const { Book, Author, Genre, Theme, Favourite, Sale } = require('../orm/sequelize');
 
 // BOOKS operations
 const getBooks = async (request, response) => {

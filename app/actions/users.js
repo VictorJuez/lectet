@@ -1,6 +1,6 @@
 const JWT = require('jsonwebtoken');
 const {JWT_SECRET} = require('../../config');
-const { User } = require('../helpers/sequelize');
+const { User } = require('../orm/sequelize');
 
 singToken = (user) => {
   return JWT.sign({
