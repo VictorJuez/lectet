@@ -11,7 +11,6 @@ Lectet web application - [[089318] Hypermedia Applications course](https://www11
 git clone https://github.com/VictorJuez/lectet.git
 cd lectet
 npm install
-sudo npm i -g nodemon (to run the appliction without restarting everytime)
 ```
 
 In order to run the application:
@@ -29,9 +28,11 @@ https://codeburst.io/fractal-a-nodejs-app-structure-for-infinite-scale-d74dda57e
     lectet
     ├── app                     # Main app code (Back-end)
     │   ├── actions             # Business logic, DB calls
+    │   ├── models              # Where data models are defined
+    │   ├── orm                 # Database configuration and Sequelize (orm) definition
     │   ├── routes              # Routes to project entities
-    │   ├── helpers             # Helpers and Config files
-    │   ├── static-files        # Main point for the Front-end
+    │   ├── helpers             # Route helpers
+    │   ├── public              # Main point for the Front-end
     │   ├── swagger.json        # Swagger documentation file
     │   └── server.js           # Server starting point
     └── docs                    # Documentation purpose
@@ -39,9 +40,10 @@ https://codeburst.io/fractal-a-nodejs-app-structure-for-infinite-scale-d74dda57e
 
 # Links to the Application
 - Web Application: https://lectet.herokuapp.com/
-- API Documentation: https://lectet.herokuapp.com/api-docs
+- API entry point: https://lectet.herokuapp.com/backend
+- Backend documentation: https://lectet.herokuapp.com/backend/main.html
 
 # Members
-- Julian
-- Arnab
+- Julian Cuellar
+- Arnab Dey
 - Víctor Juez
