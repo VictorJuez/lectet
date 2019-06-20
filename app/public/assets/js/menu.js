@@ -15,7 +15,7 @@ $(document).ready(function () {
                 console.log(response);
                 $user = $('#loggeduser');
                 $user.text(response.email);
-                $user.attr("href", "");
+                $user.removeAttr("href");
                 $("#login").css({
                     'display': 'none'
                 });

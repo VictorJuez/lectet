@@ -2,7 +2,9 @@ $(document).ready(() => {
     console.log("HELLO WORLD");
     const userkey = JSON.parse(window.localStorage.getItem("lectet"));
 
-    if (userkey) console.log("myKey: " + userkey.token);
+    if (userkey){
+        window.location.href = "../index.html";
+    }
     var $button = $('#loginButton');
 
     $button.click(function () {
