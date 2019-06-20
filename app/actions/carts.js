@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const { Cart, Book, Author } = require('../helpers/sequelize');
+const { Cart, Book, Author } = require('../orm/sequelize');
 
 const getCart = async (request, response) => {
     const cart = await Cart.findOne({

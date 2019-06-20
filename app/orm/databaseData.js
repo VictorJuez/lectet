@@ -497,27 +497,33 @@ async function testDb() {
   // new Date(year, month-1, day, hours+2, minutes, seconds, milliseconds)
   const event1 = await Event.create({
     name: 'Usborne book event',
-    date: new Date(2019, 6 - 1, 1, 17 + 2, 30)
+    date: new Date(2019, 6 - 1, 1, 17 + 2, 30),
+    description:'Lorem ipsum dolor sit amet, massa dolor nisl semper deserunt rhoncus, tellus sed placerat diam. Viverra vivamus vitae. Tempus eros pellentesque nullam ac amet quam, mauris luctus lacus dapibus ligula duis. Odio aliquam. Ut vivamus amet mauris ac sed. Donec dictum, elit sed sed justo eu netus. Orci libero amet mauris enim, lectus est fermentum volutpat dignissimos, accumsan a magna cursus euismod ultricies, vestibulum arcu. Nunc in leo enim ante, tristique enim sapien ipsum mi arcu dui, leo egestas ultricies sociosqu. Ut tortor pellentesque amet consequat elit, vitae egestas at. Et quisque tellus suspendisse, vitae adipiscing vel.'
   })
   const event2 = await Event.create({
     name: 'The open book event',
-    date: new Date(2019, 6 - 1, 1, 17 + 2, 30)
+    date: new Date(2019, 6 - 1, 1, 17 + 2, 30),
+    description: 'Sed ut, ac accumsan. Nec id sodales eget vel tortor vel, ultricies enim justo ut, ac rhoncus non, sunt tortor augue. Luctus tellus vel amet risus. Justo pellentesque proin pede. Nec dictum est, ullamcorper accumsan, natoque accumsan pellentesque pellentesque, wisi orci orci adipiscing ut. Lorem purus donec eros magnis, velit ad risus turpis magna sollicitudin cras, velit. Suspendisse per elit consectetuer turpis eget, in interdum natoque est justo in aliquam, ipsum suspendisse dolor erat in.'
   })
   const event3 = await Event.create({
     name: 'Feria del libro la Rioja 2018',
-    date: new Date(2019, 8 - 1, 1, 17 + 2, 30)
+    date: new Date(2019, 8 - 1, 1, 17 + 2, 30),
+    description:'Orci et a sed nisl incidunt amet. Quam placerat donec aliquam leo, tempus tellus vel nullam faucibus sit, platea nam voluptates tellus ut, leo arcu volutpat. Amet eum accumsan nec, in enim viverra vehicula sapien, odio at tempor, hendrerit luctus sapien. Dictumst aliquam pede, aliquam commodo etiam, in sociosqu conubia et mauris nulla suspendisse, fringilla diam convallis nunc sed fermentum pretium, eu et velit. Aliquet duis, posuere amet maecenas egestas integer. Dolor iure morbi. Fringilla sit quam at nulla vehicula nullam, potenti accumsan est praesent odio, tortor parturient ut turpis placerat amet. Ullamcorper nulla quisque nunc adipiscing, in neque faucibus. Volutpat aliquam eget, est vitae sed adipiscing nunc imperdiet, at nulla integer placeat eget arcu, eu at erat ut justo lorem, vel et dictum. Risus lorem non duis. A blandit, tellus odio vulputate.'
   })
   const event4 = await Event.create({
     name: 'Feria del libro Juan Filloy',
-    date: new Date(2019, 20 - 1, 1, 17 + 2, 30)
+    date: new Date(2019, 20 - 1, 1, 17 + 2, 30),
+    description: 'Class nunc ante, adipisicing aenean felis elementum amet. Urna curabitur sagittis ut non at mi. Hendrerit erat non wisi massa tristique, nunc placerat ante interdum ultrices dui pellentesque. Tincidunt venenatis porta non vehicula et, lectus rhoncus bibendum fusce pulvinar, sit ut neque, ipsum vitae, sit justo sit. Vitae fugit at id nibh vestibulum, quam praesent eros platea cum non sit, class scelerisque luctus lacinia eget. Ut dignissim luctus mi magna donec et, ligula rhoncus lacus et, rutrum eu ante, purus praesent. Cras vel enim libero lorem, tincidunt lectus felis montes, mauris a volutpat donec, volutpat velit dolor eu id tincidunt ultrices. Vel mauris, pellentesque nunc iaculis morbi minim a eleifend. Fermentum placerat euismod sit nec elit posuere, sodales est cras. Vitae enim ipsum sollicitudin, quisque dapibus felis ultrices elit penatibus ullamcorper. Molestie libero blandit ac massa, neque ultricies.'
   })
   const event5 = await Event.create({
     name: 'Feria internacional del libro',
-    date: new Date(2019, 15 - 1, 1, 17 + 2, 30)
+    date: new Date(2019, 15 - 1, 1, 17 + 2, 30),
+    description: 'Metus morbi sed nibh lorem vestibulum, tellus rutrum mi at pulvinar arcu tellus, velit urna vel morbi, metus eget ut non in. Quis et id, nascetur integer morbi, vel donec ac arcu sit. Leo nonummy velit praesent in, a dui dolor ante suspendisse et elit. Nulla nibh dolor amet amet, in nibh duis aliquam laoreet nostra. Faucibus lorem dolor cras nascetur ligula metus.'
   })
   const event6 = await Event.create({
     name: 'Kent Police open day book event',
-    date: new Date(2019, 22 - 1, 1, 17 + 2, 30)
+    date: new Date(2019, 22 - 1, 1, 17 + 2, 30),
+    description:'Wisi mauris mauris. Eros tincidunt justo magna eros, et feugiat orci praesent interdum, ut feugiat eros morbi vel massa, auctor vitae orci, tortor donec tempor enim et mauris. Placerat quisque mollis sem. Sollicitudin a. Quis sit proin eleifend vitae, amet molestie, duis ac mollis sed vitae tristique, laoreet nec erat nam feugiat enim pretium, non porta nibh nullam eu viverra et.'
   })
   await book1.addEvent(event1);
   await book23.addEvent(event2);
