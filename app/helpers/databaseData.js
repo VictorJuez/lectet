@@ -520,15 +520,9 @@ async function testDb() {
     date: new Date(2019, 22 - 1, 1, 17 + 2, 30)
   })
   await book1.addEvent(event1);
-  await book2.addEvent(event1);
   await book23.addEvent(event2);
-  await book24.addEvent(event2);
   await book8.addEvent(event3);
-  await book9.addEvent(event3);
   await book11.addEvent(event4);
-  await book12.addEvent(event4);
   await book15.addEvent(event5);
-  await book16.addEvent(event5);
   await book6.addEvent(event6);
-  await book7.addEvent(event6);
 }
