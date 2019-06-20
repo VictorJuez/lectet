@@ -190,28 +190,21 @@ function laterMostSell() {
     dot.API.truncate();
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
 
-    let wrapper = document.querySelector("#description-book_0");
+    var wrapper = document.querySelectorAll(".description-book");
     let options = {
-        height: 100,
+        height: 90,
         truncate: "word",
     };
-    let dot = new Dotdotdot(wrapper, options);
-    dot.API.truncate();
+
+    for (var x = 0; x < wrapper.length; x++) {
+        let dot = new Dotdotdot(wrapper[x], options);
+        dot.API.truncate();
+    }
 });
 
-document.addEventListener("DOMContentLoaded", () => {
 
-    let wrapper = document.querySelector("#description-book_1");
-    let options = {
-        height: 100,
-        truncate: "word",
-    };
-    let dot = new Dotdotdot(wrapper, options);
-    dot.API.truncate();
-});
 
 document.addEventListener("load", () => {
 
@@ -229,7 +222,6 @@ function load() {
 }
 
 function later() {
-    //var container = document.querySelector("#books-search");
     var wrapper = document.querySelectorAll(".card-title");
     let options = {
         height: 50,

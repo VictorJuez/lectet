@@ -56,8 +56,6 @@ $(document).ready(() => {
 
       var order = "";
 
-      console.log(response.cart.books.length);
-
       length_cart = response.cart.books.length;
 
       for (var x = 0; x < response.cart.books.length; x++) {
