@@ -176,17 +176,10 @@ var Dotdotdot = function () {
 
 document.addEventListener("DOMContentLoaded", () => {
 
-    let wrapper = document.querySelector(".text-description");
-    let options = {
-        height: 100,
-        truncate: "word",
-    };
-    let dot = new Dotdotdot(wrapper, options);
-    dot.API.truncate();
+    setTimeout("laterMostSell()", 700);
 });
 
-
-document.addEventListener("DOMContentLoaded", () => {
+function laterMostSell() {
 
     let wrapper = document.querySelector("#description-most-sell");
     let options = {
@@ -195,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
     let dot = new Dotdotdot(wrapper, options);
     dot.API.truncate();
-});
+}
 
 
 document.addEventListener("DOMContentLoaded", () => {
