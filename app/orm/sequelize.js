@@ -47,21 +47,6 @@ Order.belongsToMany(Book, { through: OrderBook, unique:true });
 Book.belongsToMany(Order, { through: OrderBook, unique:true });
 Sale.belongsTo(Book);
 
-/*
-const Rating = RatingModel(sequelize, Sequelize);
-const AuthorEvent = sequelize.define('author_event', {});
-
-Book.belongsToMany(User, {as: 'ratingUser', through: Rating, unique: true});
-User.belongsToMany(Book, {as: 'ratingBook', through: Rating, unique: true});
-Author.belongsToMany(Event, { through: AuthorEvent, unique: true });
-Event.belongsToMany(Author, { through: AuthorEvent, unique: true});
-Book.belongsToMany(User, { as: 'buyer', through: Order, unique:false });
-User.belongsToMany(Book, { as: 'orderedBook', through: Order, unique:false });*/
-
-/*User.prototype.try = function () {
-  console.log("custom function!");
-}*/
-
 module.exports = {
   sequelize,
   User,

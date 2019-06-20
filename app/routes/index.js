@@ -7,7 +7,6 @@ app.use('/', express.static('app/public/backend'));
 app.use('/user', require('./users'));
 app.use('/authors', require('./authors'));
 app.use('/books', require('./books'));
-app.use('/ratings', require('./ratings'));
 app.use('/events', require('./events'));
 app.use('/orders', require('./orders'));
 app.use('/cart', require('./carts'));
