@@ -36,14 +36,14 @@ $(document).ready(() => {
             var author = '';
             for (var i = 0; i < data.book.authors.length; i++) {
                 author = author + '<a class="nav-link" href="./author.html?id=' + data.book.authors[i].id + '"> ' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>';
-                authorBottom = authorBottom + ' ' + 'Author: <span class="glyphicon glyphicon-user"></span>' +
+                authorBottom = authorBottom + ' ' + 'Author: <span class="fas fa-euro-sign"></span>' +
                     '<a class="nav-link" href="./author.html?id=' + data.book.authors[i].id + '"> ' + data.book.authors[0].name + ' ' + data.book.authors[0].lastName + '</a>'
             }
             authorBottom = authorBottom + '</p>';
 
             $author_name.html(author);
             $author_name_bottom.html(authorBottom);
-            $book_price.html(data.book.price + '<span class="glyphicon glyphicon-euro"></span>');
+            $book_price.html(data.book.price + '<span class="fas fa-euro-sign"></span>');
             $book_description.html(data.book.description);
             genre = data.book.genreId;
             theme = data.book.themeId;
